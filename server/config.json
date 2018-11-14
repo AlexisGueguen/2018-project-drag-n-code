@@ -1,0 +1,5 @@
+﻿{
+    "connectionString": "mongodb://localhost/dragncode",
+    "secret": "%ADOeyPHgyIVFz9d02^c!",
+    "root": "/api"
+}
