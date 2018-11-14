@@ -1,0 +1,15 @@
+{
+  "login" : {
+    "userNamePlaceHolder": "Username",
+    "userNameField" : "Username",
+    "passwordField" : "Password"
+  },
+  "header" : {
+    "homePageTitle": "@:homePage.title",
+    "communityPageTitle": "@:communityPage.title"
+  },
+  "homePage" : {
+    "title" : "Home",
+    "description" : "Welcome back ! Select a level to start playing"
+  }
+}

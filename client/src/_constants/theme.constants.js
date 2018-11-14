@@ -1,0 +1,7 @@
+export const themeConstants = {
+    MAIN_COLOR: '#FFD87F',
+    SECONDARY_COLOR: '#FF9943',
+    BACKGROUND_COLOR: '#F5F5CD',
+    DARK_ORANGE_COLOR: '#D17243',
+    DARK_RED_COLOR: '#9F2F1F'
+};
