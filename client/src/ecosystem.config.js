@@ -2,7 +2,7 @@ module.exports = {
     apps : [
         {
             name: "dragncode",
-            script: "./index.jsx",
+            script: "./src/index.jsx",
             watch: true,
             env: {
                 "PORT": 8080,
