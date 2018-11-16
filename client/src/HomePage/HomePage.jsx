@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 class HomePage extends React.Component {
 
     render() {
+        return null;
     }
 }
 
