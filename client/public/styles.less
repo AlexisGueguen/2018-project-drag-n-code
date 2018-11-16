@@ -2,8 +2,51 @@
   width: 100%;
   height: auto;
 
-  & nav.navbar {
-     width: 100%;
-     background-color: #FFD87F;
-   }
+  & .header > .navbar {
+    width: 100%;
+    background-color: #FFD87F;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+
+    & .navbar-title {
+      font-size: 36px;
+      font-weight: 700;
+      padding-left: 50px;
+      width: fit-content;
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+
+    & .navbar-nav {
+      margin-top: auto;
+      margin-bottom: auto;
+      list-style-type: none;
+
+      & .nav-item {
+        padding-left: 10px;
+
+        & .nav-button {
+          padding: 10px;
+
+          &:hover {
+            background-color: #ffc94d;
+            cursor: pointer;
+            border-radius: 5px;
+          }
+        }
+      }
+    }
+
+    & .profile-dropdown {
+      display: flex;
+      margin-left: auto;
+      padding-right: 50px;
+
+      & .user-profile {
+        margin-top: auto;
+        margin-bottom: auto;
+      }
+    }
+  }
 }
