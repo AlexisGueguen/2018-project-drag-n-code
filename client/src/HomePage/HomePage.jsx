@@ -5,6 +5,9 @@ import { connect } from 'react-redux';
 class HomePage extends React.Component {
 
     render() {
+        return (
+            <div className="bonjour"> BONJOUR LE MONDE</div>
+        );
     }
 }
 

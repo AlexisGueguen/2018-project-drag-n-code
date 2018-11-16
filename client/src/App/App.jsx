@@ -11,6 +11,7 @@ import { RegisterPage } from '../RegisterPage';
 import {ProfilePage} from "../ProfilePage";
 import {CommunityPage} from "../CommunityPage";
 import {LeaderboardPage} from "../LeaderboardPage";
+import {HeaderComponent} from "../HeaderComponent";
 
 class App extends React.Component {
     constructor(props) {
@@ -26,25 +27,17 @@ class App extends React.Component {
     render() {
         const { alert } = this.props;
         return (
-            <div className="jumbotron">
                 <div className="container">
                     <div className="col-sm-8 col-sm-offset-2">
                         {alert.message &&
                             <div className={`alert ${alert.type}`}>{alert.message}</div>
                         }
-                        <Router history={history}>
                             <div>
-                                <PrivateRoute exact path="/" component={HomePage} />
+                                <Route path="/" component={HeaderComponent}/>
                                 <Route path="/login" component={LoginPage} />
                                 <Route path="/register" component={RegisterPage} />
-                                <Route path="/home" component={HomePage}/>
-                                <Route path="/community" component={CommunityPage}/>
-                                <Route path="/profile" component={ProfilePage}/>
-                                <Route path="/leaderboard" component={LeaderboardPage}/>
                             </div>
-                        </Router>
                     </div>
-                </div>
             </div>
         );
     }
