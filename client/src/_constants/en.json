@@ -1,8 +1,19 @@
 {
   "login" : {
-    "userNamePlaceHolder": "Username",
-    "userNameField" : "Username",
-    "passwordField" : "Password"
+    "title": "Login",
+    "usernameField" : "Username",
+    "passwordField" : "Password",
+    "usernameRequired": "Username is required",
+    "passwordRequired": "Password is required",
+    "registerLink": "Register"
+  },
+  "register" : {
+    "title": "Register",
+    "usernameField" : "Username",
+    "passwordField" : "Password",
+    "usernameRequired": "Username is required",
+    "passwordRequired": "Password is required",
+    "cancelLink": "Cancel"
   },
   "header" : {
     "homePageTitle": "@:homePage.title",
