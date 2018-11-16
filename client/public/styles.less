@@ -1,10 +1,30 @@
+@import "loading-wheel.css";
+
+@white: #fff;
+@primary-color: #FFD87F;
+@secondary-color: #FF9943;
+@background-color: #F0EACD;
+@dark-primary-color: #D17243;
+@dark-secondary-color: #9F2F1F;
+
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+#app {
+  height: 100%;
+}
+
 .page-container {
   width: 100%;
-  height: auto;
+  height: 100%;
+  display: flex;
+  background-color: @background-color;
 
   & .header > .navbar {
     width: 100%;
-    background-color: #FFD87F;
+    background-color: @primary-color;
     height: 100px;
     display: flex;
     flex-direction: row;
@@ -48,5 +68,32 @@
         margin-bottom: auto;
       }
     }
+
+  }
+
+  & div.login-container {
+    height: auto;
+    margin-bottom: auto;
+    margin-top: auto;
+
+    & h2 {
+      text-align: center;
+      color: @secondary-color;
+    }
+
+    & button {
+      background-color: @secondary-color;
+      border-color: @secondary-color;
+      font-weight: bold;
+      color: @white;
+    }
+
+    & .btn-link {
+      color: @dark-secondary-color;
+    }
+  }
+
+  & .basic-page{
+    width: 100%;
   }
 }

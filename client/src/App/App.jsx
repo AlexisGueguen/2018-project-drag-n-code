@@ -6,7 +6,7 @@ import { alertActions } from '../_actions';
 import { LoginPage } from '../LoginPage';
 import { RegisterPage } from '../RegisterPage';
 import {BasicPageComponent} from "../BasicPage";
-import {Route} from "react-router-dom";
+import {Router, Route, Switch} from "react-router-dom";
 
 class App extends React.Component {
     constructor(props) {
@@ -26,11 +26,13 @@ class App extends React.Component {
                 {alert.message &&
                 <div className={`alert ${alert.type}`}>{alert.message}</div>
                 }
-                <div>
-                    <Route path="/" component={BasicPageComponent}/>
-                    <Route path="/login" component={LoginPage} />
-                    <Route path="/register" component={RegisterPage} />
-                </div>
+                <Router history={history}>
+                    <Switch>
+                        <Route exact path="/" component={BasicPageComponent}/>
+                        <Route path="/login" component={LoginPage}/>
+                        <Route path="/register" component={RegisterPage}/>
+                    </Switch>
+                </Router>
             </div>
         );
     }
