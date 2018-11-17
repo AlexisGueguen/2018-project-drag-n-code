@@ -1,6 +1,6 @@
 import React from 'react';
-import Translation from '../_constants/en.json'
-import {ProfileDropdownComponent} from "../ProfileDropdownComponent";
+import Translation from '../../_constants/en.json'
+import {ProfileDropdownComponent} from "../ProfileDropdownComponent/index";
 import {Link} from "react-router-dom";
 
 export default class HeaderComponent extends React.Component {

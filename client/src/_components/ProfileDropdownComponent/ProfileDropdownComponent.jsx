@@ -1,6 +1,6 @@
 import React from 'react';
 import connect from "react-redux/es/connect/connect";
-import translation from "../_constants/en";
+import translation from "../../_constants/en";
 import {Link} from "react-router-dom";
 
 class ProfileDropdownComponent extends React.Component {

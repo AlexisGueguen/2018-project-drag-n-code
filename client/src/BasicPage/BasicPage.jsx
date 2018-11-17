@@ -5,7 +5,9 @@ import {HomePage} from "../HomePage";
 import {CommunityPage} from "../CommunityPage";
 import {ProfilePage} from "../ProfilePage";
 import {LeaderboardPage} from "../LeaderboardPage";
-import HeaderComponent from "../HeaderComponent/HeaderComponent";
+import HeaderComponent from "../_components/HeaderComponent/HeaderComponent";
+import {AchievementsPage} from "../AchievementsPage";
+import {SettingsPage} from "../SettingsPage";
 
 class BasicPage extends React.Component {
     constructor(props) {
@@ -21,8 +23,8 @@ class BasicPage extends React.Component {
                     <Route path="/community" component={CommunityPage}/>
                     <Route path="/profile" component={ProfilePage}/>
                     <Route path="/leaderboard" component={LeaderboardPage}/>
-                    <Route path="/settings" component={LeaderboardPage}/>
-                    <Route path="/achievements" component={LeaderboardPage}/>
+                    <Route path="/settings" component={SettingsPage}/>
+                    <Route path="/achievements" component={AchievementsPage}/>
                 </Switch>
             </div>
         )
