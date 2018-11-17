@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4682bffe-7451-4e70-b32f-dc69f63f338a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/public/styles.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/styles.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/ProfileDropdownComponent/ProfileDropdownComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/ProfileDropdownComponent/ProfileDropdownComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/_actions/user.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/_actions/user.actions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/AchievementsPage/AchievementsPage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/AchievementsPage/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/SettingsPage/SettingsPage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/SettingsPage/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/BasicPage/BasicPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/BasicPage/BasicPage.jsx" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -35,9 +35,9 @@
         <counts>
           <entry key="css" value="4" />
           <entry key="html" value="3" />
-          <entry key="js" value="50" />
+          <entry key="js" value="53" />
           <entry key="json" value="2" />
-          <entry key="jsx" value="35" />
+          <entry key="jsx" value="38" />
           <entry key="less" value="8" />
           <entry key="ts" value="3" />
         </counts>
@@ -47,8 +47,8 @@
           <entry key="CSS" value="4" />
           <entry key="HTML" value="3" />
           <entry key="JSON" value="2" />
-          <entry key="JSX Harmony" value="35" />
-          <entry key="JavaScript" value="50" />
+          <entry key="JSX Harmony" value="38" />
+          <entry key="JavaScript" value="53" />
           <entry key="Less" value="8" />
           <entry key="TypeScript" value="3" />
         </counts>
@@ -56,19 +56,19 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="43" />
-          <entry key="js" value="186" />
+          <entry key="js" value="198" />
           <entry key="json" value="472" />
-          <entry key="jsx" value="1478" />
-          <entry key="less" value="959" />
+          <entry key="jsx" value="1757" />
+          <entry key="less" value="1032" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="43" />
           <entry key="JSON" value="472" />
-          <entry key="JSX Harmony" value="1478" />
-          <entry key="JavaScript" value="186" />
-          <entry key="Less" value="959" />
+          <entry key="JSX Harmony" value="1757" />
+          <entry key="JavaScript" value="198" />
+          <entry key="Less" value="1032" />
         </counts>
       </usages-collector>
     </session>
@@ -78,53 +78,42 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/HeaderComponent/HeaderComponent.jsx">
+      <file pinned="true" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/public/styles.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="26" column="22" lean-forward="true" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/App/App.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="31" column="63" selection-start-line="31" selection-start-column="63" selection-end-line="31" selection-end-column="63" />
+            <state relative-caret-position="266">
+              <caret line="135" column="5" lean-forward="true" selection-start-line="135" selection-start-column="5" selection-end-line="135" selection-end-column="5" />
               <folding>
-                <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#527#684#0" />
+                <element signature="e#827#1334#0" />
+                <element signature="e#1239#2110#0" />
+                <element signature="e#1165#1229#0" />
+                <element signature="e#1699#1721#0" />
+                <element signature="e#1864#1965#0" />
+                <element signature="e#1266#1620#0" />
+                <element signature="e#1637#1659#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/LoginPage/LoginPage.jsx">
+        <entry file="file://$PROJECT_DIR$/client/src/BasicPage/BasicPage.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="38" column="37" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="276">
+              <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/client/src/_actions/user.actions.js">
+        <entry file="file://$PROJECT_DIR$/client/src/SettingsPage/SettingsPage.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="19" column="42" lean-forward="true" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/HomePage/HomePage.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="69">
-              <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+            <state relative-caret-position="299">
+              <caret line="13" column="6" lean-forward="true" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -132,29 +121,15 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/ProfileDropdownComponent/ProfileDropdownComponent.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="19" column="53" selection-start-line="19" selection-start-column="53" selection-end-line="19" selection-end-column="53" />
+            <state relative-caret-position="-33">
+              <caret line="48" column="25" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/public/styles.less">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="122" column="45" selection-start-line="122" selection-start-column="45" selection-end-line="122" selection-end-column="45" />
-              <folding>
-                <element signature="e#527#684#0" />
-                <element signature="e#827#1207#0" />
-                <element signature="e#1165#1229#0" />
-                <element signature="e#1699#1721#0" />
-                <element signature="e#1864#1965#0" />
-                <element signature="e#1690#1712#0" />
-                <element signature="e#1266#1620#0" />
-                <element signature="e#1637#1659#0" />
+                <element signature="e#603#943#0" />
+                <element signature="e#1021#1185#1" />
+                <element signature="e#1345#1646#0" />
+                <element signature="e#1406#1567#1" />
+                <element signature="e#1592#1781#1" />
               </folding>
             </state>
           </provider>
@@ -221,11 +196,17 @@
         <option value="$PROJECT_DIR$/2018-project-drag-n-code/client/src/HeaderComponent/HeaderComponent.jsx" />
         <option value="$PROJECT_DIR$/2018-project-drag-n-code/client/src/App/App.jsx" />
         <option value="$PROJECT_DIR$/2018-project-drag-n-code/client/public/styles.less" />
-        <option value="$PROJECT_DIR$/client/src/HeaderComponent/HeaderComponent.jsx" />
-        <option value="$PROJECT_DIR$/client/src/ProfileDropdownComponent/ProfileDropdownComponent.jsx" />
-        <option value="$PROJECT_DIR$/client/public/styles.less" />
         <option value="$PROJECT_DIR$/client/src/App/App.jsx" />
         <option value="$PROJECT_DIR$/client/src/_actions/user.actions.js" />
+        <option value="$PROJECT_DIR$/client/src/ProfileDropdownComponent/index.js" />
+        <option value="$PROJECT_DIR$/client/src/ProfileDropdownComponent/ProfileDropdownComponent.jsx" />
+        <option value="$PROJECT_DIR$/client/src/HeaderComponent/HeaderComponent.jsx" />
+        <option value="$PROJECT_DIR$/client/public/styles.less" />
+        <option value="$PROJECT_DIR$/client/src/AchievementsPage/index.js" />
+        <option value="$PROJECT_DIR$/client/src/AchievementsPage/AchievementsPage.jsx" />
+        <option value="$PROJECT_DIR$/client/src/SettingsPage/index.js" />
+        <option value="$PROJECT_DIR$/client/src/BasicPage/BasicPage.jsx" />
+        <option value="$PROJECT_DIR$/client/src/SettingsPage/SettingsPage.jsx" />
       </list>
     </option>
   </component>
@@ -241,8 +222,6 @@
   </component>
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths>
-      <path value="$PROJECT_DIR$/client/less.js/package.json" />
-      <path value="$PROJECT_DIR$/client/less.js/test/import-module/package.json" />
       <path value="$PROJECT_DIR$/client/package.json" />
       <path value="$PROJECT_DIR$/server/package.json" />
     </packageJsonPaths>
@@ -282,21 +261,7 @@
               <item name="2018-project-drag-n-code" type="462c0819:PsiDirectoryNode" />
               <item name="client" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="App" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="2018-project-drag-n-code" type="b2602c69:ProjectViewProjectNode" />
-              <item name="2018-project-drag-n-code" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="HeaderComponent" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="2018-project-drag-n-code" type="b2602c69:ProjectViewProjectNode" />
-              <item name="2018-project-drag-n-code" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ProfileDropdownComponent" type="462c0819:PsiDirectoryNode" />
+              <item name="SettingsPage" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -306,21 +271,23 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="Home&#9;null&#9;null&#10;nav-bu&#9;null&#9;null&#10;styl&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/client/public/styles.less&#10;Header&#9;null&#9;null&#10;login&#9;null&#9;null&#10;App&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/2018-project-drag-n-code/client/src/App/App.jsx&#10;th&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/2018-project-drag-n-code/client/src/_constants/theme.constants.js&#10;theme&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/2018-project-drag-n-code/client/src/_constants/theme.constants.js&#10;en&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/2018-project-drag-n-code/client/src/_constants/en.json&#10;en.j&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/2018-project-drag-n-code/client/src/_constants/en.json&#10;less&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/2018-project-drag-n-code/client/src/HeaderComponent/HeaderComponent.less&#10;Compo&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/2018-project-drag-n-code/client/src/HeaderComponent/HeaderComponent.jsx&#10;HomPA&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/2018-project-drag-n-code/client/src/HomePage/HomePage.jsx&#10;user&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/2018-project-drag-n-code/client/src/_services/user.service.js&#10;en.jso&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/2018-project-drag-n-code/client/src/_constants/en.json" />
+    <property name="SearchEverywhereHistoryKey" value="Bas&#9;null&#9;null&#10;Home&#9;null&#9;null&#10;nav-bu&#9;null&#9;null&#10;styl&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/client/public/styles.less&#10;Header&#9;null&#9;null&#10;login&#9;null&#9;null&#10;App&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/2018-project-drag-n-code/client/src/App/App.jsx&#10;th&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/2018-project-drag-n-code/client/src/_constants/theme.constants.js&#10;theme&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/2018-project-drag-n-code/client/src/_constants/theme.constants.js&#10;en&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/2018-project-drag-n-code/client/src/_constants/en.json&#10;en.j&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/2018-project-drag-n-code/client/src/_constants/en.json&#10;less&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/2018-project-drag-n-code/client/src/HeaderComponent/HeaderComponent.less&#10;Compo&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/2018-project-drag-n-code/client/src/HeaderComponent/HeaderComponent.jsx&#10;HomPA&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/2018-project-drag-n-code/client/src/HomePage/HomePage.jsx&#10;user&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/2018-project-drag-n-code/client/src/_services/user.service.js&#10;en.jso&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/2018-project-drag-n-code/client/src/_constants/en.json" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/src/_components" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Dev\2018-project-drag-n-code\2018-project-drag-n-code\client\src" />
-      <recent name="C:\Dev\2018-project-drag-n-code\2018-project-drag-n-code\client\src\HeaderComponent" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Dev\2018-project-drag-n-code\2018-project-drag-n-code\client\src" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Dev\2018-project-drag-n-code\client\src" />
+      <recent name="C:\Dev\2018-project-drag-n-code\client\src\ProfileDropdownComponent" />
+      <recent name="C:\Dev\2018-project-drag-n-code\2018-project-drag-n-code\client\src" />
+      <recent name="C:\Dev\2018-project-drag-n-code\2018-project-drag-n-code\client\src\HeaderComponent" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -349,12 +316,12 @@
       <workItem from="1542294968631" duration="9738000" />
       <workItem from="1542367254934" duration="16442000" />
       <workItem from="1542448807733" duration="608000" />
-      <workItem from="1542450159570" duration="11284000" />
+      <workItem from="1542450159570" duration="15999000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46504000" />
+    <option name="totallyTimeSpent" value="51219000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -381,8 +348,8 @@
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49966952" weight="0.32968536" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.7376074" visible="true" weight="0.31463748" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.2623926" side_tool="true" visible="true" weight="0.31463748" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.7376074" visible="true" weight="0.2626539" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.2623926" side_tool="true" visible="true" weight="0.2626539" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -400,12 +367,6 @@
     </ignored-roots>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/2018-project-drag-n-code/client/src/_actions/user.actions.js" />
-    <entry file="file://$PROJECT_DIR$/2018-project-drag-n-code/client/src/LoginPage/LoginPage.jsx" />
-    <entry file="file://$PROJECT_DIR$/2018-project-drag-n-code/client/src/_actions/alert.actions.js" />
-    <entry file="file://$PROJECT_DIR$/2018-project-drag-n-code/client/src/_helpers/auth-header.js" />
-    <entry file="file://$PROJECT_DIR$/2018-project-drag-n-code/client/src/_helpers/fake-backend.js" />
-    <entry file="file://$PROJECT_DIR$/2018-project-drag-n-code/client/src/_helpers/history.js" />
     <entry file="file://$PROJECT_DIR$/2018-project-drag-n-code/client/src/_reducers/alert.reducer.js" />
     <entry file="file://$PROJECT_DIR$/2018-project-drag-n-code/client/src/_reducers/authentication.reducer.js" />
     <entry file="file://$PROJECT_DIR$/2018-project-drag-n-code/client/src/_reducers/users.reducer.js" />
@@ -462,71 +423,124 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/public/styles.less">
+    <entry file="file://$PROJECT_DIR$/client/src/_actions/user.actions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="122" column="45" selection-start-line="122" selection-start-column="45" selection-end-line="122" selection-end-column="45" />
-          <folding>
-            <element signature="e#527#684#0" />
-            <element signature="e#827#1207#0" />
-            <element signature="e#1165#1229#0" />
-            <element signature="e#1699#1721#0" />
-            <element signature="e#1864#1965#0" />
-            <element signature="e#1690#1712#0" />
-            <element signature="e#1266#1620#0" />
-            <element signature="e#1637#1659#0" />
-          </folding>
+        <state relative-caret-position="161">
+          <caret line="19" column="42" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/ProfileDropdownComponent/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="43" lean-forward="true" selection-start-column="43" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/HomePage/HomePage.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/ProfileDropdownComponent/ProfileDropdownComponent.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="19" column="53" selection-start-line="19" selection-start-column="53" selection-end-line="19" selection-end-column="53" />
+        <state relative-caret-position="-33">
+          <caret line="48" column="25" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#603#943#0" />
+            <element signature="e#1021#1185#1" />
+            <element signature="e#1345#1646#0" />
+            <element signature="e#1406#1567#1" />
+            <element signature="e#1592#1781#1" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/HeaderComponent/HeaderComponent.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="26" column="22" lean-forward="true" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/HomePage/HomePage.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+        <state relative-caret-position="128">
+          <caret line="10" column="14" lean-forward="true" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/App/App.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="31" column="63" selection-start-line="31" selection-start-column="63" selection-end-line="31" selection-end-column="63" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-355">
+          <caret line="7" selection-start-line="7" selection-end-line="7" selection-end-column="48" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/LoginPage/LoginPage.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="38" column="37" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
+        <state relative-caret-position="307">
+          <caret line="72" column="26" lean-forward="true" selection-start-line="72" selection-start-column="26" selection-end-line="72" selection-end-column="26" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/_actions/user.actions.js">
+    <entry file="file://$PROJECT_DIR$/client/public/styles.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="135" column="5" lean-forward="true" selection-start-line="135" selection-start-column="5" selection-end-line="135" selection-end-column="5" />
+          <folding>
+            <element signature="e#527#684#0" />
+            <element signature="e#827#1334#0" />
+            <element signature="e#1239#2110#0" />
+            <element signature="e#1165#1229#0" />
+            <element signature="e#1699#1721#0" />
+            <element signature="e#1864#1965#0" />
+            <element signature="e#1266#1620#0" />
+            <element signature="e#1637#1659#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/AchievementsPage/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="33" lean-forward="true" selection-start-column="33" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/AchievementsPage/AchievementsPage.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
-          <caret line="19" column="42" lean-forward="true" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
+          <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/SettingsPage/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="31" lean-forward="true" selection-start-column="31" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/BasicPage/BasicPage.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/SettingsPage/SettingsPage.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="13" column="6" lean-forward="true" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

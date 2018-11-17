@@ -36,12 +36,15 @@ body {
   list-style-type: none;
 }
 .page-container .header > .navbar .navbar-nav .nav-item {
-  color: white;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 .page-container .header > .navbar .navbar-nav .nav-item .nav-button {
   padding: 10px;
   width: 100px;
   text-align: center;
+  color: white;
+  text-decoration: unset;
 }
 .page-container .header > .navbar .navbar-nav .nav-item:hover {
   background-color: #E37A1D;
@@ -82,22 +85,28 @@ body {
 .page-container .header > .navbar .profile-dropdown .dropdown-menu > li {
   display: flex;
 }
-.page-container .header > .navbar .profile-dropdown .dropdown-menu > li > .glyphicon {
-  padding-left: 10px;
+.page-container .header > .navbar .profile-dropdown .dropdown-menu > li .glyphicon {
   margin-top: auto;
   margin-bottom: auto;
   color: white;
 }
-.page-container .header > .navbar .profile-dropdown .dropdown-menu > li > a {
+.page-container .header > .navbar .profile-dropdown .dropdown-menu > li a.item-title {
   padding: 15px 20px;
   color: white;
   background-color: unset !important;
+  text-decoration: unset !important;
 }
-.page-container .header > .navbar .profile-dropdown .dropdown-menu > li:hover {
+.page-container .header > .navbar .profile-dropdown .dropdown-menu > li a.item-link {
+  display: flex;
+  width: 100%;
+  background-color: #FA9539;
+}
+.page-container .header > .navbar .profile-dropdown .dropdown-menu > li a.item-link:hover {
   background-color: #E37A1D;
 }
 .page-container .header > .navbar .profile-dropdown .dropdown-menu > li.divider {
   background-color: white !important;
+  margin: 0;
 }
 .page-container .header > .navbar .profile-dropdown:hover .dropdown-menu {
   display: block;
