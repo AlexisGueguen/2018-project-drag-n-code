@@ -2,12 +2,710 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4682bffe-7451-4e70-b32f-dc69f63f338a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/ProfileDropdownComponent/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/.eslintignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/.eslintrc.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/.github/stale.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/.npmignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/.travis.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/.vscode/launch.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/CHANGELOG.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/CONTRIBUTING.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/Gruntfile.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/appveyor.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/benchmark/benchmark.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/benchmark/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/bin/lessc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/bower.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/browser.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/dist/less.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/dist/less.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less-browser/add-default-options.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less-browser/bootstrap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less-browser/browser.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less-browser/cache.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less-browser/error-reporting.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less-browser/file-manager.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less-browser/image-size.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less-browser/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less-browser/log-listener.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less-browser/plugin-loader.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less-browser/utils.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less-node/environment.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less-node/file-manager.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less-node/fs.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less-node/image-size.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less-node/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less-node/lessc-helper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less-node/plugin-loader.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less-node/url-file-manager.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/constants.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/contexts.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/data/colors.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/data/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/data/unit-conversions.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/default-options.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/environment/abstract-file-manager.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/environment/abstract-plugin-loader.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/environment/environment-api.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/environment/environment.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/environment/file-manager-api.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/functions/boolean.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/functions/color-blending.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/functions/color.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/functions/data-uri.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/functions/default.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/functions/function-caller.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/functions/function-registry.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/functions/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/functions/list.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/functions/math-helper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/functions/math.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/functions/number.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/functions/string.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/functions/svg.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/functions/types.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/import-manager.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/less-error.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/logger.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/parse-tree.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/parse.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/parser/chunker.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/parser/parser-input.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/parser/parser.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/plugin-manager.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/render.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/source-map-builder.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/source-map-output.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/transform-tree.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/tree/anonymous.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/tree/assignment.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/tree/atrule.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/tree/attribute.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/tree/call.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/tree/color.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/tree/combinator.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/tree/comment.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/tree/condition.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/tree/debug-info.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/tree/declaration.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/tree/detached-ruleset.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/tree/dimension.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/tree/element.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/tree/expression.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/tree/extend.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/tree/import.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/tree/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/tree/javascript.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/tree/js-eval-node.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/tree/keyword.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/tree/media.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/tree/mixin-call.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/tree/mixin-definition.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/tree/namespace-value.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/tree/negative.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/tree/node.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/tree/operation.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/tree/paren.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/tree/property.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/tree/quoted.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/tree/ruleset.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/tree/selector.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/tree/unicode-descriptor.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/tree/unit.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/tree/url.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/tree/value.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/tree/variable-call.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/tree/variable.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/utils.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/visitors/extend-visitor.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/visitors/import-sequencer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/visitors/import-visitor.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/visitors/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/visitors/join-selector-visitor.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/visitors/set-tree-visibility-visitor.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/visitors/to-css-visitor.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/less/visitors/visitor.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/source-map/source-map-0.1.31.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/source-map/source-map-footer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/lib/source-map/source-map-header.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/.eslintrc.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/common.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/css/global-vars/simple.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/css/modify-vars/simple.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/css/plugin/plugin.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/css/postProcessor/postProcessor.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/css/relative-urls/urls.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/css/rewrite-urls/urls.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/css/rootpath-relative/urls.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/css/rootpath-rewrite-urls/urls.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/css/rootpath/urls.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/css/urls.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/jasmine-jsreporter.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/less/console-errors/test-error.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/less/console-errors/test-error.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/less/errors/image-height-error.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/less/errors/image-height-error.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/less/errors/image-size-error.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/less/errors/image-size-error.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/less/errors/image-width-error.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/less/errors/image-width-error.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/less/global-vars/simple.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/less/imports/urls.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/less/imports/urls2.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/less/modify-vars/imports/simple2.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/less/modify-vars/simple.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/less/nested-gradient-with-svg-gradient/mixin-consumer.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/less/nested-gradient-with-svg-gradient/svg-gradient-mixin.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/less/plugin/plugin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/less/plugin/plugin.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/less/postProcessor/postProcessor.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/less/relative-urls/urls.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/less/rewrite-urls/urls.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/less/rootpath-relative/urls.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/less/rootpath-rewrite-urls/urls.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/less/rootpath/urls.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/less/urls.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/runner-VisitorPlugin-options.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/runner-VisitorPlugin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/runner-browser-options.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/runner-browser-spec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/runner-console-errors.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/runner-errors-options.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/runner-errors-spec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/runner-filemanagerPlugin-options.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/runner-filemanagerPlugin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/runner-global-vars-options.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/runner-global-vars-spec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/runner-legacy-options.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/runner-legacy-spec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/runner-main-options.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/runner-main-spec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/runner-modify-vars-options.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/runner-modify-vars-spec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/runner-no-js-errors-options.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/runner-no-js-errors-spec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/runner-postProcessorPlugin-options.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/runner-postProcessorPlugin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/runner-preProcessorPlugin-options.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/runner-preProcessorPlugin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/runner-production-options.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/runner-production-spec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/runner-relative-urls-options.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/runner-relative-urls-spec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/runner-rewrite-urls-options.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/runner-rewrite-urls-spec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/runner-rootpath-options.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/runner-rootpath-relative-options.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/runner-rootpath-relative-spec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/runner-rootpath-rewrite-urls-options.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/runner-rootpath-rewrite-urls-spec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/runner-rootpath-spec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/runner-strict-units-options.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/runner-strict-units-spec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/test-runner-template.tmpl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/browser/vendor/promise.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/copy-bom.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/3rd-party/bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/3rd-party/bootstrap4.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/3rd-party/uikit.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/calc.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/charsets.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/colors.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/comments.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/comments2.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/compression/compression.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/css-3.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/css-escapes.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/css-grid.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/css-guards.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/debug/linenumbers-all.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/debug/linenumbers-comments.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/debug/linenumbers-mediaquery.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/detached-rulesets.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/directives-bubling.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/empty.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/extend-chaining.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/extend-clearfix.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/extend-exact.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/extend-media.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/extend-nest.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/extend-selector.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/extend.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/extract-and-length.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/filemanagerPlugin/filemanager.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/functions-each.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/functions.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/globalVars/extended.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/globalVars/simple.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/ie-filters.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/import-inline.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/import-interpolation.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/import-module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/import-once.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/import-reference-issues.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/import-reference.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/import.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/include-path-string/include-path-string.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/include-path/include-path.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/javascript.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/lazy-eval.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/legacy/legacy.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/math/parens-division/media-math.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/math/parens-division/mixins-args.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/math/parens-division/new-division.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/math/parens-division/parens.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/math/strict-legacy/css.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/math/strict-legacy/media-math.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/math/strict-legacy/mixins-args.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/math/strict-legacy/parens.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/math/strict/css.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/math/strict/media-math.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/math/strict/mixins-args.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/math/strict/parens.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/media.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/merge.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/mixins-closure.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/mixins-guards-default-func.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/mixins-guards.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/mixins-important.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/mixins-interpolated.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/mixins-named-args.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/mixins-nested.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/mixins-pattern.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/mixins.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/modifyVars/extended.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/namespacing/namespacing-1.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/namespacing/namespacing-2.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/namespacing/namespacing-3.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/namespacing/namespacing-4.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/namespacing/namespacing-5.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/namespacing/namespacing-6.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/namespacing/namespacing-7.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/namespacing/namespacing-functions.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/namespacing/namespacing-media.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/namespacing/namespacing-operations.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/no-output.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/no-strict-math/mixins-guards.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/no-strict-math/no-sm-operations.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/operations.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/parse-interpolation.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/permissive-parse.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/plugin-module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/plugin-preeval.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/plugin.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/postProcessorPlugin/postProcessor.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/preProcessorPlugin/preProcessor.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/property-accessors.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/property-name-interp.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/rewrite-urls-all/rewrite-urls-all.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/rewrite-urls-local/rewrite-urls-local.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/rootpath-rewrite-urls-all/rootpath-rewrite-urls-all.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/rootpath-rewrite-urls-local/rootpath-rewrite-urls-local.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/rulesets.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/scope.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/selectors.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/static-urls/urls.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/strict-units/strict-units.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/strings.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/url-args/urls.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/urls.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/variables-in-at-rules.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/variables.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/visitorPlugin/visitor.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/css/whitespace.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/data/data-uri-fail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/data/image.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/data/image.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/data/page.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/import-module/one/1.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/import-module/one/two/2.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/import-module/one/two/three/3.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/import-module/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less-test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/3rd-party/bootstrap.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/3rd-party/bootstrap4.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/3rd-party/uikit.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/calc.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/charsets.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/colors.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/comments.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/comments2.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/compression/compression.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/css-3.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/css-escapes.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/css-grid.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/css-guards.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/debug/import/test.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/debug/linenumbers.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/detached-rulesets.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/directives-bubling.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/empty.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/add-mixed-units.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/add-mixed-units.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/add-mixed-units2.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/add-mixed-units2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/at-rules-undefined-var.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/at-rules-undefined-var.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/at-rules-unmatching-block.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/at-rules-unmatching-block.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/bad-variable-declaration1.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/bad-variable-declaration1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/color-func-invalid-color.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/color-func-invalid-color.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/css-guard-default-func.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/css-guard-default-func.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/custom-property-unmatched-block-1.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/custom-property-unmatched-block-1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/custom-property-unmatched-block-2.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/custom-property-unmatched-block-2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/custom-property-unmatched-block-3.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/custom-property-unmatched-block-3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/detached-ruleset-1.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/detached-ruleset-1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/detached-ruleset-2.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/detached-ruleset-2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/detached-ruleset-3.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/detached-ruleset-3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/detached-ruleset-5.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/detached-ruleset-5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/detached-ruleset-6.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/detached-ruleset-6.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/divide-mixed-units.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/divide-mixed-units.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/extend-no-selector.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/extend-no-selector.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/extend-not-at-end.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/extend-not-at-end.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/functions-1.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/functions-1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/functions-10-keyword.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/functions-10-keyword.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/functions-11-operation.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/functions-11-operation.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/functions-12-quoted.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/functions-12-quoted.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/functions-13-selector.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/functions-13-selector.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/functions-14-url.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/functions-14-url.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/functions-15-value.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/functions-15-value.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/functions-3-assignment.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/functions-3-assignment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/functions-4-call.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/functions-4-call.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/functions-5-color-2.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/functions-5-color-2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/functions-5-color.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/functions-5-color.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/functions-6-condition.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/functions-6-condition.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/functions-7-dimension.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/functions-7-dimension.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/functions-8-element.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/functions-8-element.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/functions-9-expression.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/functions-9-expression.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/import-malformed.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/import-malformed.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/import-missing.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/import-missing.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/import-no-semi.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/import-no-semi.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/import-subfolder1.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/import-subfolder1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/import-subfolder2.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/import-subfolder2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/imports/import-subfolder1.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/imports/import-subfolder2.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/imports/import-test.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/imports/subfolder/mixin-not-defined.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/imports/subfolder/parse-error-curly-bracket.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/javascript-error.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/javascript-error.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/javascript-undefined-var.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/javascript-undefined-var.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/mixed-mixin-definition-args-1.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/mixed-mixin-definition-args-1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/mixed-mixin-definition-args-2.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/mixed-mixin-definition-args-2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/mixin-not-defined-2.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/mixin-not-defined-2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/mixin-not-defined.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/mixin-not-defined.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/mixin-not-matched.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/mixin-not-matched.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/mixin-not-matched2.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/mixin-not-matched2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/mixin-not-visible-in-scope-1.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/mixin-not-visible-in-scope-1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/mixins-guards-cond-expected.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/mixins-guards-cond-expected.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/mixins-guards-default-func-1.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/mixins-guards-default-func-1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/mixins-guards-default-func-2.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/mixins-guards-default-func-2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/mixins-guards-default-func-3.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/mixins-guards-default-func-3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/multiple-guards-on-css-selectors.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/multiple-guards-on-css-selectors.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/multiple-guards-on-css-selectors2.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/multiple-guards-on-css-selectors2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/multiply-mixed-units.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/multiply-mixed-units.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/namespacing-2.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/namespacing-2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/namespacing-3.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/namespacing-3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/namespacing-4.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/namespacing-4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/parens-error-1.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/parens-error-1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/parens-error-2.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/parens-error-2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/parens-error-3.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/parens-error-3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/parse-error-curly-bracket.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/parse-error-curly-bracket.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/parse-error-media-no-block-1.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/parse-error-media-no-block-1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/parse-error-media-no-block-2.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/parse-error-media-no-block-2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/parse-error-media-no-block-3.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/parse-error-media-no-block-3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/parse-error-missing-bracket.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/parse-error-missing-bracket.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/parse-error-missing-parens.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/parse-error-missing-parens.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/parse-error-with-import.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/parse-error-with-import.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/percentage-missing-space.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/percentage-missing-space.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/percentage-non-number-argument.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/percentage-non-number-argument.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/plugin-1.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/plugin-1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/plugin-2.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/plugin-2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/plugin-3.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/plugin-3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/plugin/plugin-error-2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/plugin/plugin-error-3.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/plugin/plugin-error.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/property-asterisk-only-name.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/property-asterisk-only-name.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/property-ie5-hack.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/property-ie5-hack.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/property-in-root.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/property-in-root.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/property-in-root2.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/property-in-root2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/property-in-root3.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/property-in-root3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/property-interp-not-defined.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/property-interp-not-defined.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/recursive-variable.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/recursive-variable.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/root-func-undefined-1.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/root-func-undefined-1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/root-func-undefined-2.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/root-func-undefined-2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/single-character.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/single-character.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/svg-gradient1.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/svg-gradient1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/svg-gradient2.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/svg-gradient2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/svg-gradient3.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/svg-gradient3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/svg-gradient4.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/svg-gradient4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/svg-gradient5.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/svg-gradient5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/svg-gradient6.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/svg-gradient6.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/unit-function.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/errors/unit-function.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/extend-chaining.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/extend-clearfix.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/extend-exact.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/extend-media.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/extend-nest.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/extend-selector.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/extend.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/extract-and-length.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/filemanagerPlugin/colors.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/filemanagerPlugin/filemanager.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/functions-each.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/functions.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/globalVars/extended.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/globalVars/extended.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/globalVars/simple.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/globalVars/simple.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/ie-filters.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/import-inline.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/import-interpolation.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/import-module.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/import-once.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/import-reference-issues.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/import-reference-issues/appender-reference-1968.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/import-reference-issues/global-scope-import.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/import-reference-issues/global-scope-nested.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/import-reference-issues/mixin-1968.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/import-reference-issues/multiple-import-nested.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/import-reference-issues/multiple-import.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/import-reference-issues/simple-mixin.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/import-reference-issues/simple-ruleset-2162.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/import-reference.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/import.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/import/css-import.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/import/deeper/deeper-2/url-import-2.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/import/deeper/deeper-2/url-import.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/import/deeper/import-once-test-a.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/import/deeper/url-import.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/import/import-and-relative-paths-test.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/import/import-charset-test.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/import/import-inline-invalid-css.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/import/import-interpolation.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/import/import-interpolation2.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/import/import-once-test-c.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/import/import-reference.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/import/import-test-a.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/import/import-test-b.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/import/import-test-c.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/import/import-test-d.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/import/import-test-e.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/import/import-test-f.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/import/imports/font.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/import/imports/logo.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/import/interpolation-vars.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/import/invalid-css.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/import/urls.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/include-path-string/include-path-string.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/include-path/include-path.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/javascript.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/lazy-eval.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/legacy/legacy.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/math/parens-division/media-math.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/math/parens-division/mixins-args.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/math/parens-division/new-division.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/math/parens-division/parens.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/math/strict-legacy/css.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/math/strict-legacy/media-math.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/math/strict-legacy/mixins-args.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/math/strict-legacy/parens.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/math/strict/css.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/math/strict/media-math.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/math/strict/mixins-args.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/math/strict/parens.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/media.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/merge.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/mixins-closure.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/mixins-guards-default-func.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/mixins-guards.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/mixins-important.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/mixins-interpolated.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/mixins-named-args.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/mixins-nested.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/mixins-pattern.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/mixins.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/modifyVars/extended.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/modifyVars/extended.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/namespacing/imports/a-better-bootstrap.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/namespacing/imports/library.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/namespacing/namespacing-1.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/namespacing/namespacing-2.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/namespacing/namespacing-3.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/namespacing/namespacing-4.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/namespacing/namespacing-5.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/namespacing/namespacing-6.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/namespacing/namespacing-7.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/namespacing/namespacing-functions.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/namespacing/namespacing-media.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/namespacing/namespacing-operations.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/nested-gradient-with-svg-gradient/mixin-consumer.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/nested-gradient-with-svg-gradient/svg-gradient-mixin.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/no-js-errors/no-js-errors.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/no-js-errors/no-js-errors.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/no-output.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/no-strict-math/mixins-guards.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/no-strict-math/no-sm-operations.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/operations.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/parse-interpolation.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/permissive-parse.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/plugin-module.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/plugin-preeval.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/plugin.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/plugin/plugin-collection.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/plugin/plugin-global.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/plugin/plugin-local.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/plugin/plugin-preeval.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/plugin/plugin-scope1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/plugin/plugin-scope2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/plugin/plugin-set-options-v2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/plugin/plugin-set-options-v3.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/plugin/plugin-set-options.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/plugin/plugin-simple.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/plugin/plugin-transitive.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/plugin/plugin-transitive.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/plugin/plugin-tree-nodes.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/postProcessorPlugin/postProcessor.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/preProcessorPlugin/preProcessor.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/property-accessors.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/property-name-interp.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/rewrite-urls-all/folder/file.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/rewrite-urls-all/rewrite-urls-all.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/rewrite-urls-local/folder/file.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/rewrite-urls-local/rewrite-urls-local.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/root-registry/file.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/root-registry/root.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/rootpath-rewrite-urls-all/folder/file.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/rootpath-rewrite-urls-all/rootpath-rewrite-urls-all.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/rootpath-rewrite-urls-local/folder/file.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/rootpath-rewrite-urls-local/rootpath-rewrite-urls-local.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/rulesets.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/scope.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/selectors.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/sourcemaps-empty/empty.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/sourcemaps-empty/var-defs.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/sourcemaps/basic.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/sourcemaps/basic.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/sourcemaps/custom-props.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/sourcemaps/imported.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/static-urls/urls.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/strict-units/strict-units.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/strings.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/url-args/urls.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/urls.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/variables-in-at-rules.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/variables.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/visitorPlugin/visitor.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/less/whitespace.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/modify-vars.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/plugins/filemanager/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/plugins/postprocess/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/plugins/preprocess/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/plugins/visitor/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/sourcemaps/basic.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/sourcemaps/custom-props.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/less.js/test/sourcemaps/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/styles.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/styles.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/public/styles.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/styles.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/BasicPage/BasicPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/BasicPage/BasicPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/HeaderComponent/HeaderComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/HeaderComponent/HeaderComponent.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/ProfileDropdownComponent/ProfileDropdownComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/ProfileDropdownComponent/ProfileDropdownComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/_actions/user.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/_actions/user.actions.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -35,9 +733,9 @@
         <counts>
           <entry key="css" value="4" />
           <entry key="html" value="3" />
-          <entry key="js" value="50" />
+          <entry key="js" value="51" />
           <entry key="json" value="2" />
-          <entry key="jsx" value="35" />
+          <entry key="jsx" value="36" />
           <entry key="less" value="8" />
           <entry key="ts" value="3" />
         </counts>
@@ -47,8 +745,8 @@
           <entry key="CSS" value="4" />
           <entry key="HTML" value="3" />
           <entry key="JSON" value="2" />
-          <entry key="JSX Harmony" value="35" />
-          <entry key="JavaScript" value="50" />
+          <entry key="JSX Harmony" value="36" />
+          <entry key="JavaScript" value="51" />
           <entry key="Less" value="8" />
           <entry key="TypeScript" value="3" />
         </counts>
@@ -58,17 +756,17 @@
           <entry key="html" value="43" />
           <entry key="js" value="186" />
           <entry key="json" value="472" />
-          <entry key="jsx" value="1478" />
-          <entry key="less" value="959" />
+          <entry key="jsx" value="1717" />
+          <entry key="less" value="1032" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="43" />
           <entry key="JSON" value="472" />
-          <entry key="JSX Harmony" value="1478" />
+          <entry key="JSX Harmony" value="1717" />
           <entry key="JavaScript" value="186" />
-          <entry key="Less" value="959" />
+          <entry key="Less" value="1032" />
         </counts>
       </usages-collector>
     </session>
@@ -81,8 +779,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/HeaderComponent/HeaderComponent.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="26" column="22" lean-forward="true" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
+            <state relative-caret-position="128">
+              <caret line="10" column="14" lean-forward="true" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -90,11 +791,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/App/App.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="31" column="63" selection-start-line="31" selection-start-column="63" selection-end-line="31" selection-end-column="63" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-529">
+              <caret line="7" selection-start-line="7" selection-end-line="7" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -102,8 +800,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/LoginPage/LoginPage.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="38" column="37" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
+            <state relative-caret-position="276">
+              <caret line="69" column="32" selection-start-line="69" selection-start-column="32" selection-end-line="69" selection-end-column="135" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -111,20 +809,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/client/src/_actions/user.actions.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="19" column="42" lean-forward="true" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/HomePage/HomePage.jsx">
+        <entry file="file://$PROJECT_DIR$/client/src/BasicPage/BasicPage.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="69">
-              <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+            <state relative-caret-position="230">
+              <caret line="20" column="43" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -132,27 +821,32 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/ProfileDropdownComponent/ProfileDropdownComponent.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="19" column="53" selection-start-line="19" selection-start-column="53" selection-end-line="19" selection-end-column="53" />
+            <state relative-caret-position="-33">
+              <caret line="48" column="25" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#603#943#0" />
+                <element signature="e#1021#1185#1" />
+                <element signature="e#1345#1646#0" />
+                <element signature="e#1406#1567#1" />
+                <element signature="e#1592#1781#1" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/public/styles.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="122" column="45" selection-start-line="122" selection-start-column="45" selection-end-line="122" selection-end-column="45" />
+            <state relative-caret-position="266">
+              <caret line="135" column="5" lean-forward="true" selection-start-line="135" selection-start-column="5" selection-end-line="135" selection-end-column="5" />
               <folding>
                 <element signature="e#527#684#0" />
-                <element signature="e#827#1207#0" />
+                <element signature="e#827#1334#0" />
+                <element signature="e#1239#2110#0" />
                 <element signature="e#1165#1229#0" />
                 <element signature="e#1699#1721#0" />
                 <element signature="e#1864#1965#0" />
-                <element signature="e#1690#1712#0" />
                 <element signature="e#1266#1620#0" />
                 <element signature="e#1637#1659#0" />
               </folding>
@@ -221,11 +915,13 @@
         <option value="$PROJECT_DIR$/2018-project-drag-n-code/client/src/HeaderComponent/HeaderComponent.jsx" />
         <option value="$PROJECT_DIR$/2018-project-drag-n-code/client/src/App/App.jsx" />
         <option value="$PROJECT_DIR$/2018-project-drag-n-code/client/public/styles.less" />
-        <option value="$PROJECT_DIR$/client/src/HeaderComponent/HeaderComponent.jsx" />
-        <option value="$PROJECT_DIR$/client/src/ProfileDropdownComponent/ProfileDropdownComponent.jsx" />
-        <option value="$PROJECT_DIR$/client/public/styles.less" />
         <option value="$PROJECT_DIR$/client/src/App/App.jsx" />
         <option value="$PROJECT_DIR$/client/src/_actions/user.actions.js" />
+        <option value="$PROJECT_DIR$/client/src/ProfileDropdownComponent/index.js" />
+        <option value="$PROJECT_DIR$/client/src/BasicPage/BasicPage.jsx" />
+        <option value="$PROJECT_DIR$/client/src/ProfileDropdownComponent/ProfileDropdownComponent.jsx" />
+        <option value="$PROJECT_DIR$/client/src/HeaderComponent/HeaderComponent.jsx" />
+        <option value="$PROJECT_DIR$/client/public/styles.less" />
       </list>
     </option>
   </component>
@@ -241,8 +937,6 @@
   </component>
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths>
-      <path value="$PROJECT_DIR$/client/less.js/package.json" />
-      <path value="$PROJECT_DIR$/client/less.js/test/import-module/package.json" />
       <path value="$PROJECT_DIR$/client/package.json" />
       <path value="$PROJECT_DIR$/server/package.json" />
     </packageJsonPaths>
@@ -271,33 +965,6 @@
               <item name="2018-project-drag-n-code" type="462c0819:PsiDirectoryNode" />
               <item name="client" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="2018-project-drag-n-code" type="b2602c69:ProjectViewProjectNode" />
-              <item name="2018-project-drag-n-code" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="2018-project-drag-n-code" type="b2602c69:ProjectViewProjectNode" />
-              <item name="2018-project-drag-n-code" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="App" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="2018-project-drag-n-code" type="b2602c69:ProjectViewProjectNode" />
-              <item name="2018-project-drag-n-code" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="HeaderComponent" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="2018-project-drag-n-code" type="b2602c69:ProjectViewProjectNode" />
-              <item name="2018-project-drag-n-code" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ProfileDropdownComponent" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -306,7 +973,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="Home&#9;null&#9;null&#10;nav-bu&#9;null&#9;null&#10;styl&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/client/public/styles.less&#10;Header&#9;null&#9;null&#10;login&#9;null&#9;null&#10;App&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/2018-project-drag-n-code/client/src/App/App.jsx&#10;th&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/2018-project-drag-n-code/client/src/_constants/theme.constants.js&#10;theme&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/2018-project-drag-n-code/client/src/_constants/theme.constants.js&#10;en&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/2018-project-drag-n-code/client/src/_constants/en.json&#10;en.j&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/2018-project-drag-n-code/client/src/_constants/en.json&#10;less&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/2018-project-drag-n-code/client/src/HeaderComponent/HeaderComponent.less&#10;Compo&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/2018-project-drag-n-code/client/src/HeaderComponent/HeaderComponent.jsx&#10;HomPA&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/2018-project-drag-n-code/client/src/HomePage/HomePage.jsx&#10;user&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/2018-project-drag-n-code/client/src/_services/user.service.js&#10;en.jso&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/2018-project-drag-n-code/client/src/_constants/en.json" />
+    <property name="SearchEverywhereHistoryKey" value="Bas&#9;null&#9;null&#10;Home&#9;null&#9;null&#10;nav-bu&#9;null&#9;null&#10;styl&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/client/public/styles.less&#10;Header&#9;null&#9;null&#10;login&#9;null&#9;null&#10;App&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/2018-project-drag-n-code/client/src/App/App.jsx&#10;th&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/2018-project-drag-n-code/client/src/_constants/theme.constants.js&#10;theme&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/2018-project-drag-n-code/client/src/_constants/theme.constants.js&#10;en&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/2018-project-drag-n-code/client/src/_constants/en.json&#10;en.j&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/2018-project-drag-n-code/client/src/_constants/en.json&#10;less&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/2018-project-drag-n-code/client/src/HeaderComponent/HeaderComponent.less&#10;Compo&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/2018-project-drag-n-code/client/src/HeaderComponent/HeaderComponent.jsx&#10;HomPA&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/2018-project-drag-n-code/client/src/HomePage/HomePage.jsx&#10;user&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/2018-project-drag-n-code/client/src/_services/user.service.js&#10;en.jso&#9;FILE&#9;file://C:/Dev/2018-project-drag-n-code/2018-project-drag-n-code/client/src/_constants/en.json" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -315,12 +982,13 @@
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Dev\2018-project-drag-n-code\2018-project-drag-n-code\client\src" />
-      <recent name="C:\Dev\2018-project-drag-n-code\2018-project-drag-n-code\client\src\HeaderComponent" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Dev\2018-project-drag-n-code\2018-project-drag-n-code\client\src" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Dev\2018-project-drag-n-code\client\src\ProfileDropdownComponent" />
+      <recent name="C:\Dev\2018-project-drag-n-code\2018-project-drag-n-code\client\src" />
+      <recent name="C:\Dev\2018-project-drag-n-code\2018-project-drag-n-code\client\src\HeaderComponent" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -349,12 +1017,12 @@
       <workItem from="1542294968631" duration="9738000" />
       <workItem from="1542367254934" duration="16442000" />
       <workItem from="1542448807733" duration="608000" />
-      <workItem from="1542450159570" duration="11284000" />
+      <workItem from="1542450159570" duration="15177000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46504000" />
+    <option name="totallyTimeSpent" value="50397000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -369,7 +1037,7 @@
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.499002" visible="true" weight="0.24983476" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.499002" visible="true" weight="0.24983476" />
       <window_info id="Structure" order="1" sideWeight="0.500998" side_tool="true" weight="0.24983476" />
       <window_info id="Favorites" order="2" sideWeight="0.500998" side_tool="true" weight="0.24983476" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -381,8 +1049,8 @@
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49966952" weight="0.32968536" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.7376074" visible="true" weight="0.31463748" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.2623926" side_tool="true" visible="true" weight="0.31463748" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.7376074" visible="true" weight="0.2626539" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.2623926" side_tool="true" visible="true" weight="0.2626539" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -400,8 +1068,6 @@
     </ignored-roots>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/2018-project-drag-n-code/client/src/_actions/user.actions.js" />
-    <entry file="file://$PROJECT_DIR$/2018-project-drag-n-code/client/src/LoginPage/LoginPage.jsx" />
     <entry file="file://$PROJECT_DIR$/2018-project-drag-n-code/client/src/_actions/alert.actions.js" />
     <entry file="file://$PROJECT_DIR$/2018-project-drag-n-code/client/src/_helpers/auth-header.js" />
     <entry file="file://$PROJECT_DIR$/2018-project-drag-n-code/client/src/_helpers/fake-backend.js" />
@@ -462,71 +1128,90 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/public/styles.less">
+    <entry file="file://$PROJECT_DIR$/client/src/_actions/user.actions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="122" column="45" selection-start-line="122" selection-start-column="45" selection-end-line="122" selection-end-column="45" />
+        <state relative-caret-position="161">
+          <caret line="19" column="42" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/ProfileDropdownComponent/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="43" lean-forward="true" selection-start-column="43" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/HomePage/HomePage.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/LoginPage/LoginPage.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="69" column="32" selection-start-line="69" selection-start-column="32" selection-end-line="69" selection-end-column="135" />
           <folding>
-            <element signature="e#527#684#0" />
-            <element signature="e#827#1207#0" />
-            <element signature="e#1165#1229#0" />
-            <element signature="e#1699#1721#0" />
-            <element signature="e#1864#1965#0" />
-            <element signature="e#1690#1712#0" />
-            <element signature="e#1266#1620#0" />
-            <element signature="e#1637#1659#0" />
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/ProfileDropdownComponent/ProfileDropdownComponent.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="19" column="53" selection-start-line="19" selection-start-column="53" selection-end-line="19" selection-end-column="53" />
+        <state relative-caret-position="-33">
+          <caret line="48" column="25" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#603#943#0" />
+            <element signature="e#1021#1185#1" />
+            <element signature="e#1345#1646#0" />
+            <element signature="e#1406#1567#1" />
+            <element signature="e#1592#1781#1" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/HeaderComponent/HeaderComponent.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="26" column="22" lean-forward="true" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/HomePage/HomePage.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/App/App.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="31" column="63" selection-start-line="31" selection-start-column="63" selection-end-line="31" selection-end-column="63" />
+        <state relative-caret-position="-529">
+          <caret line="7" selection-start-line="7" selection-end-line="7" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/BasicPage/BasicPage.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="20" column="43" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/HeaderComponent/HeaderComponent.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="10" column="14" lean-forward="true" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/LoginPage/LoginPage.jsx">
+    <entry file="file://$PROJECT_DIR$/client/public/styles.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="38" column="37" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
+        <state relative-caret-position="266">
+          <caret line="135" column="5" lean-forward="true" selection-start-line="135" selection-start-column="5" selection-end-line="135" selection-end-column="5" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#527#684#0" />
+            <element signature="e#827#1334#0" />
+            <element signature="e#1239#2110#0" />
+            <element signature="e#1165#1229#0" />
+            <element signature="e#1699#1721#0" />
+            <element signature="e#1864#1965#0" />
+            <element signature="e#1266#1620#0" />
+            <element signature="e#1637#1659#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/_actions/user.actions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="19" column="42" lean-forward="true" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
         </state>
       </provider>
     </entry>

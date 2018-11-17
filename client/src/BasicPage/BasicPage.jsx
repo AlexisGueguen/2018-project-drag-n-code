@@ -21,6 +21,8 @@ class BasicPage extends React.Component {
                     <Route path="/community" component={CommunityPage}/>
                     <Route path="/profile" component={ProfilePage}/>
                     <Route path="/leaderboard" component={LeaderboardPage}/>
+                    <Route path="/settings" component={LeaderboardPage}/>
+                    <Route path="/achievements" component={LeaderboardPage}/>
                 </Switch>
             </div>
         )

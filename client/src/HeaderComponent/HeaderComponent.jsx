@@ -1,6 +1,7 @@
 import React from 'react';
 import Translation from '../_constants/en.json'
-import ProfileDropdownComponent from "../ProfileDropdownComponent/ProfileDropdownComponent";
+import {ProfileDropdownComponent} from "../ProfileDropdownComponent";
+import {Link} from "react-router-dom";
 
 export default class HeaderComponent extends React.Component {
     constructor(props) {
@@ -15,12 +16,12 @@ export default class HeaderComponent extends React.Component {
 
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                            <div className="nav-button" href="#">{Translation.homePage.title}
+                            <Link to="/home" className="nav-button" href="#">{Translation.homePage.title}
                                 <span className="sr-only">(current)</span>
-                            </div>
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <div className="nav-button" href="#">{Translation.community.title}</div>
+                            <Link to="/community" className="nav-button" href="#">{Translation.community.title}</Link>
                         </li>
                     </ul>
                     <ProfileDropdownComponent/>

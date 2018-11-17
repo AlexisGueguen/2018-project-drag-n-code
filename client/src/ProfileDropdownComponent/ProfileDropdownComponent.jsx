@@ -1,7 +1,9 @@
 import React from 'react';
-import SlideDown from "react-slidedown";
+import connect from "react-redux/es/connect/connect";
+import translation from "../_constants/en";
+import {Link} from "react-router-dom";
 
-export default class ProfileDropdownComponent extends React.Component {
+class ProfileDropdownComponent extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -12,31 +14,52 @@ export default class ProfileDropdownComponent extends React.Component {
                 <div className="user-profile">
                     <img src="/resources/defaultAvatar.jpg" alt="Avatar" className="avatar"/>
                 </div>
-                    <ul className="dropdown-menu">
-                        <li className="main-items">
+                <ul className="dropdown-menu">
+                    <li className="main-items">
+                        <Link to="/profile" className="item-link">
                             <span className="glyphicon glyphicon-user"/>
-                            <a href="#">Victor Bonin</a>
-                        </li>
-                        <li className="divider"></li>
-                        <li>
-                            <span className="glyphicon glyphicon-globe"/>
-                            <a href="#">LeaderBoard</a>
-                        </li>
-                        <li>
-                            <span className="glyphicon glyphicon-certificate"/>
-                            <a href="#">Achievements</a>
-                        </li>
-                        <li>
-                            <span className="glyphicon glyphicon-cog"/>
-                            <a href="#">Paramètres</a>
-                        </li>
-                        <li className="main-items">
-                            <span className="glyphicon glyphicon-log-out"/>
-                            <a href="#">Déconnexion</a>
-                        </li>
+                            <a className="item-title" href="#">{this.props.user.username}</a>
+                        </Link>
 
-                    </ul>
+                    </li>
+                    <li className="divider"></li>
+                    <li>
+                        <Link to="/leaderboard" className="item-link">
+                            <span className="glyphicon glyphicon-globe"/>
+                            <a className="item-title" href="#">LeaderBoard</a>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/achievements" className="item-link">
+                            <span className="glyphicon glyphicon-certificate"/>
+                            <a className="item-title" href="#">Achievements</a>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/settings" className="item-link">
+                            <span className="glyphicon glyphicon-cog"/>
+                            <a className="item-title" href="#">Paramètres</a>
+                        </Link>
+                    </li>
+                    <li className="main-items">
+                        <Link to="/login" className="item-link">
+                            <span className="glyphicon glyphicon-log-out"/>
+                            <a className="item-title" href="#">Déconnexion</a>
+                        </Link>
+                    </li>
+                </ul>
             </div>
         )
     }
 }
+
+function mapStateToProps(state) {
+    const { authentication } = state;
+    const { user } = authentication;
+    return {
+        user,
+    };
+}
+
+const connectedProfileDropdown = connect(mapStateToProps)(ProfileDropdownComponent);
+export { connectedProfileDropdown as ProfileDropdownComponent };
