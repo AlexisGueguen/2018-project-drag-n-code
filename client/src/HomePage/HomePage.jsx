@@ -1,12 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import LevelList from "../_components/LevelList";
 
 
 class HomePage extends React.Component {
 
     render() {
         return (
-            <div className="bonjour"> BONJOUR LE MONDE</div>
+            <div className="home-page">
+                <LevelList/>
+            </div>
         );
     }
 }
