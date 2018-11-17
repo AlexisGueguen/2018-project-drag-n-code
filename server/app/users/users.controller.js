@@ -16,7 +16,7 @@ function login(req, res, next) {
 
 function register(req, res, next) {
     userService.create(req.body)
-        .then(() => res.json({}))
+        .then(() => res.status(201).json({}))
         .catch(err => next(err));
 }
 
