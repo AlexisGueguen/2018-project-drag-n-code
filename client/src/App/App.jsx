@@ -7,6 +7,7 @@ import { LoginPage } from '../LoginPage';
 import { RegisterPage } from '../RegisterPage';
 import {BasicPageComponent} from "../BasicPage";
 import {Router, Route, Switch} from "react-router-dom";
+import {PrivateRoute} from "../_components";
 
 class App extends React.Component {
     constructor(props) {
@@ -28,9 +29,9 @@ class App extends React.Component {
                 }
                 <Router history={history}>
                     <Switch>
-                        <Route exact path="/" component={BasicPageComponent}/>
                         <Route path="/login" component={LoginPage}/>
                         <Route path="/register" component={RegisterPage}/>
+                        <PrivateRoute path="/" component={BasicPageComponent}/>
                     </Switch>
                 </Router>
             </div>

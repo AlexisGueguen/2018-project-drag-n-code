@@ -1,11 +1,14 @@
 @import "loading-wheel.css";
+@import "../node_modules/react-slidedown/lib/slidedown.css";
 
-@white: #fff;
-@primary-color: #FFD87F;
-@secondary-color: #FF9943;
-@background-color: #F0EACD;
-@dark-primary-color: #D17243;
-@dark-secondary-color: #9F2F1F;
+
+@primary-color: #FA9539;
+@secondary-color: #32BCDB;
+@background-color: #F0EAE1;
+@dark-primary-color: #E37A1D;
+@light-primary-color: #F8B57A;
+@dark-secondary-color: #04588F;
+@dark-grey-color: #444;
 
 html, body {
   margin: 0;
@@ -36,6 +39,7 @@ html, body {
       width: fit-content;
       margin-top: auto;
       margin-bottom: auto;
+      color: white;
     }
 
     & .navbar-nav {
@@ -44,19 +48,22 @@ html, body {
       list-style-type: none;
 
       & .nav-item {
-        padding-left: 10px;
+        color: white;
 
         & .nav-button {
           padding: 10px;
+          width: 100px;
+          text-align: center;
+        }
 
-          &:hover {
-            background-color: #ffc94d;
-            cursor: pointer;
-            border-radius: 5px;
-          }
+        &:hover {
+          background-color: @dark-primary-color;
+          cursor: pointer;
+          border-radius: 5px;
         }
       }
     }
+
 
     & .profile-dropdown {
       display: flex;
@@ -66,6 +73,59 @@ html, body {
       & .user-profile {
         margin-top: auto;
         margin-bottom: auto;
+
+        & > img {
+          vertical-align: middle;
+          height: 64px;
+          width: 64px;
+          border-radius: 40px;
+
+          &:hover {
+            border: 2px solid @dark-secondary-color;
+          }
+        }
+      }
+
+      & .dropdown-menu {
+        left: unset;
+        right: 0;
+        box-shadow: unset;
+        border: unset;
+        background-color: @primary-color;
+        top: 98%;
+        min-width: 190px;
+        border-radius: 0px 0px 0px 5px;
+
+        &>li.main-items {
+          text-align: center;
+        }
+
+        &>li {
+          display: flex;
+          & >.glyphicon {
+            padding-left: 10px;
+            margin-top: auto;
+            margin-bottom: auto;
+            color: white;
+          }
+          & > a {
+            padding: 15px 20px;
+            color: white;
+            background-color: unset !important;
+          }
+        }
+
+        &>li:hover {
+          background-color: @dark-primary-color;
+        }
+
+        & > li.divider {
+          background-color: white !important;
+        }
+      }
+
+      &:hover .dropdown-menu {
+        display: block;
       }
     }
 
@@ -85,7 +145,7 @@ html, body {
       background-color: @secondary-color;
       border-color: @secondary-color;
       font-weight: bold;
-      color: @white;
+      color: white;
     }
 
     & .btn-link {
