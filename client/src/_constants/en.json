@@ -1,8 +1,22 @@
 {
+  "global" : {
+    "title" : "Drag'n Code"
+  },
   "login" : {
-    "userNamePlaceHolder": "Username",
-    "userNameField" : "Username",
-    "passwordField" : "Password"
+    "title": "Login",
+    "usernameField" : "Username",
+    "passwordField" : "Password",
+    "usernameRequired": "Username is required",
+    "passwordRequired": "Password is required",
+    "registerLink": "Register"
+  },
+  "register" : {
+    "title": "Register",
+    "usernameField" : "Username",
+    "passwordField" : "Password",
+    "usernameRequired": "Username is required",
+    "passwordRequired": "Password is required",
+    "cancelLink": "Cancel"
   },
   "header" : {
     "homePageTitle": "@:homePage.title",
@@ -10,6 +24,10 @@
   },
   "homePage" : {
     "title" : "Home",
+    "description" : "Welcome back ! Select a level to start playing"
+  },
+  "community" : {
+    "title" : "Community",
     "description" : "Welcome back ! Select a level to start playing"
   }
 }
