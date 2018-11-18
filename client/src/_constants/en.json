@@ -24,7 +24,7 @@
   },
   "homePage" : {
     "title" : "Home",
-    "description" : "Welcome back ! Select a level to start playing"
+    "description" : "Level list"
   },
   "community" : {
     "title" : "Community",

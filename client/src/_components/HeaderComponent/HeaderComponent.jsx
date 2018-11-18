@@ -4,10 +4,6 @@ import {ProfileDropdownComponent} from "../ProfileDropdownComponent/index";
 import {Link} from "react-router-dom";
 
 export default class HeaderComponent extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div className="header">

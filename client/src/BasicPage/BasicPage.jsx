@@ -10,10 +10,6 @@ import {AchievementsPage} from "../AchievementsPage";
 import {SettingsPage} from "../SettingsPage";
 
 class BasicPage extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div className="basic-page">
