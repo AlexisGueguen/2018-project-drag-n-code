@@ -14,11 +14,18 @@ class LevelList extends React.Component {
         const { loading, levels } = this.props;
         console.log(levels);
         return (
-            <div className='level-list'>
+            <div className="level-list col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+                <h2>Level list</h2>
                 {loading ? (
                     <LoadingPoints/>
                 ) : (
-                    <ul>{levels ? levels.map((item) => <li>{item.title} - {item.description}</li>) : <p>No levels found...</p>}</ul>
+                    <div className="list-group">
+                        {levels ? (
+                            levels.map((item) => <a className="list-group-item list-group-item-action">{item.title} - {item.description}</a>)
+                        ) : (
+                            <p>No levels found...</p>
+                        )}
+                    </div>
                 )}
             </div>
         );
