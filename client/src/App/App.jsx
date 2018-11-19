@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 import { history } from '../_helpers';
 import { LoginPage } from '../LoginPage';
@@ -9,7 +8,7 @@ import {Router, Route, Switch} from "react-router-dom";
 import {PrivateRoute} from "../_components";
 import Alert from "../_components/Alert";
 
-class App extends React.Component {
+export class App extends React.Component {
     render() {
         return (
             <div className="page-container">
@@ -25,8 +24,3 @@ class App extends React.Component {
         );
     }
 }
-
-function mapStateToProps(state) {}
-
-const connectedApp = connect(mapStateToProps)(App);
-export { connectedApp as App };
