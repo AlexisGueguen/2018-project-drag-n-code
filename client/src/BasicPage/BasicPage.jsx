@@ -10,7 +10,6 @@ import {SettingsPage} from "../SettingsPage";
 import ProfilePage from "../ProfilePage/ProfilePage";
 
 class BasicPage extends React.Component {
-
     render() {
         return (
             <div className="basic-page">

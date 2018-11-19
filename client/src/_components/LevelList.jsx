@@ -14,11 +14,17 @@ class LevelList extends React.Component {
         const { loading, levels } = this.props;
         console.log(levels);
         return (
-            <div className='level-list'>
+            <div className="level-list col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
                 {loading ? (
                     <LoadingPoints/>
                 ) : (
-                    <ul>{levels ? levels.map((item) => <li>{item.title} - {item.description}</li>) : <p>No levels found...</p>}</ul>
+                    <div className="list-group">
+                        {levels != null || levels !== undefined ? (
+                            levels.map((item) => <ListItem key={item.title} value={item}/>)
+                        ) : (
+                            <p>No level found...</p>
+                        )}
+                    </div>
                 )}
             </div>
         );
@@ -39,3 +45,12 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(LevelList);
+
+function ListItem(props) {
+    return (
+        <button className="list-group-item list-group-item-action">
+            <h4>{props.value.title}</h4>
+            <p>{props.value.description}</p>
+        </button>
+    );
+}
