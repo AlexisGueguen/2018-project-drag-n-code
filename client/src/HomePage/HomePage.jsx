@@ -8,7 +8,7 @@ class HomePage extends React.Component {
         return (
             <div className="home-page">
                 <LevelList/>
-                <button className="btn create-level-button">
+                <button className="btn circle-button create-level-button">
                     <span className="glyphicon glyphicon-plus"/>
                 </button>
             </div>

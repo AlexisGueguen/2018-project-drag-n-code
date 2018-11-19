@@ -9,6 +9,7 @@
 @light-primary-color: #F8B57A;
 @dark-secondary-color: #04588F;
 @dark-grey-color: #444;
+@light-grey-color: #EEE;
 
 html, body {
   margin: 0;
@@ -85,14 +86,16 @@ html, body {
         margin-top: auto;
         margin-bottom: auto;
 
-        & > img {
+        & img {
           vertical-align: middle;
           height: 54px;
           width: 54px;
           border-radius: 50%;
+          transition: all .2s ease-in-out;
 
           &:hover {
             border: 2px solid @dark-secondary-color;
+            transform: scale(1.15);
           }
         }
       }
@@ -176,9 +179,39 @@ html, body {
       & .level-list {
 
         & .list-group {
+          margin-bottom: 0;
 
-          & .list-group-item:focus {
-            outline: 0;
+          & .list-item-container {
+
+            & .list-item-header {
+              border: 0;
+
+              &:hover {
+                background-color: @light-grey-color;
+                cursor: pointer;
+              }
+            }
+
+            & .list-item-details {
+              background-color: @light-grey-color;
+              display: flex;
+
+              & .list-item-statement {
+                margin-bottom: 0;
+                border-radius: 0;
+                border: 0;
+                -webkit-box-shadow: none;
+                box-shadow: none;
+                background-color: unset;
+                text-align: justify;
+              }
+
+              & button.btn {
+                margin: auto;
+                width: 72px;
+                height: 72px;
+              }
+            }
           }
         }
       }
@@ -189,24 +222,33 @@ html, body {
         right: 5%;
         width: 64px;
         height: 64px;
-        border-radius: 50%;
-        background-color: @primary-color;
-
-        & span {
-          color: white;
-          font-size: 2em;
-          padding-left: 8%;
-        }
-
-        &:hover {
-          background-color: @dark-primary-color;
-          cursor: pointer;
-        }
-
-        &:focus {
-          outline: 0;
-        }
       }
     }
+  }
+}
+
+& button.circle-button {
+  border-radius: 50%;
+  background-color: @primary-color;
+  transition: all .2s ease-in-out;
+
+  & span {
+    color: white;
+    font-size: 2em;
+    padding-left: 8%;
+  }
+
+  &:hover {
+    background-color: @dark-primary-color;
+    cursor: pointer;
+    transform: scale(1.1);
+  }
+
+  &:focus {
+    outline: none!important;
+  }
+
+  &:active {
+    transform: scale(1);
   }
 }
