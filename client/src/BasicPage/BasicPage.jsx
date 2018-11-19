@@ -3,16 +3,13 @@ import connect from "react-redux/es/connect/connect";
 import {Route, Switch} from "react-router-dom";
 import {HomePage} from "../HomePage";
 import {CommunityPage} from "../CommunityPage";
-import {ProfilePage} from "../ProfilePage";
 import {LeaderboardPage} from "../LeaderboardPage";
 import HeaderComponent from "../_components/HeaderComponent/HeaderComponent";
 import {AchievementsPage} from "../AchievementsPage";
 import {SettingsPage} from "../SettingsPage";
+import ProfilePage from "../ProfilePage/ProfilePage";
 
 class BasicPage extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (

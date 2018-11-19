@@ -5,7 +5,8 @@ export const userService = {
     login,
     logout,
     register,
-    getById
+    getById,
+    update
 };
 
 function login(username, password) {
@@ -50,6 +51,16 @@ function register(user) {
     };
 
     return fetch(`${config.apiUrl}/register`, requestOptions).then(handleResponse);
+}
+
+function update(user) {
+    const requestOptions = {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(user)
+    };
+
+    return fetch(`${config.apiUrl}/update`, requestOptions).then(handleResponse);
 }
 
 

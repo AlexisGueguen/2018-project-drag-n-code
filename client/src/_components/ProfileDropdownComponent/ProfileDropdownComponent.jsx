@@ -1,12 +1,8 @@
 import React from 'react';
 import connect from "react-redux/es/connect/connect";
-import translation from "../../_constants/en";
 import {Link} from "react-router-dom";
 
 class ProfileDropdownComponent extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (
@@ -18,7 +14,7 @@ class ProfileDropdownComponent extends React.Component {
                     <li className="main-items">
                         <Link to="/profile" className="item-link">
                             <span className="glyphicon glyphicon-user"/>
-                            <a className="item-title" href="#">{this.props.user.username}</a>
+                            <div className="item-title" href="#">{this.props.user.username}</div>
                         </Link>
 
                     </li>
@@ -26,25 +22,25 @@ class ProfileDropdownComponent extends React.Component {
                     <li>
                         <Link to="/leaderboard" className="item-link">
                             <span className="glyphicon glyphicon-globe"/>
-                            <a className="item-title" href="#">LeaderBoard</a>
+                            <div className="item-title" href="#">LeaderBoard</div>
                         </Link>
                     </li>
                     <li>
                         <Link to="/achievements" className="item-link">
                             <span className="glyphicon glyphicon-certificate"/>
-                            <a className="item-title" href="#">Achievements</a>
+                            <div className="item-title" href="#">Achievements</div>
                         </Link>
                     </li>
                     <li>
                         <Link to="/settings" className="item-link">
                             <span className="glyphicon glyphicon-cog"/>
-                            <a className="item-title" href="#">Paramètres</a>
+                            <div className="item-title" href="#">Paramètres</div>
                         </Link>
                     </li>
                     <li className="main-items">
                         <Link to="/login" className="item-link">
                             <span className="glyphicon glyphicon-log-out"/>
-                            <a className="item-title" href="#">Déconnexion</a>
+                            <div className="item-title" href="#">Déconnexion</div>
                         </Link>
                     </li>
                 </ul>

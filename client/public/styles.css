@@ -79,18 +79,12 @@ body {
   min-width: 190px;
   border-radius: 0px 0px 0px 5px;
 }
-.page-container .header > .navbar .profile-dropdown .dropdown-menu > li.main-items {
-  text-align: center;
-}
-.page-container .header > .navbar .profile-dropdown .dropdown-menu > li {
-  display: flex;
-}
 .page-container .header > .navbar .profile-dropdown .dropdown-menu > li .glyphicon {
   margin-top: auto;
   margin-bottom: auto;
   color: white;
 }
-.page-container .header > .navbar .profile-dropdown .dropdown-menu > li a.item-title {
+.page-container .header > .navbar .profile-dropdown .dropdown-menu > li div.item-title {
   padding: 15px 20px;
   color: white;
   background-color: unset !important;

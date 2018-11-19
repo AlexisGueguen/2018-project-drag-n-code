@@ -3,16 +3,22 @@ import connect from "react-redux/es/connect/connect";
 
 class ProfilePage extends React.Component {
     render() {
-        return null;
+        return (
+            <div className="profile-page">
+                <div className=""> </div>
+            </div>
+            );
     }
 }
 
 function mapStateToProps(state) {
-    const { loggingIn } = state.authentication;
+    const { user } = state.authentication;
+    const { updatedUser, updatingData } = state.updateUser;
     return {
-        loggingIn
+        user,
+        updatedUser,
+        updatingData
     };
 }
 
-const connectedProfilePage = connect(mapStateToProps)(ProfilePage);
-export { connectedProfilePage as ProfilePage };
+export default connect(mapStateToProps)(ProfilePage);

@@ -8,7 +8,8 @@ const User = db.User;
 module.exports = {
     login,
     getById,
-    create
+    create,
+    update
 };
 
 async function login({ username, password }) {
@@ -43,4 +44,23 @@ async function create(userParam) {
 
     // save user
     await user.save();
+}
+
+async function update(userParam) {
+    if (!(!!userParam._id)) throw {
+        name: 'Error',
+        message: `Object in body is incorrect, provide an _id field.`,
+        statusCode: 400
+    };
+    if (!await User.findById(userParam._id)) {
+        throw {
+            name: 'Error',
+            message: `User ${userParam.username} not found`,
+            statusCode: 404
+        };
+    }
+
+    let user = new User(userParam);
+
+    return await User.findByIdAndUpdate(userParam._id, user, {new: true});
 }
