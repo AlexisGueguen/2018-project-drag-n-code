@@ -19,11 +19,9 @@ class LevelList extends React.Component {
                     <LoadingPoints/>
                 ) : (
                     <div className="list-group">
-                        {levels != null || levels !== undefined ? (
+                        {levels != null && levels !== undefined &&
                             levels.map((item) => <ListItem key={item.title} value={item}/>)
-                        ) : (
-                            <p>No level found...</p>
-                        )}
+                        }
                     </div>
                 )}
             </div>

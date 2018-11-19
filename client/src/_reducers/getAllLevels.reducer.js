@@ -13,10 +13,7 @@ export function getAllLevels(state = {}, action) {
                 levels: action.levels
             };
         case levelConstants.GET_ALL_LEVELS_FAILURE:
-            return {
-                loading: false,
-                levels: null
-            };
+            return {};
         default:
             return state
     }

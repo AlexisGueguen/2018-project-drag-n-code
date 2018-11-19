@@ -8,12 +8,14 @@ import HeaderComponent from "../_components/HeaderComponent/HeaderComponent";
 import {AchievementsPage} from "../AchievementsPage";
 import {SettingsPage} from "../SettingsPage";
 import ProfilePage from "../ProfilePage/ProfilePage";
+import Alert from "../_components/Alert";
 
 class BasicPage extends React.Component {
     render() {
         return (
             <div className="basic-page">
                 <HeaderComponent/>
+                <Alert/>
                 <Switch>
                     <Route path="/home" component={HomePage}/>
                     <Route path="/community" component={CommunityPage}/>
