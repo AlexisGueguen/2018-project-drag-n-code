@@ -9,6 +9,7 @@ import {AchievementsPage} from "../AchievementsPage";
 import {SettingsPage} from "../SettingsPage";
 import ProfilePage from "../ProfilePage/ProfilePage";
 import Alert from "../_components/Alert";
+import LevelPage from "../LevelPage/LevelPage";
 
 class BasicPage extends React.Component {
     render() {
@@ -19,6 +20,7 @@ class BasicPage extends React.Component {
                 <Switch>
                     <Route path="/home" component={HomePage}/>
                     <Route path="/community" component={CommunityPage}/>
+                    <Route path="/play&id=:id" component={LevelPage}/>
                     <Route path="/profile" component={ProfilePage}/>
                     <Route path="/leaderboard" component={LeaderboardPage}/>
                     <Route path="/settings" component={SettingsPage}/>

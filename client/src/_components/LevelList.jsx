@@ -4,6 +4,7 @@ import {levelActions} from "../_actions/level.actions";
 import connect from "react-redux/es/connect/connect";
 import LoadingPoints from "./LoadingPoints";
 import {Collapse, Well} from "react-bootstrap";
+import { history } from '../_helpers';
 
 class LevelList extends React.Component {
     constructor(props) {
@@ -53,10 +54,17 @@ class ListItem extends React.Component {
         };
 
         this.handleClick = this.handleClick.bind(this);
+        this.handlePlayClick = this.handlePlayClick.bind(this);
     }
 
     handleClick() {
         this.setState({open: !this.state.open});
+    }
+
+
+    handlePlayClick() {
+        const { _id } = this.props.value;
+        history.push(`/play&id=${_id}`);
     }
 
     render() {
@@ -72,7 +80,7 @@ class ListItem extends React.Component {
                             <Well className="list-item-statement col-md-10 col-sm-9">
                                 {this.props.value.statement}
                             </Well>
-                            <button className="btn circle-button col-md-2 col-sm-3">
+                            <button className="btn circle-button col-md-2 col-sm-3" onClick={this.handlePlayClick}>
                                 <span className="glyphicon glyphicon-play"/>
                             </button>
                         </div>
