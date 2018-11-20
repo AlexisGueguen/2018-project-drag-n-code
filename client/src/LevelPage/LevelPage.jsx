@@ -21,6 +21,10 @@ class LevelPage extends React.Component {
                 ) : (
                     <div>
                         {level != null && level !== undefined && level.title}
+                        <div className="playground">Playground</div>
+                        <div className="statement">Statement</div>
+                        <div className="generated-code">Generated code</div>
+                        <div className="submission">Submission</div>
                     </div>
                 )}
             </div>
