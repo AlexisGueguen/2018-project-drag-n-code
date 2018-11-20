@@ -42,4 +42,5 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(LevelPage);
+const connectedLevelPage = connect(mapStateToProps)(LevelPage);
+export {connectedLevelPage as LevelPage};

@@ -1,15 +1,15 @@
 import React from 'react';
-import connect from "react-redux/es/connect/connect";
+import {connect} from "react-redux";
 import {Route, Switch} from "react-router-dom";
 import {HomePage} from "../HomePage";
 import {CommunityPage} from "../CommunityPage";
 import {LeaderboardPage} from "../LeaderboardPage";
-import HeaderComponent from "../_components/HeaderComponent/HeaderComponent";
 import {AchievementsPage} from "../AchievementsPage";
 import {SettingsPage} from "../SettingsPage";
-import ProfilePage from "../ProfilePage/ProfilePage";
+import {ProfilePage} from "../ProfilePage";
+import {LevelPage} from "../LevelPage";
+import HeaderComponent from "../_components/HeaderComponent/HeaderComponent";
 import Alert from "../_components/Alert";
-import LevelPage from "../LevelPage/LevelPage";
 
 class BasicPage extends React.Component {
     render() {
@@ -32,11 +32,11 @@ class BasicPage extends React.Component {
 }
 
 function mapStateToProps(state) {
-    const { loggingIn } = state.authentication;
+    const {loggingIn} = state.authentication;
     return {
         loggingIn
     };
 }
 
 const connectedBasicComponent = connect(mapStateToProps)(BasicPage);
-export { connectedBasicComponent as BasicPageComponent };
+export {connectedBasicComponent as BasicPageComponent};

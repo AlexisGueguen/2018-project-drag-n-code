@@ -1,5 +1,6 @@
 import { authHeader } from '../_helpers';
-import config from '../config.json';
+import configFile from "../config";
+const config = configFile[process.env.NODE_ENV];
 
 export const userService = {
     login,
