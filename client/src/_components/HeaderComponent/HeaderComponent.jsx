@@ -12,7 +12,7 @@ export default class HeaderComponent extends React.Component {
 
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                            <Link to="/home" className="nav-button" href="#">{Translation.homePage.title}
+                            <Link to="/" className="nav-button" href="#">{Translation.homePage.title}
                                 <span className="sr-only">(current)</span>
                             </Link>
                         </li>

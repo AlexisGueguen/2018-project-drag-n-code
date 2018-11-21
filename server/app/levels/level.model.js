@@ -11,6 +11,10 @@ const schema = new Schema({
         type: String,
         required: true
     },
+    statement: {
+        type: String,
+        required: true
+    },
     inputs: {
         type: String,
         required: true

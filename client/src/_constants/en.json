@@ -40,6 +40,7 @@
     "cancelButton" : "Cancel",
     "saveButton" : "Save Profile",
     "emailPlaceholder" : "email@example.com",
-    "emailTip" : "This field is optional. Subscribe to our newsletter and secure your account."
+    "emailTip" : "Your email adress won't be used in commercial purposes.",
+    "uploadPictureButton": "Save"
   }
 }

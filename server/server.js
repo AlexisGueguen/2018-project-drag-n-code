@@ -13,7 +13,7 @@ const morgan = require('morgan');
 
 app.use(morgan('combined'));
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: '5mb' }));
 app.use(cors());
 app.use(jwt());
 app.use(config.root, router);

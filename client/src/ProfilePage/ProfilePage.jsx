@@ -52,20 +52,20 @@ class ProfilePage extends React.Component {
         if(!isEditing) {
             return (
                 <div className="profile-page">
-                    <div className="profile-data-container">
-                        <h3>{translation.profile.title}</h3>
-                        <div className="username-container data-container">
-                            <div className="data-title">{translation.profile.usernameTitle}</div>
-                            <div className="">{this.props.user.username}</div>
+                    <div className="profile-container">
+                        <div className="profile-data-container">
+                            <h3>{translation.profile.title}</h3>
+                            <div className="username-container data-container">
+                                <div className="data-title">{translation.profile.usernameTitle}</div>
+                                <div className="">{this.props.user.username}</div>
+                            </div>
+                            <div className="email-container data-container">
+                                <div className="data-title">{translation.profile.emailTitle}</div>
+                                <div type="mail" className="">{this.props.user.email}</div>
+                            </div>
                         </div>
-                        <div className="email-container data-container">
-                            <div className="data-title">{translation.profile.emailTitle}</div>
-                            <div className="">{this.props.user.email}</div>
-                        </div>
-                        <div className="score-container">300</div>
-                        <div className="avatar-container"/>
+                        <AvatarUploadComponent/>
                     </div>
-                    <AvatarUploadComponent/>
                     <div className="action-buttons">
                         <button type="button" className="btn btn-primary"
                                 onClick={this.onEditProfile}>{translation.profile.modifyButton}</button>
@@ -93,8 +93,6 @@ class ProfilePage extends React.Component {
                                 {translation.profile.emailTip}
                             </small>
                         </div>
-                        <div className="score-container">300</div>
-                        <div className="avatar-container"/>
                     </div>
                     <div className="action-buttons">
                         <button type="button" className="btn btn-primary"
@@ -118,4 +116,5 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(ProfilePage);
+const connectedProfilePage = connect(mapStateToProps)(ProfilePage);
+export { connectedProfilePage as ProfilePage};

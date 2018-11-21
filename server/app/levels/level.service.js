@@ -20,7 +20,7 @@ async function getById(id) {
 }
 
 async function getAll() {
-    return await Level.find({}, 'title description');
+    return await Level.find({}, 'title description statement');
 }
 
 async function create(levelParam) {

@@ -1,5 +1,6 @@
 import {authBodyHeader, authHeader} from '../_helpers';
-import config from '../config.json';
+import configFile from "../config";
+const config = configFile[process.env.NODE_ENV];
 
 export const userService = {
     login,
@@ -60,7 +61,7 @@ function update(user) {
         body: JSON.stringify(user)
     };
 
-    return fetch(`${config.apiUrl}/user/update`, requestOptions).then(handleResponse);
+    return fetch(`${config.apiUrl}/user`, requestOptions).then(handleResponse);
 }
 
 

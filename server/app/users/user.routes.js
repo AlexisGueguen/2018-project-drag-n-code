@@ -33,6 +33,6 @@ module.exports = (router) => {
      * update one user's details
      */
     router
-        .route('/user/update')
+        .route('/user')
         .put(userController.update);
 };

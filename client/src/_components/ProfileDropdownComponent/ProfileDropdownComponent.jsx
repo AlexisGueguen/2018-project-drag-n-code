@@ -7,39 +7,45 @@ class ProfileDropdownComponent extends React.Component {
         return (
             <div className="dropdown profile-dropdown">
                 <div className="user-profile">
-                    <img src="/resources/defaultAvatar.jpg" alt="Avatar" className="avatar"/>
+                    <Link to="/profile">
+                        {(this.props.user.picture) ? (
+                            <img className="avatar avatar-picture-default" src={this.props.user.picture} alt="Avatar"/>
+                        ) : (
+                            <img className="avatar avatar-picture-default" src="/resources/defaultAvatar.jpg" alt="Avatar"/>
+                        )}
+                    </Link>
                 </div>
                 <ul className="dropdown-menu">
                     <li className="main-items">
                         <Link to="/profile" className="item-link">
                             <span className="glyphicon glyphicon-user"/>
-                            <div className="item-title" href="#">{this.props.user.username}</div>
+                            <div className="item-title">{this.props.user.username}</div>
                         </Link>
 
                     </li>
-                    <li className="divider"></li>
+                    <li className="divider"/>
                     <li>
                         <Link to="/leaderboard" className="item-link">
                             <span className="glyphicon glyphicon-globe"/>
-                            <div className="item-title" href="#">LeaderBoard</div>
+                            <div className="item-title">LeaderBoard</div>
                         </Link>
                     </li>
                     <li>
                         <Link to="/achievements" className="item-link">
                             <span className="glyphicon glyphicon-certificate"/>
-                            <div className="item-title" href="#">Achievements</div>
+                            <div className="item-title">Achievements</div>
                         </Link>
                     </li>
                     <li>
                         <Link to="/settings" className="item-link">
                             <span className="glyphicon glyphicon-cog"/>
-                            <div className="item-title" href="#">Paramètres</div>
+                            <div className="item-title">Paramètres</div>
                         </Link>
                     </li>
                     <li className="main-items">
                         <Link to="/login" className="item-link">
                             <span className="glyphicon glyphicon-log-out"/>
-                            <div className="item-title" href="#">Déconnexion</div>
+                            <div className="item-title">Déconnexion</div>
                         </Link>
                     </li>
                 </ul>

@@ -5,13 +5,15 @@ import {registration} from './registration.reducer';
 import {alert} from './alert.reducer';
 import {getAllLevels} from './getAllLevels.reducer';
 import {updateUser} from "./updateUser.reducer";
+import {getLevel} from "./getLevel.reducer";
 
 const rootReducer = combineReducers({
     authentication,
     registration,
     alert,
     getAllLevels,
-    updateUser
+    updateUser,
+    getLevel
 });
 
 export default rootReducer;

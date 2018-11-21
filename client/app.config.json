@@ -5,7 +5,7 @@
       version   : "1.0.0",
       script    : "npx",
       interpreter: "none",
-      args: "serve ./build",
+      args: "serve -s ./build",
       instances: 1,
       autorestart: true,
       watch: false,
