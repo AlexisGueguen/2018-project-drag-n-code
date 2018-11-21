@@ -9,6 +9,8 @@
 @dark-grey-color: #444;
 @light-grey-color: #EEE;
 
+@header-height: 85px;
+
 html, body {
   margin: 0;
   height: 100%;
@@ -38,10 +40,11 @@ html, body {
     & .navbar {
       width: 100%;
       background-color: @primary-color;
-      height: 85px;
+      height: @header-height;
       display: flex;
       flex-direction: row;
       border-radius: 0;
+      margin: 0;
 
       & .navbar-title {
         font-size: 36px;
@@ -184,9 +187,10 @@ html, body {
   width: 100%;
   height: 100%;
   overflow: auto;
-  padding-bottom: 20px;
 
   & .home-page {
+    padding-top: 20px;
+    padding-bottom: 20px;
 
     & .level-list {
 
@@ -235,6 +239,57 @@ html, body {
       width: 64px;
       height: 64px;
     }
+  }
+
+  & .level-page {
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    margin-top: @header-height;
+    position: fixed;
+    top: 0;
+
+    & .level-page-row {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+
+      & .playground {
+        height: 100%;
+        background-color: #32BCDB;
+        padding: 0;
+        text-align: center;
+      }
+
+      & .scrolling-panel {
+        padding: 0;
+        height: 100%;
+        overflow: auto;
+
+        & .statement {
+          background-color: #23E698;
+          height: 25%;
+          text-align: center;
+        }
+
+        & .generated-code {
+          background-color: #AAF000;
+          height: 55%;
+          text-align: center;
+        }
+
+        & .submission {
+          background-color: #F8B57A;
+          height: 20%;
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  & .alert {
+    width: 97%;
+    margin: 5px auto;
   }
 }
 
