@@ -1,4 +1,5 @@
 ﻿const userService = require('./user.service');
+const { validateEmail } = require('../_helpers/utils');
 
 // Interface
 module.exports = {
@@ -16,6 +17,10 @@ function login(req, res, next) {
 }
 
 function register(req, res, next) {
+    //Sanity check
+    let user = req.body;
+    if (!validateEmail(user.email)) throw 'Email ' + user.email + ' is invalid';
+
     userService.create(req.body)
         .then(() => res.status(201).json({}))
         .catch(err => next(err));

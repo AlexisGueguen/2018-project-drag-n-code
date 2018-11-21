@@ -16,9 +16,10 @@ const schema = new Schema({
         default: Date.now
     },
     email: {
-        type: String
+        type: String,
+        required: true
     },
-    AvatarURL: {
+    picture: {
         type: String
     },
 });
