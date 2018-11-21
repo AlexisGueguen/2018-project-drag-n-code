@@ -3,7 +3,7 @@ import connect from "react-redux/es/connect/connect";
 
 class AchievementsPage extends React.Component {
     render() {
-        return null;
+        return <h2 className="page-title">Achievements</h2>;
     }
 }
 

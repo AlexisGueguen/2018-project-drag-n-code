@@ -1,6 +1,4 @@
 @import "loading-wheel.css";
-@import "../node_modules/react-slidedown/lib/slidedown.css";
-
 
 @primary-color: #FA9539;
 @secondary-color: #32BCDB;
@@ -9,6 +7,9 @@
 @light-primary-color: #F8B57A;
 @dark-secondary-color: #04588F;
 @dark-grey-color: #444;
+@light-grey-color: #EEE;
+
+@header-height: 85px;
 
 html, body {
   margin: 0;
@@ -17,6 +18,11 @@ html, body {
 
 #app {
   height: 100%;
+
+  & .fixed-alert {
+    position: fixed;
+    width: 100%
+  }
 }
 
 .page-container {
@@ -25,116 +31,131 @@ html, body {
   display: flex;
   background-color: @background-color;
 
-  & .header > .navbar {
-    width: 100%;
-    background-color: @primary-color;
-    height: 100px;
-    display: flex;
-    flex-direction: row;
+  & .header {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 
-    & .navbar-title {
-      font-size: 36px;
-      font-weight: 700;
-      padding-left: 50px;
-      width: fit-content;
-      margin-top: auto;
-      margin-bottom: auto;
-      color: white;
-    }
-
-    & .navbar-nav {
-      margin-top: auto;
-      margin-bottom: auto;
-      list-style-type: none;
-
-      & .nav-item {
-        padding-top: 15px;
-        padding-bottom: 15px;
-        & .nav-button {
-          padding: 10px;
-          width: 100px;
-          text-align: center;
-          color: white;
-          text-decoration: unset;
-        }
-
-        &:hover {
-          background-color: @dark-primary-color;
-          cursor: pointer;
-          border-radius: 5px;
-        }
-      }
-    }
-
-    & .profile-dropdown {
+    & .navbar {
+      width: 100%;
+      background-color: @primary-color;
+      height: @header-height;
       display: flex;
-      margin-left: auto;
-      padding-right: 50px;
+      flex-direction: row;
+      border-radius: 0;
+      margin: 0;
 
-      & .user-profile {
+      & .navbar-title {
+        font-size: 36px;
+        font-weight: 700;
+        padding-left: 50px;
+        width: fit-content;
         margin-top: auto;
         margin-bottom: auto;
+        color: white;
+      }
 
-        & > img {
-          vertical-align: middle;
-          height: 64px;
-          width: 64px;
-          border-radius: 40px;
+      & .navbar-nav {
+        margin-top: auto;
+        margin-bottom: auto;
+        list-style-type: none;
+
+        & .nav-item {
+          width: 100px;
+          margin-left: auto;
+          margin-right: auto;
+          display: flex;
+
+          & .nav-button {
+            padding: 10px;
+            width: 100%;
+            text-align: center;
+            color: white;
+            text-decoration: unset;
+          }
 
           &:hover {
-            border: 2px solid @dark-secondary-color;
+            background-color: @dark-primary-color;
+            cursor: pointer;
+            border-radius: 5px;
           }
         }
       }
 
-      & .dropdown-menu {
-        left: unset;
-        right: 0;
-        box-shadow: unset;
-        border: unset;
-        background-color: @primary-color;
-        top: 98%;
-        min-width: 190px;
-        border-radius: 0px 0px 0px 5px;
+      & .profile-dropdown {
+        display: flex;
+        margin-left: auto;
+        padding-right: 50px;
 
-        &>li.main-items {
-          text-align: center;
+        .user-menu .dropdown-menu {
+          max-height: 0;
+          transition: max-height 0.15s ease-out;
+          overflow: hidden;
+          display: block;
         }
 
-        &>li {
-          display: flex;
-          & .glyphicon {
-            margin-top: auto;
-            margin-bottom: auto;
-            color: white;
-          }
-          & a.item-title {
-            padding: 15px 20px;
-            color: white;
-            background-color: unset !important;
-            text-decoration: unset !important;
-          }
-          & a.item-link {
-            display: flex;
-            width: 100%;
-            background-color: @primary-color;
+        &:hover .dropdown-menu {
+          max-height: 500px;
+          transition: max-height 0.25s ease-in;
+        }
+
+        & .user-menu {
+          margin-top: auto;
+          margin-bottom: auto;
+
+          & img.avatar {
+            vertical-align: middle;
+            height: 54px;
+            width: 54px;
+            transition: all .2s ease-in-out;
+
             &:hover {
-              background-color: @dark-primary-color;
+              transform: scale(1.15);
+            }
+          }
+
+          & .dropdown-menu {
+            left: unset;
+            right: 0;
+            box-shadow: unset;
+            border: unset;
+            background-color: @primary-color;
+            min-width: 190px;
+            border-radius: 0 0 0 8px;
+            margin: 0 -1px 0 0;
+            padding: 0;
+
+            & > li {
+              & .glyphicon {
+                margin-top: auto;
+                margin-bottom: auto;
+                color: white;
+              }
+              & div.item-title {
+                padding: 15px 20px;
+                color: white;
+                background-color: unset !important;
+                text-decoration: unset !important;
+              }
+              & a.item-link {
+                display: flex;
+                width: 100%;
+                background-color: @primary-color;
+                &:hover {
+                  background-color: @dark-primary-color;
+                }
+              }
+            }
+
+            & > li.divider {
+              background-color: white !important;
+              margin: 0;
             }
           }
         }
-
-        & > li.divider {
-          background-color: white !important;
-          margin: 0;
-        }
-      }
-
-      &:hover .dropdown-menu {
-        display: block;
       }
     }
-
   }
 
   & div.login-container {
@@ -144,22 +165,238 @@ html, body {
 
     & h2 {
       text-align: center;
-      color: @secondary-color;
+      color: @primary-color;
     }
 
     & button {
-      background-color: @secondary-color;
-      border-color: @secondary-color;
+      background-color: @primary-color;
+      border-color: @primary-color;
       font-weight: bold;
       color: white;
     }
 
     & .btn-link {
-      color: @dark-secondary-color;
+      color: @dark-primary-color;
     }
   }
 
-  & .basic-page{
+  & .basic-page {
     width: 100%;
+    height: 100%;
+    overflow: auto;
+
+    & .home-page {
+      padding-top: 20px;
+      padding-bottom: 20px;
+
+      & .level-list {
+
+        & .list-group {
+          margin-bottom: 0;
+
+          & .list-item-container {
+
+            & .list-item-header {
+              border: 0;
+
+              &:hover {
+                background-color: @light-grey-color;
+                cursor: pointer;
+              }
+            }
+
+            & .list-item-details {
+              background-color: @light-grey-color;
+              display: flex;
+
+              & .list-item-statement {
+                margin-bottom: 0;
+                border-radius: 0;
+                border: 0;
+                -webkit-box-shadow: none;
+                box-shadow: none;
+                background-color: unset;
+                text-align: justify;
+              }
+
+              & button.btn {
+                margin: auto;
+                width: 72px;
+                height: 72px;
+              }
+            }
+          }
+        }
+      }
+
+      & button.create-level-button {
+        position: fixed;
+        bottom: 5%;
+        right: 5%;
+        width: 64px;
+        height: 64px;
+      }
+    }
+
+    & .level-page {
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      margin-top: @header-height;
+      position: fixed;
+      top: 0;
+
+      & .level-page-row {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+
+        & .playground {
+          height: 100%;
+          background-color: #32BCDB;
+          padding: 0;
+          text-align: center;
+        }
+
+        & .scrolling-panel {
+          padding: 0;
+          height: 100%;
+          overflow: auto;
+
+          & .statement {
+            background-color: #23E698;
+            height: 25%;
+            text-align: center;
+          }
+
+          & .generated-code {
+            background-color: #AAF000;
+            height: 55%;
+            text-align: center;
+          }
+
+          & .submission {
+            background-color: #F8B57A;
+            height: 20%;
+            text-align: center;
+          }
+        }
+      }
+    }
+
+    & .profile-page {
+
+      & .profile-container {
+        display: flex;
+      }
+
+      & .profile-data-container {
+        padding-left: 300px;
+        width: 60%;
+
+
+        & .data-container {
+          display: flex;
+          padding-top: 30px;
+
+          & .form-control {
+            width: unset;
+          }
+
+          & .data-title {
+            font-weight: 600;
+            padding-right: 40px;
+            text-transform: uppercase;
+            margin-top: auto;
+            margin-bottom: auto;
+            min-width: 200px;
+          }
+        }
+      }
+
+      & .action-buttons {
+        float: right;
+        padding-right: 400px;
+        padding-top: 100px;
+      }
+
+      & .avatar-upload {
+
+        & img.avatar-picture {
+          height: 256px;
+          width: 256px;
+          cursor: pointer;
+
+          &:hover {
+            -webkit-filter: blur(2px) brightness(70%);
+            filter: blur(2px) brightness(70%);
+
+            -moz-transition: opacity 0.7s;
+            -webkit-transition:  0.7s;
+            -o-transition: opacity 0.7s;
+          }
+        }
+      }
+    }
+
+    & .alert {
+      width: 97%;
+      margin: 5px auto;
+    }
+  }
+
+  & .page-title {
+    text-align: center;
+  }
+}
+
+.file-selector {
+  display: none!important;
+}
+
+.avatar-picture-default {
+  object-fit: cover;
+  background: white;
+  border-radius: 50%;
+}
+
+.btn-primary {
+  margin: 10px;
+  background-color: @primary-color;
+  border-color: unset;
+
+  &:focus {
+    background-color: @primary-color;
+    border-color: unset;
+  }
+  &:hover,:active {
+    background-color: @dark-primary-color !important;
+    border-color: unset !important;
+  }
+}
+
+& button.circle-button {
+  border-radius: 50%;
+  background-color: @primary-color;
+  transition: all .2s ease-in-out;
+
+  & span {
+    color: white;
+    font-size: 2em;
+    padding-left: 8%;
+  }
+
+  &:hover {
+    background-color: @dark-primary-color;
+    cursor: pointer;
+    transform: scale(1.1);
+  }
+
+  &:focus {
+    outline: none !important;
+  }
+
+  &:active {
+    transform: scale(1);
   }
 }

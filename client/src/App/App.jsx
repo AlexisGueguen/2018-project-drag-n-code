@@ -1,32 +1,18 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 import { history } from '../_helpers';
-import { alertActions } from '../_actions';
 import { LoginPage } from '../LoginPage';
 import { RegisterPage } from '../RegisterPage';
 import {BasicPageComponent} from "../BasicPage";
 import {Router, Route, Switch} from "react-router-dom";
 import {PrivateRoute} from "../_components";
+import Alert from "../_components/Alert";
 
-class App extends React.Component {
-    constructor(props) {
-        super(props);
-
-        const { dispatch } = this.props;
-        history.listen((location, action) => {
-            // clear alert on location change
-            dispatch(alertActions.clear());
-        });
-    }
-
+export class App extends React.Component {
     render() {
-        const { alert } = this.props;
         return (
             <div className="page-container">
-                {alert.message &&
-                <div className={`alert ${alert.type}`}>{alert.message}</div>
-                }
+                <Alert class="fixed-alert"/>
                 <Router history={history}>
                     <Switch>
                         <Route path="/login" component={LoginPage}/>
@@ -38,13 +24,3 @@ class App extends React.Component {
         );
     }
 }
-
-function mapStateToProps(state) {
-    const { alert } = state;
-    return {
-        alert
-    };
-}
-
-const connectedApp = connect(mapStateToProps)(App);
-export { connectedApp as App }; 

@@ -1,18 +1,18 @@
 import {levelConstants} from "../_constants/level.constant";
 
-export function getAllLevels(state = {}, action) {
+export function getLevel(state = {}, action) {
     switch (action.type) {
-        case levelConstants.GET_ALL_LEVELS_REQUEST:
+        case levelConstants.GET_LEVEL_REQUEST:
             return {
                 loading: true,
-                levels: null
+                level: null
             };
-        case levelConstants.GET_ALL_LEVELS_SUCCESS:
+        case levelConstants.GET_LEVEL_SUCCESS:
             return {
                 loading: false,
-                levels: action.levels
+                level: action.level
             };
-        case levelConstants.GET_ALL_LEVELS_FAILURE:
+        case levelConstants.GET_LEVEL_FAILURE:
             return {};
         default:
             return state

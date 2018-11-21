@@ -1,11 +1,13 @@
-import { authHeader } from '../_helpers';
-import config from '../config.json';
+import {authBodyHeader, authHeader} from '../_helpers';
+import configFile from "../config";
+const config = configFile[process.env.NODE_ENV];
 
 export const userService = {
     login,
     logout,
     register,
-    getById
+    getById,
+    update
 };
 
 function login(username, password) {
@@ -50,6 +52,16 @@ function register(user) {
     };
 
     return fetch(`${config.apiUrl}/register`, requestOptions).then(handleResponse);
+}
+
+function update(user) {
+    const requestOptions = {
+        method: 'PUT',
+        headers: authBodyHeader(),
+        body: JSON.stringify(user)
+    };
+
+    return fetch(`${config.apiUrl}/user`, requestOptions).then(handleResponse);
 }
 
 

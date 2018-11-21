@@ -14,8 +14,11 @@
     "title": "Register",
     "usernameField" : "Username",
     "passwordField" : "Password",
+    "emailField" : "Mail",
     "usernameRequired": "Username is required",
     "passwordRequired": "Password is required",
+    "emailRequired": "Mail is required",
+    "emailInvalid": "Mail is invalid",
     "cancelLink": "Cancel"
   },
   "header" : {
@@ -24,10 +27,23 @@
   },
   "homePage" : {
     "title" : "Home",
-    "description" : "Welcome back ! Select a level to start playing"
+    "description" : "Level list"
   },
   "community" : {
     "title" : "Community",
     "description" : "Welcome back ! Select a level to start playing"
+  },
+  "profile" : {
+    "title" : "Profile",
+    "usernameTitle" : "Your Username",
+    "passwordTitle" : "Your Password",
+    "emailTitle" : "Your Email",
+    "avatarTitle" : "Your Avatar",
+    "modifyButton" : "Edit Profile" ,
+    "cancelButton" : "Cancel",
+    "saveButton" : "Save Profile",
+    "emailPlaceholder" : "email@example.com",
+    "emailTip" : "Your email adress won't be used in commercial purposes.",
+    "uploadPictureButton": "Save"
   }
 }

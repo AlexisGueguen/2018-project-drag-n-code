@@ -3,7 +3,7 @@ import connect from "react-redux/es/connect/connect";
 
 class CommunityPage extends React.Component {
     render() {
-        return null;
+        return <h2 className="page-title">Community</h2>;
     }
 }
 

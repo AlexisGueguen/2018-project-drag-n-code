@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import {levelActions} from "../_actions/level.actions";
 import connect from "react-redux/es/connect/connect";
 import LoadingPoints from "./LoadingPoints";
+import {Collapse, Well} from "react-bootstrap";
+import { history } from '../_helpers';
 
 class LevelList extends React.Component {
     constructor(props) {
@@ -12,13 +14,16 @@ class LevelList extends React.Component {
 
     render() {
         const { loading, levels } = this.props;
-        console.log(levels);
         return (
-            <div className='level-list'>
+            <div className="level-list col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
                 {loading ? (
                     <LoadingPoints/>
                 ) : (
-                    <ul>{levels ? levels.map((item) => <li>{item.title} - {item.description}</li>) : <p>No levels found...</p>}</ul>
+                    <div className="list-group">
+                        {levels != null && levels !== undefined &&
+                            levels.map((item) => <ListItem key={item.title} value={item}/>)
+                        }
+                    </div>
                 )}
             </div>
         );
@@ -39,3 +44,53 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(LevelList);
+
+class ListItem extends React.Component {
+    constructor(props, context) {
+        super(props, context);
+
+        this.state = {
+            open: false
+        };
+
+        this.handleClick = this.handleClick.bind(this);
+        this.handlePlayClick = this.handlePlayClick.bind(this);
+    }
+
+    handleClick() {
+        this.setState({open: !this.state.open});
+    }
+
+
+    handlePlayClick() {
+        const { _id } = this.props.value;
+        history.push(`/play&id=${_id}`);
+    }
+
+    render() {
+        return (
+            <div className="list-item-container container-fluid">
+                <div className="list-group-item list-group-item-action list-item-header" onClick={this.handleClick}>
+                    <h4>{this.props.value.title}</h4>
+                    <p>{this.props.value.description}</p>
+                </div>
+                <Collapse in={this.state.open}>
+                    <div className="row-fluid">
+                        <div className="list-item-details">
+                            <Well className="list-item-statement col-md-10 col-sm-9">
+                                {this.props.value.statement}
+                            </Well>
+                            <button className="btn circle-button col-md-2 col-sm-3" onClick={this.handlePlayClick}>
+                                <span className="glyphicon glyphicon-play"/>
+                            </button>
+                        </div>
+                    </div>
+                </Collapse>
+            </div>
+        );
+    };
+}
+
+ListItem.propTypes = {
+    levels: PropTypes.object
+};

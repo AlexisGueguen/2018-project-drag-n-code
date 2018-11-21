@@ -6,7 +6,8 @@ You need a linux computer (or VM) with the port for HTTP(80), HTTPS(443) and SSH
 ##Install the tools
 ###System update
 First we need to update the system:  
-```sudo apt-get update && sudo apt-get upgrade -y```    
+```sudo apt-get update```    
+```sudo apt-get upgrade -y```    
 If it ask you to keep your local copy, say YES.  
 ### NGINX
 Install nginx: ```sudo apt-get install nginx -y```    
@@ -59,7 +60,12 @@ server {
 }
 ```
 ```Ctrl+O``` to save, ```Ctrl+X``` to exit.  
-Then reload nginx: ```sudo systemctl reload nginx```
+Then reload nginx: ```sudo systemctl reload nginx```  
+
+Update the address of the API: 
+```
+sudo nano ~/2018-project-drag-n-code/client/src/config.json
+```
 
 ### Clone the repository
 ```

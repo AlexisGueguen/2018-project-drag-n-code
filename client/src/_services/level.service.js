@@ -1,8 +1,10 @@
 import { authHeader } from '../_helpers';
-import config from '../config.json';
+import configFile from '../config.json';
+const config = configFile[process.env.NODE_ENV];
 
 export const levelService = {
-    getAll
+    getAll,
+    getById
 };
 
 function getAll() {
@@ -10,8 +12,17 @@ function getAll() {
         method: 'GET',
         headers: authHeader()
     };
-
+    console.log(config.apiUrl);
     return fetch(`${config.apiUrl}/levels`, requestOptions).then(handleResponse);
+}
+
+function getById(id) {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+
+    return fetch(`${config.apiUrl}/levels/${id}`, requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {

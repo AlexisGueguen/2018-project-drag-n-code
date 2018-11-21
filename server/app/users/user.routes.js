@@ -28,4 +28,11 @@ module.exports = (router) => {
     router
         .route('/user')
         .get(userController.getCurrent);
+
+    /**
+     * update one user's details
+     */
+    router
+        .route('/user')
+        .put(userController.update);
 };

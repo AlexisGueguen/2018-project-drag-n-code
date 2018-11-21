@@ -4,10 +4,6 @@ import {ProfileDropdownComponent} from "../ProfileDropdownComponent/index";
 import {Link} from "react-router-dom";
 
 export default class HeaderComponent extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div className="header">
@@ -16,7 +12,7 @@ export default class HeaderComponent extends React.Component {
 
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                            <Link to="/home" className="nav-button" href="#">{Translation.homePage.title}
+                            <Link to="/" className="nav-button" href="#">{Translation.homePage.title}
                                 <span className="sr-only">(current)</span>
                             </Link>
                         </li>

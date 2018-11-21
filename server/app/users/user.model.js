@@ -14,7 +14,14 @@ const schema = new Schema({
     createdDate: {
         type: Date,
         default: Date.now
-    }
+    },
+    email: {
+        type: String,
+        required: true
+    },
+    picture: {
+        type: String
+    },
 });
 
 module.exports = mongoose.model('User', schema);

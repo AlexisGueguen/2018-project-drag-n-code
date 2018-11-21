@@ -1,53 +1,54 @@
 import React from 'react';
 import connect from "react-redux/es/connect/connect";
-import translation from "../../_constants/en";
 import {Link} from "react-router-dom";
 
 class ProfileDropdownComponent extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div className="dropdown profile-dropdown">
-                <div className="user-profile">
-                    <img src="/resources/defaultAvatar.jpg" alt="Avatar" className="avatar"/>
-                </div>
-                <ul className="dropdown-menu">
-                    <li className="main-items">
-                        <Link to="/profile" className="item-link">
-                            <span className="glyphicon glyphicon-user"/>
-                            <a className="item-title" href="#">{this.props.user.username}</a>
-                        </Link>
+                <div className="user-menu">
+                    <Link to="/profile">
+                        {(this.props.user.picture) ? (
+                            <img className="avatar avatar-picture-default" src={this.props.user.picture} alt="Avatar"/>
+                        ) : (
+                            <img className="avatar avatar-picture-default" src="/resources/defaultAvatar.jpg" alt="Avatar"/>
+                        )}
+                    </Link>
+                    <ul className="dropdown-menu">
+                        <li className="main-items">
+                            <Link to="/profile" className="item-link">
+                                <span className="glyphicon glyphicon-user"/>
+                                <div className="item-title">{this.props.user.username}</div>
+                            </Link>
 
-                    </li>
-                    <li className="divider"></li>
-                    <li>
-                        <Link to="/leaderboard" className="item-link">
-                            <span className="glyphicon glyphicon-globe"/>
-                            <a className="item-title" href="#">LeaderBoard</a>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/achievements" className="item-link">
-                            <span className="glyphicon glyphicon-certificate"/>
-                            <a className="item-title" href="#">Achievements</a>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/settings" className="item-link">
-                            <span className="glyphicon glyphicon-cog"/>
-                            <a className="item-title" href="#">Paramètres</a>
-                        </Link>
-                    </li>
-                    <li className="main-items">
-                        <Link to="/login" className="item-link">
-                            <span className="glyphicon glyphicon-log-out"/>
-                            <a className="item-title" href="#">Déconnexion</a>
-                        </Link>
-                    </li>
-                </ul>
+                        </li>
+                        <li className="divider"/>
+                        <li>
+                            <Link to="/leaderboard" className="item-link">
+                                <span className="glyphicon glyphicon-globe"/>
+                                <div className="item-title">LeaderBoard</div>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/achievements" className="item-link">
+                                <span className="glyphicon glyphicon-certificate"/>
+                                <div className="item-title">Achievements</div>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/settings" className="item-link">
+                                <span className="glyphicon glyphicon-cog"/>
+                                <div className="item-title">Paramètres</div>
+                            </Link>
+                        </li>
+                        <li className="main-items">
+                            <Link to="/login" className="item-link">
+                                <span className="glyphicon glyphicon-log-out"/>
+                                <div className="item-title">Déconnexion</div>
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
             </div>
         )
     }

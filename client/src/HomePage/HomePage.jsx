@@ -2,13 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import LevelList from "../_components/LevelList";
 
-
 class HomePage extends React.Component {
 
     render() {
         return (
             <div className="home-page">
                 <LevelList/>
+                <button className="btn circle-button create-level-button">
+                    <span className="glyphicon glyphicon-plus"/>
+                </button>
             </div>
         );
     }
