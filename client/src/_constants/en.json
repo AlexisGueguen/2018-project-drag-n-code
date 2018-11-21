@@ -14,8 +14,11 @@
     "title": "Register",
     "usernameField" : "Username",
     "passwordField" : "Password",
+    "emailField" : "Mail",
     "usernameRequired": "Username is required",
     "passwordRequired": "Password is required",
+    "emailRequired": "Mail is required",
+    "emailInvalid": "Mail is invalid",
     "cancelLink": "Cancel"
   },
   "header" : {

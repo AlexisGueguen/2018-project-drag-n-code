@@ -6,6 +6,7 @@ import { userActions } from '../_actions';
 import translation from '../_constants/en.json';
 
 import LoadingWheel from '../_components/LoadingPoints';
+import {validateEmail} from "../_helpers/utils";
 
 class RegisterPage extends React.Component {
     constructor(props) {
@@ -14,9 +15,11 @@ class RegisterPage extends React.Component {
         this.state = {
             user: {
                 username: '',
-                password: ''
+                password: '',
+                email: ''
             },
-            submitted: false
+            submitted: false,
+            emailIsValid: true
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -26,28 +29,38 @@ class RegisterPage extends React.Component {
     handleChange(event) {
         const { name, value } = event.target;
         const { user } = this.state;
+        let isEmailValid = validateEmail(user.email);
         this.setState({
             user: {
                 ...user,
                 [name]: value
-            }
+            },
+            emailIsValid: isEmailValid
         });
     }
 
     handleSubmit(event) {
         event.preventDefault();
 
-        this.setState({ submitted: true });
         const { user } = this.state;
-        const { dispatch } = this.props;
-        if (user.username && user.password) {
+        let isEmailValid = validateEmail(user.email);
+        this.setState({
+            submitted: true,
+            emailIsValid: isEmailValid
+        });
+        const {dispatch} = this.props;
+        if (user.username
+            && user.password
+            && user.email
+            && validateEmail(user.email)
+        ) {
             dispatch(userActions.register(user));
         }
     }
 
     render() {
         const { registering  } = this.props;
-        const { user, submitted } = this.state;
+        const { user, submitted, emailIsValid } = this.state;
         return (
             <div className="col-md-2 col-md-offset-5 col-sm-4 col-sm-offset-4 login-container">
                 <h2>{translation.register.title}</h2>
@@ -64,6 +77,16 @@ class RegisterPage extends React.Component {
                         <input type="password" className="form-control" name="password" value={user.password} onChange={this.handleChange} />
                         {submitted && !user.password &&
                             <div className="help-block">{translation.register.passwordRequired}</div>
+                        }
+                    </div>
+                    <div className={'form-group' + (submitted && (!user.email || !emailIsValid) ? ' has-error' : '')}>
+                        <label htmlFor="mail">{translation.register.emailField}</label>
+                        <input type="text" className="form-control" name="email" value={user.email} onChange={this.handleChange} />
+                        {submitted && !user.email &&
+                            <div className="help-block">{translation.register.emailRequired}</div>
+                        }
+                        {submitted && user.email && !emailIsValid &&
+                            <div className="help-block">{translation.register.emailInvalid}</div>
                         }
                     </div>
                     <div className="form-group">
