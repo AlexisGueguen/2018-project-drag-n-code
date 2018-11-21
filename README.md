@@ -13,8 +13,10 @@ composed of several logical problems which we will call “levels”.
 When a player starts a level, the problem to solve will be 
 detailed, and the user can access the Playground.
 
+[3.16.159.117](3.16.159.117)
+------------------------
+
 
 Deploy the project
 ----------------------
-To deploy the project, you need to deploy both front and back.
-To deploy the back, follow 
+See the deployement documentation.
