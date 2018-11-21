@@ -9,7 +9,9 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "history": "^4.6.3",
+    "lodash": "^4.17.11",
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
     "react-bootstrap": "^0.32.4",

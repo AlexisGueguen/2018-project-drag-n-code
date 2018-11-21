@@ -1,4 +1,4 @@
-import { authHeader } from '../_helpers';
+import {authBodyHeader, authHeader} from '../_helpers';
 import config from '../config.json';
 
 export const userService = {
@@ -56,11 +56,11 @@ function register(user) {
 function update(user) {
     const requestOptions = {
         method: 'PUT',
-        headers: {'Content-Type': 'application/json'},
+        headers: authBodyHeader(),
         body: JSON.stringify(user)
     };
 
-    return fetch(`${config.apiUrl}/update`, requestOptions).then(handleResponse);
+    return fetch(`${config.apiUrl}/user/update`, requestOptions).then(handleResponse);
 }
 
 

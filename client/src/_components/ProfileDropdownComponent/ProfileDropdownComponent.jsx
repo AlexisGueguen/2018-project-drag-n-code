@@ -3,7 +3,6 @@ import connect from "react-redux/es/connect/connect";
 import {Link} from "react-router-dom";
 
 class ProfileDropdownComponent extends React.Component {
-
     render() {
         return (
             <div className="dropdown profile-dropdown">

@@ -64,11 +64,11 @@ function update(user) {
     return dispatch => {
         dispatch(request({ user }));
 
-        userService.login(user)
+        userService.update(user)
             .then(
                 user => {
                     dispatch(success(user));
-                    history.push('/settings');
+                    history.push('/profile');
                 },
                 error => {
                     dispatch(failure(error.toString()));

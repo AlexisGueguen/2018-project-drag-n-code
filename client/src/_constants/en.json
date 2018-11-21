@@ -29,5 +29,17 @@
   "community" : {
     "title" : "Community",
     "description" : "Welcome back ! Select a level to start playing"
+  },
+  "profile" : {
+    "title" : "Profile",
+    "usernameTitle" : "Your Username",
+    "passwordTitle" : "Your Password",
+    "emailTitle" : "Your Email",
+    "avatarTitle" : "Your Avatar",
+    "modifyButton" : "Edit Profile" ,
+    "cancelButton" : "Cancel",
+    "saveButton" : "Save Profile",
+    "emailPlaceholder" : "email@example.com",
+    "emailTip" : "This field is optional. Subscribe to our newsletter and secure your account."
   }
 }
