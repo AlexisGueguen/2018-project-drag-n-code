@@ -54,7 +54,7 @@ class ProfilePage extends React.Component {
                 <div className="profile-page">
                     <div className="profile-container">
                         <div className="profile-data-container">
-                            <h3>{translation.profile.title}</h3>
+                            <h2 className="page-title">{translation.profile.title}</h2>
                             <div className="username-container data-container">
                                 <div className="data-title">{translation.profile.usernameTitle}</div>
                                 <div className="">{this.props.user.username}</div>

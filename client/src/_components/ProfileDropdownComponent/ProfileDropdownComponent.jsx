@@ -1,6 +1,7 @@
 import React from 'react';
 import connect from "react-redux/es/connect/connect";
 import {Link} from "react-router-dom";
+import Translation from "../../_constants/en.json"
 
 class ProfileDropdownComponent extends React.Component {
     render() {
@@ -26,25 +27,25 @@ class ProfileDropdownComponent extends React.Component {
                         <li>
                             <Link to="/leaderboard" className="item-link">
                                 <span className="glyphicon glyphicon-globe"/>
-                                <div className="item-title">LeaderBoard</div>
+                                <div className="item-title">{Translation.header.leaderboardTitle}</div>
                             </Link>
                         </li>
                         <li>
                             <Link to="/achievements" className="item-link">
                                 <span className="glyphicon glyphicon-certificate"/>
-                                <div className="item-title">Achievements</div>
+                                <div className="item-title">{Translation.header.achievementsTitle}</div>
                             </Link>
                         </li>
                         <li>
                             <Link to="/settings" className="item-link">
                                 <span className="glyphicon glyphicon-cog"/>
-                                <div className="item-title">Paramètres</div>
+                                <div className="item-title">{Translation.header.settingsTitle}</div>
                             </Link>
                         </li>
                         <li className="main-items">
                             <Link to="/login" className="item-link">
                                 <span className="glyphicon glyphicon-log-out"/>
-                                <div className="item-title">Déconnexion</div>
+                                <div className="item-title">{Translation.header.logoutTitle}</div>
                             </Link>
                         </li>
                     </ul>

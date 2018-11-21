@@ -23,7 +23,11 @@
   },
   "header" : {
     "homePageTitle": "@:homePage.title",
-    "communityPageTitle": "@:communityPage.title"
+    "communityPageTitle": "@:communityPage.title",
+    "leaderboardTitle": "Leaderboard",
+    "achievementsTitle": "Achievements",
+    "settingsTitle": "Settings",
+    "logoutTitle": "Logout"
   },
   "homePage" : {
     "title" : "Home",
