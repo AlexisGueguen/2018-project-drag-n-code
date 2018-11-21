@@ -41,6 +41,7 @@ html, body {
       height: 85px;
       display: flex;
       flex-direction: row;
+      border-radius: 0;
 
       & .navbar-title {
         font-size: 36px;
@@ -84,7 +85,19 @@ html, body {
         margin-left: auto;
         padding-right: 50px;
 
-        & .user-profile {
+        .user-menu .dropdown-menu {
+          max-height: 0;
+          transition: max-height 0.15s ease-out;
+          overflow: hidden;
+          display: block;
+        }
+
+        &:hover .dropdown-menu {
+          max-height: 500px;
+          transition: max-height 0.25s ease-in;
+        }
+
+        & .user-menu {
           margin-top: auto;
           margin-bottom: auto;
 
@@ -100,49 +113,46 @@ html, body {
               transform: scale(1.15);
             }
           }
-        }
-      }
 
-      & .dropdown-menu {
-        left: unset;
-        right: 0;
-        box-shadow: unset;
-        border: unset;
-        background-color: @primary-color;
-        top: 98%;
-        min-width: 190px;
-        border-radius: 0 0 0 5px;
-
-        & > li {
-          & .glyphicon {
-            margin-top: auto;
-            margin-bottom: auto;
-            color: white;
-          }
-          & div.item-title {
-            padding: 15px 20px;
-            color: white;
-            background-color: unset !important;
-            text-decoration: unset !important;
-          }
-          & a.item-link {
-            display: flex;
-            width: 100%;
+          & .dropdown-menu {
+            left: unset;
+            right: 0;
+            box-shadow: unset;
+            border: unset;
             background-color: @primary-color;
-            &:hover {
-              background-color: @dark-primary-color;
+            min-width: 190px;
+            border-radius: 0 0 0 8px;
+            margin: 0 -1px 0 0;
+            padding: 0;
+
+            & > li {
+              & .glyphicon {
+                margin-top: auto;
+                margin-bottom: auto;
+                color: white;
+              }
+              & div.item-title {
+                padding: 15px 20px;
+                color: white;
+                background-color: unset !important;
+                text-decoration: unset !important;
+              }
+              & a.item-link {
+                display: flex;
+                width: 100%;
+                background-color: @primary-color;
+                &:hover {
+                  background-color: @dark-primary-color;
+                }
+              }
+            }
+
+            & > li.divider {
+              background-color: white !important;
+              margin: 0;
             }
           }
         }
-
-        & > li.divider {
-          background-color: white !important;
-          margin: 0;
-        }
-      }
-
-      &:hover .dropdown-menu {
-        display: block;
       }
     }
   }
@@ -177,10 +187,6 @@ html, body {
   padding-bottom: 20px;
 
   & .home-page {
-
-    & h3 {
-      text-align: center;
-    }
 
     & .level-list {
 
