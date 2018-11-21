@@ -3,6 +3,11 @@ import {levelActions} from "../_actions/level.actions";
 import connect from "react-redux/es/connect/connect";
 import PropTypes from "prop-types";
 import LoadingPoints from "../_components/LoadingPoints";
+import Playground from "./Playground";
+import StatementPanel from "./StatementPanel";
+import GeneratedCodePanel from "./GeneratedCodePanel";
+import SubmissionPanel from "./SubmissionPanel";
+import {Col, Grid, Row} from "react-bootstrap";
 
 class LevelPage extends React.Component {
     constructor(props) {
@@ -15,22 +20,22 @@ class LevelPage extends React.Component {
     render() {
         const { loading, level } = this.props;
         return (
-            <div className="level-page">
+            <Grid fluid={true} className="level-page">
                 {loading ? (
                     <LoadingPoints/>
                 ) : (
-                    <div>
-                        {level != null && level !== undefined && level.title}
-                        <div className="playground">Playground</div>
-                        <div className="statement">Statement</div>
-                        <div className="generated-code">Generated code</div>
-                        <div className="submission">Submission</div>
-                    </div>
+                    <Row className="level-page-row">
+                        <Playground/>
+                        <Col sm={4} md={4} className="scrolling-panel">
+                            <StatementPanel/>
+                            <GeneratedCodePanel/>
+                            <SubmissionPanel/>
+                        </Col>
+                    </Row>
                 )}
-            </div>
+            </Grid>
         );
     }
-
 }
 
 LevelPage.propTypes = {

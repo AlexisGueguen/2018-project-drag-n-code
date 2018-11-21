@@ -42,6 +42,7 @@ html, body {
       display: flex;
       flex-direction: row;
       border-radius: 0;
+      margin: 0;
 
       & .navbar-title {
         font-size: 36px;
@@ -187,6 +188,7 @@ html, body {
   padding-bottom: 20px;
 
   & .home-page {
+    padding-top: 20px;
 
     & .level-list {
 
@@ -234,6 +236,37 @@ html, body {
       right: 5%;
       width: 64px;
       height: 64px;
+    }
+  }
+
+  & .level-page {
+    padding: 0;
+
+    & .level-page-row {
+      width: 100%;
+      margin: 0;
+
+      & .playground {
+        height: 100%;
+        background-color: #32BCDB;
+        padding: 0;
+      }
+
+      & .scrolling-panel {
+        padding: 0;
+
+        & .statement {
+          background-color: #23E698;
+        }
+
+        & .generated-code {
+          background-color: #AAF000;
+        }
+
+        & .submission {
+          background-color: #F8B57A;
+        }
+      }
     }
   }
 }
