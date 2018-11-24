@@ -1,18 +1,14 @@
 import React from 'react';
-import connect from "react-redux/es/connect/connect";
+import CreateLevelButtonComponent from "../_components/CreateLevelButtonComponent";
+import CommunityLevelList from "../_components/CommunityLevelList";
 
-class CommunityPage extends React.Component {
+export class CommunityPage extends React.Component {
     render() {
-        return <h2 className="page-title">Community</h2>;
+        return (
+            <div className="community-page">
+                <CommunityLevelList/>
+                <CreateLevelButtonComponent/>
+            </div>
+        );
     }
 }
-
-function mapStateToProps(state) {
-    const { loggingIn } = state.authentication;
-    return {
-        loggingIn
-    };
-}
-
-const connectedCommunityPage = connect(mapStateToProps)(CommunityPage);
-export { connectedCommunityPage as CommunityPage };

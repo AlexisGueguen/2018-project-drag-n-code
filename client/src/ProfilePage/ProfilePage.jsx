@@ -3,7 +3,7 @@ import connect from "react-redux/es/connect/connect";
 import translation from '../_constants/en.json';
 import {userActions} from "../_actions";
 import _ from 'lodash';
-import AvatarUploadComponent from "../_components/AvatarUploadComponent/AvatarUploadComponent";
+import AvatarUploadComponent from "../_components/AvatarUploadComponent";
 
 class ProfilePage extends React.Component {
     constructor(props) {

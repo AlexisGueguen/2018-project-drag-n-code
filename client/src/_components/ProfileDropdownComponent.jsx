@@ -1,7 +1,7 @@
 import React from 'react';
 import connect from "react-redux/es/connect/connect";
 import {Link} from "react-router-dom";
-import Translation from "../../_constants/en.json"
+import Translation from "../_constants/en.json"
 
 class ProfileDropdownComponent extends React.Component {
     render() {
@@ -63,5 +63,4 @@ function mapStateToProps(state) {
     };
 }
 
-const connectedProfileDropdown = connect(mapStateToProps)(ProfileDropdownComponent);
-export { connectedProfileDropdown as ProfileDropdownComponent };
+export default connect(mapStateToProps)(ProfileDropdownComponent);

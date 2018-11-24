@@ -9,7 +9,7 @@ module.exports = {
 };
 
 function getAll(req, res, next) {
-    levelService.getAll()
+    levelService.getAll(req.query.isCommunity)
         .then(data => res.status(200).json(data))
         .catch(err => next(err));
 }

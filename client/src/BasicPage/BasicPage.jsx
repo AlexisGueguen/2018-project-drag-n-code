@@ -8,7 +8,7 @@ import {AchievementsPage} from "../AchievementsPage";
 import {SettingsPage} from "../SettingsPage";
 import {ProfilePage} from "../ProfilePage";
 import {LevelPage} from "../LevelPage";
-import HeaderComponent from "../_components/HeaderComponent/HeaderComponent";
+import HeaderComponent from "../_components/HeaderComponent";
 import Alert from "../_components/Alert";
 
 class BasicPage extends React.Component {

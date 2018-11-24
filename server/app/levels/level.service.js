@@ -19,8 +19,9 @@ async function getById(id) {
     return level;
 }
 
-async function getAll() {
-    return await Level.find({}, 'title description statement');
+async function getAll(isCommunity) {
+    console.log("get community levels ? "+ isCommunity);
+    return await Level.find({isCreatedByCommunity: isCommunity}, 'title description statement author difficulty upVotes');
 }
 
 async function create(levelParam) {

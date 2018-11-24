@@ -1,7 +1,7 @@
 import React from 'react';
-import Translation from '../../_constants/en.json'
+import Translation from '../_constants/en.json'
 import connect from "react-redux/es/connect/connect";
-import {userActions} from "../../_actions";
+import {userActions} from "../_actions/index";
 
 class AvatarUploadComponent extends React.Component {
     constructor(props) {

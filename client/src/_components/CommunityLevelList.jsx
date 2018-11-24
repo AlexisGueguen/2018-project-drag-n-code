@@ -7,10 +7,10 @@ import {Collapse, Well} from "react-bootstrap";
 import { history } from '../_helpers';
 import {ListItem} from "./ListItem";
 
-class LevelList extends React.Component {
+class CommunityLevelList extends React.Component {
     constructor(props) {
         super(props);
-        this.props.dispatch(levelActions.getAll());
+        this.props.dispatch(levelActions.getAll(true));
     }
 
     render() {
@@ -22,7 +22,7 @@ class LevelList extends React.Component {
                 ) : (
                     <div className="list-group">
                         {levels != null && levels !== undefined &&
-                            levels.map((item) => <ListItem key={item.title} value={item}/>)
+                        levels.map((item) => <ListItem key={item.title} value={item}/>)
                         }
                     </div>
                 )}
@@ -31,7 +31,7 @@ class LevelList extends React.Component {
     }
 }
 
-LevelList.propTypes = {
+CommunityLevelList.propTypes = {
     loading: PropTypes.bool,
     levels: PropTypes.array
 };
@@ -44,4 +44,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(LevelList);
+export default connect(mapStateToProps)(CommunityLevelList);
