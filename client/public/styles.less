@@ -281,9 +281,16 @@ html, body {
 
         & .playground {
           height: 100%;
-          background-color: #32BCDB;
           padding: 0;
-          text-align: center;
+
+          & .playground-code {
+            background-color: #32BCDB;
+            height: 50%;
+          }
+
+          & .playground-instructions {
+            height: 50%;
+          }
         }
 
         & .scrolling-panel {
@@ -433,4 +440,11 @@ html, body {
 .glyphicon {
   font-size: 20px;
   color: @dark-secondary-color;
-}
+
+}.instruction-variable {
+   padding: 8px;
+   margin: 8px;
+   border-radius: 4px;
+
+   background-color: brown;
+ }
