@@ -34,10 +34,12 @@ export class ListItem extends React.Component {
                         <p>{this.props.value.description}</p>
                     </div>
                     <div className="level-meta-data">
-                        <div className="community-votes">
-                            <div className="up-votes-count">{this.props.value.upVotes}</div>
-                            <span className="glyphicon glyphicon-thumbs-up"/>
-                        </div>
+                        {this.props.value.isCreatedByCommunity &&
+                            <div className="community-votes">
+                                <div className="up-votes-count">{this.props.value.upVotes}</div>
+                                <span className="glyphicon glyphicon-thumbs-up"/>
+                            </div>
+                        }
                         <DifficultyStars value={this.props.value.difficulty}/>
                     </div>
                 </div>

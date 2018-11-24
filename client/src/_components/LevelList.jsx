@@ -10,7 +10,7 @@ import {ListItem} from "./ListItem";
 class LevelList extends React.Component {
     constructor(props) {
         super(props);
-        this.props.dispatch(levelActions.getAll());
+        this.props.dispatch(levelActions.getAll(false));
     }
 
     render() {
@@ -21,7 +21,7 @@ class LevelList extends React.Component {
                     <LoadingPoints/>
                 ) : (
                     <div className="list-group">
-                        {levels != null && levels !== undefined &&
+                        {levels &&
                             levels.map((item) => <ListItem key={item.title} value={item}/>)
                         }
                     </div>
