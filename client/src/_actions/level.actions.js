@@ -7,11 +7,11 @@ export const levelActions = {
     getById
 };
 
-function getAll() {
+function getAll(createdByCommunity) {
     return dispatch => {
         dispatch(request());
 
-        levelService.getAll()
+        levelService.getAll(createdByCommunity)
             .then(
                 levels => {
                     dispatch(success(levels));

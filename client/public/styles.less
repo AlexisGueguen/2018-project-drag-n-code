@@ -185,7 +185,7 @@ html, body {
     height: 100%;
     overflow: auto;
 
-    & .home-page {
+    & .home-page,.community-page {
       padding-top: 20px;
       padding-bottom: 20px;
 
@@ -198,6 +198,34 @@ html, body {
 
             & .list-item-header {
               border: 0;
+              display: flex;
+
+              & .level-header-title {
+                width: fit-content;
+                max-width: 80%;
+              }
+
+              & .level-meta-data {
+                margin-left: auto;
+                padding: 15px;
+
+                & .community-votes {
+                  display: flex;
+                  width: 100%;
+                  & span {
+                    margin-left: auto;
+                  }
+                  & .up-votes-count {
+                    margin-left: auto;
+                    padding-top: 3px;
+                    color: @dark-secondary-color;
+                  }
+                }
+
+                & .difficulty-stars {
+                  padding-top: 15px;
+                }
+              }
 
               &:hover {
                 background-color: @light-grey-color;
@@ -321,7 +349,7 @@ html, body {
       }
 
       & .profile-data-container {
-        padding-left: 300px;
+        padding-left: 20%;
         width: 60%;
 
 
@@ -346,8 +374,7 @@ html, body {
 
       & .action-buttons {
         float: right;
-        padding-right: 400px;
-        padding-top: 100px;
+        padding-top: 10%;
       }
 
       & .avatar-upload {
@@ -431,10 +458,14 @@ html, body {
   }
 }
 
-.instruction-variable {
-  padding: 8px;
-  margin: 8px;
-  border-radius: 4px;
+.glyphicon {
+  font-size: 20px;
+  color: @dark-secondary-color;
 
-  background-color: brown;
-}
+}.instruction-variable {
+   padding: 8px;
+   margin: 8px;
+   border-radius: 4px;
+
+   background-color: brown;
+ }

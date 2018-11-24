@@ -7,13 +7,13 @@ export const levelService = {
     getById
 };
 
-function getAll() {
+function getAll(createdByCommunity) {
     const requestOptions = {
         method: 'GET',
         headers: authHeader()
     };
     console.log(config.apiUrl);
-    return fetch(`${config.apiUrl}/levels`, requestOptions).then(handleResponse);
+    return fetch(`${config.apiUrl}/levels?isCommunity=${createdByCommunity}`, requestOptions).then(handleResponse);
 }
 
 function getById(id) {

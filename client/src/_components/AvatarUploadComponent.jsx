@@ -1,7 +1,7 @@
 import React from 'react';
-import Translation from '../../_constants/en.json'
+import Translation from '../_constants/en.json'
 import {connect} from "react-redux";
-import {userActions} from "../../_actions";
+import {userActions} from "../_actions";
 
 class AvatarUploadComponent extends React.Component {
     constructor(props) {
@@ -30,7 +30,6 @@ class AvatarUploadComponent extends React.Component {
                 picture: reader.result
             };
             dispatch(userActions.update(uploadUser));
-            //this.setState({selectedFile: file})
         }, false);
     };
 
