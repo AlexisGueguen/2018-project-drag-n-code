@@ -272,20 +272,42 @@ html, body {
 
           & .statement {
             background-color: #23E698;
-            height: 25%;
-            text-align: center;
+            height: auto;
+            padding: 0 8px 8px;
+            overflow: auto;
+            min-height: 10%;
+
+            & h3 {
+              text-align: center;
+            }
+
+            & p {
+              text-align: justify;
+            }
           }
 
           & .generated-code {
             background-color: #AAF000;
-            height: 55%;
+            height: auto;
+            min-height: 10%;
             text-align: center;
+            overflow: auto;
+
+            & h3 {
+              text-align: center;
+            }
           }
 
           & .submission {
-            background-color: #F8B57A;
             height: 20%;
             text-align: center;
+            display: flex;
+            
+            & button {
+              width: 75%;
+              margin: auto;
+              padding: 16px;
+            }
           }
         }
       }

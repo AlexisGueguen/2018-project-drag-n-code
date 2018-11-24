@@ -24,10 +24,11 @@ class LevelPage extends React.Component {
                 {loading ? (
                     <LoadingPoints/>
                 ) : (
+                    level &&
                     <Row className="level-page-row">
                         <Playground/>
                         <Col sm={5} md={4} className="scrolling-panel">
-                            <StatementPanel/>
+                            <StatementPanel value={level.statement}/>
                             <GeneratedCodePanel/>
                             <SubmissionPanel/>
                         </Col>
