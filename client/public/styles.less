@@ -284,12 +284,12 @@ html, body {
           padding: 0;
 
           & .playground-code {
-            background-color: #32BCDB;
             height: 50%;
           }
 
           & .playground-instructions {
             height: 50%;
+            border-top: 1px solid lightgray;
           }
         }
 
@@ -297,9 +297,9 @@ html, body {
           padding: 0;
           height: 100%;
           overflow: auto;
+          border-left: 1px solid lightgray;
 
           & .statement {
-            background-color: #23E698;
             height: auto;
             padding: 0 8px 8px;
             overflow: auto;
@@ -315,14 +315,17 @@ html, body {
           }
 
           & .generated-code {
-            background-color: #AAF000;
             height: auto;
             min-height: 10%;
-            text-align: center;
             overflow: auto;
+            padding: 0 8px 8px;
 
             & h3 {
               text-align: center;
+            }
+
+            & p {
+              text-align: justify;
             }
           }
 
@@ -467,5 +470,5 @@ html, body {
    margin: 8px;
    border-radius: 4px;
 
-   background-color: brown;
+   background-color: #F8B57A;
  }

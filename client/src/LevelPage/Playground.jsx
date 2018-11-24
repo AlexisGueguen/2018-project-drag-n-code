@@ -2,12 +2,18 @@ import React from "react";
 import {Col} from "react-bootstrap";
 import {DragDropContext, Droppable} from 'react-beautiful-dnd';
 import {VariableDeclaration} from "./Instructions";
+import {instructions} from "./Instructions/instructions";
+
+const initialState = {
+    code: []
+};
 
 export default class Playground extends React.Component {
 
-    state = {
-        code: []
-    };
+    constructor(props) {
+        super(props);
+        this.state = initialState;
+    }
 
     onDragEnd = result => {
         const {destination, source, draggableId} = result;
@@ -20,11 +26,12 @@ export default class Playground extends React.Component {
             return; // If the location hasn't change, we don't update.
         }
 
-
         if (destination.droppableId === 'code-droppable') {
             console.log('On Drag End');
             const newCode = Array.from(this.state.code);
-            newCode.splice(destination.index, 0, draggableId);
+            const newInstruction = createInstructionFromId(draggableId);
+            console.log(newInstruction);
+            newCode.splice(destination.index, 0, newInstruction);
             const newState = {
                 ...this.state,
                 code: newCode
@@ -40,13 +47,10 @@ export default class Playground extends React.Component {
                 <DragDropContext onDragEnd={this.onDragEnd}>
                     <Droppable droppableId="code-droppable">
                         {provided => (
-                            <PlaygroundCode
-                                provided={provided}
-                                innerRef={provided.innerRef}
-                                code={code}
-                            >
+                            <div {...provided.droppableProps} ref={provided.innerRef} className="playground-code">
+                                {code && code.map(instr => <div key={instr.id}>{instr.id}</div>)}
                                 {provided.placeholder}
-                            </PlaygroundCode>
+                            </div>
                         )}
                     </Droppable>
                     <Droppable droppableId="instructions-droppable">
@@ -55,26 +59,13 @@ export default class Playground extends React.Component {
                                 provided={provided}
                                 innerRef={provided.innerRef}
                             >
-                                <VariableDeclaration index={0} id={0}/>
-                                <VariableDeclaration index={1} id={1}/>
+                                <VariableDeclaration index={0}/>
                                 {provided.placeholder}
                             </PlaygroundInstructions>
                         )}
                     </Droppable>
                 </DragDropContext>
             </Col>
-        );
-    }
-}
-
-class PlaygroundCode extends React.Component {
-    render() {
-        const {provided, innerRef, children, code} = this.props;
-        return (
-            <div {...provided.droppableProps} ref={innerRef} className="playground-code">
-                {code && code.map(instr => <div key={instr}>{instr}</div>)}
-                {children}
-            </div>
         );
     }
 }
@@ -88,4 +79,16 @@ class PlaygroundInstructions extends React.Component {
             </div>
         );
     }
+}
+
+function createInstructionFromId(id) {
+    let instruction;
+    switch(id) {
+        case instructions.VariableDeclaration:
+            instruction = VariableDeclaration.createInstruction();
+            break;
+        default:
+            throw "Instruction with the id {id} is unrecognized by the system.";
+    }
+    return instruction;
 }
