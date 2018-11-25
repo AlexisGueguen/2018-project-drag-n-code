@@ -10,6 +10,9 @@ const initialState = {
 
 export default class Playground extends React.Component {
 
+    codeDroppableId = 'code-droppable';
+    instructionDroppableId = 'instructions-droppable';
+
     constructor(props) {
         super(props);
         this.state = initialState;
@@ -20,25 +23,55 @@ export default class Playground extends React.Component {
 
         if (!destination) return;
 
-        if (destination.droppableId === source.droppableId
-            && destination.index === source.index
-        ) {
-            return; // If the location hasn't change, we don't update.
-        }
-
-        if (destination.droppableId === 'code-droppable') {
-            console.log('On Drag End');
-            const newCode = Array.from(this.state.code);
-            const newInstruction = createInstructionFromId(draggableId);
-            console.log(newInstruction);
-            newCode.splice(destination.index, 0, newInstruction);
-            const newState = {
-                ...this.state,
-                code: newCode
-            };
-            this.setState(newState);
+        switch (destination.droppableId) {
+            case source.droppableId: {
+                if (destination.index !== source.index) {
+                    const newCode = Array.from(this.state.code);
+                    const instruction = newCode[source.index];
+                    newCode.splice(source.index, 1);
+                    newCode.splice(destination.index, 0, instruction);
+                    this.updateCode(newCode);
+                }
+                break;
+            }
+            case this.codeDroppableId: {
+                // Create a new instruction on the playground
+                const newCode = Array.from(this.state.code);
+                const newInstruction = createInstructionFromId(draggableId);
+                newCode.splice(destination.index, 0, newInstruction);
+                this.updateCode(newCode);
+                break;
+            }
+            case this.instructionDroppableId: {
+                // Remove an instruction from the playground
+                const newCode = Array.from(this.state.code);
+                newCode.splice(source.index, 1);
+                this.updateCode(newCode);
+                break;
+            }
+            default:
+                throw new Error(`Destination (${destination.droppableId}) is not handled.`);
         }
     };
+
+    updateCode(newCode) {
+        const newState = {
+            ...this.state,
+            code: newCode
+        };
+        this.setState(newState);
+    }
+
+    renderPlaygroundCode(code) {
+        return code && code.map((instr, index) => {
+            switch (instr.type) {
+                case instructions.VariableDeclaration:
+                    return <VariableDeclaration key={instr.id} instruction={instr} index={index}/>;
+                default:
+                    throw new Error(`Instruction (${instr.type}) unknown.`);
+            }
+        });
+    }
 
     render() {
         const {code} = this.state;
@@ -48,7 +81,7 @@ export default class Playground extends React.Component {
                     <Droppable droppableId="code-droppable">
                         {provided => (
                             <div {...provided.droppableProps} ref={provided.innerRef} className="playground-code">
-                                {code && code.map(instr => <div key={instr.id}>{instr.id}</div>)}
+                                {code && this.renderPlaygroundCode(code)}
                                 {provided.placeholder}
                             </div>
                         )}
@@ -83,12 +116,12 @@ class PlaygroundInstructions extends React.Component {
 
 function createInstructionFromId(id) {
     let instruction;
-    switch(id) {
+    switch (id) {
         case instructions.VariableDeclaration:
             instruction = VariableDeclaration.createInstruction();
             break;
         default:
-            throw "Instruction with the id {id} is unrecognized by the system.";
+            throw new Error("Instruction with the id {id} is unrecognized by the system.");
     }
     return instruction;
 }

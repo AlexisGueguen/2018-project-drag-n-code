@@ -5,17 +5,23 @@ import {generateGuid} from "../../_helpers/utils";
 
 export class VariableDeclaration extends React.Component {
     render() {
-        const {index} = this.props;
+        const {index, instruction} = this.props;
+        const id = instruction ? instruction.id : instructions.VariableDeclaration;
         return (
-            <Draggable draggableId={instructions.VariableDeclaration} index={index}>
+            <Draggable draggableId={id} index={index}>
                 {provided => (
                     <div
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                         ref={provided.innerRef}
-                        className="instruction-variable"
                     >
-                        New variable
+                        {instruction ? (
+                            <div className="instruction-variable-placed">
+                                <p>{instruction.attributes.type} {instruction.attributes.name};</p>
+                            </div>
+                        ) : (
+                            <div className="instruction-variable">Variable declaration</div>
+                        )}
                     </div>
                 )}
             </Draggable>
@@ -27,9 +33,9 @@ export class VariableDeclaration extends React.Component {
             id: generateGuid(),
             type: instructions.VariableDeclaration,
             attributes: {
-                type: "",
-                name: "",
-                value: ""
+                type: "int",
+                name: "test",
+                value: "0"
             },
             children: null
         }
