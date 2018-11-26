@@ -51,11 +51,9 @@ class Playground extends React.Component {
     };
 
     renderPlaygroundCode(code) {
-        console.log("render code");
         return code && code.map((instr, index) => {
             switch (instr.type) {
                 case instructions.VariableDeclaration:
-                    console.log('new instruction');
                     return <VariableDeclaration key={instr.id} instruction={instr} index={index}/>;
                 default:
                     throw new Error(`Instruction (${instr.type}) unknown.`);
@@ -65,8 +63,6 @@ class Playground extends React.Component {
 
     render() {
         const {code} = this.state;
-        console.log("render");
-        console.log(code);
         return (
             <Col sm={7} md={8} className="playground">
                 <DragDropContext onDragEnd={this.onDragEnd}>
