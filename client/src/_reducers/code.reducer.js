@@ -7,7 +7,13 @@ export function code(state = {}, action) {
                 code: []
             };
         case codeConstants.ADD_INSTRUCTION:
+            return {
+                code: action.code
+            };
         case codeConstants.REMOVE_INSTRUCTION:
+            return {
+                code: action.code
+            };
         case codeConstants.MOVE_INSTRUCTION:
             return {
                 code: action.code

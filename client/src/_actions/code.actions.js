@@ -19,9 +19,7 @@ function addInstruction(code, source, destination, type) {
     return { type: codeConstants.ADD_INSTRUCTION, code }
 }
 
-function removeInstruction(code, id) {
-    const index = code.indexOf(x=>x.id === id);
-    code.splice(index, 1);
+function removeInstruction(code) {
     return { type: codeConstants.REMOVE_INSTRUCTION, code };
 }
 

@@ -14,6 +14,7 @@ class Playground extends React.Component {
     constructor(props) {
         super(props);
         this.props.dispatch(codeActions.init());
+        this.state = {code: []};
     }
 
     onDragEnd = result => {
@@ -37,19 +38,24 @@ class Playground extends React.Component {
             }
             case this.instructionDroppableId: {
                 // Remove an instruction from the playground
-                const {code} = this.props;
+                const code = Array.from(this.state.code);
+                const index = code.indexOf(x=>x.id === draggableId);
+                code.splice(index, 1);
                 this.props.dispatch(codeActions.removeInstruction(code, draggableId));
                 break;
             }
             default:
                 throw new Error(`Destination (${destination.droppableId}) is not handled.`);
         }
+        this.render();
     };
 
     renderPlaygroundCode(code) {
+        console.log("render code");
         return code && code.map((instr, index) => {
             switch (instr.type) {
                 case instructions.VariableDeclaration:
+                    console.log('new instruction');
                     return <VariableDeclaration key={instr.id} instruction={instr} index={index}/>;
                 default:
                     throw new Error(`Instruction (${instr.type}) unknown.`);
@@ -58,7 +64,9 @@ class Playground extends React.Component {
     }
 
     render() {
-        const {code} = this.props;
+        const {code} = this.state;
+        console.log("render");
+        console.log(code);
         return (
             <Col sm={7} md={8} className="playground">
                 <DragDropContext onDragEnd={this.onDragEnd}>
@@ -84,6 +92,12 @@ class Playground extends React.Component {
                 </DragDropContext>
             </Col>
         );
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            code: nextProps.code
+        });
     }
 }
 

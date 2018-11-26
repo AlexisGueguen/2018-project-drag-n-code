@@ -2,8 +2,9 @@ import React from "react";
 import {Draggable} from "react-beautiful-dnd";
 import {instructions} from "./instructions";
 import {generateGuid} from "../../_helpers/utils";
+import connect from "react-redux/es/connect/connect";
 
-export class VariableDeclaration extends React.Component {
+class VariableDeclaration extends React.Component {
 
     constructor(props) {
         super(props);
@@ -45,7 +46,8 @@ export class VariableDeclaration extends React.Component {
                         {instruction ? (
                             <div className="instruction-variable-placed">
                                 <div>{instruction.attributes.type}</div>
-                                <div><input type="text" value={instruction.attributes.name} onChange={this.onNameChange}/></div>
+                                <div><input type="text" value={instruction.attributes.name}
+                                            onChange={this.onNameChange}/></div>
                             </div>
                         ) : (
                             <div className="instruction-variable">Variable declaration</div>
@@ -69,3 +71,13 @@ export class VariableDeclaration extends React.Component {
         }
     }
 }
+
+function mapStateToProps(state) {
+    const {code} = state.code;
+    return {
+        code
+    };
+}
+
+const connectedVariableDeclaration = connect(mapStateToProps)(VariableDeclaration);
+export {connectedVariableDeclaration as VariableDeclaration};
