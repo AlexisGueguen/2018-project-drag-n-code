@@ -3,19 +3,17 @@ import {Col} from "react-bootstrap";
 import {DragDropContext, Droppable} from 'react-beautiful-dnd';
 import {VariableDeclaration} from "./Instructions";
 import {instructions} from "./Instructions/instructions";
+import connect from "react-redux/es/connect/connect";
+import {codeActions} from "../_actions/code.actions";
 
-const initialState = {
-    code: []
-};
-
-export default class Playground extends React.Component {
+class Playground extends React.Component {
 
     codeDroppableId = 'code-droppable';
     instructionDroppableId = 'instructions-droppable';
 
     constructor(props) {
         super(props);
-        this.state = initialState;
+        this.props.dispatch(codeActions.init());
     }
 
     onDragEnd = result => {
@@ -26,41 +24,27 @@ export default class Playground extends React.Component {
         switch (destination.droppableId) {
             case source.droppableId: {
                 if (destination.index !== source.index) {
-                    const newCode = Array.from(this.state.code);
-                    const instruction = newCode[source.index];
-                    newCode.splice(source.index, 1);
-                    newCode.splice(destination.index, 0, instruction);
-                    this.updateCode(newCode);
+                    const {code} = this.props;
+                    this.props.dispatch(codeActions.moveInstruction(code, source, destination, draggableId));
                 }
                 break;
             }
             case this.codeDroppableId: {
                 // Create a new instruction on the playground
-                const newCode = Array.from(this.state.code);
-                const newInstruction = createInstructionFromId(draggableId);
-                newCode.splice(destination.index, 0, newInstruction);
-                this.updateCode(newCode);
+                const {code} = this.props;
+                this.props.dispatch(codeActions.addInstruction(code, source, destination, draggableId));
                 break;
             }
             case this.instructionDroppableId: {
                 // Remove an instruction from the playground
-                const newCode = Array.from(this.state.code);
-                newCode.splice(source.index, 1);
-                this.updateCode(newCode);
+                const {code} = this.props;
+                this.props.dispatch(codeActions.removeInstruction(code, draggableId));
                 break;
             }
             default:
                 throw new Error(`Destination (${destination.droppableId}) is not handled.`);
         }
     };
-
-    updateCode(newCode) {
-        const newState = {
-            ...this.state,
-            code: newCode
-        };
-        this.setState(newState);
-    }
 
     renderPlaygroundCode(code) {
         return code && code.map((instr, index) => {
@@ -74,7 +58,7 @@ export default class Playground extends React.Component {
     }
 
     render() {
-        const {code} = this.state;
+        const {code} = this.props;
         return (
             <Col sm={7} md={8} className="playground">
                 <DragDropContext onDragEnd={this.onDragEnd}>
@@ -103,6 +87,16 @@ export default class Playground extends React.Component {
     }
 }
 
+function mapStateToProps(state) {
+    const { code } = state.code;
+    return {
+        code
+    };
+}
+
+const connectedPlayground = connect(mapStateToProps)(Playground);
+export { connectedPlayground as Playground };
+
 class PlaygroundInstructions extends React.Component {
     render() {
         const {provided, innerRef, children} = this.props;
@@ -112,16 +106,4 @@ class PlaygroundInstructions extends React.Component {
             </div>
         );
     }
-}
-
-function createInstructionFromId(id) {
-    let instruction;
-    switch (id) {
-        case instructions.VariableDeclaration:
-            instruction = VariableDeclaration.createInstruction();
-            break;
-        default:
-            throw new Error("Instruction with the id {id} is unrecognized by the system.");
-    }
-    return instruction;
 }

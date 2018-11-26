@@ -3,7 +3,7 @@ import {levelActions} from "../_actions/level.actions";
 import connect from "react-redux/es/connect/connect";
 import PropTypes from "prop-types";
 import LoadingPoints from "../_components/LoadingPoints";
-import Playground from "./Playground";
+import {Playground} from "./Playground";
 import StatementPanel from "./StatementPanel";
 import GeneratedCodePanel from "./GeneratedCodePanel";
 import SubmissionPanel from "./SubmissionPanel";

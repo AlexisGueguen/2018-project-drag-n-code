@@ -6,6 +6,7 @@ import {alert} from './alert.reducer';
 import {getAllLevels} from './getAllLevels.reducer';
 import {updateUser} from "./updateUser.reducer";
 import {getLevel} from "./getLevel.reducer";
+import {code} from "./code.reducer";
 
 const rootReducer = combineReducers({
     authentication,
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
     alert,
     getAllLevels,
     updateUser,
-    getLevel
+    getLevel,
+    code
 });
 
 export default rootReducer;
