@@ -13,7 +13,6 @@ class LevelPage extends React.Component {
     constructor(props) {
         super(props);
         let id = this.props.match.params.id;
-        console.log(id);
         this.props.dispatch(levelActions.getById(id));
     }
 

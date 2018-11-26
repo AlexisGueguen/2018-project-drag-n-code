@@ -44,7 +44,7 @@ class AvatarUploadComponent extends React.Component {
             picture: this.state.selectedFile
         };
         dispatch(userActions.update(uploadUser));
-        this.state.selectedFile = null;
+        this.setState({selectedFile: null})
     };
 
     render() {
@@ -52,11 +52,11 @@ class AvatarUploadComponent extends React.Component {
             <div className="avatar-upload">
                 <input className="file-selector" ref={this.myRef} type="file" accept="image/*" capture onChange={this.fileChangedHandler}/>
                 {(this.state.selectedFile) ? (
-                    <img className="avatar-picture avatar-picture-default" src={this.state.selectedFile} onClick={this.openSelector}/>
+                    <img className="avatar-picture avatar-picture-default" src={this.state.selectedFile} alt="" onClick={this.openSelector}/>
                 ) : ((this.props.user.picture) ? (
-                        <img className="avatar-picture avatar-picture-default" src={this.props.user.picture} onClick={this.openSelector}/>
+                        <img className="avatar-picture avatar-picture-default" src={this.props.user.picture} alt="" onClick={this.openSelector}/>
                     ) : (
-                        <img className="avatar-picture avatar-picture-default" src="/resources/defaultAvatar.jpg" onClick={this.openSelector}/>
+                        <img className="avatar-picture avatar-picture-default" src="/resources/defaultAvatar.jpg" alt="" onClick={this.openSelector}/>
                     )
                 )}
                 {(this.state.selectedFile) &&
