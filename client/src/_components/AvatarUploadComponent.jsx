@@ -40,14 +40,10 @@ class AvatarUploadComponent extends React.Component {
             picture: this.state.selectedFile
         };
         dispatch(userActions.update(uploadUser));
-<<<<<<< HEAD
-        this.setState({selectedFile: null})
-=======
         this.setState({
             ...this.state,
             selectedFile: null
         })
->>>>>>> e985af9028214e77a45404bb53e984be35dfdfaa
     };
 
     render() {
