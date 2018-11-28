@@ -35,7 +35,9 @@
   },
   "community" : {
     "title" : "Community",
-    "description" : "Welcome back ! Select a level to start playing"
+    "description" : "Welcome back ! Select a level to start playing",
+    "sortLevelsButton" : "Sort",
+    "selectSorting" : "Select what to sort"
   },
   "profile" : {
     "title" : "Profile",
