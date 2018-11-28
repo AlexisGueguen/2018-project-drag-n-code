@@ -290,20 +290,31 @@ html, body {
           & .playground-instructions {
             height: 50%;
             border-top: 1px solid lightgray;
+
+            & table {
+              width: 100%;
+            }
           }
 
           & .instruction-variable-placed {
             background-color: #F8B57A;
+            padding: 12px 16px;
 
             & div {
               display: inline-block;
             }
           }
 
-          & .instruction-variable {
+          & .instruction-if-placed {
+            background-color: #AAF000;
+            padding: 12px 16px;
+          }
+
+          & .instruction {
             padding: 8px;
-            margin: 8px;
+            margin: 8px 4px;
             border-radius: 4px;
+            display: block;
 
             background-color: #F8B57A;
           }
@@ -351,7 +362,7 @@ html, body {
             display: flex;
 
             & button {
-              width: 75%;
+              width: 65%;
               margin: auto;
               padding: 16px;
             }

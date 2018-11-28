@@ -3,6 +3,11 @@ export function validateEmail(email) {
     return re.test(String(email).toLowerCase());
 }
 
+export function isGuid(id) {
+    let re = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/;
+    return re.test(id);
+}
+
 export function generateGuid() {
     /**
      * @return {string}

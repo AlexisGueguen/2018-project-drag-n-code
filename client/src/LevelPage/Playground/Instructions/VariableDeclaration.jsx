@@ -1,9 +1,10 @@
 import React from "react";
 import {Draggable} from "react-beautiful-dnd";
 import {instructions} from "./instructions";
-import {generateGuid} from "../../_helpers/utils";
+import {generateGuid} from "../../../_helpers/utils";
 import connect from "react-redux/es/connect/connect";
-import {codeActions} from "../../_actions/code.actions";
+import {codeActions} from "../../../_actions/code.actions";
+import {codeUtils} from "../codeUtils";
 
 class VariableDeclaration extends React.Component {
 
@@ -31,7 +32,9 @@ class VariableDeclaration extends React.Component {
             instruction: newInstruction
         });
         const {code} = this.props;
-        this.props.dispatch(codeActions.updateInstruction(code, newInstruction));
+        this.props.dispatch(codeActions.updateCode(
+            codeUtils.updateInstruction(code, newInstruction)
+        ));
     }
 
     render() {
@@ -53,7 +56,7 @@ class VariableDeclaration extends React.Component {
                                             onChange={this.onNameChange}/></div>
                             </div>
                         ) : (
-                            <div className="instruction-variable">Variable declaration</div>
+                            <div className="instruction">Variable</div>
                         )}
                     </div>
                 )}
