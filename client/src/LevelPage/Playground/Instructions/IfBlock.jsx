@@ -42,7 +42,7 @@ class IfBlock extends React.Component {
                         ref={provided.innerRef}
                     >
                         {instruction ? (
-                            <div className="instruction-if-placed">
+                            <div {...provided.droppableProps} ref={provided.innerRef} className="instruction-if-placed">
                                 {instruction.type}
                                 <Droppable droppableId={instruction.id} isCombineEnabled>
                                     {provided => (

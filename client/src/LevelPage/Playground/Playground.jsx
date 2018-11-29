@@ -27,34 +27,34 @@ class Playground extends React.Component {
         console.log(result);
 
         if (combine) {
-            this.props.dispatch(codeActions.updateCode(
-                codeUtils.combineInstructions(code, source, draggableId, combine.draggableId)
-            ));
+            let action = codeUtils.combineInstructions(code, source, draggableId, combine.draggableId);
+            this.setState(action.code);
+            this.props.dispatch(codeActions.updateCode(action));
         }
 
         if (!destination) return;
 
         if (isGuid(source.droppableId)) {
-            this.props.dispatch(codeActions.updateCode(
-                codeUtils.moveInstruction(code, source, destination, draggableId)
-            ));
+            let action = codeUtils.moveInstruction(code, source, destination, draggableId);
+            this.setState(action.code);
+            this.props.dispatch(codeActions.updateCode(action));
             return;
         }
 
         switch (destination.droppableId) {
             case source.droppableId: {
                 if (destination.index !== source.index) {
-                    this.props.dispatch(codeActions.updateCode(
-                        codeUtils.moveInstruction(code, source, destination, draggableId)
-                    ));
+                    let action = codeUtils.moveInstruction(code, source, destination, draggableId);
+                    this.setState(action.code);
+                    this.props.dispatch(codeActions.updateCode(action));
                 }
                 break;
             }
             case this.codeRootDroppableId: {
                 // Create a new instruction on the playground
-                this.props.dispatch(codeActions.updateCode(
-                    codeUtils.addInstruction(code, source, destination, draggableId)
-                ));
+                let action = codeUtils.addInstruction(code, source, destination, draggableId);
+                this.setState(action.code);
+                this.props.dispatch(codeActions.updateCode(action));
                 break;
             }
             case this.instructionDroppableId: {

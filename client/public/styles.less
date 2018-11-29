@@ -281,7 +281,7 @@ html, body {
 
     & .level-page {
       padding: 0;
-      height: 100%;
+      height: calc(100% - @header-height);
       width: 100%;
       margin-top: @header-height;
       position: fixed;
@@ -343,7 +343,7 @@ html, body {
             height: auto;
             padding: 0 8px 8px;
             overflow: auto;
-            min-height: 10%;
+            min-height: 50%;
 
             & h3 {
               text-align: center;
@@ -356,9 +356,10 @@ html, body {
 
           & .generated-code {
             height: auto;
-            min-height: 10%;
+            min-height: 50%;
             overflow: auto;
             padding: 0 8px 8px;
+            background-color: #BBBBBB;
 
             & h3 {
               text-align: center;
@@ -370,8 +371,11 @@ html, body {
           }
 
           & .submission {
-            height: 20%;
+            height: 10%;
+            background-color: lightgray;
             text-align: center;
+            position: sticky;
+            bottom: 0;
             display: flex;
 
             & button {
