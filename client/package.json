@@ -9,6 +9,10 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "@atlaskit/css-reset": "^3.0.4",
+    "@atlaskit/icon": "^15.0.1",
+    "@atlaskit/navigation": "^33.3.7",
+    "@atlaskit/tree": "^4.1.8",
     "axios": "^0.18.0",
     "history": "^4.6.3",
     "lodash": "^4.17.11",
@@ -22,7 +26,8 @@
     "react-scripts": "^2.1.1",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "styled-components": "^4.1.2"
   },
   "browserslist": [
     ">0.2%",

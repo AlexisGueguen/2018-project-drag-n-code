@@ -8,6 +8,7 @@ import StatementPanel from "./StatementPanel";
 import GeneratedCodePanel from "./GeneratedCodePanel";
 import SubmissionPanel from "./SubmissionPanel";
 import {Col, Grid, Row} from "react-bootstrap";
+import PlaygroundB from "./Playground/PlaygroundB";
 
 class LevelPage extends React.Component {
     constructor(props) {
@@ -25,7 +26,7 @@ class LevelPage extends React.Component {
                 ) : (
                     level &&
                     <Row className="level-page-row">
-                        <Playground/>
+                        <PlaygroundB/>
                         <Col sm={5} md={5} className="scrolling-panel">
                             <StatementPanel value={level.statement}/>
                             <GeneratedCodePanel/>
