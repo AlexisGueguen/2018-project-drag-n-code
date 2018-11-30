@@ -70,11 +70,20 @@ class Playground extends React.Component {
     };
 
     renderPlaygroundCode(code) {
-        const {children} = code[0];
-        return code && children && children.map((instr, index) => {
+        return this.renderSubTree(code[0])
+    }
+
+    renderSubTree(subTree) {
+        const {children} = subTree;
+        return subTree && children && subTree.children.map((instr, index) => {
             switch (instr.type) {
+                case instructions.Root:
+                    {instr && instr.children && this.renderSubTree(instr)}
+                    break;
                 case instructions.IfBlock:
-                    return <IfBlock key={instr.id} index={index} instruction={instr}/>;
+                    return <IfBlock key={instr.id} index={index} instruction={instr}>
+                        {instr && instr.children && this.renderSubTree(instr)}
+                    </IfBlock>;
                 case instructions.VariableDeclaration:
                     return <VariableDeclaration key={instr.id} instruction={instr} index={index}/>;
                 default:
@@ -88,7 +97,7 @@ class Playground extends React.Component {
         return (
             <Col sm={7} md={7} className="playground">
                 <DragDropContext onDragEnd={this.onDragEnd}>
-                    <Droppable droppableId="code-root" isCombineEnabled>
+                    <Droppable droppableId="code-root" type="root" isCombineEnabled>
                         {provided => (
                             <div {...provided.droppableProps} ref={provided.innerRef} className="playground-code">
                                 {code && this.renderPlaygroundCode(code)}
@@ -96,7 +105,7 @@ class Playground extends React.Component {
                             </div>
                         )}
                     </Droppable>
-                    <Droppable droppableId="instructions-droppable">
+                    <Droppable droppableId="instructions-droppable" type="root">
                         {provided => (
                             <PlaygroundInstructions
                                 provided={provided}

@@ -3,7 +3,6 @@ import {Draggable, Droppable} from "react-beautiful-dnd";
 import {instructions} from "./instructions";
 import {generateGuid} from "../../../_helpers/utils";
 import {connect} from "react-redux";
-import {VariableDeclaration} from "./VariableDeclaration";
 
 class IfBlock extends React.Component {
 
@@ -15,39 +14,21 @@ class IfBlock extends React.Component {
         };
     }
 
-    renderPlaygroundCode(instruction) {
-        const {children} = instruction;
-        return children && children.map((instr, index) => {
-            switch (instr.type) {
-                case instructions.IfBlock:
-                    return <IfBlock key={instr.id} index={index} instruction={instr}/>;
-                case instructions.VariableDeclaration:
-                    return <VariableDeclaration key={instr.id} instruction={instr} index={index}/>;
-                default:
-                    throw new Error(`Instruction (${instr.type}) unknown.`);
-            }
-        });
-    }
-
     render() {
-        const {index} = this.props;
+        const {index, children} = this.props;
         const {instruction} = this.state;
         const id = instruction ? instruction.id : instructions.IfBlock;
         return (
             <Draggable draggableId={id} index={index}>
                 {provided => (
-                    <div
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                        ref={provided.innerRef}
-                    >
+                    <div {...provided.draggableProps}{...provided.dragHandleProps} ref={provided.innerRef}>
                         {instruction ? (
                             <div {...provided.droppableProps} ref={provided.innerRef} className="instruction-if-placed">
                                 {instruction.type}
-                                <Droppable droppableId={instruction.id} isCombineEnabled>
+                                <Droppable droppableId={instruction.id} type={instruction.id} isCombineEnabled>
                                     {provided => (
                                         <div {...provided.droppableProps} ref={provided.innerRef} className="playground-code">
-                                            {instruction && this.renderPlaygroundCode(instruction)}
+                                            {children}
                                             {provided.placeholder}
                                         </div>
                                     )}
