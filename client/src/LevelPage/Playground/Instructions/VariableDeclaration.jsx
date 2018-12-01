@@ -48,16 +48,10 @@ class VariableDeclaration extends React.Component {
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                         ref={provided.innerRef}
+                        className="instruction-variable-placed"
                     >
-                        {instruction ? (
-                            <div className="instruction-variable-placed">
-                                <div>{instruction.attributes.type}</div>
-                                <div><input type="text" value={instruction.attributes.name}
-                                            onChange={this.onNameChange}/></div>
-                            </div>
-                        ) : (
-                            <div className="instruction">Variable</div>
-                        )}
+                        <div>{instruction.attributes.type}</div>
+                        <div><input type="text" value={instruction.attributes.name} onChange={this.onNameChange}/></div>
                     </div>
                 )}
             </Draggable>

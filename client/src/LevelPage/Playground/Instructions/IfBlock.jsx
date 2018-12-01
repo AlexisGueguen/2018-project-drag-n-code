@@ -17,26 +17,27 @@ class IfBlock extends React.Component {
     render() {
         const {index, children} = this.props;
         const {instruction} = this.state;
-        const id = instruction ? instruction.id : instructions.IfBlock;
         return (
-            <Draggable draggableId={id} index={index}>
+            <Draggable draggableId={instruction.id} index={index}>
                 {provided => (
-                    <div {...provided.draggableProps}{...provided.dragHandleProps} ref={provided.innerRef}>
-                        {instruction ? (
-                            <div {...provided.droppableProps} ref={provided.innerRef} className="instruction-if-placed">
-                                {instruction.type}
-                                <Droppable droppableId={instruction.id} type={instruction.id} isCombineEnabled>
-                                    {provided => (
-                                        <div {...provided.droppableProps} ref={provided.innerRef} className="playground-code">
-                                            {children}
-                                            {provided.placeholder}
-                                        </div>
-                                    )}
-                                </Droppable>
-                            </div>
-                        ) : (
-                            <div className="instruction">If block</div>
-                        )}
+                    <div
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                        ref={provided.innerRef}
+                        className="instruction-if-placed"
+                    >
+                        {instruction.type}
+                        <Droppable droppableId={instruction.id}>
+                            {provided2 => (
+                                <div
+                                    {...provided2.droppableProps}
+                                    ref={provided2.innerRef}
+                                    className="playground-code"
+                                >
+                                    {children}
+                                </div>
+                            )}
+                        </Droppable>
                     </div>
                 )}
             </Draggable>

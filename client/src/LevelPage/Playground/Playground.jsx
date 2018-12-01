@@ -1,6 +1,6 @@
 import React from "react";
 import {Col} from "react-bootstrap";
-import {DragDropContext, Droppable} from 'react-beautiful-dnd';
+import {DragDropContext, Draggable, Droppable} from 'react-beautiful-dnd';
 import {VariableDeclaration, IfBlock} from "./Instructions/index";
 import {instructions} from "./Instructions/instructions";
 import connect from "react-redux/es/connect/connect";
@@ -24,7 +24,7 @@ class Playground extends React.Component {
         const {destination, source, draggableId, combine} = result;
         const {code} = this.props;
 
-        console.log(result);
+        //console.log(result);
 
         if (combine) {
             let action = codeUtils.combineInstructions(code, source, draggableId, combine.draggableId);
@@ -69,6 +69,11 @@ class Playground extends React.Component {
         }
     };
 
+    onDragUpdate = update => {
+        console.log("Update");
+        console.log(update);
+    };
+
     renderPlaygroundCode(code) {
         return this.renderSubTree(code[0])
     }
@@ -96,8 +101,8 @@ class Playground extends React.Component {
         const {code} = this.state;
         return (
             <Col sm={7} md={7} className="playground">
-                <DragDropContext onDragEnd={this.onDragEnd}>
-                    <Droppable droppableId="code-root" type="root" isCombineEnabled>
+                <DragDropContext onDragEnd={this.onDragEnd} onDragUpdate={this.onDragUpdate}>
+                    <Droppable droppableId="code-root" isCombineEnabled isDroppableDisabled={true}>
                         {provided => (
                             <div {...provided.droppableProps} ref={provided.innerRef} className="playground-code">
                                 {code && this.renderPlaygroundCode(code)}
@@ -105,14 +110,36 @@ class Playground extends React.Component {
                             </div>
                         )}
                     </Droppable>
-                    <Droppable droppableId="instructions-droppable" type="root">
+                    <Droppable droppableId="instructions-droppable">
                         {provided => (
                             <PlaygroundInstructions
                                 provided={provided}
                                 innerRef={provided.innerRef}
                             >
-                                <VariableDeclaration index={0}/>
-                                <IfBlock index={1}/>
+                                <Draggable draggableId={instructions.VariableDeclaration} index={0}>
+                                    {provided => (
+                                        <div
+                                            {...provided.draggableProps}
+                                            {...provided.dragHandleProps}
+                                            ref={provided.innerRef}
+                                            className="instruction"
+                                        >
+                                            Variable
+                                        </div>
+                                    )}
+                                </Draggable>
+                                <Draggable draggableId={instructions.IfBlock} index={1}>
+                                    {provided => (
+                                        <div
+                                            {...provided.draggableProps}
+                                            {...provided.dragHandleProps}
+                                            ref={provided.innerRef}
+                                            className="instruction"
+                                        >
+                                            If block
+                                        </div>
+                                    )}
+                                </Draggable>
                                 {provided.placeholder}
                             </PlaygroundInstructions>
                         )}
