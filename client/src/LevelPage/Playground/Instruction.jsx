@@ -30,7 +30,11 @@ const target = {
         if (draggedId === overId || draggedId === props.parent) return;
         if (!monitor.isOver({shallow: true})) return;
 
-        props.move(draggedId, overId, props.parent)
+        props.move(draggedId, overId, props.parent);
+    },
+
+    drop(props) {
+        props.finishDrop();
     }
 };
 
@@ -40,7 +44,8 @@ class Instruction extends Component {
         parent: PropTypes.any,
         item: PropTypes.object,
         move: PropTypes.func,
-        find: PropTypes.func
+        find: PropTypes.func,
+        finishDrop: PropTypes.func
     };
 
     render() {
@@ -51,7 +56,8 @@ class Instruction extends Component {
             item,
             parent,
             move,
-            find
+            find,
+            finishDrop
         } = this.props;
 
         return connectDropTarget(connectDragPreview(
@@ -66,6 +72,7 @@ class Instruction extends Component {
                     items={item.children}
                     move={move}
                     find={find}
+                    finishDrop={finishDrop}
                 />
             </div>
         ))

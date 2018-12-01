@@ -5,7 +5,9 @@ import Instruction from "./Instruction";
 import InstructionDraggableOnly from "./InstructionDraggableOnly";
 
 const target = {
-    drop() {},
+    drop(props) {
+        props.finishDrop()
+    },
 
     hover(props, monitor) {
         const {id: draggedId, parent, items} = monitor.getItem();
@@ -25,11 +27,12 @@ class Tree extends Component {
         items: PropTypes.array.isRequired,
         parent: PropTypes.any,
         move: PropTypes.func.isRequired,
-        find: PropTypes.func.isRequired
+        find: PropTypes.func.isRequired,
+        finishDrop: PropTypes.func.isRequired
     };
 
     render() {
-        const {connectDropTarget, items, parent, move, find} = this.props;
+        const {connectDropTarget, items, parent, move, find, finishDrop} = this.props;
 
         return connectDropTarget(
             <div className={parent ? 'tree' : 'first-tree'}>
@@ -43,6 +46,7 @@ class Tree extends Component {
                                 item={item}
                                 move={move}
                                 find={find}
+                                finishDrop={finishDrop}
                             />
                         ) : (
                             <InstructionDraggableOnly

@@ -6,6 +6,7 @@ import {DragDropContext} from "react-dnd";
 import {initialState} from "./initialState";
 import InstructionDraggableOnly from "./InstructionDraggableOnly";
 import {instructions} from "./Instructions/instructions";
+import {generateGuid} from "../../_helpers/utils";
 
 class Playground extends Component {
     constructor(props) {
@@ -34,14 +35,22 @@ class Playground extends Component {
         const item = {...this.findItem(id, tree)};
         if (!item.id) {
             console.log(`item with id ${id} not found in tree`);
-            tree.push({
-                id: 100,
-                type: instructions.IfBlock,
-                droppable: false,
-                attributes: {title: 'Variable'},
-                children: []
-            });
-            this.setState({tree});
+            const {lastIdAdded} = this.state;
+            if (id !== lastIdAdded) {
+                const item = {
+                    id: generateGuid(),
+                    type: instructions.IfBlock,
+                    droppable: false,
+                    attributes: {title: 'Variable'},
+                    children: []
+                };
+                tree.push(item);
+                this.setState({
+                    ...this.state,
+                    lastIdAdded: id,
+                    tree
+                });
+            }
             return;
         }
 
@@ -56,7 +65,10 @@ class Playground extends Component {
             dest.splice(index, 0, item);
         }
 
-        this.setState({tree});
+        this.setState({
+            ...this.state,
+            tree
+        });
     }
 
     findItem(id, items) {
@@ -73,6 +85,13 @@ class Playground extends Component {
         return false
     }
 
+    finishDrop() {
+        this.setState({
+            ...this.state,
+            lastIdAdded: undefined
+        })
+    }
+
     render() {
         const {tree} = this.state;
 
@@ -84,6 +103,7 @@ class Playground extends Component {
                         items={tree}
                         move={this.moveItem.bind(this)}
                         find={this.findItem.bind(this)}
+                        finishDrop={this.finishDrop.bind(this)}
                     />
                 </div>
                 <div className="playground-instructions">
@@ -91,8 +111,6 @@ class Playground extends Component {
                         id={100}
                         parent={null}
                         item={{id: 100, attributes: {title: 'Variable'}, children: []}}
-                        move={this.moveItem.bind(this)}
-                        find={this.findItem.bind(this)}
                     />
                 </div>
             </Col>

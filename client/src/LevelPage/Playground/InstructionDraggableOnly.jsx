@@ -30,9 +30,7 @@ class InstructionDraggableOnly extends Component {
             connectDragPreview,
             connectDragSource,
             item,
-            parent,
-            move,
-            find
+            parent
         } = this.props;
 
         return connectDragPreview(connectDragSource(
