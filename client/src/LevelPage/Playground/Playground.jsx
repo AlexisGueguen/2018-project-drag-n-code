@@ -1,178 +1,103 @@
-import React from "react";
+import React, {Component} from 'react'
+import Tree from './Tree'
 import {Col} from "react-bootstrap";
-import {DragDropContext, Draggable, Droppable} from 'react-beautiful-dnd';
-import {VariableDeclaration, IfBlock} from "./Instructions/index";
+import HTML5Backend from "react-dnd-html5-backend";
+import {DragDropContext} from "react-dnd";
+import {initialState} from "./initialState";
+import InstructionDraggableOnly from "./InstructionDraggableOnly";
 import {instructions} from "./Instructions/instructions";
-import connect from "react-redux/es/connect/connect";
-import {codeActions} from "../../_actions/code.actions";
-import {isGuid} from "../../_helpers/utils";
-import {codeInitialState} from "../../_reducers/code.reducer";
-import {codeUtils} from "./codeUtils";
 
-class Playground extends React.Component {
-
-    codeRootDroppableId = "code-root";
-    instructionDroppableId = 'instructions-droppable';
-
+class Playground extends Component {
     constructor(props) {
         super(props);
-        this.props.dispatch(codeActions.init());
-        this.state = codeInitialState;
+        this.state = initialState;
     }
 
-    onDragEnd = result => {
-        const {destination, source, draggableId, combine} = result;
-        const {code} = this.props;
+    moveItem(id, afterId, nodeId) {
+        if (id === afterId) return;
 
-        //console.log(result);
+        let {tree} = this.state;
 
-        if (combine) {
-            let action = codeUtils.combineInstructions(code, source, draggableId, combine.draggableId);
-            this.setState(action.code);
-            this.props.dispatch(codeActions.updateCode(action));
-        }
+        const removeNode = (id, items) => {
+            for (const node of items) {
+                if (node.id === id) {
+                    items.splice(items.indexOf(node), 1);
+                    return;
+                }
 
-        if (!destination) return;
+                if (node.children && node.children.length) {
+                    removeNode(id, node.children);
+                }
+            }
+        };
 
-        if (isGuid(source.droppableId)) {
-            let action = codeUtils.moveInstruction(code, source, destination, draggableId);
-            this.setState(action.code);
-            this.props.dispatch(codeActions.updateCode(action));
+        const item = {...this.findItem(id, tree)};
+        if (!item.id) {
+            console.log(`item with id ${id} not found in tree`);
+            tree.push({
+                id: 100,
+                type: instructions.IfBlock,
+                droppable: false,
+                attributes: {title: 'Variable'},
+                children: []
+            });
+            this.setState({tree});
             return;
         }
 
-        switch (destination.droppableId) {
-            case source.droppableId: {
-                if (destination.index !== source.index) {
-                    let action = codeUtils.moveInstruction(code, source, destination, draggableId);
-                    this.setState(action.code);
-                    this.props.dispatch(codeActions.updateCode(action));
-                }
-                break;
-            }
-            case this.codeRootDroppableId: {
-                // Create a new instruction on the playground
-                let action = codeUtils.addInstruction(code, source, destination, draggableId);
-                this.setState(action.code);
-                this.props.dispatch(codeActions.updateCode(action));
-                break;
-            }
-            case this.instructionDroppableId: {
-                // Remove an instruction from the playground
-                let action = codeUtils.removeInstruction(code, draggableId);
-                this.setState(action.code);
-                this.props.dispatch(codeActions.updateCode(action));
-                break;
-            }
-            default:
-                throw new Error(`Destination (${destination.droppableId}) is not handled.`);
+        const dest = nodeId ? this.findItem(nodeId, tree).children : tree;
+
+        if (!afterId) {
+            removeNode(id, tree);
+            dest.push(item);
+        } else {
+            const index = dest.indexOf(dest.filter(v => v.id === afterId).shift());
+            removeNode(id, tree);
+            dest.splice(index, 0, item);
         }
-    };
 
-    onDragUpdate = update => {
-        console.log("Update");
-        console.log(update);
-    };
-
-    renderPlaygroundCode(code) {
-        return this.renderSubTree(code[0])
+        this.setState({tree});
     }
 
-    renderSubTree(subTree) {
-        const {children} = subTree;
-        return subTree && children && subTree.children.map((instr, index) => {
-            switch (instr.type) {
-                case instructions.Root:
-                    {instr && instr.children && this.renderSubTree(instr)}
-                    break;
-                case instructions.IfBlock:
-                    return <IfBlock key={instr.id} index={index} instruction={instr}>
-                        {instr && instr.children && this.renderSubTree(instr)}
-                    </IfBlock>;
-                case instructions.VariableDeclaration:
-                    return <VariableDeclaration key={instr.id} instruction={instr} index={index}/>;
-                default:
-                    throw new Error(`Instruction (${instr.type}) unknown.`);
+    findItem(id, items) {
+        for (const node of items) {
+            if (node.id === id) return node;
+            if (node.children && node.children.length) {
+                const result = this.findItem(id, node.children);
+                if (result) {
+                    return result
+                }
             }
-        });
+        }
+
+        return false
     }
 
     render() {
-        const {code} = this.state;
+        const {tree} = this.state;
+
         return (
             <Col sm={7} md={7} className="playground">
-                <DragDropContext onDragEnd={this.onDragEnd} onDragUpdate={this.onDragUpdate}>
-                    <Droppable droppableId="code-root" isCombineEnabled isDroppableDisabled={true}>
-                        {provided => (
-                            <div {...provided.droppableProps} ref={provided.innerRef} className="playground-code">
-                                {code && this.renderPlaygroundCode(code)}
-                                {provided.placeholder}
-                            </div>
-                        )}
-                    </Droppable>
-                    <Droppable droppableId="instructions-droppable">
-                        {provided => (
-                            <PlaygroundInstructions
-                                provided={provided}
-                                innerRef={provided.innerRef}
-                            >
-                                <Draggable draggableId={instructions.VariableDeclaration} index={0}>
-                                    {provided => (
-                                        <div
-                                            {...provided.draggableProps}
-                                            {...provided.dragHandleProps}
-                                            ref={provided.innerRef}
-                                            className="instruction"
-                                        >
-                                            Variable
-                                        </div>
-                                    )}
-                                </Draggable>
-                                <Draggable draggableId={instructions.IfBlock} index={1}>
-                                    {provided => (
-                                        <div
-                                            {...provided.draggableProps}
-                                            {...provided.dragHandleProps}
-                                            ref={provided.innerRef}
-                                            className="instruction"
-                                        >
-                                            If block
-                                        </div>
-                                    )}
-                                </Draggable>
-                                {provided.placeholder}
-                            </PlaygroundInstructions>
-                        )}
-                    </Droppable>
-                </DragDropContext>
+                <div className="playground-code">
+                    <Tree
+                        parent={null}
+                        items={tree}
+                        move={this.moveItem.bind(this)}
+                        find={this.findItem.bind(this)}
+                    />
+                </div>
+                <div className="playground-instructions">
+                    <InstructionDraggableOnly
+                        id={100}
+                        parent={null}
+                        item={{id: 100, attributes: {title: 'Variable'}, children: []}}
+                        move={this.moveItem.bind(this)}
+                        find={this.findItem.bind(this)}
+                    />
+                </div>
             </Col>
-        );
-    }
-
-    componentWillReceiveProps(nextProps) {
-        this.setState({
-            code: nextProps.code
-        });
+        )
     }
 }
 
-function mapStateToProps(state) {
-    const {code} = state.code;
-    return {
-        code
-    };
-}
-
-const connectedPlayground = connect(mapStateToProps)(Playground);
-export {connectedPlayground as Playground};
-
-class PlaygroundInstructions extends React.Component {
-    render() {
-        const {provided, innerRef, children} = this.props;
-        return (
-            <div {...provided.droppableProps} ref={innerRef} className="playground-instructions">
-                {children}
-            </div>
-        );
-    }
-}
+export default DragDropContext(HTML5Backend)(Playground)

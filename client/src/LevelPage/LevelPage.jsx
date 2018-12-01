@@ -3,11 +3,12 @@ import {levelActions} from "../_actions/level.actions";
 import connect from "react-redux/es/connect/connect";
 import PropTypes from "prop-types";
 import LoadingPoints from "../_components/LoadingPoints";
-import {Playground} from "./Playground/Playground";
+import {Playground} from "./Playground/PlaygroundOLD";
 import StatementPanel from "./StatementPanel";
 import GeneratedCodePanel from "./GeneratedCodePanel";
 import SubmissionPanel from "./SubmissionPanel";
 import {Col, Grid, Row} from "react-bootstrap";
+import PlaygroundB from "./Playground/Playground";
 
 class LevelPage extends React.Component {
     constructor(props) {
@@ -25,7 +26,7 @@ class LevelPage extends React.Component {
                 ) : (
                     level &&
                     <Row className="level-page-row">
-                        <Playground/>
+                        <PlaygroundB/>
                         <Col sm={5} md={5} className="scrolling-panel">
                             <StatementPanel value={level.statement}/>
                             <GeneratedCodePanel/>
