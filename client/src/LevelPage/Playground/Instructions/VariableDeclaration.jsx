@@ -1,27 +1,29 @@
 import React from "react";
-import {Draggable} from "react-beautiful-dnd";
+import PropTypes from 'prop-types';
 import {instructions} from "./instructions";
 import {generateGuid} from "../../../_helpers/utils";
-import connect from "react-redux/es/connect/connect";
-import {codeActions} from "../../../_actions/code.actions";
-import {codeUtils} from "../codeUtils";
 
-class VariableDeclaration extends React.Component {
+export class VariableDeclaration extends React.Component {
+
+    static propTypes = {
+        item: PropTypes.any.isRequired,
+        update: PropTypes.func.isRequired
+    };
 
     constructor(props) {
         super(props);
-        const {instruction} = this.props;
+        const {item} = this.props;
         this.state = {
-            instruction: instruction
+            item: item
         };
         this.onNameChange = this.onNameChange.bind(this);
     }
 
     onNameChange(e) {
-        const {instruction} = this.state;
-        const {attributes} = instruction;
-        const newInstruction = {
-            ...instruction,
+        const {item} = this.state;
+        const {attributes} = item;
+        const newItem = {
+            ...item,
             attributes: {
                 ...attributes,
                 name: e.target.value
@@ -29,32 +31,20 @@ class VariableDeclaration extends React.Component {
         };
         this.setState({
             ...this.state,
-            instruction: newInstruction
+            item: newItem
         });
-        const {code} = this.props;
-        this.props.dispatch(codeActions.updateCode(
-            codeUtils.updateInstruction(code, newInstruction)
-        ));
+        this.props.update(newItem);
     }
 
     render() {
-        const {index} = this.props;
-        const {instruction} = this.state;
-        const id = instruction ? instruction.id : instructions.VariableDeclaration;
+        const {item} = this.state;
         return (
-            <Draggable draggableId={id} index={index}>
-                {provided => (
                     <div
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                        ref={provided.innerRef}
                         className="instruction-variable-placed"
                     >
-                        <div>{instruction.attributes.type}</div>
-                        <div><input type="text" value={instruction.attributes.name} onChange={this.onNameChange}/></div>
+                        <div>{item.attributes.type}</div>
+                        <div><input type="text" value={item.attributes.name} onChange={this.onNameChange}/></div>
                     </div>
-                )}
-            </Draggable>
         )
     }
 
@@ -62,22 +52,13 @@ class VariableDeclaration extends React.Component {
         return {
             id: generateGuid(),
             type: instructions.VariableDeclaration,
+            droppable: false,
             attributes: {
                 type: "var",
                 name: "a",
                 value: ""
             },
-            children: null
+            children: []
         }
     }
 }
-
-function mapStateToProps(state) {
-    const {code} = state.code;
-    return {
-        code
-    };
-}
-
-const connectedVariableDeclaration = connect(mapStateToProps)(VariableDeclaration);
-export {connectedVariableDeclaration as VariableDeclaration};

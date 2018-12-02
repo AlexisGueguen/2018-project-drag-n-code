@@ -1,4 +1,4 @@
-import _ from "lodash";
+/*import _ from "lodash";
 import {instructions} from "./Instructions/instructions";
 import {IfBlock} from './Instructions';
 import {VariableDeclaration} from "./Instructions";
@@ -101,4 +101,4 @@ function createInstructionFromId(id) {
             throw new Error("Instruction with the id {id} is unrecognized by the system.");
     }
     return instruction;
-}
+}*/

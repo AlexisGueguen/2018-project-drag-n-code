@@ -5,9 +5,8 @@ import HTML5Backend from "react-dnd-html5-backend";
 import {DragDropContext} from "react-dnd";
 import {initialState} from "./initialState";
 import InstructionDraggableOnly from "./InstructionDraggableOnly";
-import {instructions} from "./Instructions/instructions";
-import {generateGuid} from "../../_helpers/utils";
 import DroppableRemoveInstruction from "./DroppableRemoveInstruction";
+import {VariableDeclaration} from "./Instructions";
 
 class Playground extends React.Component {
     constructor(props) {
@@ -30,18 +29,13 @@ class Playground extends React.Component {
         let {tree} = this.state;
 
         const item = {...this.findItem(id, tree)};
+        const dest = nodeId ? this.findItem(nodeId, tree).children : tree;
+
         if (!item.id) {
-            console.log(`item with id ${id} not found in tree`);
             const {lastIdAdded} = this.state;
             if (id !== lastIdAdded) {
-                const item = {
-                    id: generateGuid(),
-                    type: instructions.IfBlock,
-                    droppable: false,
-                    attributes: {title: 'Variable'},
-                    children: []
-                };
-                tree.push(item);
+                const item = VariableDeclaration.createInstruction();
+                dest.push(item);
                 this.setState({
                     ...this.state,
                     lastIdAdded: id,
@@ -50,8 +44,6 @@ class Playground extends React.Component {
             }
             return;
         }
-
-        const dest = nodeId ? this.findItem(nodeId, tree).children : tree;
 
         if (!afterId) {
             this.removeNode(id, tree);
@@ -66,6 +58,31 @@ class Playground extends React.Component {
             ...this.state,
             tree
         });
+    }
+
+    updateItem(itemUpdated) {
+        let {tree} = this.state;
+        this.findAndUpdateNode(itemUpdated, tree);
+        this.setState({
+            ...this.state,
+            tree: tree
+        });
+    }
+
+    findAndUpdateNode(newItem, items) {
+        let {id} = newItem;
+        for (let node of items) {
+            if (node.id === id) {
+                node.attributes = newItem.attributes;
+                return node;
+            }
+            if (node.children && node.children.length) {
+                const result = this.findItem(id, node.children);
+                if (result) {
+                    return result
+                }
+            }
+        }
     }
 
     removeNode = (id, items) => {
@@ -113,6 +130,7 @@ class Playground extends React.Component {
                         items={tree}
                         move={this.moveItem.bind(this)}
                         find={this.findItem.bind(this)}
+                        update={this.updateItem.bind(this)}
                         finishDrop={this.finishDrop.bind(this)}
                     />
                 </div>

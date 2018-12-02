@@ -28,11 +28,12 @@ class Tree extends React.Component {
         parent: PropTypes.any,
         move: PropTypes.func.isRequired,
         find: PropTypes.func.isRequired,
+        update: PropTypes.func.isRequired,
         finishDrop: PropTypes.func.isRequired
     };
 
     render() {
-        const {connectDropTarget, items, parent, move, find, finishDrop} = this.props;
+        const {connectDropTarget, items, parent, move, find, update, finishDrop} = this.props;
 
         return connectDropTarget(
             <div className={parent ? 'tree' : 'first-tree'}>
@@ -46,6 +47,7 @@ class Tree extends React.Component {
                                 item={item}
                                 move={move}
                                 find={find}
+                                update={update}
                                 finishDrop={finishDrop}
                             />
                         ) : (
@@ -56,6 +58,7 @@ class Tree extends React.Component {
                                 item={item}
                                 move={move}
                                 find={find}
+                                update={update}
                             />
                         )
                     )

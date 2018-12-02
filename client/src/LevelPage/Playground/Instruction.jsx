@@ -3,6 +3,7 @@ import {DragSource, DropTarget} from 'react-dnd'
 import Tree from './Tree'
 import flow from 'lodash/flow';
 import PropTypes from 'prop-types';
+import {renderInstructionContent} from "./renderInstructionContent";
 
 const source = {
     beginDrag(props) {
@@ -45,6 +46,7 @@ class Instruction extends Component {
         item: PropTypes.object,
         move: PropTypes.func,
         find: PropTypes.func,
+        update: PropTypes.func.isRequired,
         finishDrop: PropTypes.func
     };
 
@@ -54,24 +56,21 @@ class Instruction extends Component {
             connectDragPreview,
             connectDragSource,
             item,
-            parent,
             move,
             find,
+            update,
             finishDrop
         } = this.props;
 
         return connectDropTarget(connectDragPreview(
             <div>
-                {connectDragSource(
-                    <div className="instruction">
-                        {item.attributes.title}
-                    </div>
-                )}
+                {connectDragSource(renderInstructionContent(item, update))}
                 <Tree
                     parent={item.id}
                     items={item.children}
                     move={move}
                     find={find}
+                    update={update}
                     finishDrop={finishDrop}
                 />
             </div>

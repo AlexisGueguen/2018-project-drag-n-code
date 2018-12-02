@@ -1,6 +1,7 @@
 import React from 'react'
 import {DragSource} from 'react-dnd'
 import PropTypes from 'prop-types';
+import {renderInstructionContent} from "./renderInstructionContent";
 
 const source = {
     beginDrag(props) {
@@ -22,7 +23,8 @@ class InstructionDraggableOnly extends React.Component {
         parent: PropTypes.any,
         item: PropTypes.object,
         move: PropTypes.func,
-        find: PropTypes.func
+        find: PropTypes.func,
+        update: PropTypes.func
     };
 
     render() {
@@ -30,14 +32,10 @@ class InstructionDraggableOnly extends React.Component {
             connectDragPreview,
             connectDragSource,
             item,
-            parent
+            update
         } = this.props;
 
-        return connectDragPreview(connectDragSource(
-            <div className="instruction">
-                {item.attributes.title} - {item.id}
-            </div>
-        ))
+        return connectDragPreview(connectDragSource(renderInstructionContent(item, update)))
     }
 }
 
