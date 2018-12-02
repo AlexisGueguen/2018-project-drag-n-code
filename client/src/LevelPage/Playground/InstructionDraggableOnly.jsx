@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import {DragSource} from 'react-dnd'
 import PropTypes from 'prop-types';
 
@@ -16,7 +16,7 @@ const source = {
     }
 };
 
-class InstructionDraggableOnly extends Component {
+class InstructionDraggableOnly extends React.Component {
     static propTypes = {
         id: PropTypes.any.isRequired,
         parent: PropTypes.any,

@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import Tree from './Tree'
 import {Col} from "react-bootstrap";
 import HTML5Backend from "react-dnd-html5-backend";
@@ -7,30 +7,27 @@ import {initialState} from "./initialState";
 import InstructionDraggableOnly from "./InstructionDraggableOnly";
 import {instructions} from "./Instructions/instructions";
 import {generateGuid} from "../../_helpers/utils";
+import DroppableRemoveInstruction from "./DroppableRemoveInstruction";
 
-class Playground extends Component {
+class Playground extends React.Component {
     constructor(props) {
         super(props);
         this.state = initialState;
     }
 
+    removeItem = id => {
+        const {tree} = this.state;
+        this.removeNode(id, tree);
+        this.setState({
+            ...this.state,
+            tree
+        })
+    };
+
     moveItem(id, afterId, nodeId) {
         if (id === afterId) return;
 
         let {tree} = this.state;
-
-        const removeNode = (id, items) => {
-            for (const node of items) {
-                if (node.id === id) {
-                    items.splice(items.indexOf(node), 1);
-                    return;
-                }
-
-                if (node.children && node.children.length) {
-                    removeNode(id, node.children);
-                }
-            }
-        };
 
         const item = {...this.findItem(id, tree)};
         if (!item.id) {
@@ -57,11 +54,11 @@ class Playground extends Component {
         const dest = nodeId ? this.findItem(nodeId, tree).children : tree;
 
         if (!afterId) {
-            removeNode(id, tree);
+            this.removeNode(id, tree);
             dest.push(item);
         } else {
             const index = dest.indexOf(dest.filter(v => v.id === afterId).shift());
-            removeNode(id, tree);
+            this.removeNode(id, tree);
             dest.splice(index, 0, item);
         }
 
@@ -70,6 +67,19 @@ class Playground extends Component {
             tree
         });
     }
+
+    removeNode = (id, items) => {
+        for (const node of items) {
+            if (node.id === id) {
+                items.splice(items.indexOf(node), 1);
+                return;
+            }
+
+            if (node.children && node.children.length) {
+                this.removeNode(id, node.children);
+            }
+        }
+    };
 
     findItem(id, items) {
         for (const node of items) {
@@ -106,6 +116,7 @@ class Playground extends Component {
                         finishDrop={this.finishDrop.bind(this)}
                     />
                 </div>
+                <DroppableRemoveInstruction remove={this.removeItem.bind(this)}/>
                 <div className="playground-instructions">
                     <InstructionDraggableOnly
                         id={100}

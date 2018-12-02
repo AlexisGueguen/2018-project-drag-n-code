@@ -316,9 +316,34 @@ html, body {
           }
 
           & .playground-instructions {
-            height: 35%;
+            height: calc(35% - 30px);
             border-top: 1px solid lightgray;
             background-color: #32BCDB;
+          }
+
+          & .remove-instruction-panel {
+            height: 30px;
+            background-color: #BBBBBB;
+            overflow: visible;
+            transition: all 250ms;
+
+            & .glyphicon {
+              font-size: 20px;
+              color: black;
+              margin: auto;
+            }
+
+            & .remove-instruction-content {
+              width: 100%;
+              height: 100%;
+              padding-top: 4px;
+              padding-bottom: 4px;
+              display: flex;
+            }
+
+            & .isOver {
+              background-color: red;
+            }
           }
 
           & .instruction {
@@ -503,5 +528,4 @@ html, body {
 .glyphicon {
   font-size: 20px;
   color: @dark-secondary-color;
-
 }

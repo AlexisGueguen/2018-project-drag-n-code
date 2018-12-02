@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import {DropTarget} from 'react-dnd'
 import PropTypes from 'prop-types';
 import Instruction from "./Instruction";
@@ -22,7 +22,7 @@ const target = {
     }
 };
 
-class Tree extends Component {
+class Tree extends React.Component {
     static propTypes = {
         items: PropTypes.array.isRequired,
         parent: PropTypes.any,
