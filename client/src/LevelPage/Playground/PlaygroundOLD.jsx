@@ -4,7 +4,7 @@ import {DragDropContext, Draggable, Droppable} from 'react-beautiful-dnd';
 import {VariableDeclaration, IfBlock} from "./Instructions/index";
 import {instructions} from "./Instructions/instructions";
 import connect from "react-redux/es/connect/connect";
-import {codeActions} from "../../_actions/code.actions";
+import {codeTreeActions} from "../../_actions/code.actions";
 import {isGuid} from "../../_helpers/utils";
 import {codeInitialState} from "../../_reducers/code.reducer";
 import {codeUtils} from "./codeUtils";
@@ -16,7 +16,7 @@ class Playground extends React.Component {
 
     constructor(props) {
         super(props);
-        this.props.dispatch(codeActions.init());
+        this.props.dispatch(codeTreeActions.init());
         this.state = codeInitialState;
     }
 
@@ -29,7 +29,7 @@ class Playground extends React.Component {
         if (combine) {
             let action = codeUtils.combineInstructions(code, source, draggableId, combine.draggableId);
             this.setState(action.code);
-            this.props.dispatch(codeActions.updateCode(action));
+            this.props.dispatch(codeTreeActions.updateCode(action));
         }
 
         if (!destination) return;
@@ -37,7 +37,7 @@ class Playground extends React.Component {
         if (isGuid(source.droppableId)) {
             let action = codeUtils.moveInstruction(code, source, destination, draggableId);
             this.setState(action.code);
-            this.props.dispatch(codeActions.updateCode(action));
+            this.props.dispatch(codeTreeActions.updateCode(action));
             return;
         }
 
@@ -46,7 +46,7 @@ class Playground extends React.Component {
                 if (destination.index !== source.index) {
                     let action = codeUtils.moveInstruction(code, source, destination, draggableId);
                     this.setState(action.code);
-                    this.props.dispatch(codeActions.updateCode(action));
+                    this.props.dispatch(codeTreeActions.updateCode(action));
                 }
                 break;
             }
@@ -54,14 +54,14 @@ class Playground extends React.Component {
                 // Create a new instruction on the playground
                 let action = codeUtils.addInstruction(code, source, destination, draggableId);
                 this.setState(action.code);
-                this.props.dispatch(codeActions.updateCode(action));
+                this.props.dispatch(codeTreeActions.updateCode(action));
                 break;
             }
             case this.instructionDroppableId: {
                 // Remove an instruction from the playground
                 let action = codeUtils.removeInstruction(code, draggableId);
                 this.setState(action.code);
-                this.props.dispatch(codeActions.updateCode(action));
+                this.props.dispatch(codeTreeActions.updateCode(action));
                 break;
             }
             default:

@@ -7,7 +7,7 @@ import StatementPanel from "./StatementPanel";
 import GeneratedCodePanel from "./GeneratedCodePanel";
 import SubmissionPanel from "./SubmissionPanel";
 import {Col, Grid, Row} from "react-bootstrap";
-import Playground from "./Playground/Playground";
+import {Playground} from "./Playground/Playground";
 
 class LevelPage extends React.Component {
     constructor(props) {

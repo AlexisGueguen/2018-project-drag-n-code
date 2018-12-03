@@ -31,13 +31,7 @@ export default class GeneratedCodePanel extends React.Component {
                     height='300px'
                     readOnly={true}
                     value={initialValue}
-                    setOptions={{
-                        enableBasicAutocompletion: false,
-                        enableLiveAutocompletion: false,
-                        enableSnippets: false,
-                        showLineNumbers: false,
-                        tabSize: 1,
-                    }}/>
+                    />
             </div>
         );
     }
