@@ -1,50 +1,31 @@
 import React from "react";
-import {Draggable, Droppable} from "react-beautiful-dnd";
-import {instructions} from "./instructions";
-import {generateGuid} from "../../../_helpers/utils";
-import {connect} from "react-redux";
+import PropTypes from "prop-types";
 
-class IfBlock extends React.Component {
+export class IfBlock extends React.Component {
+
+    static propTypes = {
+        item: PropTypes.any.isRequired,
+        update: PropTypes.func.isRequired
+    };
 
     constructor(props) {
         super(props);
-        const {instruction} = props;
+        const {item} = props;
         this.state = {
-            instruction: instruction
+            item: item
         };
     }
 
     render() {
-        const {index, children} = this.props;
-        const {instruction} = this.state;
+        const {item} = this.state;
         return (
-            <Draggable draggableId={instruction.id} index={index}>
-                {provided => (
-                    <div
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                        ref={provided.innerRef}
-                        className="instruction-if-placed"
-                    >
-                        {instruction.type}
-                        <Droppable droppableId={instruction.id}>
-                            {provided2 => (
-                                <div
-                                    {...provided2.droppableProps}
-                                    ref={provided2.innerRef}
-                                    className="playground-code"
-                                >
-                                    {children}
-                                </div>
-                            )}
-                        </Droppable>
-                    </div>
-                )}
-            </Draggable>
+            <div className="instruction-if-placed">
+                {item.type}
+            </div>
         )
     }
 
-    static createInstruction() {
+    /*static createInstruction() {
         return {
             id: generateGuid(),
             type: instructions.IfBlock,
@@ -60,15 +41,5 @@ class IfBlock extends React.Component {
             },
             children: null
         }
-    }
+    }*/
 }
-
-function mapStateToProps(state) {
-    const {code} = state.code;
-    return {
-        code
-    };
-}
-
-const connectedIf = connect(mapStateToProps)(IfBlock);
-export {connectedIf as IfBlock};
