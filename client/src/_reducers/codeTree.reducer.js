@@ -1,5 +1,4 @@
 import {codeTreeConstants} from "../_constants/codeTree.constants";
-import {instructions} from "../LevelPage/Playground/Instructions/instructions";
 import {initialState} from "../LevelPage/Playground/initialState";
 
 const initialTree = initialState;

@@ -3,19 +3,20 @@ import AceEditor from 'react-ace';
 
 import 'brace/mode/c_cpp';
 import 'brace/theme/kuroir';
+import connect from "react-redux/es/connect/connect";
+import {conversion} from "./treeConversion";
 
-const initialValue = `#include <iostream>
-using namespace std;
+class GeneratedCodePanel extends React.Component {
 
-int main()
-{
-    cout << "Hello, World!";
-    return 0;
-}`;
-
-export default class GeneratedCodePanel extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            code: ""
+        };
+    }
 
     render() {
+        const code = this.updateCode();
         return (
             <div className="generated-code">
                 <h3>Generated code</h3>
@@ -30,9 +31,24 @@ export default class GeneratedCodePanel extends React.Component {
                     width='100%'
                     height='300px'
                     readOnly={true}
-                    value={initialValue}
+                    value={code}
                     />
             </div>
         );
     }
+
+    updateCode() {
+        const {tree} = this.props;
+        return conversion.toCPP(tree);
+    }
 }
+
+function mapStateToProps(state) {
+    const {tree} = state.code;
+    return {
+        tree
+    };
+}
+
+const connectedPlayground = connect(mapStateToProps)(GeneratedCodePanel);
+export {connectedPlayground as GeneratedCodePanel};
