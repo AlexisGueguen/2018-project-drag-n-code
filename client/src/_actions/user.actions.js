@@ -7,7 +7,8 @@ export const userActions = {
     login,
     logout,
     register,
-    update
+    update,
+    getByScore
 };
 
 function login(username, password) {
@@ -77,7 +78,28 @@ function update(user) {
             );
     };
 
-    function request(user) { return { type: userConstants.LOGIN_REQUEST, user } }
-    function success(user) { return { type: userConstants.LOGIN_SUCCESS, user } }
-    function failure(error) { return { type: userConstants.LOGIN_FAILURE, error } }
+    function request(user) { return { type: userConstants.UPDATE_REQUEST, user } }
+    function success(user) { return { type: userConstants.UPDATE_SUCCESS, user } }
+    function failure(error) { return { type: userConstants.UPDATE_FAILURE, error } }
+}
+
+function getByScore(topNumber) {
+    return dispatch => {
+        dispatch(request(topNumber));
+
+        userService.getByScore(topNumber)
+            .then(
+                topUsers => {
+                    dispatch(success(topUsers));
+                },
+                error => {
+                    dispatch(failure(error.toString()));
+                    dispatch(alertActions.error(error.toString()));
+                }
+            );
+    };
+
+    function request(topNumber) { return { type: userConstants.GET_TOP_REQUEST, topNumber } }
+    function success(topUsers) { return { type: userConstants.GET_TOP_SUCCESS, topUsers } }
+    function failure(error) { return { type: userConstants.GET_TOP_FAILURE, error } }
 }

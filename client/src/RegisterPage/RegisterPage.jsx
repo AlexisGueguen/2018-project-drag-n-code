@@ -93,7 +93,7 @@ class RegisterPage extends React.Component {
                         {registering ? (
                             <LoadingWheel/>
                         ) :(
-                            <div>
+                            <div className="form-actions">
                                 <button className="btn btn-primary col-md-6 col-sm-6">{translation.register.title}</button>
                                 <Link to="/login" className="btn btn-link col-md-6 col-sm-6">{translation.register.cancelLink}</Link>
                             </div>

@@ -30,6 +30,13 @@ module.exports = (router) => {
         .get(userController.getCurrent);
 
     /**
+     * get the first users at score
+     */
+    router
+        .route('/users')
+        .get(userController.getByScore);
+
+    /**
      * update one user's details
      */
     router

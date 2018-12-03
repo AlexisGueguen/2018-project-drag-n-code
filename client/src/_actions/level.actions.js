@@ -1,10 +1,14 @@
 import {levelConstants} from "../_constants/level.constant";
 import {levelService} from "../_services/level.service";
 import {alertActions} from "./alert.actions";
+import {userService} from "../_services";
+import {history} from "../_helpers";
+import {userConstants} from "../_constants";
 
 export const levelActions = {
     getAll,
-    getById
+    getById,
+    create
 };
 
 function getAll(createdByCommunity) {
@@ -47,4 +51,27 @@ function getById(id) {
     function request() {return {type: levelConstants.GET_LEVEL_REQUEST}}
     function success(level) {return {type: levelConstants.GET_LEVEL_SUCCESS, level}}
     function failure(error) {return {type: levelConstants.GET_LEVEL_FAILURE, error}}
+}
+
+function create(level) {
+    return dispatch => {
+        dispatch(request(level));
+
+        levelService.create(level)
+            .then(
+                level => {
+                    dispatch(success());
+                    history.push('/community');
+                    dispatch(alertActions.success('Your level was successfully created'));
+                },
+                error => {
+                    dispatch(failure(error.toString()));
+                    dispatch(alertActions.error(error.toString()));
+                }
+            );
+    };
+
+    function request(user) { return { type: userConstants.REGISTER_REQUEST, user } }
+    function success(user) { return { type: userConstants.REGISTER_SUCCESS, user } }
+    function failure(error) { return { type: userConstants.REGISTER_FAILURE, error } }
 }

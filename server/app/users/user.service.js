@@ -9,7 +9,8 @@ module.exports = {
     login,
     getById,
     create,
-    update
+    update,
+    getByScore
 };
 
 async function login({ username, password }) {
@@ -63,4 +64,18 @@ async function update(userParam) {
     let user = new User(userParam);
 
     return await User.findByIdAndUpdate(userParam._id, user, {new: true});
+}
+
+async function getByScore(topNumber) {
+    let limitNumber = Number(topNumber);
+    if (!limitNumber) throw {
+        name: 'Error',
+        message: `Object in query is incorrect, provide a valid number.`,
+        statusCode: 400
+    };
+
+    return await User
+        .find({}, 'username picture score')
+        .sort({score : -1})
+        .limit(limitNumber)
 }

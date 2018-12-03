@@ -5,7 +5,6 @@ import connect from "react-redux/es/connect/connect";
 import LoadingPoints from "./LoadingPoints";
 import {ListItem} from "./ListItem";
 import _ from "lodash";
-// import translation from "../_constants/en";
 import {DropdownButton, MenuItem} from "react-bootstrap";
 
 class CommunityLevelList extends React.Component {

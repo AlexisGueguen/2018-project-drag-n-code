@@ -7,7 +7,8 @@ export const userService = {
     logout,
     register,
     getById,
-    update
+    update,
+    getByScore
 };
 
 function login(username, password) {
@@ -42,6 +43,15 @@ function getById(id) {
     };
 
     return fetch(`${config.apiUrl}/user/${id}`, requestOptions).then(handleResponse);
+}
+
+function getByScore(topNumber) {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+
+    return fetch(`${config.apiUrl}/users?topNumber=${topNumber}`, requestOptions).then(handleResponse);
 }
 
 function register(user) {

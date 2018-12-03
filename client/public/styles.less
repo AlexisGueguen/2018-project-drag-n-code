@@ -346,7 +346,7 @@ html, body {
             height: 20%;
             text-align: center;
             display: flex;
-            
+
             & button {
               width: 75%;
               margin: auto;
@@ -412,6 +412,57 @@ html, body {
       }
     }
 
+    & .create-level-page {
+      width: 60%;
+      margin-left: auto;
+      margin-right: auto;
+
+      & .main-input-container {
+        display: flex;
+
+        & .form-title {
+          width: 30%;
+        }
+
+        & .form-description {
+          width: 70%;
+          padding-left: 50px;
+        }
+      }
+
+      & .form-stars {
+        display: flex;
+
+        & label {
+          margin-top: auto;
+          margin-bottom: auto;
+        }
+
+        & .rating {
+          float: left;
+          padding-left: 30px;
+        }
+      }
+
+    }
+
+    & .leaderboard-page {
+
+      & .table {
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+
+        & tr th,td {
+          vertical-align: unset;
+        }
+
+        & .avatar-container {
+          width: 80px;
+        }
+      }
+    }
+
     & .alert {
       width: 97%;
       margin: 5px auto;
@@ -431,6 +482,8 @@ html, body {
   object-fit: cover;
   background: white;
   border-radius: 50%;
+  height: 32px;
+  width: 32px;
 }
 
 .btn-primary {
@@ -485,3 +538,34 @@ html, body {
 
    background-color: #F8B57A;
  }
+
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  & > span {
+    display: inline-block;
+    position: relative;
+    width: 1.1em;
+    font-size: 28px;
+  }
+}
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+  content: "\2605";
+  position: absolute;
+  font-size: 28px;
+}
+
+.form-actions {
+  display: flex;
+  max-width: 200px;
+
+  & Link,button {
+    padding: 10px
+  }
+
+  & a {
+    margin-bottom: auto;
+    margin-top: auto;
+  }
+}
