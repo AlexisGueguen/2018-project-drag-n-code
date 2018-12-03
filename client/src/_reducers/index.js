@@ -8,6 +8,7 @@ import {updateUser} from "./updateUser.reducer";
 import {getLevel} from "./getLevel.reducer";
 import {createLevel} from "./createLevel.reducer";
 import {getTopUsers} from "./getTopUsers.reducer";
+import {code} from "./code.reducer";
 
 const rootReducer = combineReducers({
     authentication,
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
     updateUser,
     getLevel,
     createLevel,
-    getTopUsers
+    getTopUsers,
+    code
 });
 
 export default rootReducer;
