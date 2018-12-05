@@ -86,7 +86,7 @@ export class IfBlock extends React.Component {
         return {
             id: generateGuid(),
             type: instructions.IfBlock,
-            droppable: false,
+            droppable: true,
             attributes: {
                 predicates: [
                     {

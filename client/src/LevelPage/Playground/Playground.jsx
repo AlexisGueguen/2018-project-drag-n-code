@@ -154,6 +154,11 @@ class Playground extends React.Component {
                         parent={null}
                         item={{id: instructions.IfBlock, attributes: {title: 'If'}, children: []}}
                     />
+                    <InstructionDraggableOnly
+                        id={instructions.ForLoop}
+                        parent={null}
+                        item={{id: instructions.ForLoop, attributes: {title: 'For'}, children: []}}
+                    />
                 </div>
             </Col>
         )

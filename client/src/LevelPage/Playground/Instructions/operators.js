@@ -6,3 +6,7 @@ export const comparisonOperators = {
     moreOrEqualThan: ">=",
     lessOrEqualThan: "<="
 };
+
+export const operators = {
+    equal: "="
+};
