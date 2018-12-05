@@ -10,12 +10,14 @@ const target = {
 
         console.log(`Drop item ${draggedId}`);
         props.remove(draggedId);
+        props.finishDrop();
     }
 };
 
 class DroppableRemoveInstruction extends React.Component {
     static propTypes = {
-        remove: PropTypes.func.isRequired
+        remove: PropTypes.func.isRequired,
+        finishDrop: PropTypes.func.isRequired
     };
 
     render() {

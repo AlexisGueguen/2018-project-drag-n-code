@@ -6,21 +6,23 @@ import {DragDropContext} from "react-dnd";
 import {initialState} from "./initialState";
 import InstructionDraggableOnly from "./InstructionDraggableOnly";
 import DroppableRemoveInstruction from "./DroppableRemoveInstruction";
-import {VariableDeclaration} from "./Instructions";
+import {connect} from "react-redux";
+import {codeTreeActions} from "../../_actions";
+import {createIntsructionFromType} from "./Instructions/utils";
+import {instructions} from "./Instructions/instructions";
+import EmptyTreeTarget from "./EmptyTreeTarget";
 
 class Playground extends React.Component {
     constructor(props) {
         super(props);
+        this.props.dispatch(codeTreeActions.init());
         this.state = initialState;
     }
 
     removeItem = id => {
         const {tree} = this.state;
         this.removeNode(id, tree);
-        this.setState({
-            ...this.state,
-            tree
-        })
+        this.updateTreeState(tree);
     };
 
     moveItem(id, afterId, nodeId) {
@@ -32,16 +34,7 @@ class Playground extends React.Component {
         const dest = nodeId ? this.findItem(nodeId, tree).children : tree;
 
         if (!item.id) {
-            const {lastIdAdded} = this.state;
-            if (id !== lastIdAdded) {
-                const item = VariableDeclaration.createInstruction();
-                dest.push(item);
-                this.setState({
-                    ...this.state,
-                    lastIdAdded: id,
-                    tree
-                });
-            }
+            this.addItem(id, dest);
             return;
         }
 
@@ -54,19 +47,30 @@ class Playground extends React.Component {
             dest.splice(index, 0, item);
         }
 
-        this.setState({
-            ...this.state,
-            tree
-        });
+        this.updateTreeState(tree);
     }
 
     updateItem(itemUpdated) {
+        console.log(itemUpdated);
         let {tree} = this.state;
         this.findAndUpdateNode(itemUpdated, tree);
-        this.setState({
-            ...this.state,
-            tree: tree
-        });
+        this.updateTreeState(tree);
+        this.props.dispatch(codeTreeActions.update(tree));
+    }
+
+    addItem(id, dest) {
+        const {tree} = this.state;
+        if (!dest) dest = tree;
+        const {lastIdAdded} = this.state;
+        if (id !== lastIdAdded) {
+            const item = createIntsructionFromType(id);
+            dest.push(item);
+            this.setState({
+                ...this.state,
+                lastIdAdded: id,
+            });
+            this.updateTreeState(tree);
+        }
     }
 
     findAndUpdateNode(newItem, items) {
@@ -116,11 +120,20 @@ class Playground extends React.Component {
         this.setState({
             ...this.state,
             lastIdAdded: undefined
-        })
+        });
+        const {tree} = this.state;
+        this.props.dispatch(codeTreeActions.update(tree));
+    }
+
+    updateTreeState(tree) {
+        this.setState({
+            ...this.state,
+            tree: tree
+        });
     }
 
     render() {
-        const {tree} = this.state;
+        const {tree} = this.props;
 
         return (
             <Col sm={7} md={7} className="playground">
@@ -133,13 +146,27 @@ class Playground extends React.Component {
                         update={this.updateItem.bind(this)}
                         finishDrop={this.finishDrop.bind(this)}
                     />
+                    <EmptyTreeTarget add={this.addItem.bind(this)} finishDrop={this.finishDrop.bind(this)}/>
                 </div>
-                <DroppableRemoveInstruction remove={this.removeItem.bind(this)}/>
+                <DroppableRemoveInstruction
+                    remove={this.removeItem.bind(this)}
+                    finishDrop={this.finishDrop.bind(this)}
+                />
                 <div className="playground-instructions">
                     <InstructionDraggableOnly
-                        id={100}
+                        id={instructions.VariableDeclaration}
                         parent={null}
-                        item={{id: 100, attributes: {title: 'Variable'}, children: []}}
+                        item={{id: instructions.VariableDeclaration, attributes: {title: 'Variable'}, children: []}}
+                    />
+                    <InstructionDraggableOnly
+                        id={instructions.IfBlock}
+                        parent={null}
+                        item={{id: instructions.IfBlock, attributes: {title: 'If'}, children: []}}
+                    />
+                    <InstructionDraggableOnly
+                        id={instructions.ForLoop}
+                        parent={null}
+                        item={{id: instructions.ForLoop, attributes: {title: 'For'}, children: []}}
                     />
                 </div>
             </Col>
@@ -147,4 +174,12 @@ class Playground extends React.Component {
     }
 }
 
-export default DragDropContext(HTML5Backend)(Playground)
+function mapStateToProps(state) {
+    const {tree} = state.code;
+    return {
+        tree
+    };
+}
+
+const connectedPlayground = DragDropContext(HTML5Backend)(connect(mapStateToProps)(Playground));
+export {connectedPlayground as Playground};

@@ -302,7 +302,6 @@ html, body {
 
             & div.first-tree {
               position: relative;
-              height: 100%;
               padding-top: 15px;
               margin-top: -16px;
             }
@@ -314,10 +313,90 @@ html, body {
               margin-top: -16px;
             }
 
-            & .instruction-variable-placed {
+            & div.empty-droppable-target {
+              min-height: 32px;
+              width: 100%;
+            }
 
-              & div {
-                display: inline-block;
+            & .instruction-variable-placed {
+                display: flex;
+
+              & b {
+                margin: auto 8px;
+              }
+
+              & input {
+                max-width: 100px;
+                min-width: 30px;
+              }
+
+              & input.variable-name {
+                border: 1px solid lightgray;
+                min-height: 28px;
+                padding-left: 4px;
+                padding-right: 4px;
+                border-radius: 0 4px 4px 0;
+              }
+
+              & .type-dropdown {
+                width: auto;
+                min-width: 100px;
+
+                & div.css-vj8t7z {
+                  border-radius: 0;
+                  margin-left: -1px;
+                  margin-right: -1px;
+                }
+              }
+            }
+
+            & .instruction-if-placed {
+              display: flex;
+
+              & b {
+                margin: auto 8px auto 0;
+              }
+              
+              & div.predicate {
+                display: flex;
+                margin-top: auto;
+                margin-bottom: auto;
+
+                & input.left {
+                  border-top-left-radius: 4px;
+                  border-bottom-left-radius: 4px;
+                  border: 1px solid lightgray;
+                  padding-left: 4px;
+                  padding-right: 4px;
+                }
+
+                & input.right {
+                  border-top-right-radius: 4px;
+                  border-bottom-right-radius: 4px;
+                  border: 1px solid lightgray;
+                  padding-left: 4px;
+                  padding-right: 4px;
+                }
+
+                & .operator-dropdown {
+                  width: auto;
+                  min-width: 80px;
+                  border-radius: 0;
+
+                  & div.css-vj8t7z {
+                    border-radius: 0;
+                    margin-left: -1px;
+                    margin-right: -1px;
+                  }
+                }
+              }
+            }
+
+            & .instruction-for-placed {
+              display: flex;
+
+              & b {
+                margin: auto 8px auto 0;
               }
             }
           }
@@ -359,6 +438,17 @@ html, body {
             padding: 1em;
             margin-bottom: -1px;
           }
+
+          & .instruction-default {
+            display: inline-block;
+            background: white;
+            border: 1px solid #ccc;
+            padding: 1em;
+            border-radius: 4px;
+            text-align: center;
+            width: 48%;
+            margin: 2px 1%;
+          }
         }
 
         & .scrolling-panel {
@@ -387,7 +477,7 @@ html, body {
             min-height: 50%;
             overflow: auto;
             padding: 0 8px 8px;
-            background-color: #BBBBBB;
+            background-color: #E8E8E8;
 
             & h3 {
               text-align: center;
@@ -561,6 +651,8 @@ html, body {
 }
 
 & button.circle-button {
+  margin-top: 8px;
+  margin-bottom: 8px;
   border-radius: 50%;
   background-color: @primary-color;
   transition: all .2s ease-in-out;

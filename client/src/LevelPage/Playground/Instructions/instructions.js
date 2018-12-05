@@ -1,5 +1,5 @@
 export const instructions = {
-    Root: "root",
     VariableDeclaration: "variable-declaration",
-    IfBlock: "if-block"
+    IfBlock: "if-block",
+    ForLoop: 'for-loop'
 };

@@ -2,7 +2,7 @@
 import {instructions} from "./Instructions/instructions";
 import {IfBlock} from './Instructions';
 import {VariableDeclaration} from "./Instructions";
-import {codeConstants} from "../../_constants";
+import {codeTreeConstants} from "../../_constants";
 
 export const codeUtils = {
     addInstruction,
@@ -18,7 +18,7 @@ function addInstruction(code, source, destination, type) {
         subTree[i].children.splice(destination.index, 0, instr);
         return subTree[i].children[destination.index];
     });
-    return {type: codeConstants.ADD_INSTRUCTION, code};
+    return {type: codeTreeConstants.ADD_INSTRUCTION, code};
 }
 
 function removeInstruction(code, id) {
@@ -27,7 +27,7 @@ function removeInstruction(code, id) {
         subTree.splice(i, 1);
         return instr;
     });
-    return {type: codeConstants.REMOVE_INSTRUCTION, code};
+    return {type: codeTreeConstants.REMOVE_INSTRUCTION, code};
 }
 
 function moveInstruction(code, source, destination, instructionId) {
@@ -45,7 +45,7 @@ function moveInstruction(code, source, destination, instructionId) {
         return subTree[i].children[subTree[i].children.length - 1];
     });
 
-    return {type: codeConstants.MOVE_INSTRUCTION, code};
+    return {type: codeTreeConstants.MOVE_INSTRUCTION, code};
 }
 
 function updateInstruction(code, instr) {
@@ -53,7 +53,7 @@ function updateInstruction(code, instr) {
         subTree[i].attributes = instr.attributes;
         return subTree[i];
     });
-    return {type: codeConstants.UPDATE_INSTRUCTION, code};
+    return {type: codeTreeConstants.UPDATE_INSTRUCTION, code};
 }
 
 function combineInstructions(code, dropSource, sourceId, destinationId) {
@@ -72,7 +72,7 @@ function combineInstructions(code, dropSource, sourceId, destinationId) {
         return subTree[i].children[subTree[i].children.length - 1];
     });
 
-    return {type: codeConstants.COMBINE_INSTRUCTION, code};
+    return {type: codeTreeConstants.COMBINE_INSTRUCTION, code};
 }
 
 function executeActionInSubTree(subTree, id, action) {

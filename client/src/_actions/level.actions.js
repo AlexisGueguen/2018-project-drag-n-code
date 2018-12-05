@@ -1,7 +1,6 @@
 import {levelConstants} from "../_constants/level.constant";
 import {levelService} from "../_services/level.service";
 import {alertActions} from "./alert.actions";
-import {userService} from "../_services";
 import {history} from "../_helpers";
 import {userConstants} from "../_constants";
 

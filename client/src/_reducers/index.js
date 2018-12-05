@@ -8,7 +8,7 @@ import {updateUser} from "./updateUser.reducer";
 import {getLevel} from "./getLevel.reducer";
 import {createLevel} from "./createLevel.reducer";
 import {getTopUsers} from "./getTopUsers.reducer";
-import {code} from "./code.reducer";
+import {code} from "./codeTree.reducer";
 
 const rootReducer = combineReducers({
     authentication,

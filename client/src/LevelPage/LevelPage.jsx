@@ -4,10 +4,10 @@ import connect from "react-redux/es/connect/connect";
 import PropTypes from "prop-types";
 import LoadingPoints from "../_components/LoadingPoints";
 import StatementPanel from "./StatementPanel";
-import GeneratedCodePanel from "./GeneratedCodePanel";
 import SubmissionPanel from "./SubmissionPanel";
 import {Col, Grid, Row} from "react-bootstrap";
-import Playground from "./Playground/Playground";
+import {GeneratedCodePanel} from './GeneratedCodePanel';
+import {Playground} from "./Playground/Playground";
 
 class LevelPage extends React.Component {
     constructor(props) {

@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from 'prop-types';
 import {instructions} from "./instructions";
 import {generateGuid} from "../../../_helpers/utils";
+import {variableType} from "./types";
+import Select from "react-select";
 
 export class VariableDeclaration extends React.Component {
 
@@ -17,16 +19,29 @@ export class VariableDeclaration extends React.Component {
             item: item
         };
         this.onNameChange = this.onNameChange.bind(this);
+        this.onValueChange = this.onValueChange.bind(this);
     }
 
     onNameChange(e) {
+        this.updateItemAttribute('name', e.target.value);
+    }
+
+    onValueChange(e) {
+        this.updateItemAttribute('value', e.target.value);
+    }
+
+    onTypeChange = (selectedOption) => {
+        this.updateItemAttribute('type', selectedOption.value);
+    };
+
+    updateItemAttribute(attribute, value) {
         const {item} = this.state;
         const {attributes} = item;
         const newItem = {
             ...item,
             attributes: {
                 ...attributes,
-                name: e.target.value
+                [attribute]: value
             }
         };
         this.setState({
@@ -39,12 +54,23 @@ export class VariableDeclaration extends React.Component {
     render() {
         const {item} = this.state;
         return (
-                    <div
-                        className="instruction-variable-placed"
-                    >
-                        <div>{item.attributes.type}</div>
-                        <div><input type="text" value={item.attributes.name} onChange={this.onNameChange}/></div>
-                    </div>
+            <div className="instruction-variable-placed">
+                <div className="type-dropdown">
+                    <Select
+                        value={{value: item.attributes.type, label: item.attributes.type}}
+                        onChange={this.onTypeChange}
+                        options={[
+                            {value: variableType.int, label: variableType.int},
+                            {value: variableType.float, label: variableType.float},
+                            {value: variableType.double, label: variableType.double}
+                        ]}
+                    />
+                </div>
+                <input className="variable-name" type="text" value={item.attributes.name} onChange={this.onNameChange}/>
+                <b> = </b>
+                <input className="variable-value" type="text" value={item.attributes.value}
+                       onChange={this.onValueChange}/>
+            </div>
         )
     }
 
@@ -54,9 +80,9 @@ export class VariableDeclaration extends React.Component {
             type: instructions.VariableDeclaration,
             droppable: false,
             attributes: {
-                type: "var",
+                type: variableType.int,
                 name: "a",
-                value: ""
+                value: "0"
             },
             children: []
         }
