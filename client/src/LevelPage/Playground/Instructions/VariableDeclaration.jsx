@@ -39,12 +39,10 @@ export class VariableDeclaration extends React.Component {
     render() {
         const {item} = this.state;
         return (
-                    <div
-                        className="instruction-variable-placed"
-                    >
-                        <div>{item.attributes.type}</div>
-                        <div><input type="text" value={item.attributes.name} onChange={this.onNameChange}/></div>
-                    </div>
+            <div className="instruction-variable-placed">
+                <b>{item.attributes.type}</b>
+                <input className="variable-name" type="text" value={item.attributes.name} onChange={this.onNameChange}/>
+            </div>
         )
     }
 

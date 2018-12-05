@@ -1,5 +1,6 @@
 import {instructions} from "./Instructions/instructions";
 import {generateGuid} from "../../_helpers/utils";
+import {comparisonOperators} from "./Instructions/operators";
 
 export const initialState = {
     tree: [
@@ -19,7 +20,14 @@ export const initialState = {
             type: instructions.IfBlock,
             droppable: true,
             attributes: {
-                title: 'IF'
+                predicates: [
+                    {
+                        left: "odajj",
+                        right: "",
+                        operator: comparisonOperators.equal,
+                        aggregator: null
+                    }
+                ]
             },
             children: [
                 {
@@ -27,7 +35,14 @@ export const initialState = {
                     type: instructions.IfBlock,
                     droppable: true,
                     attributes: {
-                        title: 'IF'
+                        predicates: [
+                            {
+                                left: "adf",
+                                right: "jkd",
+                                operator: comparisonOperators.moreOrEqualThan,
+                                aggregator: null
+                            }
+                        ]
                     },
                     children: [
                         {

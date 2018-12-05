@@ -6,9 +6,10 @@ import {DragDropContext} from "react-dnd";
 import {initialState} from "./initialState";
 import InstructionDraggableOnly from "./InstructionDraggableOnly";
 import DroppableRemoveInstruction from "./DroppableRemoveInstruction";
-import {VariableDeclaration} from "./Instructions";
 import {connect} from "react-redux";
 import {codeTreeActions} from "../../_actions";
+import {createIntsructionFromType} from "./Instructions/utils";
+import {instructions} from "./Instructions/instructions";
 
 class Playground extends React.Component {
     constructor(props) {
@@ -34,7 +35,7 @@ class Playground extends React.Component {
         if (!item.id) {
             const {lastIdAdded} = this.state;
             if (id !== lastIdAdded) {
-                const item = VariableDeclaration.createInstruction();
+                const item = createIntsructionFromType(id);
                 dest.push(item);
                 this.setState({
                     ...this.state,
@@ -61,6 +62,7 @@ class Playground extends React.Component {
         let {tree} = this.state;
         this.findAndUpdateNode(itemUpdated, tree);
         this.updateTreeState(tree);
+        this.props.dispatch(codeTreeActions.update(tree));
     }
 
     findAndUpdateNode(newItem, items) {
@@ -143,9 +145,14 @@ class Playground extends React.Component {
                 />
                 <div className="playground-instructions">
                     <InstructionDraggableOnly
-                        id={100}
+                        id={instructions.VariableDeclaration}
                         parent={null}
-                        item={{id: 100, attributes: {title: 'Variable'}, children: []}}
+                        item={{id: instructions.VariableDeclaration, attributes: {title: 'Variable'}, children: []}}
+                    />
+                    <InstructionDraggableOnly
+                        id={instructions.IfBlock}
+                        parent={null}
+                        item={{id: instructions.IfBlock, attributes: {title: 'If'}, children: []}}
                     />
                 </div>
             </Col>
