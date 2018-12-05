@@ -5,6 +5,7 @@ import translation from "../_constants/en";
 import LoadingWheel from "../_components/LoadingPoints";
 import {Link} from "react-router-dom";
 import {DifficultyStars} from "../_components/DifficultyStars";
+import AceEditor from "react-ace";
 
 class CreateLevelPage extends React.Component {
     constructor(props) {
@@ -18,12 +19,13 @@ class CreateLevelPage extends React.Component {
                 inputs: '',
                 outputs: '',
                 difficulty: '',
-                solution: 'solutiooon',
+                solution: '',
             },
             submitted: false,
         };
 
         this.handleChange = this.handleChange.bind(this);
+        this.handleChangeSolution = this.handleChangeSolution.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.clickStar = this.clickStar.bind(this);
     }
@@ -38,6 +40,15 @@ class CreateLevelPage extends React.Component {
             }
         });
     }
+
+    handleChangeSolution(value) {
+        const { level } = this.state;
+        this.setState({
+            level: {
+                ...level,
+                solution: value
+            }
+        });    }
 
     handleSubmit(event) {
         event.preventDefault();
@@ -82,6 +93,8 @@ class CreateLevelPage extends React.Component {
             <div className="create-level-page">
                 <h2>{translation.createLevel.title}</h2>
                 <form name="form" onSubmit={this.handleSubmit}>
+
+                    {/*  Title and Description  */}
                     <div className="main-input-container">
                         <div className={'form-group form-title' + (submitted && !level.title ? ' has-error' : '')}>
                             <label htmlFor="title">{translation.createLevel.titleField}</label>
@@ -98,6 +111,8 @@ class CreateLevelPage extends React.Component {
                             }
                         </div>
                     </div>
+
+                    {/*  Statement  */}
                     <div className={'form-group' + (submitted && !level.statement ? ' has-error' : '')}>
                         <label htmlFor="statement">{translation.createLevel.statementField}</label>
                         <textarea rows="4" type="text" className="form-control" name="statement" value={level.statement} onChange={this.handleChange} />
@@ -105,6 +120,8 @@ class CreateLevelPage extends React.Component {
                         <div className="help-block">{translation.createLevel.statementRequired}</div>
                         }
                     </div>
+
+                    {/*  Inputs  */}
                     <div className={'form-group' + (submitted && !level.inputs ? ' has-error' : '')}>
                         <label htmlFor="inputs">{translation.createLevel.inputsField}</label>
                         <input type="text" className="form-control" name="inputs" value={level.inputs} onChange={this.handleChange} />
@@ -112,6 +129,8 @@ class CreateLevelPage extends React.Component {
                         <div className="help-block">{translation.createLevel.inputsRequired}</div>
                         }
                     </div>
+
+                    {/*  Outputs  */}
                     <div className={'form-group' + (submitted && !level.outputs ? ' has-error' : '')}>
                         <label htmlFor="outputs">{translation.createLevel.outputsField}</label>
                         <input type="text" className="form-control" name="outputs" value={level.outputs} onChange={this.handleChange} />
@@ -119,6 +138,30 @@ class CreateLevelPage extends React.Component {
                         <div className="help-block">{translation.createLevel.outputsRequired}</div>
                         }
                     </div>
+                    {/*  Solution  */}
+                    <div className="solution-code">
+                        <AceEditor
+                            mode="c_cpp"
+                            theme="kuroir"
+                            name="solution"
+                            fontSize={14}
+                            showPrintMargin={false}
+                            showGutter={false}
+                            highlightActiveLine={false}
+                            width='80%'
+                            height='300px'
+                            setOptions={{
+                                enableBasicAutocompletion: true,
+                                enableLiveAutocompletion: true,
+                                enableSnippets: false,
+                                showLineNumbers: false,
+                                tabSize: 1,
+                            }}
+                            value={level.solution}
+                            onChange={this.handleChangeSolution}/>
+                    </div>
+
+                    {/*  Rating  */}
                     <div className={'form-group form-stars' + (submitted && !level.difficulty ? ' has-error' : '')}>
                         <label htmlFor="text">{translation.createLevel.difficultyField}</label>
                         {level.difficulty === '' ?
@@ -134,6 +177,8 @@ class CreateLevelPage extends React.Component {
                         <div className="help-block">{translation.createLevel.difficultyRequired}</div>
                         }
                     </div>
+
+                    {/*  Submit  */}
                     <div className="form-group">
                         {loading ? (
                             <LoadingWheel/>

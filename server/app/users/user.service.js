@@ -36,6 +36,7 @@ async function create(userParam) {
         throw 'Username "' + userParam.username + '" is already taken';
     }
 
+    userParam.score = 0;
     const user = new User(userParam);
 
     // hash password

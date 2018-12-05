@@ -8,6 +8,7 @@ import {userConstants} from "../_constants";
 export const levelActions = {
     getAll,
     getById,
+    getByAuthorId,
     create
 };
 
@@ -51,6 +52,27 @@ function getById(id) {
     function request() {return {type: levelConstants.GET_LEVEL_REQUEST}}
     function success(level) {return {type: levelConstants.GET_LEVEL_SUCCESS, level}}
     function failure(error) {return {type: levelConstants.GET_LEVEL_FAILURE, error}}
+}
+
+function getByAuthorId(id) {
+    return dispatch => {
+        dispatch(request());
+
+        levelService.getByAuthorId(id)
+            .then(
+                levels => {
+                    dispatch(success(levels));
+                },
+                error => {
+                    dispatch(failure(error.toString()));
+                    dispatch(alertActions.error(error.toString()));
+                }
+            );
+    };
+
+    function request() {return {type: levelConstants.GET_PLAYER_LEVELS_REQUEST}}
+    function success(levels) {return {type: levelConstants.GET_PLAYER_LEVELS_SUCCESS, levels}}
+    function failure(error) {return {type: levelConstants.GET_PLAYER_LEVELS_FAILURE, error}}
 }
 
 function create(level) {

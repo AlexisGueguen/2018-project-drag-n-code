@@ -5,6 +5,7 @@ const config = configFile[process.env.NODE_ENV];
 export const levelService = {
     getAll,
     getById,
+    getByAuthorId,
     create
 };
 
@@ -23,6 +24,15 @@ function getById(id) {
     };
 
     return fetch(`${config.apiUrl}/levels/${id}`, requestOptions).then(handleResponse);
+}
+
+function getByAuthorId(id) {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+
+    return fetch(`${config.apiUrl}/player-levels/${id}`, requestOptions).then(handleResponse);
 }
 
 function create(level) {

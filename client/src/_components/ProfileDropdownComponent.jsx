@@ -31,6 +31,12 @@ class ProfileDropdownComponent extends React.Component {
                             </Link>
                         </li>
                         <li>
+                            <Link to="/my-levels" className="item-link">
+                                <span className="glyphicon glyphicon-pencil"/>
+                                <div className="item-title">{Translation.header.manageMyLevelsTitle}</div>
+                            </Link>
+                        </li>
+                        <li>
                             <Link to="/achievements" className="item-link">
                                 <span className="glyphicon glyphicon-certificate"/>
                                 <div className="item-title">{Translation.header.achievementsTitle}</div>

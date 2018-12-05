@@ -11,6 +11,7 @@ import {LevelPage} from "../LevelPage";
 import HeaderComponent from "../_components/HeaderComponent";
 import Alert from "../_components/Alert";
 import {CreateLevelPage} from "../CreateLevelPage";
+import {ManageLevelsPage} from "../ManageLevelsPage";
 
 class BasicPage extends React.Component {
     render() {
@@ -26,6 +27,7 @@ class BasicPage extends React.Component {
                     <Route path="/settings" component={SettingsPage}/>
                     <Route path="/achievements" component={AchievementsPage}/>
                     <Route path="/create-level" component={CreateLevelPage}/>
+                    <Route path="/my-levels" component={ManageLevelsPage}/>
                     <Route exact path="/" component={HomePage}/>
                 </Switch>
             </div>

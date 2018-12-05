@@ -25,6 +25,7 @@
     "homePageTitle": "@:homePage.title",
     "communityPageTitle": "@:communityPage.title",
     "leaderboardTitle": "Leaderboard",
+    "manageMyLevelsTitle": "My levels",
     "achievementsTitle": "Achievements",
     "settingsTitle": "Settings",
     "logoutTitle": "Logout"

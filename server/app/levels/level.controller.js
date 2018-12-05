@@ -3,6 +3,7 @@ const levelService = require('./level.service');
 module.exports = {
     getAll,
     getById,
+    getByAuthorId,
     create,
     update,
     delete: _delete
@@ -16,6 +17,12 @@ function getAll(req, res, next) {
 
 function getById(req, res, next) {
     levelService.getById(req.params.id)
+        .then(data => res.status(200).json(data))
+        .catch(err => next(err));
+}
+
+function getByAuthorId(req, res, next) {
+    levelService.getByAuthorId(req.params.id)
         .then(data => res.status(200).json(data))
         .catch(err => next(err));
 }
