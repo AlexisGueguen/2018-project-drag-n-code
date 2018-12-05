@@ -1,7 +1,7 @@
 import React from 'react';
 import connect from "react-redux/es/connect/connect";
 import {Link} from "react-router-dom";
-import Translation from "../../_constants/en.json"
+import Translation from "../_constants/en.json"
 
 class ProfileDropdownComponent extends React.Component {
     render() {
@@ -28,6 +28,12 @@ class ProfileDropdownComponent extends React.Component {
                             <Link to="/leaderboard" className="item-link">
                                 <span className="glyphicon glyphicon-globe"/>
                                 <div className="item-title">{Translation.header.leaderboardTitle}</div>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/my-levels" className="item-link">
+                                <span className="glyphicon glyphicon-pencil"/>
+                                <div className="item-title">{Translation.header.manageMyLevelsTitle}</div>
                             </Link>
                         </li>
                         <li>
@@ -63,5 +69,4 @@ function mapStateToProps(state) {
     };
 }
 
-const connectedProfileDropdown = connect(mapStateToProps)(ProfileDropdownComponent);
-export { connectedProfileDropdown as ProfileDropdownComponent };
+export default connect(mapStateToProps)(ProfileDropdownComponent);

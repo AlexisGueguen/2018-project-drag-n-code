@@ -185,11 +185,24 @@ html, body {
     height: 100%;
     overflow: auto;
 
-    & .home-page {
+    & .home-page, .community-page {
       padding-top: 20px;
       padding-bottom: 20px;
 
       & .level-list {
+
+        & .user-actions-container {
+          padding: 15px;
+          display: flex;
+
+          & .search-box {
+            max-width: 300px;
+          }
+
+          & .dropdown {
+            margin-left: 50px;
+          }
+        }
 
         & .list-group {
           margin-bottom: 0;
@@ -198,6 +211,34 @@ html, body {
 
             & .list-item-header {
               border: 0;
+              display: flex;
+
+              & .level-header-title {
+                width: fit-content;
+                max-width: 80%;
+              }
+
+              & .level-meta-data {
+                margin-left: auto;
+                padding: 15px;
+
+                & .community-votes {
+                  display: flex;
+                  width: 100%;
+                  & span {
+                    margin-left: auto;
+                  }
+                  & .up-votes-count {
+                    margin-left: auto;
+                    padding-top: 3px;
+                    color: @dark-secondary-color;
+                  }
+                }
+
+                & .difficulty-stars {
+                  padding-top: 15px;
+                }
+              }
 
               &:hover {
                 background-color: @light-grey-color;
@@ -240,7 +281,7 @@ html, body {
 
     & .level-page {
       padding: 0;
-      height: 100%;
+      height: calc(100% - @header-height);
       width: 100%;
       margin-top: @header-height;
       position: fixed;
@@ -253,32 +294,214 @@ html, body {
 
         & .playground {
           height: 100%;
-          background-color: #32BCDB;
           padding: 0;
-          text-align: center;
+
+          & .playground-code {
+            height: 65%;
+            overflow: auto;
+
+            & div.first-tree {
+              position: relative;
+              padding-top: 15px;
+              margin-top: -16px;
+            }
+
+            & div.tree {
+              position: relative;
+              margin-left: 2em;
+              padding-top: 15px;
+              margin-top: -16px;
+            }
+
+            & div.empty-droppable-target {
+              min-height: 32px;
+              width: 100%;
+            }
+
+            & .instruction-variable-placed {
+                display: flex;
+
+              & b {
+                margin: auto 8px;
+              }
+
+              & input {
+                max-width: 100px;
+                min-width: 30px;
+              }
+
+              & input.variable-name {
+                border: 1px solid lightgray;
+                min-height: 28px;
+                padding-left: 4px;
+                padding-right: 4px;
+                border-radius: 0 4px 4px 0;
+              }
+
+              & .type-dropdown {
+                width: auto;
+                min-width: 100px;
+
+                & div.css-vj8t7z {
+                  border-radius: 0;
+                  margin-left: -1px;
+                  margin-right: -1px;
+                }
+              }
+            }
+
+            & .instruction-if-placed {
+              display: flex;
+
+              & b {
+                margin: auto 8px auto 0;
+              }
+              
+              & div.predicate {
+                display: flex;
+                margin-top: auto;
+                margin-bottom: auto;
+
+                & input.left {
+                  border-top-left-radius: 4px;
+                  border-bottom-left-radius: 4px;
+                  border: 1px solid lightgray;
+                  padding-left: 4px;
+                  padding-right: 4px;
+                }
+
+                & input.right {
+                  border-top-right-radius: 4px;
+                  border-bottom-right-radius: 4px;
+                  border: 1px solid lightgray;
+                  padding-left: 4px;
+                  padding-right: 4px;
+                }
+
+                & .operator-dropdown {
+                  width: auto;
+                  min-width: 80px;
+                  border-radius: 0;
+
+                  & div.css-vj8t7z {
+                    border-radius: 0;
+                    margin-left: -1px;
+                    margin-right: -1px;
+                  }
+                }
+              }
+            }
+
+            & .instruction-for-placed {
+              display: flex;
+
+              & b {
+                margin: auto 8px auto 0;
+              }
+            }
+          }
+
+          & .playground-instructions {
+            height: calc(35% - 30px);
+            border-top: 1px solid lightgray;
+            background-color: #32BCDB;
+          }
+
+          & .remove-instruction-panel {
+            height: 30px;
+            background-color: #BBBBBB;
+            overflow: visible;
+            transition: all 250ms;
+
+            & .glyphicon {
+              font-size: 20px;
+              color: black;
+              margin: auto;
+            }
+
+            & .remove-instruction-content {
+              width: 100%;
+              height: 100%;
+              padding-top: 4px;
+              padding-bottom: 4px;
+              display: flex;
+            }
+
+            & .isOver {
+              background-color: red;
+            }
+          }
+
+          & .instruction {
+            background: white;
+            border: 1px solid #ccc;
+            padding: 1em;
+            margin-bottom: -1px;
+          }
+
+          & .instruction-default {
+            display: inline-block;
+            background: white;
+            border: 1px solid #ccc;
+            padding: 1em;
+            border-radius: 4px;
+            text-align: center;
+            width: 48%;
+            margin: 2px 1%;
+          }
         }
 
         & .scrolling-panel {
           padding: 0;
           height: 100%;
           overflow: auto;
+          border-left: 1px solid lightgray;
 
           & .statement {
-            background-color: #23E698;
-            height: 25%;
-            text-align: center;
+            height: auto;
+            padding: 0 8px 8px;
+            overflow: auto;
+            min-height: 50%;
+
+            & h3 {
+              text-align: center;
+            }
+
+            & p {
+              text-align: justify;
+            }
           }
 
           & .generated-code {
-            background-color: #AAF000;
-            height: 55%;
-            text-align: center;
+            height: auto;
+            min-height: 50%;
+            overflow: auto;
+            padding: 0 8px 8px;
+            background-color: #E8E8E8;
+
+            & h3 {
+              text-align: center;
+            }
+
+            & p {
+              text-align: justify;
+            }
           }
 
           & .submission {
-            background-color: #F8B57A;
-            height: 20%;
+            height: 10%;
+            background-color: lightgray;
             text-align: center;
+            position: sticky;
+            bottom: 0;
+            display: flex;
+            z-index: 100;
+
+            & button {
+              width: 65%;
+              margin: auto;
+              padding: 16px;
+            }
           }
         }
       }
@@ -292,9 +515,8 @@ html, body {
       }
 
       & .profile-data-container {
-        padding-left: 300px;
+        padding-left: 20%;
         width: 60%;
-
 
         & .data-container {
           display: flex;
@@ -317,8 +539,7 @@ html, body {
 
       & .action-buttons {
         float: right;
-        padding-right: 400px;
-        padding-top: 100px;
+        padding-top: 10%;
       }
 
       & .avatar-upload {
@@ -333,9 +554,60 @@ html, body {
             filter: blur(2px) brightness(70%);
 
             -moz-transition: opacity 0.7s;
-            -webkit-transition:  0.7s;
+            -webkit-transition: 0.7s;
             -o-transition: opacity 0.7s;
           }
+        }
+      }
+    }
+
+    & .create-level-page {
+      width: 60%;
+      margin-left: auto;
+      margin-right: auto;
+
+      & .main-input-container {
+        display: flex;
+
+        & .form-title {
+          width: 30%;
+        }
+
+        & .form-description {
+          width: 70%;
+          padding-left: 50px;
+        }
+      }
+
+      & .form-stars {
+        display: flex;
+
+        & label {
+          margin-top: auto;
+          margin-bottom: auto;
+        }
+
+        & .rating {
+          float: left;
+          padding-left: 30px;
+        }
+      }
+
+    }
+
+    & .leaderboard-page {
+
+      & .table {
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+
+        & tr th,td {
+          vertical-align: unset;
+        }
+
+        & .avatar-container {
+          width: 80px;
         }
       }
     }
@@ -352,13 +624,15 @@ html, body {
 }
 
 .file-selector {
-  display: none!important;
+  display: none !important;
 }
 
 .avatar-picture-default {
   object-fit: cover;
   background: white;
   border-radius: 50%;
+  height: 32px;
+  width: 32px;
 }
 
 .btn-primary {
@@ -370,13 +644,15 @@ html, body {
     background-color: @primary-color;
     border-color: unset;
   }
-  &:hover,:active {
+  &:hover, :active {
     background-color: @dark-primary-color !important;
     border-color: unset !important;
   }
 }
 
 & button.circle-button {
+  margin-top: 8px;
+  margin-bottom: 8px;
   border-radius: 50%;
   background-color: @primary-color;
   transition: all .2s ease-in-out;
@@ -399,5 +675,48 @@ html, body {
 
   &:active {
     transform: scale(1);
+  }
+}
+
+.glyphicon {
+  font-size: 20px;
+  color: @dark-secondary-color;
+
+}.instruction-variable {
+   padding: 8px;
+   margin: 8px;
+   border-radius: 4px;
+
+   background-color: #F8B57A;
+ }
+
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  & > span {
+    display: inline-block;
+    position: relative;
+    width: 1.1em;
+    font-size: 28px;
+  }
+}
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+  content: "\2605";
+  position: absolute;
+  font-size: 28px;
+}
+
+.form-actions {
+  display: flex;
+  max-width: 200px;
+
+  & Link,button {
+    padding: 10px
+  }
+
+  & a {
+    margin-bottom: auto;
+    margin-top: auto;
   }
 }

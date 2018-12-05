@@ -1,29 +1,15 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import LevelList from "../_components/LevelList";
+import CreateLevelButtonComponent from "../_components/CreateLevelButtonComponent";
 
-class HomePage extends React.Component {
+export class HomePage extends React.Component {
 
     render() {
         return (
             <div className="home-page">
                 <LevelList/>
-                <button className="btn circle-button create-level-button">
-                    <span className="glyphicon glyphicon-plus"/>
-                </button>
+                <CreateLevelButtonComponent/>
             </div>
         );
     }
 }
-
-function mapStateToProps(state) {
-    const { users, authentication } = state;
-    const { user } = authentication;
-    return {
-        user,
-        users
-    };
-}
-
-const connectedHomePage = connect(mapStateToProps)(HomePage);
-export { connectedHomePage as HomePage };

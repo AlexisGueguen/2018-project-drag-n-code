@@ -30,6 +30,18 @@ const schema = new Schema({
     author: {
         type: String,
         required: true
+    },
+    difficulty: {
+        type: Number,
+        required: true
+    },
+    isCreatedByCommunity: {
+        type: Boolean,
+        required: true
+    },
+    upVotes: {
+        type: Number,
+        required: true
     }
 });
 

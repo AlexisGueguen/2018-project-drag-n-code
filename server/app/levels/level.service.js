@@ -4,6 +4,7 @@ const Level = db.Level;
 module.exports = {
     getAll,
     getById,
+    getByAuthorId,
     create,
     update,
     delete: _delete
@@ -19,8 +20,12 @@ async function getById(id) {
     return level;
 }
 
-async function getAll() {
-    return await Level.find({}, 'title description statement');
+async function getByAuthorId(id) {
+    return await Level.find({author: id}, 'title description statement difficulty upVotes');
+}
+
+async function getAll(isCommunity) {
+    return await Level.find({isCreatedByCommunity: isCommunity}, 'title description statement author difficulty upVotes isCreatedByCommunity');
 }
 
 async function create(levelParam) {

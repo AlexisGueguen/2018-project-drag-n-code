@@ -25,6 +25,7 @@
     "homePageTitle": "@:homePage.title",
     "communityPageTitle": "@:communityPage.title",
     "leaderboardTitle": "Leaderboard",
+    "manageMyLevelsTitle": "My levels",
     "achievementsTitle": "Achievements",
     "settingsTitle": "Settings",
     "logoutTitle": "Logout"
@@ -35,7 +36,9 @@
   },
   "community" : {
     "title" : "Community",
-    "description" : "Welcome back ! Select a level to start playing"
+    "description" : "Welcome back ! Select a level to start playing",
+    "sortLevelsButton" : "Sort",
+    "selectSorting" : "Select what to sort"
   },
   "profile" : {
     "title" : "Profile",
@@ -49,5 +52,24 @@
     "emailPlaceholder" : "email@example.com",
     "emailTip" : "Your email adress won't be used in commercial purposes.",
     "uploadPictureButton": "Save"
+  },
+  "createLevel" : {
+    "title" : "Level Creation",
+    "titleField" : "Title",
+    "descriptionField" : "Description",
+    "statementField" : "Statement",
+    "inputsField" : "Test Inputs",
+    "outputsField" : "Expected Outputs",
+    "difficultyField" : "Difficulty",
+    "difficultyTooltip" : "Number between 1 and 3",
+    "titleRequired": "Title is required",
+    "descriptionRequired": "Description is required",
+    "statementRequired": "Statement is required",
+    "inputsRequired": "Inputs are required",
+    "outputsRequired": "Outputs are required",
+    "difficultyRequired": "Difficulty is required",
+    "difficultyInvalid": "Difficulty is invalid",
+    "cancelLink": "Cancel",
+    "createLink": "Create"
   }
 }

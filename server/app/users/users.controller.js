@@ -7,6 +7,7 @@ module.exports = {
     register,
     getCurrent,
     getById,
+    getByScore,
     update
 };
 
@@ -35,6 +36,12 @@ function getCurrent(req, res, next) {
 function getById(req, res, next) {
     userService.getById(req.params.id)
         .then(user => user ? res.json(user) : res.sendStatus(404))
+        .catch(err => next(err));
+}
+
+function getByScore(req, res, next) {
+    userService.getByScore(req.query.topNumber)
+        .then(data => res.status(200).json(data))
         .catch(err => next(err));
 }
 

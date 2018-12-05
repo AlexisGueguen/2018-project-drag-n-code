@@ -17,6 +17,13 @@ module.exports = (router) => {
         .get(levelController.getById);
 
     /**
+     * Get levels created by a player
+     */
+    router
+        .route('/player-levels/:id')
+        .get(levelController.getByAuthorId);
+
+    /**
      * Create a level
      */
     router

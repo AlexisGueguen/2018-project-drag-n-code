@@ -22,6 +22,10 @@ const schema = new Schema({
     picture: {
         type: String
     },
+    score: {
+        type: Number,
+        required: true
+    }
 });
 
 module.exports = mongoose.model('User', schema);

@@ -1,7 +1,7 @@
 import React from 'react';
-import Translation from '../../_constants/en.json'
-import connect from "react-redux/es/connect/connect";
-import {userActions} from "../../_actions";
+import Translation from '../_constants/en.json'
+import {connect} from "react-redux";
+import {userActions} from "../_actions";
 
 class AvatarUploadComponent extends React.Component {
     constructor(props) {
@@ -30,11 +30,7 @@ class AvatarUploadComponent extends React.Component {
                 picture: reader.result
             };
             dispatch(userActions.update(uploadUser));
-            //this.setState({selectedFile: file})
         }, false);
-
-
-
     };
 
     uploadHandler = () => {
@@ -44,7 +40,10 @@ class AvatarUploadComponent extends React.Component {
             picture: this.state.selectedFile
         };
         dispatch(userActions.update(uploadUser));
-        this.state.selectedFile = null;
+        this.setState({
+            ...this.state,
+            selectedFile: null
+        })
     };
 
     render() {
@@ -52,11 +51,11 @@ class AvatarUploadComponent extends React.Component {
             <div className="avatar-upload">
                 <input className="file-selector" ref={this.myRef} type="file" accept="image/*" capture onChange={this.fileChangedHandler}/>
                 {(this.state.selectedFile) ? (
-                    <img className="avatar-picture avatar-picture-default" src={this.state.selectedFile} onClick={this.openSelector}/>
+                    <img className="avatar-picture avatar-picture-default" alt="Profile" src={this.state.selectedFile} onClick={this.openSelector}/>
                 ) : ((this.props.user.picture) ? (
-                        <img className="avatar-picture avatar-picture-default" src={this.props.user.picture} onClick={this.openSelector}/>
+                        <img className="avatar-picture avatar-picture-default" alt="Profile" src={this.props.user.picture} onClick={this.openSelector}/>
                     ) : (
-                        <img className="avatar-picture avatar-picture-default" src="/resources/defaultAvatar.jpg" onClick={this.openSelector}/>
+                        <img className="avatar-picture avatar-picture-default" alt="Profile" src="/resources/defaultAvatar.jpg" onClick={this.openSelector}/>
                     )
                 )}
                 {(this.state.selectedFile) &&

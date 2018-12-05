@@ -3,7 +3,7 @@ import connect from "react-redux/es/connect/connect";
 import translation from '../_constants/en.json';
 import {userActions} from "../_actions";
 import _ from 'lodash';
-import AvatarUploadComponent from "../_components/AvatarUploadComponent/AvatarUploadComponent";
+import AvatarUploadComponent from "../_components/AvatarUploadComponent";
 
 class ProfilePage extends React.Component {
     constructor(props) {
@@ -21,25 +21,25 @@ class ProfilePage extends React.Component {
     }
 
     onEditProfile() {
-        this.setState({ isEditing: true });
+        this.setState({isEditing: true});
     }
 
     onSaveProfile() {
         //e.preventDefault();
-        const { user } = this.state;
-        const { dispatch } = this.props;
+        const {user} = this.state;
+        const {dispatch} = this.props;
         dispatch(userActions.update(user));
 
-        this.setState({ isEditing: false });
+        this.setState({isEditing: false});
     }
 
     onCancelChanges() {
-        this.setState({ isEditing: false });
+        this.setState({isEditing: false});
     }
 
     handleChange(e) {
-        const { name, value } = e.target;
-        const { user } = {...this.state};
+        const {name, value} = e.target;
+        const {user} = {...this.state};
         this.setState(() => {
             user[name] = value;
             return user;
@@ -47,9 +47,9 @@ class ProfilePage extends React.Component {
     }
 
     render() {
-        const { isEditing } = this.state;
-        const { user } = this.state;
-        if(!isEditing) {
+        const {isEditing} = this.state;
+        const {user} = this.state;
+        if (!isEditing) {
             return (
                 <div className="profile-page">
                     <div className="profile-container">
@@ -63,13 +63,14 @@ class ProfilePage extends React.Component {
                                 <div className="data-title">{translation.profile.emailTitle}</div>
                                 <div type="mail" className="">{this.props.user.email}</div>
                             </div>
+                            <div className="action-buttons">
+                                <button type="button" className="btn btn-primary"
+                                        onClick={this.onEditProfile}>{translation.profile.modifyButton}</button>
+                            </div>
                         </div>
                         <AvatarUploadComponent/>
                     </div>
-                    <div className="action-buttons">
-                        <button type="button" className="btn btn-primary"
-                                onClick={this.onEditProfile}>{translation.profile.modifyButton}</button>
-                    </div>
+
                 </div>
             );
         }
@@ -80,7 +81,8 @@ class ProfilePage extends React.Component {
                         <h3>{translation.profile.title}</h3>
                         <div className="username-container data-container">
                             <label className="data-title">{translation.profile.usernameTitle}</label>
-                            <input className="form-control" value={user.username} name="username" onChange={this.handleChange}/>
+                            <input className="form-control" value={user.username} name="username"
+                                   onChange={this.handleChange}/>
                         </div>
                         <div className="flex-container">
                             <div className="email-container data-container">
@@ -93,12 +95,12 @@ class ProfilePage extends React.Component {
                                 {translation.profile.emailTip}
                             </small>
                         </div>
-                    </div>
-                    <div className="action-buttons">
-                        <button type="button" className="btn btn-primary"
-                                onClick={this.onCancelChanges}>{translation.profile.cancelButton}</button>
-                        <button type="button" className="btn btn-primary"
-                                onClick={this.onSaveProfile}>{translation.profile.saveButton}</button>
+                        <div className="action-buttons">
+                            <button type="button" className="btn btn-primary"
+                                    onClick={this.onCancelChanges}>{translation.profile.cancelButton}</button>
+                            <button type="button" className="btn btn-primary"
+                                    onClick={this.onSaveProfile}>{translation.profile.saveButton}</button>
+                        </div>
                     </div>
                 </div>
             );
@@ -107,8 +109,8 @@ class ProfilePage extends React.Component {
 }
 
 function mapStateToProps(state) {
-    const { user } = state.authentication;
-    const { updatedUser, updatingData } = state.updateUser;
+    const {user} = state.authentication;
+    const {updatedUser, updatingData} = state.updateUser;
     return {
         user,
         updatedUser,
@@ -117,4 +119,4 @@ function mapStateToProps(state) {
 }
 
 const connectedProfilePage = connect(mapStateToProps)(ProfilePage);
-export { connectedProfilePage as ProfilePage};
+export {connectedProfilePage as ProfilePage};
