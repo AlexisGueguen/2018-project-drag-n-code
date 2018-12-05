@@ -34,17 +34,18 @@ export class ForLoop extends React.Component {
             droppable: true,
             attributes: {
                 initialization: {
-                    variable: "",
-                    value: ""
+                    type: "int",
+                    name: "i",
+                    value: "0"
                 },
                 condition: {
-                    left: "",
-                    right: "",
-                    operator: comparisonOperators.moreOrEqualThan,
+                    left: "i",
+                    right: "1",
+                    operator: comparisonOperators.lessOrEqualThan,
                 },
                 increment: {
-                    variable: "",
-                    operator: operators.equal,
+                    variable: "i",
+                    operator: operators.plusplus,
                     value: ""
                 }
             },

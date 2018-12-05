@@ -8,5 +8,6 @@ export const comparisonOperators = {
 };
 
 export const operators = {
-    equal: "="
+    equal: "=",
+    plusplus: "++"
 };

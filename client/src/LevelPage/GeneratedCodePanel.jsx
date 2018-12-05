@@ -8,13 +8,6 @@ import {conversion} from "./treeConversion";
 
 class GeneratedCodePanel extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            code: ""
-        };
-    }
-
     render() {
         const code = this.updateCode();
         return (
@@ -23,13 +16,13 @@ class GeneratedCodePanel extends React.Component {
                 <AceEditor
                     mode="c_cpp"
                     theme="kuroir"
-                    name="blah2"
+                    name="code-generated"
                     fontSize={14}
                     showPrintMargin={false}
                     showGutter={false}
                     highlightActiveLine={false}
                     width='100%'
-                    height='300px'
+                    maxLines={Infinity}
                     readOnly={true}
                     value={code}
                     />
@@ -41,12 +34,16 @@ class GeneratedCodePanel extends React.Component {
         const {tree} = this.props;
         return conversion.toCPP(tree);
     }
+
+    componentWillUpdate(nextProps) {
+        console.log(`update state`, nextProps);
+    }
 }
 
 function mapStateToProps(state) {
-    const {tree} = state.code;
+    const {tree, treeId} = state.code;
     return {
-        tree
+        tree, treeId
     };
 }
 
