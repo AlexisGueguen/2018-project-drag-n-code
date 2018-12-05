@@ -10,6 +10,7 @@ import {connect} from "react-redux";
 import {codeTreeActions} from "../../_actions";
 import {createIntsructionFromType} from "./Instructions/utils";
 import {instructions} from "./Instructions/instructions";
+import EmptyTreeTarget from "./EmptyTreeTarget";
 
 class Playground extends React.Component {
     constructor(props) {
@@ -33,16 +34,7 @@ class Playground extends React.Component {
         const dest = nodeId ? this.findItem(nodeId, tree).children : tree;
 
         if (!item.id) {
-            const {lastIdAdded} = this.state;
-            if (id !== lastIdAdded) {
-                const item = createIntsructionFromType(id);
-                dest.push(item);
-                this.setState({
-                    ...this.state,
-                    lastIdAdded: id,
-                });
-                this.updateTreeState(tree);
-            }
+            this.addItem(id, dest);
             return;
         }
 
@@ -63,6 +55,21 @@ class Playground extends React.Component {
         this.findAndUpdateNode(itemUpdated, tree);
         this.updateTreeState(tree);
         this.props.dispatch(codeTreeActions.update(tree));
+    }
+
+    addItem(id, dest) {
+        const {tree} = this.state;
+        if (!dest) dest = tree;
+        const {lastIdAdded} = this.state;
+        if (id !== lastIdAdded) {
+            const item = createIntsructionFromType(id);
+            dest.push(item);
+            this.setState({
+                ...this.state,
+                lastIdAdded: id,
+            });
+            this.updateTreeState(tree);
+        }
     }
 
     findAndUpdateNode(newItem, items) {
@@ -138,6 +145,7 @@ class Playground extends React.Component {
                         update={this.updateItem.bind(this)}
                         finishDrop={this.finishDrop.bind(this)}
                     />
+                    <EmptyTreeTarget add={this.addItem.bind(this)} finishDrop={this.finishDrop.bind(this)}/>
                 </div>
                 <DroppableRemoveInstruction
                     remove={this.removeItem.bind(this)}
