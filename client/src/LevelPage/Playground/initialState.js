@@ -1,6 +1,7 @@
 import {instructions} from "./Instructions/instructions";
 import {generateGuid} from "../../_helpers/utils";
 import {comparisonOperators} from "./Instructions/operators";
+import {variableType} from "./Instructions/types";
 
 export const initialState = {
     tree: [
@@ -9,9 +10,9 @@ export const initialState = {
             type: instructions.VariableDeclaration,
             droppable: false,
             attributes: {
-                type: "var",
+                type: variableType.int,
                 name: "a",
-                value: ""
+                value: "0"
             },
             children: []
         },
@@ -23,7 +24,7 @@ export const initialState = {
                 predicates: [
                     {
                         left: "odajj",
-                        right: "",
+                        right: "e",
                         operator: comparisonOperators.equal,
                         aggregator: null
                     }
@@ -50,9 +51,9 @@ export const initialState = {
                             type: instructions.VariableDeclaration,
                             droppable: false,
                             attributes: {
-                                type: "var",
+                                type: variableType.float,
                                 name: "b",
-                                value: ""
+                                value: "0.00"
                             },
                             children: []
                         }
@@ -63,9 +64,9 @@ export const initialState = {
                     type: instructions.VariableDeclaration,
                     droppable: false,
                     attributes: {
-                        type: "var",
+                        type: variableType.double,
                         name: "c",
-                        value: ""
+                        value: "0.08729"
                     },
                     children: []
                 }

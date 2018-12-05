@@ -34,10 +34,6 @@ class GeneratedCodePanel extends React.Component {
         const {tree} = this.props;
         return conversion.toCPP(tree);
     }
-
-    componentWillUpdate(nextProps) {
-        console.log(`update state`, nextProps);
-    }
 }
 
 function mapStateToProps(state) {

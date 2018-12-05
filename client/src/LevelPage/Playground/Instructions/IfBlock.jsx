@@ -18,9 +18,8 @@ export class IfBlock extends React.Component {
         this.state = {
             item: item
         };
-        this.onLeftChange.bind(this);
-        this.onRightChange.bind(this);
-        this.onOperatorChange.bind(this);
+        this.onLeftChange = this.onLeftChange.bind(this);
+        this.onRightChange = this.onRightChange.bind(this);
     }
 
     render() {

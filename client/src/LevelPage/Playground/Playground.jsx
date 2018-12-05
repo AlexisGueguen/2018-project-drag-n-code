@@ -51,6 +51,7 @@ class Playground extends React.Component {
     }
 
     updateItem(itemUpdated) {
+        console.log(itemUpdated);
         let {tree} = this.state;
         this.findAndUpdateNode(itemUpdated, tree);
         this.updateTreeState(tree);
