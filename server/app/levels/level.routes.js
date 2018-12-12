@@ -5,6 +5,17 @@ module.exports = (router) => {
     /**
      * Get all the levels
      */
+
+    /**
+     * @api {get} /levels Request a List of all the Levels
+     * @apiName GetUser
+     * @apiGroup Level
+     *
+     * @apiParam {Boolean} get Levels created by the community ?
+     *
+     * @apiSuccess {String} firstname Firstname of the User.
+     * @apiSuccess {String} lastname  Lastname of the User.
+     * */
     router
         .route('/levels')
         .get(levelController.getAll);
