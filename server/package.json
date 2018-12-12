@@ -4,7 +4,8 @@
     "description": "",
     "license": "",
     "scripts": {
-        "start": "nodemon ./server.js"
+        "start": "nodemon ./server.js",
+        "doc": "apidoc -e \"(node_modules|public)\" -o public/apidoc"
     },
     "dependencies": {
         "apidoc": "^0.17.7",
