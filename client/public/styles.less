@@ -216,15 +216,17 @@ html, body {
               & .level-header-title {
                 width: fit-content;
                 max-width: 80%;
+                min-width: 60%;
               }
 
               & .level-meta-data {
                 margin-left: auto;
                 padding: 15px;
+                display: flex;
 
                 & .community-votes {
                   display: flex;
-                  width: 100%;
+                  width: auto;
                   & span {
                     margin-left: auto;
                   }
@@ -232,11 +234,13 @@ html, body {
                     margin-left: auto;
                     padding-top: 3px;
                     color: @dark-secondary-color;
+                    padding-right: 6px;
                   }
                 }
 
                 & .difficulty-stars {
-                  padding-top: 15px;
+                  margin-left: 24px;
+                  min-width: 5em;
                 }
               }
 

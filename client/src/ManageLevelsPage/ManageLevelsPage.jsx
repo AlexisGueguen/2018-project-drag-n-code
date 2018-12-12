@@ -67,11 +67,13 @@ class ManageLevelsPage extends React.Component {
                                         <div className="level-header-title">
                                             <h4>{item.title}</h4>
                                             <p>{item.description}</p>
+                                            <div className="level-meta-data">
                                                 <div className="community-votes">
                                                     <div className="up-votes-count">{item.upVotes}</div>
                                                     <span className="glyphicon glyphicon-thumbs-up"/>
                                                 </div>
                                                 <DifficultyStars value={item.difficulty}/>
+                                            </div>
                                         </div>
                                         <div className="trash-button">
                                             <span className="glyphicon glyphicon-trash" onClick={() => {this.handleShow(item)}}/>
