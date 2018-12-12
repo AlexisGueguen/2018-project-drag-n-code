@@ -4,6 +4,7 @@ import {authentication} from './authentication.reducer';
 import {registration} from './registration.reducer';
 import {alert} from './alert.reducer';
 import {getAllLevels} from './getAllLevels.reducer';
+import {getAllLevelsByUser} from './getAllLevelsByUser.reducer';
 import {updateUser} from "./updateUser.reducer";
 import {getLevel} from "./getLevel.reducer";
 import {createLevel} from "./createLevel.reducer";
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
     registration,
     alert,
     getAllLevels,
+    getAllLevelsByUser,
     updateUser,
     getLevel,
     createLevel,

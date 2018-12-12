@@ -71,5 +71,12 @@
     "difficultyInvalid": "Difficulty is invalid",
     "cancelLink": "Cancel",
     "createLink": "Create"
+  },
+  "manageLevels" : {
+    "title" : "Manage my levels",
+    "deleteMessageTitle" : "Do you really want to delete this level ?",
+    "deleteMessageBody" : "If you delete your level, it will be lost forever",
+    "cancelButton" : "Cancel",
+    "deleteButton" : "Delete"
   }
 }
