@@ -1,0 +1,8 @@
+{
+  "name": "Drag & Code API documentation",
+  "version": "1.0.0",
+  "description": "Drag & Code project backend",
+  "template": {
+    "forceLanguage": "en"
+  }
+}

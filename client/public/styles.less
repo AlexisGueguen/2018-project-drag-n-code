@@ -185,7 +185,7 @@ html, body {
     height: 100%;
     overflow: auto;
 
-    & .home-page, .community-page {
+    & .home-page, .community-page, .my-levels-page {
       padding-top: 20px;
       padding-bottom: 20px;
 
@@ -216,15 +216,17 @@ html, body {
               & .level-header-title {
                 width: fit-content;
                 max-width: 80%;
+                min-width: 60%;
               }
 
               & .level-meta-data {
                 margin-left: auto;
                 padding: 15px;
+                display: flex;
 
                 & .community-votes {
                   display: flex;
-                  width: 100%;
+                  width: auto;
                   & span {
                     margin-left: auto;
                   }
@@ -232,11 +234,13 @@ html, body {
                     margin-left: auto;
                     padding-top: 3px;
                     color: @dark-secondary-color;
+                    padding-right: 6px;
                   }
                 }
 
                 & .difficulty-stars {
-                  padding-top: 15px;
+                  margin-left: 24px;
+                  min-width: 5em;
                 }
               }
 
@@ -249,6 +253,8 @@ html, body {
             & .list-item-details {
               background-color: @light-grey-color;
               display: flex;
+              padding-top: 20px;
+              padding-bottom: 20px;
 
               & .list-item-statement {
                 margin-bottom: 0;
@@ -319,7 +325,7 @@ html, body {
             }
 
             & .instruction-variable-placed {
-                display: flex;
+              display: flex;
 
               & b {
                 margin: auto 8px;
@@ -356,7 +362,7 @@ html, body {
               & b {
                 margin: auto 8px auto 0;
               }
-              
+
               & div.predicate {
                 display: flex;
                 margin-top: auto;
@@ -612,6 +618,39 @@ html, body {
       }
     }
 
+    & .my-levels-page {
+      & .level-list .list-item-header {
+        background-color: #fff !important;
+        cursor: unset !important;
+
+        &:hover .trash-button {
+          visibility: visible;
+        }
+      }
+
+      & .trash-button {
+        margin-left: auto;
+        padding: 15px;
+        cursor: pointer;
+        visibility: hidden;
+
+        & .glyphicon-trash {
+          position: relative;
+          top: 50%;
+          transform: translateY(-50%);
+          font-size: 37px;
+        }
+      }
+
+      & .community-votes {
+        display: flex;
+
+        & .glyphicon-thumbs-up {
+          padding-left: 10px;
+        }
+      }
+    }
+
     & .alert {
       width: 97%;
       margin: 5px auto;
@@ -719,4 +758,8 @@ html, body {
     margin-bottom: auto;
     margin-top: auto;
   }
+}
+
+.modal-footer .btn {
+  margin-top: unset;
 }

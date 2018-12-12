@@ -197,9 +197,7 @@ class CreateLevelPage extends React.Component {
 
 function mapStateToProps(state) {
     const { loading } = state.createLevel;
-
-    const { authentication } = state;
-    const { user } = authentication;
+    const { user } = state.authentication;
     return {
         loading,
         user
