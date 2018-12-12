@@ -4,9 +4,11 @@
     "description": "",
     "license": "",
     "scripts": {
-        "start": "nodemon ./server.js"
+        "start": "nodemon ./server.js",
+        "doc": "apidoc -e \"(node_modules|public)\" -o public/apidoc"
     },
     "dependencies": {
+        "apidoc": "^0.17.7",
         "bcryptjs": "^2.4.3",
         "body-parser": "^1.18.3",
         "compile-run": "^2.1.4",
