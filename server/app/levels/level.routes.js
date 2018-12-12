@@ -3,8 +3,8 @@ const levelController = require('./level.controller');
 module.exports = (router) => {
 
     /**
-     * @api {get} /levels Levels List
-     * @apiName Get Levels
+     * @api {get} /levels Get all levels
+     * @apiName Get all levels
      * @apiDescription Get the levels created by the community
      * or the base levels of the website
      *
@@ -12,31 +12,50 @@ module.exports = (router) => {
      * @apiHeader {String} Authorization User access token
      * @apiHeader {String} Content-Type application/json
      *
-     * @apiParam {Boolean} get Levels created by the community ?
+     * @apiParam {Boolean} isCommunity true: levels from the community, false: default levels
      *
-     * @apiSuccess {Level[]} levels List of Playable Levels
+     * @apiSuccess {Level[]} levels List of levels
+     * @apiSuccessExample {json} Success
+     * [
+     *      {
+     *          "_id": "5bf548b153eb7f41ffcc23ec",
+     *          "title": "Find Maximum",
+     *          "description": "Find the maximum among a list of numbers",
+     *          "statement": "Given a list of x numbers, you have to return the highest number of the list",
+     *          "inputs": "-99, -1, 0, 14",
+     *          "outputs": "14",
+     *          "solution": "{insert code here}",
+     *          "author": "Victor",
+     *          "difficulty": 1,
+     *          "isCreatedByCommunity": true,
+     *          "upVotes": 666
+     *      },
+     *      {
+     *          ...
+     *      }
+     * ]
      * @apiErrorExample {json} Error
      * {
      *     "message": "..."
      * }
      * @apiVersion 1.0.0
-     * */
+     */
     router
         .route('/levels')
         .get(levelController.getAll);
 
     /**
      * @api {get} /levels/:id Get a Level
-     * @apiName Get Level Data
+     * @apiName Get a level
      * @apiDescription Get the data of one level based on it's id
      *
      * @apiGroup Levels
      * @apiHeader {String} Authorization User access token
      * @apiHeader {String} Content-Type application/json
      *
-     * @apiParam {String} Level id
+     * @apiParam {String} id Level id
      *
-     * @apiSuccess (Success) {Level} user the updated user
+     * @apiSuccess (Success) {Level} level the level corresponding to the id
      * @apiSuccessExample {json} Success
      * {
      *     "_id": "5bf548b153eb7f41ffcc23ec",
@@ -57,7 +76,7 @@ module.exports = (router) => {
      *     "message": "..."
      * }
      * @apiVersion 1.0.0
-     * */
+     */
     router
         .route('/levels/:id')
         .get(levelController.getById);
@@ -79,7 +98,7 @@ module.exports = (router) => {
      *     "message": "..."
      * }
      * @apiVersion 1.0.0
-     * */
+     */
     router
         .route('/player-levels/:id')
         .get(levelController.getByAuthorId);
@@ -87,7 +106,7 @@ module.exports = (router) => {
     /**
      * @api {post} /levels Create a level
      * @apiName Create a Level
-     * @apiDescription Create a Community Level
+     * @apiDescription Create a level
      *
      * @apiGroup Levels
      * @apiHeader {String} Authorization User access token
@@ -112,7 +131,7 @@ module.exports = (router) => {
      *     "message": "..."
      * }
      * @apiVersion 1.0.0
-     * */
+     */
     router
         .route('/levels')
         .post(levelController.create);
@@ -125,22 +144,22 @@ module.exports = (router) => {
         .put(levelController.update);
 
     /**
-     * @api {delete} /levels Delete a level
+     * @api {delete} /levels/:id Delete a level
      * @apiName Delete a Level
-     * @apiDescription Delete one of my Levels
+     * @apiDescription Delete the level selected by the id
      *
      * @apiGroup Levels
      * @apiHeader {String} Authorization User access token
      * @apiHeader {String} Content-Type application/json
      *
-     * @apiParam (Body) {String} id of the level to delete
+     * @apiParam {String} id id of the level to delete
      *
      * @apiErrorExample {json} Error
      * {
      *     "message": "..."
      * }
      * @apiVersion 1.0.0
-     * */
+     */
     router
         .route('/levels/:id')
         .delete(levelController.delete);

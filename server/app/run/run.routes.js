@@ -3,10 +3,10 @@ const runController = require('./run.controller');
 module.exports = (router) => {
 
     /**
-     * @api {post} /run Compile - Run
+     * @api {post} /run Compile and Run
      * @apiName Compile and Run
      * @apiDescription Compile the provided code and run it.
-     * @apiGroup Compile - Run
+     * @apiGroup Run
      * @apiHeader {String} Authorization User access token
      * @apiHeader {String} Content-Type application/json
      * @apiParam (Body) {String} language the code language

@@ -50,8 +50,9 @@ function getByScore(topNumber) {
         method: 'GET',
         headers: authHeader()
     };
+    const params = `?topNumber=${topNumber}`;
 
-    return fetch(`${config.apiUrl}/users?topNumber=${topNumber}`, requestOptions).then(handleResponse);
+    return fetch(`${config.apiUrl}/user${params}`, requestOptions).then(handleResponse);
 }
 
 function register(user) {
