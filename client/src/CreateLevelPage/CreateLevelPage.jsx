@@ -7,6 +7,8 @@ import {Link} from "react-router-dom";
 import {DifficultyStars} from "../_components/DifficultyStars";
 import AceEditor from "react-ace";
 
+const solutionExample = '#include <iostream>\nusing namespace std;\n\nint main()\n{\n    cout << "Hello, World!";\n    return 0;\n}';
+
 class CreateLevelPage extends React.Component {
     constructor(props) {
         super(props);
@@ -19,7 +21,7 @@ class CreateLevelPage extends React.Component {
                 inputs: '',
                 outputs: '',
                 difficulty: '',
-                solution: '',
+                solution: solutionExample,
             },
             submitted: false,
         };
@@ -139,6 +141,7 @@ class CreateLevelPage extends React.Component {
                         }
                     </div>
                     {/*  Solution  */}
+                    <label htmlFor="statement">{translation.createLevel.solutionField}</label>
                     <div className="solution-code">
                         <AceEditor
                             mode="c_cpp"
@@ -148,7 +151,7 @@ class CreateLevelPage extends React.Component {
                             showPrintMargin={false}
                             showGutter={false}
                             highlightActiveLine={false}
-                            width='80%'
+                            width='100%'
                             height='300px'
                             setOptions={{
                                 enableBasicAutocompletion: true,
