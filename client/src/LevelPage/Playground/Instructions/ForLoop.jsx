@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {generateGuid} from "../../../_helpers/utils";
 import {instructions} from "./instructions";
-import {comparisonOperators, operators} from "./operators";
+import {comparisonOperators, assignmentOperators, isIncrementOrDecrement} from "./operators";
 import {variableType} from "./types";
 import Select from "react-select";
 
@@ -201,16 +201,21 @@ export class ForLoop extends React.Component {
                         onChange={this.onLoopIncrementOperatorChange}
                         value={{value: item.attributes.increment.operator, label: item.attributes.increment.operator}}
                         options={[
-                            {value: operators.plusPlus, label: operators.plusPlus},
-                            {value: operators.plusEqual, label: operators.plusEqual},
-                            {value: operators.minusMinus, label: operators.minusMinus},
-                            {value: operators.minusEqual, label: operators.minusEqual}
+                            {value: assignmentOperators.plusPlus, label: assignmentOperators.plusPlus},
+                            {value: assignmentOperators.minusMinus, label: assignmentOperators.minusMinus},
+                            {value: assignmentOperators.plusEqual, label: assignmentOperators.plusEqual},
+                            {value: assignmentOperators.minusEqual, label: assignmentOperators.minusEqual},
+                            {value: assignmentOperators.multiplyEqual, label: assignmentOperators.multiplyEqual},
+                            {value: assignmentOperators.divideEqual, label: assignmentOperators.divideEqual},
+                            {value: assignmentOperators.equal, label: assignmentOperators.equal}
                         ]}
                     />
                 </div>
-                <input className="loop-condition-right" type="text" value={item.attributes.increment.value}
-                       onChange={this.onLoopIncrementValueChange}/>
-
+                {
+                    !isIncrementOrDecrement(item.attributes.increment.operator) &&
+                    <input className="loop-condition-right" type="text" value={item.attributes.increment.value}
+                           onChange={this.onLoopIncrementValueChange}/>
+                }
             </div>
         )
     }
@@ -233,7 +238,7 @@ export class ForLoop extends React.Component {
                 },
                 increment: {
                     variable: "i",
-                    operator: operators.plusPlus,
+                    operator: assignmentOperators.plusPlus,
                     value: "1"
                 }
             },

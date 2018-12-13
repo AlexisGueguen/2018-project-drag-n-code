@@ -3,6 +3,7 @@ import {IfBlock, VariableDeclaration} from "./Instructions";
 import React from "react";
 import {ForLoop} from "./Instructions/ForLoop";
 import {PrintInstruction} from "./Instructions/Print";
+import {VariableOperation} from "./Instructions/VariableOperation";
 
 export function renderInstructionContent(item, update) {
     switch (item.type) {
@@ -14,6 +15,8 @@ export function renderInstructionContent(item, update) {
             return <div className="instruction"><ForLoop item={item} update={update}/></div>;
         case instructions.Print:
             return <div className="instruction"><PrintInstruction item={item} update={update}/></div>;
+        case instructions.VariableOperation:
+            return <div className="instruction"><VariableOperation item={item} update={update}/></div>;
         default:
             return <div className="instruction-default">{item.attributes.title}</div>;
     }

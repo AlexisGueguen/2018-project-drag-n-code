@@ -8,7 +8,7 @@ import InstructionDraggableOnly from "./InstructionDraggableOnly";
 import DroppableRemoveInstruction from "./DroppableRemoveInstruction";
 import {connect} from "react-redux";
 import {codeTreeActions} from "../../_actions";
-import {createIntsructionFromType} from "./Instructions/utils";
+import {createInstructionFromType} from "./Instructions/utils";
 import {instructions} from "./Instructions/instructions";
 import EmptyTreeTarget from "./EmptyTreeTarget";
 
@@ -63,7 +63,7 @@ class Playground extends React.Component {
         if (!dest) dest = tree;
         const {lastIdAdded} = this.state;
         if (id !== lastIdAdded) {
-            const item = createIntsructionFromType(id);
+            const item = createInstructionFromType(id);
             dest.push(item);
             this.setState({
                 ...this.state,
@@ -172,6 +172,11 @@ class Playground extends React.Component {
                         id={instructions.Print}
                         parent={null}
                         item={{id: instructions.Print, attributes: {title: 'Print'}, children:[]}}
+                    />
+                    <InstructionDraggableOnly
+                        id={instructions.VariableOperation}
+                        parent={null}
+                        item={{id: instructions.VariableOperation, attributes: {title: 'Operation'}, children:[]}}
                     />
                 </div>
             </Col>

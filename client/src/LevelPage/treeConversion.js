@@ -1,5 +1,5 @@
 import {instructions} from "./Playground/Instructions/instructions";
-import {operators} from "./Playground/Instructions/operators";
+import {assignmentOperators} from "./Playground/Instructions/operators";
 import {printType} from "./Playground/Instructions/Print";
 
 export const conversion = {
@@ -37,8 +37,8 @@ function instructionToCPP(instruction, indentation) {
             let initialization = `${attr.initialization.type} ${attr.initialization.name}=${attr.initialization.value}`;
             let conditions = `${attr.condition.left} ${attr.condition.operator} ${attr.condition.right}`;
             let incrementValue: string;
-            if (attr.increment.operator === operators.plusPlus
-                || attr.increment.operator === operators.minusMinus
+            if (attr.increment.operator === assignmentOperators.plusPlus
+                || attr.increment.operator === assignmentOperators.minusMinus
             ) {
                 incrementValue = '';
             } else {
@@ -60,6 +60,21 @@ function instructionToCPP(instruction, indentation) {
                 break;
             }
             code += createIndent(indentation) + `cout << ${content};\n`;
+            break;
+        }
+        case instructions.VariableOperation: {
+            let expression: string;
+            if (attr.assignmentOperator === assignmentOperators.plusPlus
+                || attr.assignmentOperator === assignmentOperators.minusMinus
+            ) {
+                expression = '';
+            } else {
+                expression = attr.left;
+                if (attr.operator !== '') {
+                    expression += attr.operator + attr.right;
+                }
+            }
+            code += createIndent(indentation) + `${attr.variable}${attr.assignmentOperator}${expression};\n`;
         }
     }
     return code;

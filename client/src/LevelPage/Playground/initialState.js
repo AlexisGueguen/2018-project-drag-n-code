@@ -1,6 +1,6 @@
 import {instructions} from "./Instructions/instructions";
 import {generateGuid} from "../../_helpers/utils";
-import {comparisonOperators, operators} from "./Instructions/operators";
+import {comparisonOperators, assignmentOperators, arithmeticOperators} from "./Instructions/operators";
 import {variableType} from "./Instructions/types";
 import {printType} from "./Instructions/Print";
 
@@ -49,19 +49,21 @@ export const initialState = {
                         },
                         increment: {
                             variable: "i",
-                            operator: operators.plusPlus,
+                            operator: assignmentOperators.plusPlus,
                             value: "1"
                         }
                     },
                     children: [
                         {
                             id: generateGuid(),
-                            type: instructions.VariableDeclaration,
+                            type: instructions.VariableOperation,
                             droppable: false,
                             attributes: {
-                                type: variableType.float,
-                                name: "b",
-                                value: "0.00"
+                                variable: "a",
+                                left: "1",
+                                operator: arithmeticOperators.addition,
+                                right: "1",
+                                assignmentOperator: assignmentOperators.equal
                             },
                             children: []
                         }
