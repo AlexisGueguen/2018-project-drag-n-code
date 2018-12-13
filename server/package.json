@@ -1,10 +1,12 @@
 {
     "name": "server",
     "version": "1.0.0",
-    "description": "",
-    "license": "",
+    "description": "Restful API for drag & code project",
+    "license": "AGPL-3.0-or-later",
+    "repository": "https://github.com/LuleaUniversityOfTechnology/2018-project-drag-n-code",
     "scripts": {
         "start": "nodemon ./server.js",
+        "prod": "sudo NODE_ENV=prod node server.js",
         "doc": "apidoc -e \"(node_modules|public)\" -o public/apidoc"
     },
     "dependencies": {

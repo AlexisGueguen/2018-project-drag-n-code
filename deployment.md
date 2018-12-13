@@ -39,15 +39,22 @@ Check: ````git --version````
 PM2 is the tool that will reboot the server if it crash.  
 Install PM2: ```sudo npm install pm2 -g```  
 Install serve: ```sudo npm install -g serve``` 
+### Certbot
+Certbot automatically enable HTTPS on the website with EFF's Certbot, deploying Let's Encrypt certificates.  
+```
+sudo add-apt-repository ppa:certbot/certbot
+sudo apt-get update
+sudo apt-get install python-certbot-nginx
+```  
 
 ##Configuration
 Remove nginx default configuration: ```sudo rm /etc/nginx/sites-available/default```  
 Add new configuration: ```sudo nano /etc/nginx/sites-available/default```  
-You need to change ```server_ip``` to your current public machine IP.
+You need to change ```your_domain``` to a domain you have bought (for example here dragncode.tk).   
 ```
 server {
     listen 80;
-    server_name server_ip;
+    server_name your_domain www.your_domain;
     location / {
         proxy_pass http://127.0.0.1:5000;
         proxy_http_version 1.1;
@@ -60,12 +67,22 @@ server {
 }
 ```
 ```Ctrl+O``` to save, ```Ctrl+X``` to exit.  
+You can test the configuration with ```sudo nginx -t```  
 Then reload nginx: ```sudo systemctl reload nginx```  
 
-Update the address of the API: 
+Update the address of the API with your own domain: 
 ```
 sudo nano ~/2018-project-drag-n-code/client/src/config.json
 ```
+
+###Generate a certificate
+Replace example.com with your domain name  
+```
+sudo certbot --nginx -d example.com -d www.example.com
+```  
+If it's the first time you use certbot, provide an email and agree to Terms of Service.  
+Choose Redirect All to force https traffic.  
+Test the renewal of the certificate: ````sudo certbot renew --dry-run```  
 
 ### Clone the repository
 ```
@@ -93,7 +110,7 @@ Launch the client-server:
 cd ~/2018-project-drag-n-code/client
 pm2 start app.config.json
 cd ~/2018-project-drag-n-code/server
-pm2 start ./server.js
+pm2 start app.config.json
 ```
 Check for server status: 
 General status: ```pm2 report```  

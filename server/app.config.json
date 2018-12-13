@@ -1,0 +1,15 @@
+{
+  apps : [
+    {
+      name      : "server",
+      version   : "1.0.0",
+      script    : "npx",
+      interpreter: "none",
+      args: "sudo npm run-script prod",
+      instances: 1,
+      autorestart: true,
+      watch: false,
+      max_memory_restart: '1G'
+    }
+  ]
+}
