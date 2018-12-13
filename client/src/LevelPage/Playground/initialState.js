@@ -2,6 +2,7 @@ import {instructions} from "./Instructions/instructions";
 import {generateGuid} from "../../_helpers/utils";
 import {comparisonOperators, operators} from "./Instructions/operators";
 import {variableType} from "./Instructions/types";
+import {printType} from "./Instructions/Print";
 
 export const initialState = {
     tree: [
@@ -68,12 +69,11 @@ export const initialState = {
                 },
                 {
                     id: generateGuid(),
-                    type: instructions.VariableDeclaration,
+                    type: instructions.Print,
                     droppable: false,
                     attributes: {
-                        type: variableType.double,
-                        name: "c",
-                        value: "0.08729"
+                        type: printType.text,
+                        value: "Hello"
                     },
                     children: []
                 }

@@ -1,5 +1,6 @@
 import {instructions} from "./Playground/Instructions/instructions";
 import {operators} from "./Playground/Instructions/operators";
+import {printType} from "./Playground/Instructions/Print";
 
 export const conversion = {
     toCPP
@@ -48,6 +49,17 @@ function instructionToCPP(instruction, indentation) {
             instruction.children.forEach(child => children += instructionToCPP(child, indentation + 1));
             code += createIndent(indentation) + `for (${initialization} ; ${conditions} ; ${increment}) {\n${children}${createIndent(indentation)}}\n`;
             break;
+        }
+        case instructions.Print: {
+            let content;
+            if (attr.type === printType.text) {
+                content = `"${attr.value}"`;
+            } else if (attr.type === printType.variable) {
+                content = attr.value;
+            } else {
+                break;
+            }
+            code += createIndent(indentation) + `cout << ${content};\n`;
         }
     }
     return code;
