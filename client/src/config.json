@@ -3,6 +3,6 @@
         "apiUrl": "http://127.0.0.1:4000/api"
     },
     "production": {
-        "apiUrl": "http://3.16.159.117:4000/api"
+        "apiUrl": "https://dragncode.tk:4000/api"
     }
 }
