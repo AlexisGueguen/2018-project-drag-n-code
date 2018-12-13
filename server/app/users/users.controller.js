@@ -28,13 +28,13 @@ function register(req, res, next) {
 }
 
 function getCurrent(req, res, next) {
-    userService.getById(req.user.sub)
+    userService.getById(req.user.sub, req.headers.authorization.split(' ')[1])
         .then(user => user ? res.json(user) : res.sendStatus(404))
         .catch(err => next(err));
 }
 
 function getById(req, res, next) {
-    userService.getById(req.params.id)
+    userService.getById(req.params.id, req.headers.authorization.split(' ')[1])
         .then(user => user ? res.json(user) : res.sendStatus(404))
         .catch(err => next(err));
 }
@@ -46,7 +46,7 @@ function getByScore(req, res, next) {
 }
 
 function update(req, res, next) {
-    userService.update(req.body)
+    userService.update(req.body, req.headers.authorization.split(' ')[1])
         .then(data => res.status(200).json(data))
         .catch(err => next(err));
 }

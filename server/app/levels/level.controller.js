@@ -28,7 +28,7 @@ function getByAuthorId(req, res, next) {
 }
 
 function create(req, res, next) {
-    levelService.create(req.body)
+    levelService.create(req.body, req.headers.authorization.split(' ')[1])
         .then(data => res.status(201).json(data))
         .catch(err => next(err))
 }
@@ -40,7 +40,7 @@ function update(req, res, next) {
 }
 
 function _delete(req, res, next) {
-    levelService.delete(req.params.id)
+    levelService.delete(req.params.id, req.headers.authorization.split(' ')[1])
         .then(data => res.status(200).json(data))
         .catch(err => next(err));
 }

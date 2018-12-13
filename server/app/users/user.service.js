@@ -26,7 +26,15 @@ async function login({ username, password }) {
     }
 }
 
-async function getById(id) {
+async function getById(id, requestToken) {
+    if(await checkTokenUser(id, requestToken)!== 0 && !!requestToken) {
+        throw {
+            name: 'Forbidden',
+            message: `Forbidden Access`,
+            statusCode: 403
+        };
+    }
+
     return await User.findById(id).select('-hash');
 }
 
@@ -48,7 +56,7 @@ async function create(userParam) {
     await user.save();
 }
 
-async function update(userParam) {
+async function update(userParam, requestToken) {
     if (!(!!userParam._id)) throw {
         name: 'Error',
         message: `Object in body is incorrect, provide an _id field.`,
@@ -61,6 +69,12 @@ async function update(userParam) {
             statusCode: 404
         };
     }
+    if(await checkTokenUser(userParam._id, requestToken)!== 0 && !!requestToken)
+        throw {
+            name: 'Forbidden',
+            message: `Forbidden Access`,
+            statusCode: 403
+        };
 
     let user = new User(userParam);
 
@@ -79,4 +93,12 @@ async function getByScore(topNumber) {
         .find({}, 'username picture score')
         .sort({score : -1})
         .limit(limitNumber)
+}
+
+async function checkTokenUser(ownerId, requestToken) {
+    let decoded = jwt.decode(requestToken);
+    if(!!decoded) {
+        return decoded.sub.localeCompare(ownerId);
+    }
+    else return -1;
 }

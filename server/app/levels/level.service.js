@@ -1,3 +1,5 @@
+const jwt = require('jsonwebtoken');
+
 const db = require('app/_helpers/db');
 const Level = db.Level;
 
@@ -28,13 +30,20 @@ async function getAll(isCommunity) {
     return await Level.find({isCreatedByCommunity: isCommunity}, 'title description statement author difficulty upVotes isCreatedByCommunity');
 }
 
-async function create(levelParam) {
+async function create(levelParam, requestToken) {
     if (await Level.findOne({title: levelParam.title})) {
         throw {
             name: 'Error',
             message: `Level ${levelParam.title} already taken`,
             statusCode: 400
         };
+    }
+
+    let decoded = jwt.decode(requestToken);
+    if(!!decoded) {
+        if(decoded.sub.localeCompare(levelParam.author) !== 0) {
+            throwForbiddenError();
+        }
     }
 
     const level = new Level(levelParam);
@@ -61,13 +70,30 @@ async function update(levelParam) {
     return await Level.findByIdAndUpdate(levelParam._id, level, {new: true});
 }
 
-async function _delete(id) {
-    if (!await Level.findById(id)) {
+async function _delete(levelId, requestToken) {
+    if (!await Level.findById(levelId)) {
         throw {
             name: 'Error',
-            message: `Level ${id} not found`,
+            message: `Level ${levelId} not found`,
             statusCode: 404
         };
     }
-    await Level.findByIdAndRemove(id);
+    await Level.findById(levelId)
+        .then((level) => {
+            let decoded = jwt.decode(requestToken);
+            if(!!decoded) {
+                if(decoded.sub.localeCompare(level.author) !== 0) {
+                    throwForbiddenError();
+                }
+            }
+        });
+    await Level.findByIdAndRemove(levelId);
+}
+
+function throwForbiddenError() {
+    throw {
+        name: 'Forbidden',
+        message: `Forbidden Access`,
+        statusCode: 403
+    };
 }
