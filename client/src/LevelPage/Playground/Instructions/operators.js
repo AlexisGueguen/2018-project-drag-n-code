@@ -9,5 +9,8 @@ export const comparisonOperators = {
 
 export const operators = {
     equal: "=",
-    plusplus: "++"
+    plusPlus: "++",
+    plusEqual: "+=",
+    minusMinus: "--",
+    minusEqual: "-="
 };

@@ -310,6 +310,7 @@ html, body {
               position: relative;
               padding-top: 15px;
               margin-top: -16px;
+              width: fit-content;
             }
 
             & div.tree {
@@ -402,7 +403,59 @@ html, body {
               display: flex;
 
               & b {
-                margin: auto 8px auto 0;
+                margin: auto 8px auto 8px;
+              }
+
+              & input {
+                max-width: 65px;
+                min-width: 30px;
+              }
+
+              & input.loop-variable-name {
+                border: 1px solid lightgray;
+                min-height: 28px;
+                padding-left: 4px;
+                padding-right: 4px;
+                border-radius: 0 4px 4px 0;
+              }
+
+              & .loop-variable-type-dropdown {
+                width: auto;
+                min-width: 95px;
+
+                & div.css-vj8t7z {
+                  border-radius: 0;
+                  margin-left: -1px;
+                  margin-right: -1px;
+                }
+              }
+
+              & input.loop-condition-left {
+                border-top-left-radius: 4px;
+                border-bottom-left-radius: 4px;
+                border: 1px solid lightgray;
+                padding-left: 4px;
+                padding-right: 4px;
+              }
+
+              & input.loop-condition-right {
+                border-top-right-radius: 4px;
+                border-bottom-right-radius: 4px;
+                border: 1px solid lightgray;
+                padding-left: 4px;
+                padding-right: 4px;
+              }
+
+              & .loop-condition-operator-dropdown {
+                width: auto;
+                min-width: 80px;
+                border-radius: 0;
+
+                & div.css-vj8t7z {
+                  border-radius: 0;
+                  margin-left: -1px;
+                  margin-right: -1px;
+                }
               }
             }
           }

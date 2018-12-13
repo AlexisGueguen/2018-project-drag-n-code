@@ -1,4 +1,5 @@
 import {instructions} from "./Playground/Instructions/instructions";
+import {operators} from "./Playground/Instructions/operators";
 
 export const conversion = {
     toCPP
@@ -24,7 +25,7 @@ function instructionToCPP(instruction, indentation) {
         }
         case instructions.IfBlock: {
             const predicates = attr.predicates.map((predicate => {
-                return `${predicate.aggregator ? ' ' + predicate.aggregator + ' ' : ''} ${predicate.left} ${predicate.operator} ${predicate.right}`;
+                return `${predicate.aggregator ? ' ' + predicate.aggregator + ' ' : ''}${predicate.left}${predicate.operator}${predicate.right}`;
             }));
             let children = '';
             instruction.children.forEach(child => children += instructionToCPP(child, indentation + 1));
@@ -34,9 +35,17 @@ function instructionToCPP(instruction, indentation) {
         case instructions.ForLoop: {
             let initialization = `${attr.initialization.type} ${attr.initialization.name}=${attr.initialization.value}`;
             let conditions = `${attr.condition.left} ${attr.condition.operator} ${attr.condition.right}`;
-            let increment = `${attr.increment.variable}${attr.increment.operator}${attr.increment.value}`;
+            let incrementValue: string;
+            if (attr.increment.operator === operators.plusPlus
+                || attr.increment.operator === operators.minusMinus
+            ) {
+                incrementValue = '';
+            } else {
+                incrementValue = attr.increment.value;
+            }
+            let increment = `${attr.increment.variable}${attr.increment.operator}${incrementValue}`;
             let children = '';
-            instruction.children.forEach(child => children += instructionToCPP(child, indentation+1));
+            instruction.children.forEach(child => children += instructionToCPP(child, indentation + 1));
             code += createIndent(indentation) + `for (${initialization} ; ${conditions} ; ${increment}) {\n${children}${createIndent(indentation)}}\n`;
             break;
         }

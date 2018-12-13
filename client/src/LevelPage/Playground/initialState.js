@@ -48,8 +48,8 @@ export const initialState = {
                         },
                         increment: {
                             variable: "i",
-                            operator: operators.plusplus,
-                            value: ""
+                            operator: operators.plusPlus,
+                            value: "1"
                         }
                     },
                     children: [
