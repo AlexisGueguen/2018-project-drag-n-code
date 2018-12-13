@@ -51,7 +51,7 @@ class Playground extends React.Component {
     }
 
     updateItem(itemUpdated) {
-        console.log(itemUpdated);
+        console.log('Update item: ', itemUpdated);
         let {tree} = this.state;
         this.findAndUpdateNode(itemUpdated, tree);
         this.updateTreeState(tree);
@@ -81,7 +81,7 @@ class Playground extends React.Component {
                 return node;
             }
             if (node.children && node.children.length) {
-                const result = this.findItem(id, node.children);
+                const result = this.findAndUpdateNode(newItem, node.children);
                 if (result) {
                     return result
                 }

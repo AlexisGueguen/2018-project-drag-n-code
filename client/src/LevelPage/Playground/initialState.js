@@ -1,6 +1,6 @@
 import {instructions} from "./Instructions/instructions";
 import {generateGuid} from "../../_helpers/utils";
-import {comparisonOperators} from "./Instructions/operators";
+import {comparisonOperators, operators} from "./Instructions/operators";
 import {variableType} from "./Instructions/types";
 
 export const initialState = {
@@ -33,17 +33,24 @@ export const initialState = {
             children: [
                 {
                     id: generateGuid(),
-                    type: instructions.IfBlock,
+                    type: instructions.ForLoop,
                     droppable: true,
                     attributes: {
-                        predicates: [
-                            {
-                                left: "adf",
-                                right: "jkd",
-                                operator: comparisonOperators.moreOrEqualThan,
-                                aggregator: null
-                            }
-                        ]
+                        initialization: {
+                            type: "int",
+                            name: "i",
+                            value: "0"
+                        },
+                        condition: {
+                            left: "i",
+                            right: "1",
+                            operator: comparisonOperators.lessOrEqualThan,
+                        },
+                        increment: {
+                            variable: "i",
+                            operator: operators.plusplus,
+                            value: ""
+                        }
                     },
                     children: [
                         {

@@ -25,6 +25,7 @@ class GeneratedCodePanel extends React.Component {
                     maxLines={Infinity}
                     readOnly={true}
                     value={code}
+                    editorProps={{$blockScrolling: Infinity}}
                     />
             </div>
         );
