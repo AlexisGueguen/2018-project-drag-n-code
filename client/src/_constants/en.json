@@ -61,6 +61,7 @@
     "inputsField" : "Test Inputs",
     "outputsField" : "Expected Outputs",
     "difficultyField" : "Difficulty",
+    "solutionField" : "Solution Example",
     "difficultyTooltip" : "Number between 1 and 3",
     "titleRequired": "Title is required",
     "descriptionRequired": "Description is required",

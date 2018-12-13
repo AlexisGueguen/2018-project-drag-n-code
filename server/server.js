@@ -13,17 +13,6 @@ const morgan = require('morgan');
 const fs = require('fs');
 const https = require('https');
 
-// Certificate
-const privateKey = fs.readFileSync('/etc/letsencrypt/live/dragncode.tk/privkey.pem', 'utf8');
-const certificate = fs.readFileSync('/etc/letsencrypt/live/dragncode.tk/cert.pem', 'utf8');
-const ca = fs.readFileSync('/etc/letsencrypt/live/dragncode.tk/chain.pem', 'utf8');
-
-const credentials = {
-    key: privateKey,
-    cert: certificate,
-    ca: ca
-};
-
 app.use(morgan('combined'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({ limit: '5mb' }));
@@ -41,7 +30,7 @@ const port = 4000;
 /*const server = app.listen(port, function () {
     console.log('Server listening on port ' + port);
 });*/
-var env = process.env.NODE_ENV || 'dev';
+const env = process.env.NODE_ENV || 'dev';
 switch (env) {
     case 'dev':
         const server = app.listen(port, function () {
@@ -49,9 +38,17 @@ switch (env) {
         });
         break;
     case 'prod':
+        const privateKey = fs.readFileSync('/etc/letsencrypt/live/dragncode.tk/privkey.pem', 'utf8');
+        const certificate = fs.readFileSync('/etc/letsencrypt/live/dragncode.tk/cert.pem', 'utf8');
+        const ca = fs.readFileSync('/etc/letsencrypt/live/dragncode.tk/chain.pem', 'utf8');
+        const credentials = {
+            key: privateKey,
+            cert: certificate,
+            ca: ca
+        };
         const httpsServer = https.createServer(credentials, app);
-        httpsServer.listen(port, () => {
-	    console.log('HTTPS Production server running on port '+port);
+            httpsServer.listen(port, () => {
+	        console.log('HTTPS Production server running on port '+port);
         });
         break;
 }
