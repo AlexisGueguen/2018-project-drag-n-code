@@ -1,38 +1,20 @@
+const levelService = require('../levels/level.service');
+const axios = require("axios");
+
 module.exports = {
     runAndCompile
 };
 
-const languages = ['javascript', 'c', 'c++', 'java'];
+const languages = ['cpp'];
 
 async function runAndCompile(body) {
-    const {language, code} = body;
-    let result;
+    const {level: levelId, language, code} = body;
+    const level = await levelService.getById(levelId);
+    let compilationResult;
     switch (language) {
         case languages[0]:
             try {
-                result = await runAndCompileJavascript(code);
-            } catch (e) {
-                throwCompilationError(e);
-            }
-            break;
-        case languages[1]:
-            try {
-                result = await runAndCompileC(code);
-            } catch (e) {
-                throwCompilationError(e);
-            }
-            break;
-        case languages[2]:
-            try {
-                result = await runAndCompileCPP(code);
-            } catch (e) {
-                throwCompilationError(e);
-            }
-            break;
-
-        case languages[3]:
-            try {
-                result = await runAndCompileJava(code);
+                compilationResult = await runAndCompileCPP(code, level.inputs);
             } catch (e) {
                 throwCompilationError(e);
             }
@@ -44,31 +26,37 @@ async function runAndCompile(body) {
                 statusCode: 400
             };
     }
-    return {message: result};
+    return {
+        validated: compilationResult.output === level.outputs,
+        expected: level.outputs,
+        current: compilationResult.output
+    };
 }
 
-function runAndCompileJavascript(code) {
-    code = unescape(code);
-    const {node} = require('compile-run');
-    return node.runSource(code);
-}
-
-function runAndCompileCPP(code) {
-    code = unescape(code);
-    const {cpp} = require('compile-run');
-    return cpp.runSource(code);
-}
-
-function runAndCompileC(code) {
-    code = unescape(code);
-    const {c} = require('compile-run');
-    return c.runSource(code);
-}
-
-function runAndCompileJava(code) {
-    code = unescape(code);
-    const {java} = require('compile-run');
-    return java.runSource(code);
+async function runAndCompileCPP(code, inputs) {
+    const url = 'https://api.jdoodle.com/execute';
+    const compileCode = async url => {
+        try {
+            const response = await axios.post(url, {
+                clientId: '4e4ba155c2a6db8f5cab15a1ed7bd2e1',
+                clientSecret: 'b6e9a7d99edadb2b0ec8f0e201a75b82085f16ee0716a93547e92b5b598434f8',
+                language: 'cpp14',
+                versionIndex: '2',
+                stdin: inputs,
+                script: code
+            });
+            console.log(response);
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            throw {
+                name: 'Compilation error',
+                message: error,
+                statusCode: 500
+            };
+        }
+    };
+    return compileCode(url);
 }
 
 function throwCompilationError(e) {
