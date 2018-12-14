@@ -79,5 +79,10 @@
     "deleteMessageBody" : "If you delete your level, it will be lost forever",
     "cancelButton" : "Cancel",
     "deleteButton" : "Delete"
+  },
+  "leaderboard" : {
+    "rankHeader" : "Rank",
+    "nameHeader" : "Username",
+    "scoreHeader" : "Score"
   }
 }
