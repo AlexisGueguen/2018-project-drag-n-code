@@ -14,12 +14,12 @@ const fs = require('fs');
 const https = require('https');
 
 app.use(morgan('combined'));
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json({ limit: '5mb' }));
+app.use(helmet());
 app.use(cors());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({ limit: '2mb' }));
 app.use(jwt());
 app.use(config.root, router);
-app.use(helmet());
 
 // api routes
 routes(router);
@@ -27,9 +27,6 @@ routes(router);
 app.use(errorHandler);
 
 const port = 4000;
-/*const server = app.listen(port, function () {
-    console.log('Server listening on port ' + port);
-});*/
 const env = process.env.NODE_ENV || 'dev';
 switch (env) {
     case 'dev':

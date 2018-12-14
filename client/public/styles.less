@@ -328,7 +328,7 @@ html, body {
 
             & .instruction-print-placed {
               display: flex;
-              
+
               & b {
                 margin: auto 8px;
               }
@@ -505,7 +505,6 @@ html, body {
           & .playground-instructions {
             height: calc(35% - 30px);
             border-top: 1px solid lightgray;
-            background-color: #32BCDB;
           }
 
           & .remove-instruction-panel {
@@ -554,15 +553,15 @@ html, body {
 
         & .scrolling-panel {
           padding: 0;
-          height: 100%;
+          height: 90%;
+          top: 0;
           overflow: auto;
           border-left: 1px solid lightgray;
 
           & .statement {
             height: auto;
             padding: 0 8px 8px;
-            overflow: auto;
-            min-height: 50%;
+            transition: all 500ms;
 
             & h3 {
               text-align: center;
@@ -571,13 +570,26 @@ html, body {
             & p {
               text-align: justify;
             }
+
+            & .glyphicon {
+              position: relative;
+              margin-bottom: auto;
+              margin-top: auto;
+              color: #000;
+              margin-left: 16px;
+              padding-top: 8px;
+            }
+
+            & .glyphicon:hover {
+              cursor: pointer;
+              color: @primary-color;
+            }
           }
 
           & .generated-code {
             height: auto;
             min-height: 50%;
-            overflow: auto;
-            padding: 0 8px 8px;
+            padding: 8px;
             background-color: #E8E8E8;
 
             & h3 {
@@ -589,19 +601,83 @@ html, body {
             }
           }
 
-          & .submission {
-            height: 10%;
-            background-color: lightgray;
-            text-align: center;
-            position: sticky;
-            bottom: 0;
-            display: flex;
-            z-index: 100;
+        }
 
-            & button {
-              width: 65%;
-              margin: auto;
-              padding: 16px;
+        & .submission-collapsed {
+          width: 41.667%;
+          text-align: center;
+          background-color: lightgray;
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          z-index: 100;
+          height: 5em;
+          display: flex;
+          transition: all 500ms;
+
+          & .content {
+            width: 100%;
+            height: 100%;
+
+            & div {
+              width: 100%;
+              height: 100%;
+              display: flex;
+
+              & button {
+                width: 65%;
+                margin: auto;
+                height: 4em;
+              }
+
+              & .expand {
+                position: relative;
+                margin-top: auto;
+                margin-bottom: auto;
+                right: 16px;
+                color: #000;
+              }
+
+              & .expand:hover {
+                color: @primary-color;
+                cursor: pointer;
+              }
+            }
+          }
+        }
+
+        & .submission-expanded {
+          width: 41.667%;
+          text-align: center;
+          background-color: lightgray;
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          z-index: 100;
+          height: 100%;
+          display: flex;
+          transition: all 500ms;
+
+          & .content {
+            width: 100%;
+            height: 100%;
+
+            & .expanded {
+              width: 100%;
+              height: 100%;
+              display: flex;
+
+              & .close {
+                right: 16px;
+                top: 16px;
+                position: absolute;
+                color: #000;
+              }
+
+              & .close:hover {
+                color: @primary-color;
+                cursor: pointer;
+              }
             }
           }
         }

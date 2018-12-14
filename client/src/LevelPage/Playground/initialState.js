@@ -18,7 +18,7 @@ export const initialState = {
                 condition: {
                     left: "i",
                     right: "inputs.size()",
-                    operator: comparisonOperators.lessOrEqualThan,
+                    operator: comparisonOperators.lessThan,
                 },
                 increment: {
                     variable: "i",
