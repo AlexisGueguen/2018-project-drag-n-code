@@ -7,6 +7,7 @@ import {compilationActions} from "../_actions/compilation.actions";
 import AceEditor from "react-ace";
 import lang from "../_constants/en";
 import {history} from '../_helpers';
+import {levelActions} from "../_actions";
 
 const translation = lang.levelPage;
 
@@ -22,6 +23,8 @@ class SubmissionPanel extends React.Component {
         this.onReduceClick = this.onReduceClick.bind(this);
         this.onExpandClick = this.onExpandClick.bind(this);
         this.onReturnMenuClick = this.onReturnMenuClick.bind(this);
+        this.onLikeClick = this.onLikeClick.bind(this);
+        this.isLiked = this.isLiked.bind(this);
     }
 
     onValidationClick() {
@@ -45,6 +48,18 @@ class SubmissionPanel extends React.Component {
 
     onReturnMenuClick() {
         history.goBack();
+    }
+
+    onLikeClick() {
+        const {level} = this.props;
+        this.props.dispatch(levelActions.like(level._id))
+    }
+
+    isLiked() {
+        const {level} = this.props;
+        const {user} = this.props;
+
+        return (user.likes).includes(level._id)
     }
 
     render() {
@@ -105,6 +120,7 @@ class SubmissionPanel extends React.Component {
                             </div>
                         ) : (
                             <div>
+                                <span className={"glyphicon glyphicon-thumbs-up" + (this.isLiked ? "liked-icon" : "")} onClick={this.onLikeClick}/>
                                 <button className="btn btn-primary" onClick={this.onValidationClick}>
                                     {translation.validate}
                                 </button>
@@ -133,11 +149,13 @@ function mapStateToProps(state) {
     const {loading, result} = state.compilation;
     const {level} = state.getLevel;
     const {code} = state.code;
+    const {user} = state.authentication;
     return {
         code,
         level,
         loading,
-        result
+        result,
+        user
     };
 }
 

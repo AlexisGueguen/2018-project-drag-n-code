@@ -8,7 +8,8 @@ export const levelActions = {
     getById,
     getByAuthorId,
     create,
-    deleteById
+    deleteById,
+    like
 };
 
 function getAll(createdByCommunity) {
@@ -72,6 +73,27 @@ function getByAuthorId(id) {
     function request() {return {type: levelConstants.GET_PLAYER_LEVELS_REQUEST}}
     function success(levels) {return {type: levelConstants.GET_PLAYER_LEVELS_SUCCESS, levels}}
     function failure(error) {return {type: levelConstants.GET_PLAYER_LEVELS_FAILURE, error}}
+}
+
+function like(levelId) {
+    return dispatch => {
+        dispatch(request(levelId));
+
+        levelService.like(levelId)
+            .then(
+                levelId => {
+                    dispatch(success(levelId));
+                },
+                error => {
+                    dispatch(failure(error.toString()));
+                    dispatch(alertActions.error(error.toString()));
+                }
+            );
+    };
+
+    function request(levelId) { return { type: levelConstants.LIKE_LEVEL_REQUEST, levelId } }
+    function success(levelId) { return { type: levelConstants.LIKE_LEVEL_SUCCESS, levelId } }
+    function failure(error) { return { type: levelConstants.LIKE_LEVEL_FAILURE, error } }
 }
 
 function create(level) {
