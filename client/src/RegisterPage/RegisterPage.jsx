@@ -6,7 +6,7 @@ import { userActions } from '../_actions';
 import translation from '../_constants/en.json';
 
 import LoadingWheel from '../_components/LoadingPoints';
-import {validateEmail} from "../_helpers/utils";
+import {isStrongPassword, validateEmail} from "../_helpers/utils";
 
 class RegisterPage extends React.Component {
     constructor(props) {
@@ -19,7 +19,8 @@ class RegisterPage extends React.Component {
                 email: ''
             },
             submitted: false,
-            emailIsValid: true
+            emailIsValid: true,
+            passwordValid: true
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -27,32 +28,38 @@ class RegisterPage extends React.Component {
     }
 
     handleChange(event) {
+        event.preventDefault();
+        console.log(event.target.value);
         const { name, value } = event.target;
         const { user } = this.state;
-        let isEmailValid = validateEmail(user.email);
+        let isEmailValid = ((name === 'email') ? validateEmail(value) : this.state.emailIsValid);
+        let isPasswordValid = ((name === 'password') ? isStrongPassword(value) : this.state.passwordValid);
         this.setState({
             user: {
                 ...user,
                 [name]: value
             },
-            emailIsValid: isEmailValid
+            emailIsValid: isEmailValid,
+            passwordValid: isPasswordValid
         });
     }
 
     handleSubmit(event) {
         event.preventDefault();
-
         const { user } = this.state;
         let isEmailValid = validateEmail(user.email);
+        let isPasswordValid = isStrongPassword(user.password);
         this.setState({
             submitted: true,
-            emailIsValid: isEmailValid
+            emailIsValid: isEmailValid,
+            passwordValid: isPasswordValid
         });
         const {dispatch} = this.props;
         if (user.username
             && user.password
             && user.email
             && validateEmail(user.email)
+            && isStrongPassword(user.password)
         ) {
             dispatch(userActions.register(user));
         }
@@ -60,7 +67,7 @@ class RegisterPage extends React.Component {
 
     render() {
         const { registering  } = this.props;
-        const { user, submitted, emailIsValid } = this.state;
+        const { user, submitted, emailIsValid, passwordValid } = this.state;
         return (
             <div className="col-md-2 col-md-offset-5 col-sm-4 col-sm-offset-4 login-container">
                 <h2>{translation.register.title}</h2>
@@ -72,11 +79,14 @@ class RegisterPage extends React.Component {
                             <div className="help-block">{translation.register.usernameRequired}</div>
                         }
                     </div>
-                    <div className={'form-group' + (submitted && !user.password ? ' has-error' : '')}>
+                    <div className={'form-group' + (submitted && (!user.password || !passwordValid) ? ' has-error' : '')}>
                         <label htmlFor="password">{translation.register.passwordField}</label>
                         <input type="password" className="form-control" name="password" value={user.password} onChange={this.handleChange} />
                         {submitted && !user.password &&
                             <div className="help-block">{translation.register.passwordRequired}</div>
+                        }
+                        {submitted && user.password && !passwordValid &&
+                            <div className="help-block">{translation.register.strongPasswordRequired}</div>
                         }
                     </div>
                     <div className={'form-group' + (submitted && (!user.email || !emailIsValid) ? ' has-error' : '')}>

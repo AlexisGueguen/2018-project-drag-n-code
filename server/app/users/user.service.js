@@ -5,6 +5,7 @@ const db = require('app/_helpers/db');
 const throwForbiddenError = require("../_helpers/utils").throwForbiddenError;
 const User = db.User;
 const _ = require('lodash');
+const isStrongPassword = require("../_helpers/utils").isStrongPassword;
 
 // Interface
 module.exports = {
@@ -41,7 +42,11 @@ async function create(userParam) {
         throw 'Username "' + userParam.username + '" is already taken';
     }
 
+    if (!isStrongPassword(userParam.password)) throw 'Password is too weak.';
     userParam.score = 0;
+    userParam.likes = [];
+    userParam.levelsCompleted = [];
+    userParam.achievements = [];
     const user = new User(userParam);
 
     // hash password
@@ -74,8 +79,8 @@ async function update(userParam, userId) {
     }
 
     let user = new User(userParam);
-    const { hash, achievements, score, likes, levelsCompleted, createdDate, ...userSanitazed } = user.toObject();
-    return await User.findByIdAndUpdate(userParam._id, userSanitazed, {new: true}).select('-hash -__v -createdDate');
+    const { hash, achievements, score, likes, levelsCompleted, createdDate, ...userSanitized } = user.toObject();
+    return await User.findByIdAndUpdate(userParam._id, userSanitized, {new: true}).select('-hash -__v -createdDate');
 }
 
 async function getByScore(topNumber) {

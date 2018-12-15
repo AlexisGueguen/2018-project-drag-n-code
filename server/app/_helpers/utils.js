@@ -1,6 +1,7 @@
 module.exports = {
     validateEmail,
-    throwForbiddenError
+    throwForbiddenError,
+    isStrongPassword
 };
 
 function validateEmail(email) {
@@ -14,4 +15,9 @@ function throwForbiddenError() {
         message: `Forbidden Access`,
         statusCode: 403
     };
+}
+
+function isStrongPassword(password) {
+    let re = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
+    return re.test(String(password));
 }

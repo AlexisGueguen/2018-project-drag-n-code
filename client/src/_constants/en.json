@@ -17,6 +17,7 @@
     "emailField" : "Mail",
     "usernameRequired": "Username is required",
     "passwordRequired": "Password is required",
+    "strongPasswordRequired": "Must be minimum eight characters, with at least one letter and one number",
     "emailRequired": "Mail is required",
     "emailInvalid": "Mail is invalid",
     "cancelLink": "Cancel"

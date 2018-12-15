@@ -8,6 +8,11 @@ export function isGuid(id) {
     return re.test(id);
 }
 
+export function isStrongPassword(password) {
+    let re = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
+    return re.test(String(password));
+}
+
 export function generateGuid() {
     /**
      * @return {string}
