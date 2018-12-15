@@ -19,6 +19,7 @@
     "passwordRequired": "Password is required",
     "emailRequired": "Mail is required",
     "emailInvalid": "Mail is invalid",
+    "captchaInvalid": "Wrong Captcha. Try Again.",
     "cancelLink": "Cancel"
   },
   "header" : {
