@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const db = require('app/_helpers/db');
 const throwForbiddenError = require("../_helpers/utils").throwForbiddenError;
 const User = db.User;
+const _ = require('lodash');
 
 // Interface
 module.exports = {
@@ -13,7 +14,8 @@ module.exports = {
     update,
     getByScore,
     setLevelCompleted,
-    toggleLike
+    toggleLike,
+    removeLevelFromUsers
 };
 
 async function login({ username, password }) {
@@ -109,4 +111,15 @@ async function toggleLike(levelId, user) {
     }
 
     return await User.findByIdAndUpdate(user._id, user, {new: true});
+}
+
+async function removeLevelFromUsers(levelId) {
+    const users = await User.find({}, 'likes levelsCompleted');
+    console.log('before: ', users);
+    for(let i = 0 ; i < users.length ; i++) {
+        _.pull(users[i].likes, levelId);
+        _.pull(users[i].levelsCompleted, levelId);
+        await User.findByIdAndUpdate(users[i]._id, users[i]);
+    }
+    console.log('after: ', users);
 }

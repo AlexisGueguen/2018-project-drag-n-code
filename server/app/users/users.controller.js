@@ -6,7 +6,7 @@ const {validateEmail} = require('../_helpers/utils');
 module.exports = {
     login,
     register,
-    getById,
+    getCurrent,
     getByScore,
     update
 };
@@ -26,9 +26,8 @@ function register(req, res, next) {
         .catch(err => next(err));
 }
 
-function getById(req, res, next) {
+function getCurrent(req, res, next) {
     const id = req.user.sub;
-    if (id !== req.params.id) throwForbiddenError();
     userService.getById(id)
         .then(user => user ? res.json(user) : res.sendStatus(404))
         .catch(err => next(err));
