@@ -53,7 +53,7 @@ function like(levelId) {
         headers: authHeader(),
     };
 
-    return fetch(`${config.apiUrl}/level/${levelId}/like`, requestOptions).then(handleResponse);
+    return fetch(`${config.apiUrl}/levels/${levelId}/like`, requestOptions).then(handleResponse);
 }
 
 function deleteLevel(id) {

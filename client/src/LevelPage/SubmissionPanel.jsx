@@ -25,6 +25,7 @@ class SubmissionPanel extends React.Component {
         this.onReturnMenuClick = this.onReturnMenuClick.bind(this);
         this.onLikeClick = this.onLikeClick.bind(this);
         this.isLiked = this.isLiked.bind(this);
+        this.isLevelCommunity = this.isLevelCommunity.bind(this);
     }
 
     onValidationClick() {
@@ -60,6 +61,11 @@ class SubmissionPanel extends React.Component {
         const {user} = this.props;
 
         return (user.likes).includes(level._id)
+    }
+
+    isLevelCommunity() {
+        const {level} = this.props;
+        return level ? level.isCreatedByCommunity : false;
     }
 
     render() {
@@ -120,8 +126,10 @@ class SubmissionPanel extends React.Component {
                             </div>
                         ) : (
                             <div>
-                                <span className={"glyphicon glyphicon-thumbs-up" + (this.isLiked ? "liked-icon" : "")} onClick={this.onLikeClick}/>
-                                <button className="btn btn-primary" onClick={this.onValidationClick}>
+                                {this.isLevelCommunity() &&
+                                    <span className={"glyphicon glyphicon-thumbs-up" + (this.isLiked() ? " liked-icon" : "")} onClick={this.onLikeClick}/>
+                                }
+                                <button className={"btn btn-primary" + (this.isLevelCommunity() ? " isCommunity" :"")} onClick={this.onValidationClick}>
                                     {translation.validate}
                                 </button>
                                 {showExpandButton &&
