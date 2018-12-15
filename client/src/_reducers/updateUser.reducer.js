@@ -8,8 +8,7 @@ export function updateUser(state = {}, action) {
             };
         case userConstants.UPDATE_SUCCESS:
             return {
-                updatingData: false,
-                updatedUser: action.user
+                updatingData: false
             };
         case userConstants.UPDATE_FAILURE:
             return {};
