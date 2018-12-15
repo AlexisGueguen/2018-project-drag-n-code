@@ -7,8 +7,13 @@ export const conversion = {
 };
 
 function toCPP(tree) {
-    let code = '#include <iostream>\nusing namespace std;\n\nint main()\n{\n';
     let indentation = 1;
+    const includes = '#include <iostream>\n#include <vector>\n#include <string>\nusing namespace std;\n\n';
+    let inputsTreatment = createIndent(indentation) + 'vector<int> inputs;\n';
+    inputsTreatment += createIndent(indentation) + 'for (string line; getline(cin, line);) {\n';
+    inputsTreatment += createIndent(indentation + 1) + 'inputs.push_back(stoi(line));\n';
+    inputsTreatment += createIndent(indentation) + '}\n';
+    let code = `${includes}int main() { \n${inputsTreatment}`;
     tree.forEach((item) => {
         code += instructionToCPP(item, indentation);
     });
@@ -59,7 +64,7 @@ function instructionToCPP(instruction, indentation) {
             } else {
                 break;
             }
-            code += createIndent(indentation) + `cout << ${content};\n`;
+            code += createIndent(indentation) + `cout << ${content} << endl;\n`;
             break;
         }
         case instructions.VariableOperation: {
@@ -75,7 +80,10 @@ function instructionToCPP(instruction, indentation) {
                 }
             }
             code += createIndent(indentation) + `${attr.variable}${attr.assignmentOperator}${expression};\n`;
+            break;
         }
+        default:
+            break;
     }
     return code;
 }

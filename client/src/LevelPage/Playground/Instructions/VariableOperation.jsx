@@ -104,7 +104,7 @@ export class VariableOperation extends React.Component {
                                     />
                                 </div>
                                 {
-                                    item.attributes.operator !== '' && 
+                                    item.attributes.operator !== '' &&
                                     <input className="operation-right" type="text" value={item.attributes.right}
                                            onChange={this.onRightChange}/>
                                 }

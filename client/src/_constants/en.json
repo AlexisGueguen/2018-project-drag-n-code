@@ -81,6 +81,14 @@
     "deleteButton" : "Delete",
     "noLevels" : "It looks like you don't have any level ..."
   },
+  "levelPage" : {
+    "compilationError" : "There was a problem",
+    "tryAgain" : "Solve the problem and try again",
+    "validate" : "Validate",
+    "returnMenu" : "Return to menu",
+    "yourCode" : "Here is your code : ",
+    "levelSuccessTitle" : "You pass the level !"
+  },
   "leaderboard" : {
     "rankHeader" : "Rank",
     "nameHeader" : "Username",
