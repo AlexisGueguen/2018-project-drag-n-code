@@ -78,7 +78,8 @@
     "deleteMessageTitle" : "Do you really want to delete this level ?",
     "deleteMessageBody" : "If you delete your level, it will be lost forever",
     "cancelButton" : "Cancel",
-    "deleteButton" : "Delete"
+    "deleteButton" : "Delete",
+    "noLevels" : "It looks like you don't have any level ..."
   },
   "levelPage" : {
     "compilationError" : "There was a problem",
@@ -87,5 +88,10 @@
     "returnMenu" : "Return to menu",
     "yourCode" : "Here is your code : ",
     "levelSuccessTitle" : "You pass the level !"
+  },
+  "leaderboard" : {
+    "rankHeader" : "Rank",
+    "nameHeader" : "Username",
+    "scoreHeader" : "Score"
   }
 }

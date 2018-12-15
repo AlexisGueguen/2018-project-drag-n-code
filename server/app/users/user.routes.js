@@ -156,4 +156,8 @@ module.exports = (router) => {
     router
         .route('/user')
         .put(userController.update);
+
+    router
+        .route('/user/likeLevel')
+        .put(userController.likeLevel);
 };

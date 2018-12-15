@@ -764,44 +764,96 @@ html, body {
         display: flex;
 
         & .form-title {
-          width: 30%;
+          width: 57%;
         }
 
-        & .form-description {
-          width: 70%;
-          padding-left: 50px;
+        & .form-stars {
+          display: flex;
+          margin-right: auto;
+          margin-left: auto;
+
+          & label {
+            margin-top: auto;
+            margin-bottom: auto;
+          }
+
+          & .rating {
+            float: left;
+            padding-left: 30px;
+          }
+
+          & .difficulty-stars {
+            padding-left: 30px;
+
+            & .glyphicon {
+              font-size: 23px;
+              color: #333;
+              padding-left: 5px;
+              position: relative;
+              width: 1.3em;
+              top: 48%;
+              transform: translateY(-50%);
+            }
+
+          }
         }
       }
 
-      & .form-stars {
-        display: flex;
+      & .form-statement textarea {
+        resize: none;
+      }
 
-        & label {
-          margin-top: auto;
-          margin-bottom: auto;
-        }
+      & .form-input {
+        width: 10%;
+      }
 
-        & .rating {
-          float: left;
-          padding-left: 30px;
+      & .ace_editor {
+        border-radius: 5px;
+      }
+
+      .form-actions  {
+        max-width: unset;
+        float: right;
+        padding-top : 20px;
+        & button {
+          padding: 15px;
+          width: 130px;
         }
       }
 
     }
 
     & .leaderboard-page {
+      padding-top: 10px;
 
       & .table {
         width: 50%;
         margin-left: auto;
         margin-right: auto;
+        margin-bottom: 5px;
+
+        & .user-row {
+          border: 2px solid @primary-color;
+        }
 
         & tr th,td {
           vertical-align: unset;
         }
 
+        & .rank-field {
+          width: 12%;
+        }
+
         & .avatar-container {
-          width: 80px;
+          width: 0%;
+        }
+
+        & .name-field {
+          width: 60%;
+        }
+
+        & .score-field {
+          width: 18%;
         }
       }
     }
@@ -877,6 +929,17 @@ html, body {
   }
 }
 
+.btn-cancel {
+  color: @dark-grey-color;
+
+  &:focus {
+    color: @dark-grey-color;
+  }
+  &:hover, :active {
+    color: @dark-grey-color;
+  }
+}
+
 & button.circle-button {
   margin-top: 8px;
   margin-bottom: 8px;
@@ -920,11 +983,14 @@ html, body {
 .rating {
   unicode-bidi: bidi-override;
   direction: rtl;
+
   & > span {
     display: inline-block;
     position: relative;
     width: 1.1em;
     font-size: 28px;
+    top: 48%;
+    transform: translateY(-50%);
   }
 }
 .rating > span:hover:before,
@@ -950,4 +1016,21 @@ html, body {
 
 .modal-footer .btn {
   margin-top: unset;
+}
+
+.thead-primary {
+  background-color: @primary-color;
+  color: #fff;
+}
+
+.vertical-dots {
+  width: 100%;
+  height: 50px;
+  background-image: radial-gradient(circle at center, @dark-grey-color 3px, transparent 1px);
+  background-size: 100% 30%;
+}
+
+.no-item-placeholder {
+  text-align: center;
+  color: @dark-grey-color;
 }

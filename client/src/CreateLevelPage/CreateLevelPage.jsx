@@ -6,6 +6,9 @@ import LoadingWheel from "../_components/LoadingPoints";
 import {Link} from "react-router-dom";
 import {DifficultyStars} from "../_components/DifficultyStars";
 import AceEditor from "react-ace";
+import 'brace/theme/chaos';
+import {TableUserItem} from "../_components/TableUserItem";
+
 
 const solutionExample = '#include <iostream>\nusing namespace std;\n\nint main()\n{\n    cout << "Hello, World!";\n    return 0;\n}';
 
@@ -18,8 +21,8 @@ class CreateLevelPage extends React.Component {
                 title: '',
                 description: '',
                 statement: '',
-                inputs: '',
-                outputs: '',
+                inputs: [],
+                outputs: [],
                 difficulty: '',
                 solution: solutionExample,
             },
@@ -41,6 +44,10 @@ class CreateLevelPage extends React.Component {
                 [name]: value
             }
         });
+    }
+
+    addInputElement(event) {
+
     }
 
     handleChangeSolution(value) {
@@ -96,7 +103,7 @@ class CreateLevelPage extends React.Component {
                 <h2>{translation.createLevel.title}</h2>
                 <form name="form" onSubmit={this.handleSubmit}>
 
-                    {/*  Title and Description  */}
+                    {/*  Title and Difficulty  */}
                     <div className="main-input-container">
                         <div className={'form-group form-title' + (submitted && !level.title ? ' has-error' : '')}>
                             <label htmlFor="title">{translation.createLevel.titleField}</label>
@@ -105,17 +112,34 @@ class CreateLevelPage extends React.Component {
                             <div className="help-block">{translation.createLevel.titleRequired}</div>
                             }
                         </div>
-                        <div className={'form-group form-description' + (submitted && !level.description ? ' has-error' : '')}>
-                            <label htmlFor="description">{translation.createLevel.descriptionField}</label>
-                            <input type="text" className="form-control" name="description" value={level.description} onChange={this.handleChange} />
-                            {submitted && !level.description &&
-                            <div className="help-block">{translation.createLevel.descriptionRequired}</div>
+                        <div className={'form-stars' + (submitted && !level.difficulty ? ' has-error' : '')}>
+                            <label htmlFor="text">{translation.createLevel.difficultyField}</label>
+                            {level.difficulty === '' ?
+                                <div className="rating">
+                                    <span onClick={this.clickStar} data-id="3">☆</span>
+                                    <span onClick={this.clickStar} data-id="2">☆</span>
+                                    <span onClick={this.clickStar} data-id="1">☆</span>
+                                </div>
+                                : <DifficultyStars value={level.difficulty}/>
+                            }
+
+                            {submitted && !level.difficulty &&
+                            <div className="help-block">{translation.createLevel.difficultyRequired}</div>
                             }
                         </div>
                     </div>
 
+                    {/*  Description  */}
+                    <div className={'form-group form-description' + (submitted && !level.description ? ' has-error' : '')}>
+                        <label htmlFor="description">{translation.createLevel.descriptionField}</label>
+                        <input type="text" className="form-control" name="description" value={level.description} onChange={this.handleChange} />
+                        {submitted && !level.description &&
+                        <div className="help-block">{translation.createLevel.descriptionRequired}</div>
+                        }
+                    </div>
+
                     {/*  Statement  */}
-                    <div className={'form-group' + (submitted && !level.statement ? ' has-error' : '')}>
+                    <div className={'form-group form-statement' + (submitted && !level.statement ? ' has-error' : '')}>
                         <label htmlFor="statement">{translation.createLevel.statementField}</label>
                         <textarea rows="4" type="text" className="form-control" name="statement" value={level.statement} onChange={this.handleChange} />
                         {submitted && !level.statement &&
@@ -124,9 +148,29 @@ class CreateLevelPage extends React.Component {
                     </div>
 
                     {/*  Inputs  */}
-                    <div className={'form-group' + (submitted && !level.inputs ? ' has-error' : '')}>
+                    <div className={'form-group ' + (submitted && !level.inputs ? ' has-error' : '')}>
                         <label htmlFor="inputs">{translation.createLevel.inputsField}</label>
-                        <input type="text" className="form-control" name="inputs" value={level.inputs} onChange={this.handleChange} />
+                        {level.inputs &&
+                            level.inputs.map((inputValue) =>
+                                <div className="input-container">
+                                    <input type="number"
+                                           className="form-control form-input"
+                                           name="inputs"
+                                           placeholder="Number"
+                                           step="1"
+                                           value={inputValue}
+                                           onChange={this.handleChange} />
+                                </div>)
+                        }
+                        {
+                            <input type="number"
+                                   className="form-control form-input"
+                                   name="inputs"
+                                   placeholder="Number"
+                                   step="1"
+                                   value={level.inputs}
+                                   onChange={this.handleChange} />
+                        }
                         {submitted && !level.inputs &&
                         <div className="help-block">{translation.createLevel.inputsRequired}</div>
                         }
@@ -140,12 +184,13 @@ class CreateLevelPage extends React.Component {
                         <div className="help-block">{translation.createLevel.outputsRequired}</div>
                         }
                     </div>
+
                     {/*  Solution  */}
                     <label htmlFor="statement">{translation.createLevel.solutionField}</label>
                     <div className="solution-code">
                         <AceEditor
                             mode="c_cpp"
-                            theme="kuroir"
+                            theme="chaos"
                             name="solution"
                             fontSize={14}
                             showPrintMargin={false}
@@ -164,30 +209,13 @@ class CreateLevelPage extends React.Component {
                             onChange={this.handleChangeSolution}/>
                     </div>
 
-                    {/*  Rating  */}
-                    <div className={'form-group form-stars' + (submitted && !level.difficulty ? ' has-error' : '')}>
-                        <label htmlFor="text">{translation.createLevel.difficultyField}</label>
-                        {level.difficulty === '' ?
-                            <div className="rating">
-                                <span onClick={this.clickStar} data-id="3">☆</span>
-                                <span onClick={this.clickStar} data-id="2">☆</span>
-                                <span onClick={this.clickStar} data-id="1">☆</span>
-                            </div>
-                            : <DifficultyStars value={level.difficulty}/>
-                        }
-
-                        {submitted && !level.difficulty &&
-                        <div className="help-block">{translation.createLevel.difficultyRequired}</div>
-                        }
-                    </div>
-
                     {/*  Submit  */}
                     <div className="form-group">
                         {loading ? (
                             <LoadingWheel/>
                         ) :(
                             <div className="form-actions">
-                                <Link to="/community" className="btn btn-link col-md-6 col-sm-6">{translation.createLevel.cancelLink}</Link>
+                                <Link to="/community" className="btn-cancel btn btn-link col-md-6 col-sm-6">{translation.createLevel.cancelLink}</Link>
                                 <button className="btn btn-primary col-md-6 col-sm-6">{translation.createLevel.createLink}</button>
                             </div>
                         )}
