@@ -6,6 +6,12 @@ const schema = new Schema({
         type: String,
         unique: true,
         required: true
+    },
+    description: {
+        type: String,
+    },
+    badge: {
+        type: String
     }
 });
 

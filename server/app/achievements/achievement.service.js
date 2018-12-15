@@ -49,7 +49,7 @@ async function update(achievementParam) {
     if (!await Achievement.findById(achievementParam._id)) {
         throw {
             name: 'Error',
-            message: `Achievement ${achievementParam.title} not found`,
+            message: `Achievement ${achievementParam._id} not found`,
             statusCode: 404
         };
     }
