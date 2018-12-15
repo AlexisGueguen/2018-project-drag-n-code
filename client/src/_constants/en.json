@@ -78,7 +78,8 @@
     "deleteMessageTitle" : "Do you really want to delete this level ?",
     "deleteMessageBody" : "If you delete your level, it will be lost forever",
     "cancelButton" : "Cancel",
-    "deleteButton" : "Delete"
+    "deleteButton" : "Delete",
+    "noLevels" : "It looks like you don't have any level ..."
   },
   "leaderboard" : {
     "rankHeader" : "Rank",

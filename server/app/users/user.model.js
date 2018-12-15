@@ -25,7 +25,13 @@ const schema = new Schema({
     score: {
         type: Number,
         required: true
-    }
+    },
+    likes: [{
+        type: String
+    }],
+    achievements: [{
+        type: String
+    }]
 });
 
 module.exports = mongoose.model('User', schema);

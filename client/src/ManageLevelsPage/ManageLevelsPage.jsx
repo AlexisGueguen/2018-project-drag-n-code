@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import {DifficultyStars} from "../_components/DifficultyStars";
 import Translation from "../_constants/en.json"
 import {Button, Modal} from "react-bootstrap";
+import CreateLevelButtonComponent from "../_components/CreateLevelButtonComponent";
 
 class ManageLevelsPage extends React.Component {
     constructor(props, context) {
@@ -18,9 +19,9 @@ class ManageLevelsPage extends React.Component {
         this.handleShow = this.handleShow.bind(this);
         this.handleClose = this.handleClose.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
+        this.hasLevels = this.hasLevels.bind(this);
         this.props.dispatch(levelActions.getByAuthorId(this.props.user._id));
     }
-
 
     handleDelete() {
         const {dispatch} = this.props;
@@ -42,6 +43,11 @@ class ManageLevelsPage extends React.Component {
         });
     }
 
+    hasLevels() {
+        const {levels} = this.props;
+        return (!!levels) ? levels.length > 0 : false;
+    }
+
     componentWillReceiveProps(nextProps) {
         if (this.props.levels !== nextProps.levels) {
             this.setState({
@@ -60,7 +66,7 @@ class ManageLevelsPage extends React.Component {
                         <LoadingPoints/>
                     ) : (
                         <div className="list-group">
-                            {levels &&
+                            {this.hasLevels() ? (
                             levels.map((item) =>
                                 <div className="list-item-container container-fluid">
                                     <div className="list-group-item list-group-item-action list-item-header" >
@@ -80,7 +86,11 @@ class ManageLevelsPage extends React.Component {
                                         </div>
                                     </div>
                                 </div>)
-                            }
+                                ) : (
+                                <div className="no-item-placeholder">
+                                    {Translation.manageLevels.noLevels}
+                                </div>
+                            )}
                         </div>
                     )}
                 </div>
@@ -99,6 +109,8 @@ class ManageLevelsPage extends React.Component {
                         <Button bsStyle="primary" onClick={this.handleDelete}>{Translation.manageLevels.deleteButton}</Button>
                     </Modal.Footer>
                 </Modal>
+
+                <CreateLevelButtonComponent/>
             </div>
         );
     }

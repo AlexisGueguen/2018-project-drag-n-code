@@ -2,7 +2,6 @@ import {levelConstants} from "../_constants/level.constant";
 import {levelService} from "../_services/level.service";
 import {alertActions} from "./alert.actions";
 import {history} from "../_helpers";
-import {userConstants} from "../_constants";
 
 export const levelActions = {
     getAll,

@@ -8,7 +8,8 @@ module.exports = {
     getCurrent,
     getById,
     getByScore,
-    update
+    update,
+    likeLevel
 };
 
 function login(req, res, next) {
@@ -49,4 +50,10 @@ function update(req, res, next) {
     userService.update(req.body, req.headers.authorization.split(' ')[1])
         .then(data => res.status(200).json(data))
         .catch(err => next(err));
+}
+
+    function likeLevel(req, res, next) {
+        userService.likeLevel(req.body, req.headers.authorization.split(' ')[1])
+            .then(data => res.status(200).json(data))
+            .catch(err => next(err));
 }

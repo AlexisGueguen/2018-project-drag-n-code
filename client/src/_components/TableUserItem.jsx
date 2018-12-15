@@ -1,7 +1,6 @@
 import React from "react";
 import connect from "react-redux/es/connect/connect";
 import _ from "lodash";
-import state from "../_reducers";
 
 class TableUserItem extends React.Component {
     constructor(props) {

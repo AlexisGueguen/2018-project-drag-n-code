@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const db = require('app/_helpers/db');
 const User = db.User;
+const Level = db.Level;
 
 // Interface
 module.exports = {
@@ -10,7 +11,8 @@ module.exports = {
     getById,
     create,
     update,
-    getByScore
+    getByScore,
+    likeLevel
 };
 
 async function login({ username, password }) {
@@ -93,6 +95,53 @@ async function getByScore(topNumber) {
         .find({}, 'username picture score')
         .sort({score : -1})
         .limit(limitNumber)
+}
+
+async function likeLevel(body, requestToken) {
+    let foundUser = await User.findById(body.userId);
+    let foundLevel = await Level.findById(body.levelId);
+    if (!(!!body.levelId)) throw {
+        name: 'Error',
+        message: `Object in body is incorrect, provide a levelId field.`,
+        statusCode: 400
+    };
+    if (!(!!body.userId)) throw {
+        name: 'Error',
+        message: `Object in body is incorrect, provide a userId field.`,
+        statusCode: 400
+    };
+    if (!foundUser ) {
+        throw {
+            name: 'Error',
+            message: `User not found`,
+            statusCode: 404
+        };
+    }
+    if (!foundLevel ) {
+        throw {
+            name: 'Error',
+            message: `User not found`,
+            statusCode: 404
+        };
+    }
+    if(await checkTokenUser(body.userId, requestToken)!== 0 && !!requestToken)
+        throw {
+            name: 'Forbidden',
+            message: `Forbidden Access`,
+            statusCode: 403
+        };
+
+    if((foundUser.likes).includes(body.levelId)) {
+        foundLevel.upVotes --;
+        (foundUser.likes).splice(foundUser.likes.indexOf(body.levelId), 1);
+    }
+    else {
+        foundLevel.upVotes ++;
+        await foundUser.likes.push(body.levelId);
+    }
+
+    await Level.findByIdAndUpdate(body.levelId, foundLevel);
+    return await User.findByIdAndUpdate(body.userId, foundUser, {new: true});
 }
 
 async function checkTokenUser(ownerId, requestToken) {
