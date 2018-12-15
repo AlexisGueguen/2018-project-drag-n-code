@@ -79,5 +79,13 @@
     "deleteMessageBody" : "If you delete your level, it will be lost forever",
     "cancelButton" : "Cancel",
     "deleteButton" : "Delete"
+  },
+  "levelPage" : {
+    "compilationError" : "There was a problem",
+    "tryAgain" : "Solve the problem and try again",
+    "validate" : "Validate",
+    "returnMenu" : "Return to menu",
+    "yourCode" : "Here is your code : ",
+    "levelSuccessTitle" : "You pass the level !"
   }
 }

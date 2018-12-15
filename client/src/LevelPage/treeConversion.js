@@ -80,7 +80,10 @@ function instructionToCPP(instruction, indentation) {
                 }
             }
             code += createIndent(indentation) + `${attr.variable}${attr.assignmentOperator}${expression};\n`;
+            break;
         }
+        default:
+            break;
     }
     return code;
 }

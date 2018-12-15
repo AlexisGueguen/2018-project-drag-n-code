@@ -478,6 +478,7 @@ html, body {
                 border: 1px solid lightgray;
                 padding-left: 4px;
                 padding-right: 4px;
+                max-width: 85px;
               }
 
               & input.loop-condition-right {
@@ -486,6 +487,7 @@ html, body {
                 border: 1px solid lightgray;
                 padding-left: 4px;
                 padding-right: 4px;
+                max-width: 85px;
               }
 
               & .loop-condition-operator-dropdown {
@@ -561,7 +563,6 @@ html, body {
           & .statement {
             height: auto;
             padding: 0 8px 8px;
-            transition: all 500ms;
 
             & h3 {
               text-align: center;
@@ -636,11 +637,10 @@ html, body {
                 margin-bottom: auto;
                 right: 16px;
                 color: #000;
-              }
-
-              & .expand:hover {
-                color: @primary-color;
-                cursor: pointer;
+                &:hover {
+                  color: @primary-color;
+                  cursor: pointer;
+                }
               }
             }
           }
@@ -669,14 +669,31 @@ html, body {
 
               & .close {
                 right: 16px;
-                top: 16px;
+                top: 24px;
                 position: absolute;
                 color: #000;
+                opacity: 1!important;
+                &:hover {
+                  color: @primary-color;
+                  cursor: pointer;
+                }
               }
 
-              & .close:hover {
-                color: @primary-color;
-                cursor: pointer;
+              & div.success {
+                width: 100%;
+
+                & h3 {
+                  text-align: center;
+                }
+
+                & button {
+                  width: 90%;
+                  padding: 16px;
+                }
+              }
+
+              & div.error{
+                width: 100%;
               }
             }
           }

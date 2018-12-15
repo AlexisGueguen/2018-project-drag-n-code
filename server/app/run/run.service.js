@@ -28,8 +28,8 @@ async function runAndCompile(body) {
     }
     return {
         validated: compilationResult.output === level.outputs,
-        expected: level.outputs,
-        current: compilationResult.output
+        input: level.inputs,
+        output: compilationResult.output
     };
 }
 
