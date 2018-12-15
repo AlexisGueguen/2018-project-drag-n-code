@@ -1,12 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 
-import { userActions } from '../_actions';
+import {userActions} from '../_actions';
 import translation from '../_constants/en.json';
 
 import LoadingWheel from '../_components/LoadingPoints';
 import {isStrongPassword, validateEmail} from "../_helpers/utils";
+import RCG from 'react-captcha-generator';
 
 class RegisterPage extends React.Component {
     constructor(props) {
@@ -16,22 +17,30 @@ class RegisterPage extends React.Component {
             user: {
                 username: '',
                 password: '',
-                email: ''
+                email: '',
             },
+            captcha: '',
             submitted: false,
             emailIsValid: true,
-            passwordValid: true
+            passwordValid: true,
+            captchaIsValid: true
         };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.result = this.result.bind(this)
+    }
+
+    result(text) {
+        this.setState({
+            captcha: text
+        })
     }
 
     handleChange(event) {
         event.preventDefault();
-        console.log(event.target.value);
-        const { name, value } = event.target;
-        const { user } = this.state;
+        const {name, value} = event.target;
+        const {user} = this.state;
         let isEmailValid = ((name === 'email') ? validateEmail(value) : this.state.emailIsValid);
         let isPasswordValid = ((name === 'password') ? isStrongPassword(value) : this.state.passwordValid);
         this.setState({
@@ -46,81 +55,103 @@ class RegisterPage extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        const { user } = this.state;
+        const {user, captcha} = this.state;
         let isEmailValid = validateEmail(user.email);
         let isPasswordValid = isStrongPassword(user.password);
+        let isCaptchaValid = (captcha === this.captchaEnter.value);
         this.setState({
             submitted: true,
             emailIsValid: isEmailValid,
-            passwordValid: isPasswordValid
+            passwordValid: isPasswordValid,
+            captchaIsValid: isCaptchaValid
         });
-        const {dispatch} = this.props;
+
         if (user.username
             && user.password
             && user.email
-            && validateEmail(user.email)
-            && isStrongPassword(user.password)
+            && isPasswordValid
+            && isEmailValid
+            && isCaptchaValid
         ) {
-            dispatch(userActions.register(user));
+            this.props.dispatch(userActions.register(user));
         }
     }
 
     render() {
-        const { registering  } = this.props;
-        const { user, submitted, emailIsValid, passwordValid } = this.state;
+        const {registering} = this.props;
+        const {user, submitted, emailIsValid, passwordValid, captchaIsValid} = this.state;
         return (
-            <div className="col-md-2 col-md-offset-5 col-sm-4 col-sm-offset-4 login-container">
-                <h2>{translation.register.title}</h2>
-                <form name="form" onSubmit={this.handleSubmit}>
-                    <div className={'form-group' + (submitted && !user.username ? ' has-error' : '')}>
-                        <label htmlFor="username">{translation.register.usernameField}</label>
-                        <input type="text" className="form-control" name="username" value={user.username} onChange={this.handleChange} />
-                        {submitted && !user.username &&
+            <div className="register-page">
+                <div className="col-md-2 col-md-offset-5 col-sm-4 col-sm-offset-4 login-container">
+                    <h2>{translation.register.title}</h2>
+                    <form name="form" onSubmit={this.handleSubmit}>
+                        <div className={'form-group' + (submitted && !user.username ? ' has-error' : '')}>
+                            <label htmlFor="username">{translation.register.usernameField}</label>
+                            <input type="text" className="form-control" name="username" value={user.username}
+                                   onChange={this.handleChange}/>
+                            {submitted && !user.username &&
                             <div className="help-block">{translation.register.usernameRequired}</div>
-                        }
-                    </div>
-                    <div className={'form-group' + (submitted && (!user.password || !passwordValid) ? ' has-error' : '')}>
-                        <label htmlFor="password">{translation.register.passwordField}</label>
-                        <input type="password" className="form-control" name="password" value={user.password} onChange={this.handleChange} />
-                        {submitted && !user.password &&
+                            }
+                        </div>
+                        <div
+                            className={'form-group' + (submitted && (!user.password || !passwordValid) ? ' has-error' : '')}>
+                            <label htmlFor="password">{translation.register.passwordField}</label>
+                            <input type="password" className="form-control" name="password" value={user.password}
+                                   onChange={this.handleChange}/>
+                            {submitted && !user.password &&
                             <div className="help-block">{translation.register.passwordRequired}</div>
-                        }
-                        {submitted && user.password && !passwordValid &&
+                            }
+                            {submitted && user.password && !passwordValid &&
                             <div className="help-block">{translation.register.strongPasswordRequired}</div>
-                        }
-                    </div>
-                    <div className={'form-group' + (submitted && (!user.email || !emailIsValid) ? ' has-error' : '')}>
-                        <label htmlFor="mail">{translation.register.emailField}</label>
-                        <input type="text" className="form-control" name="email" value={user.email} onChange={this.handleChange} />
-                        {submitted && !user.email &&
+                            }
+                        </div>
+                        <div
+                            className={'form-group' + (submitted && (!user.email || !emailIsValid) ? ' has-error' : '')}>
+                            <label htmlFor="mail">{translation.register.emailField}</label>
+                            <input type="text" className="form-control" name="email" value={user.email}
+                                   onChange={this.handleChange}/>
+                            {submitted && !user.email &&
                             <div className="help-block">{translation.register.emailRequired}</div>
-                        }
-                        {submitted && user.email && !emailIsValid &&
+                            }
+                            {submitted && user.email && !emailIsValid &&
                             <div className="help-block">{translation.register.emailInvalid}</div>
-                        }
-                    </div>
-                    <div className="form-group">
-                        {registering ? (
-                            <LoadingWheel/>
-                        ) :(
-                            <div className="form-actions">
-                                <button className="btn btn-primary col-md-6 col-sm-6">{translation.register.title}</button>
-                                <Link to="/login" className="btn btn-link col-md-6 col-sm-6">{translation.register.cancelLink}</Link>
+                            }
+                        </div>
+                        <div
+                            className={"form-group captcha-container" + (submitted && !captchaIsValid ? ' has-error' : '')}>
+                            <div className="captcha-img">
+                                <RCG result={this.result}/>
                             </div>
-                        )}
-                    </div>
-                </form>
+                            <input type='text' className={'form-control'} ref={ref => this.captchaEnter = ref}/>
+                            {submitted && !captchaIsValid &&
+                            <div className="help-block">{translation.register.captchaInvalid}</div>
+                            }
+                        </div>
+                        <div className="form-group">
+                            {registering ? (
+                                <LoadingWheel/>
+                            ) : (
+                                <div className="form-actions">
+                                    <button
+                                        className="btn btn-primary col-md-6 col-sm-6">{translation.register.title}</button>
+                                    <Link to="/login"
+                                          className="btn btn-link col-md-6 col-sm-6">{translation.register.cancelLink}</Link>
+                                </div>
+                            )}
+                        </div>
+                    </form>
+                </div>
             </div>
         );
     }
 }
 
 function mapStateToProps(state) {
-    const { registering } = state.registration;
+    const {registering} = state.registration;
     return {
         registering
     };
 }
 
 const connectedRegisterPage = connect(mapStateToProps)(RegisterPage);
-export { connectedRegisterPage as RegisterPage };
+export {connectedRegisterPage as RegisterPage};

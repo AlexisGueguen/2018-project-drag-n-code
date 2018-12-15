@@ -20,6 +20,7 @@
     "strongPasswordRequired": "Must be minimum eight characters, with at least one letter and one number",
     "emailRequired": "Mail is required",
     "emailInvalid": "Mail is invalid",
+    "captchaInvalid": "Wrong Captcha. Try Again.",
     "cancelLink": "Cancel"
   },
   "header" : {
