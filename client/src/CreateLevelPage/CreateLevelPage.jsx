@@ -4,11 +4,9 @@ import {levelActions} from "../_actions";
 import translation from "../_constants/en";
 import LoadingWheel from "../_components/LoadingPoints";
 import {Link} from "react-router-dom";
-import {DifficultyStars} from "../_components/DifficultyStars";
 import AceEditor from "react-ace";
 import 'brace/theme/chaos';
-import {TableUserItem} from "../_components/TableUserItem";
-
+import StarRatingComponent from 'react-star-rating-component';
 
 const solutionExample = '#include <iostream>\nusing namespace std;\n\nint main()\n{\n    cout << "Hello, World!";\n    return 0;\n}';
 
@@ -23,7 +21,7 @@ class CreateLevelPage extends React.Component {
                 statement: '',
                 inputs: '',
                 outputs: '',
-                difficulty: '',
+                difficulty: 0,
                 solution: solutionExample,
             },
             inputs: [''],
@@ -123,6 +121,15 @@ class CreateLevelPage extends React.Component {
         });
     }
 
+    onStarClick(nextValue, prevValue, name) {
+        const {level} = this.state;
+        level.difficulty = nextValue;
+        this.setState({
+            ...this.state,
+            level: level
+        });
+    }
+
 
     render() {
         const { loading  } = this.props;
@@ -144,15 +151,13 @@ class CreateLevelPage extends React.Component {
                         </div>
                         <div className={'form-stars' + (submitted && !level.difficulty ? ' has-error' : '')}>
                             <label htmlFor="text">{translation.createLevel.difficultyField}</label>
-                            {level.difficulty === '' ?
-                                <div className="rating">
-                                    <span onClick={this.clickStar} data-id="3">☆</span>
-                                    <span onClick={this.clickStar} data-id="2">☆</span>
-                                    <span onClick={this.clickStar} data-id="1">☆</span>
-                                </div>
-                                : <DifficultyStars value={level.difficulty}/>
-                            }
-
+                            <StarRatingComponent
+                                name="difficulty"
+                                starCount={3}
+                                value={level.difficulty}
+                                onStarClick={this.onStarClick.bind(this)}
+                                starColor="#FA9539"
+                            />
                             {submitted && !level.difficulty &&
                             <div className="help-block">{translation.createLevel.difficultyRequired}</div>
                             }

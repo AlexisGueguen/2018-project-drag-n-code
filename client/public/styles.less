@@ -258,6 +258,9 @@ html, body {
                 & .community-votes {
                   display: flex;
                   width: auto;
+                  margin-top: auto;
+                  margin-bottom: auto;
+
                   & span {
                     margin-left: auto;
                   }
@@ -269,9 +272,9 @@ html, body {
                   }
                 }
 
-                & .difficulty-stars {
-                  margin-left: 24px;
-                  min-width: 5em;
+                & .dv-star-rating {
+                  margin-left: 16px;
+                  font-size: 25px;
                 }
               }
 
@@ -817,30 +820,18 @@ html, body {
           display: flex;
           margin-right: auto;
           margin-left: auto;
+          padding-left: 24px;
 
           & label {
             margin-top: auto;
             margin-bottom: auto;
+            padding-top: 8px;
           }
 
-          & .rating {
-            float: left;
-            padding-left: 30px;
-          }
-
-          & .difficulty-stars {
-            padding-left: 30px;
-
-            & .glyphicon {
-              font-size: 23px;
-              color: #333;
-              padding-left: 5px;
-              position: relative;
-              width: 1.3em;
-              top: 48%;
-              transform: translateY(-50%);
-            }
-
+          & .dv-star-rating {
+            font-size: 30px;
+            margin: auto 12px;
+            padding-bottom: 8px;
           }
         }
       }
