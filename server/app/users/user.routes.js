@@ -81,8 +81,8 @@ module.exports = (router) => {
      * @apiVersion 1.0.0
      */
     router
-        .route('/user/:id')
-        .get(userController.getById);
+        .route('/user/current')
+        .get(userController.getCurrent);
 
     /**
      * @api {get} /user Get the best users by score descending

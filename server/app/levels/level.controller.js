@@ -43,10 +43,14 @@ function update(req, res, next) {
         .catch(err => next(err));
 }
 
-function _delete(req, res, next) {
-    levelService.delete(req.params.id, req.user.sub)
-        .then(data => res.status(200).json(data))
-        .catch(err => next(err));
+async function _delete(req, res, next) {
+    try {
+        const data = await levelService.delete(req.params.id, req.user.sub);
+        await userService.removeLevelFromUsers(req.params.id);
+        res.status(200).json(data);
+    } catch(err) {
+        next(err);
+    }
 }
 
 async function like(req, res, next) {
