@@ -1,4 +1,3 @@
-const levelService = require('../levels/level.service');
 const axios = require("axios");
 
 module.exports = {
@@ -7,9 +6,7 @@ module.exports = {
 
 const languages = ['cpp'];
 
-async function runAndCompile(body) {
-    const {level: levelId, language, code} = body;
-    const level = await levelService.getById(levelId);
+async function runAndCompile(language, code, level) {
     let compilationResult;
     switch (language) {
         case languages[0]:
@@ -45,7 +42,6 @@ async function runAndCompileCPP(code, inputs) {
                 stdin: inputs,
                 script: code
             });
-            console.log(response);
             return response.data;
         } catch (error) {
             console.log(error);

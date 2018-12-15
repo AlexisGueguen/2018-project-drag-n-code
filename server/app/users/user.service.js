@@ -2,8 +2,8 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const db = require('app/_helpers/db');
+const throwForbiddenError = require("../_helpers/utils").throwForbiddenError;
 const User = db.User;
-const Level = db.Level;
 
 // Interface
 module.exports = {
@@ -12,7 +12,8 @@ module.exports = {
     create,
     update,
     getByScore,
-    likeLevel
+    setLevelCompleted,
+    toggleLike
 };
 
 async function login({ username, password }) {
@@ -28,16 +29,8 @@ async function login({ username, password }) {
     }
 }
 
-async function getById(id, requestToken) {
-    if(await checkTokenUser(id, requestToken)!== 0 && !!requestToken) {
-        throw {
-            name: 'Forbidden',
-            message: `Forbidden Access`,
-            statusCode: 403
-        };
-    }
-
-    return await User.findById(id).select('-hash');
+async function getById(id) {
+    return await User.findById(id).select('-hash -__v -createdDate');
 }
 
 async function create(userParam) {
@@ -58,29 +51,29 @@ async function create(userParam) {
     await user.save();
 }
 
-async function update(userParam, requestToken) {
-    if (!(!!userParam._id)) throw {
+async function update(userParam, userId) {
+    if (!userParam._id) throw {
         name: 'Error',
         message: `Object in body is incorrect, provide an _id field.`,
         statusCode: 400
     };
-    if (!await User.findById(userParam._id)) {
+    const userInDB = await User.findById(userParam._id);
+    if (!userInDB) {
         throw {
             name: 'Error',
             message: `User ${userParam.username} not found`,
             statusCode: 404
         };
     }
-    if(await checkTokenUser(userParam._id, requestToken)!== 0 && !!requestToken)
-        throw {
-            name: 'Forbidden',
-            message: `Forbidden Access`,
-            statusCode: 403
-        };
+    if (userParam._id !== userId) throwForbiddenError();
+    const duplicateUserInDB = await User.findOne({ username: userParam.username });
+    if (duplicateUserInDB && duplicateUserInDB._id === userParam._id) {
+        throw 'Username "' + userParam.username + '" is already taken';
+    }
 
     let user = new User(userParam);
-
-    return await User.findByIdAndUpdate(userParam._id, user, {new: true});
+    const { hash, achievements, score, likes, levelsCompleted, createdDate, ...userSanitazed } = user.toObject();
+    return await User.findByIdAndUpdate(userParam._id, userSanitazed, {new: true}).select('-hash -__v -createdDate');
 }
 
 async function getByScore(topNumber) {
@@ -97,57 +90,23 @@ async function getByScore(topNumber) {
         .limit(limitNumber)
 }
 
-async function likeLevel(body, requestToken) {
-    let foundUser = await User.findById(body.userId);
-    let foundLevel = await Level.findById(body.levelId);
-    if (!(!!body.levelId)) throw {
-        name: 'Error',
-        message: `Object in body is incorrect, provide a levelId field.`,
-        statusCode: 400
-    };
-    if (!(!!body.userId)) throw {
-        name: 'Error',
-        message: `Object in body is incorrect, provide a userId field.`,
-        statusCode: 400
-    };
-    if (!foundUser ) {
-        throw {
-            name: 'Error',
-            message: `User not found`,
-            statusCode: 404
-        };
+async function setLevelCompleted(userId, levelId, levelDifficulty) {
+    let user = await getById(userId);
+    if (user.levelsCompleted.indexOf(levelId) === -1) {
+        user.levelsCompleted.push(levelId);
+        if (levelDifficulty > 0 && levelDifficulty <= 3) user.score += 10 * levelDifficulty;
+        return await User.findByIdAndUpdate(userId, user, {new: true}).select('-hash -__v -createdDate');
     }
-    if (!foundLevel ) {
-        throw {
-            name: 'Error',
-            message: `User not found`,
-            statusCode: 404
-        };
-    }
-    if(await checkTokenUser(body.userId, requestToken)!== 0 && !!requestToken)
-        throw {
-            name: 'Forbidden',
-            message: `Forbidden Access`,
-            statusCode: 403
-        };
-
-    if((foundUser.likes).includes(body.levelId)) {
-        foundLevel.upVotes --;
-        (foundUser.likes).splice(foundUser.likes.indexOf(body.levelId), 1);
-    }
-    else {
-        foundLevel.upVotes ++;
-        await foundUser.likes.push(body.levelId);
-    }
-
-    await Level.findByIdAndUpdate(body.levelId, foundLevel);
-    return await User.findByIdAndUpdate(body.userId, foundUser, {new: true});
+    return user;
 }
 
-async function checkTokenUser(ownerId, requestToken) {
-    let decoded = jwt.decode(requestToken);
-    if(!!decoded) {
-        return decoded.sub.localeCompare(ownerId);
+async function toggleLike(levelId, user) {
+    if (user.likes.includes(levelId)) {
+        user.likes.splice(user.likes.indexOf(levelId), 1);
     }
-    else return -1;
+    else {
+        user.likes.push(levelId);
+    }
+
+    return await User.findByIdAndUpdate(user._id, user, {new: true});
 }

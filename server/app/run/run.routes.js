@@ -13,7 +13,7 @@ module.exports = (router) => {
      * @apiParam (Body) {String} code the code to compile and run
      * @apiParamExample {json} Body
      * {
-     *     "language": "c++",
+     *     "language": "cpp",
      *     "code": "public class HelloWorld { \npublic static void main(String[] args) { \nSystem.out.print(\"Hello, World\");\n }\n}"
      * }
      * @apiSuccess (Success) {Object} Object the compilation and run outputs
