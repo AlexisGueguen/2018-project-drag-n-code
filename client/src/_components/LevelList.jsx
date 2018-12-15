@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {levelActions} from "../_actions/level.actions";
 import connect from "react-redux/es/connect/connect";
 import LoadingPoints from "./LoadingPoints";
-import {ListItem} from "./ListItem";
+import ListItem from "./ListItem";
 
 class LevelList extends React.Component {
     constructor(props) {
