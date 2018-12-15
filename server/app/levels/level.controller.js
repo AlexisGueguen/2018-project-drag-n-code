@@ -1,4 +1,5 @@
 const levelService = require('./level.service');
+const userService = require('../users/user.service');
 
 module.exports = {
     getAll,
@@ -6,7 +7,8 @@ module.exports = {
     getByAuthorId,
     create,
     update,
-    delete: _delete
+    delete: _delete,
+    like
 };
 
 function getAll(req, res, next) {
@@ -28,7 +30,9 @@ function getByAuthorId(req, res, next) {
 }
 
 function create(req, res, next) {
-    levelService.create(req.body, req.headers.authorization.split(' ')[1])
+    const userId = req.user.sub;
+    const level = req.body;
+    levelService.create(level, userId)
         .then(data => res.status(201).json(data))
         .catch(err => next(err))
 }
@@ -40,7 +44,20 @@ function update(req, res, next) {
 }
 
 function _delete(req, res, next) {
-    levelService.delete(req.params.id, req.headers.authorization.split(' ')[1])
+    levelService.delete(req.params.id, req.user.sub)
         .then(data => res.status(200).json(data))
         .catch(err => next(err));
+}
+
+async function like(req, res, next) {
+    try {
+        console.log('req', req);
+        const userId = req.user.sub;
+        const user = await userService.getById(req.user.sub, userId);
+        const levelUpdated = await levelService.toggleLike(req.params.id, user);
+        const userUpdated = await userService.toggleLike(req.params.id, user);
+        res.status(200).json({level: levelUpdated, user: userUpdated});
+    } catch(err) {
+        next(err);
+    }
 }

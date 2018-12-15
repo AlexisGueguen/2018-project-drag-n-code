@@ -31,6 +31,9 @@ const schema = new Schema({
     }],
     achievements: [{
         type: String
+    }],
+    levelsCompleted: [{
+        type: String
     }]
 });
 

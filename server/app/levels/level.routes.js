@@ -163,4 +163,24 @@ module.exports = (router) => {
     router
         .route('/levels/:id')
         .delete(levelController.delete);
+
+    /**
+     * @api {post} /levels/:id/like Like a level
+     * @apiName Like a Level
+     * @apiDescription The user wants to like the level.
+     *
+     * @apiGroup Levels
+     * @apiHeader {String} Authorization User access token
+     * @apiHeader {String} Content-Type application/json
+     *
+     * @apiSuccess {Level} Created Level
+     * @apiErrorExample {json} Error
+     * {
+     *     "message": "..."
+     * }
+     * @apiVersion 1.0.0
+     */
+    router
+        .route('/levels/:id/like')
+        .post(levelController.like)
 };

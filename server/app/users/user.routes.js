@@ -85,13 +85,6 @@ module.exports = (router) => {
         .get(userController.getById);
 
     /**
-     * get the current user
-     */
-    router
-        .route('/user/current')
-        .get(userController.getCurrent);
-
-    /**
      * @api {get} /user Get the best users by score descending
      * @apiName Get best users
      * @apiDescription Get the best users by score descending.
@@ -156,8 +149,4 @@ module.exports = (router) => {
     router
         .route('/user')
         .put(userController.update);
-
-    router
-        .route('/user/likeLevel')
-        .put(userController.likeLevel);
 };
