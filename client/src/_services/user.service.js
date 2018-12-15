@@ -72,7 +72,8 @@ function update(user) {
         body: JSON.stringify(user)
     };
 
-    return fetch(`${config.apiUrl}/user`, requestOptions).then(handleResponse);
+    return fetch(`${config.apiUrl}/user`, requestOptions)
+        .then(handleResponse)
 }
 
 

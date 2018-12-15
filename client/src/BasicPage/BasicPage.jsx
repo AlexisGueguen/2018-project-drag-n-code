@@ -4,7 +4,6 @@ import {Route, Switch} from "react-router-dom";
 import {HomePage} from "../HomePage";
 import {CommunityPage} from "../CommunityPage";
 import {LeaderboardPage} from "../LeaderboardPage";
-import {AchievementsPage} from "../AchievementsPage";
 import {SettingsPage} from "../SettingsPage";
 import {ProfilePage} from "../ProfilePage";
 import {LevelPage} from "../LevelPage";
@@ -12,6 +11,7 @@ import HeaderComponent from "../_components/HeaderComponent";
 import Alert from "../_components/Alert";
 import {CreateLevelPage} from "../CreateLevelPage";
 import {ManageLevelsPage} from "../ManageLevelsPage";
+import AchievementsPage from "../AchievementsPage/AchievementsPage";
 
 class BasicPage extends React.Component {
     render() {
@@ -36,9 +36,7 @@ class BasicPage extends React.Component {
 }
 
 function mapStateToProps(state) {
-    const {loggingIn} = state.authentication;
     return {
-        loggingIn
     };
 }
 

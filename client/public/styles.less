@@ -6,7 +6,7 @@
 @dark-primary-color: #E37A1D;
 @light-primary-color: #F8B57A;
 @dark-secondary-color: #04588F;
-@dark-grey-color: #444;
+@dark-grey-color: #888;
 @light-grey-color: #EEE;
 
 @header-height: 85px;
@@ -888,6 +888,35 @@ html, body {
         & .glyphicon-thumbs-up {
           padding-left: 10px;
         }
+      }
+    }
+
+    & .achievements-page {
+
+      & .achievement-item {
+        max-width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+
+        & .list-group-item {
+          display: flex;
+
+          & .achievement-header-title {
+            & p {
+              color: @dark-grey-color;
+            }
+          }
+
+          & .badge-picture {
+            max-height: 120px;
+            margin-left: auto;
+            padding-right: 20px;
+          }
+        }
+      }
+
+      & .--locked .list-group-item{
+        background-color: #DDD;
       }
     }
 
