@@ -1,31 +1,31 @@
 import {combineReducers} from 'redux';
 
-import {authentication} from './authentication.reducer';
-import {registration} from './registration.reducer';
-import {alert} from './alert.reducer';
-import {getAllLevels} from './getAllLevels.reducer';
-import {getAllLevelsByUser} from './getAllLevelsByUser.reducer';
-import {updateUser} from "./updateUser.reducer";
-import {getLevel} from "./getLevel.reducer";
-import {createLevel} from "./createLevel.reducer";
-import {getTopUsers} from "./getTopUsers.reducer";
+import {authentication} from './user.reducer';
+import {registration} from './user.reducer';
+import {updateUser} from "./user.reducer";
+import {getTopUsers} from "./user.reducer";
+import {getAllLevels} from './level.reducer';
+import {getAllLevelsByUser} from './level.reducer';
+import {getLevel} from "./level.reducer";
+import {createLevel} from "./level.reducer";
 import {code} from "./codeTree.reducer";
 import {getAllAchievements} from "./getAllAchievements.reducer";
 import {compilation} from "./compilation.reducer";
+import {alert} from './alert.reducer';
 
 const rootReducer = combineReducers({
     authentication,
     registration,
-    alert,
+    updateUser,
+    getTopUsers,
+    getLevel,
     getAllLevels,
     getAllLevelsByUser,
-    updateUser,
-    getLevel,
     createLevel,
-    getTopUsers,
     code,
     getAllAchievements,
-    compilation
+    compilation,
+    alert
 });
 
 export default rootReducer;

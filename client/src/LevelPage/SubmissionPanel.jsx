@@ -7,7 +7,7 @@ import {compilationActions} from "../_actions/compilation.actions";
 import AceEditor from "react-ace";
 import lang from "../_constants/en";
 import {history} from '../_helpers';
-import {levelActions} from "../_actions";
+import {levelActions, userActions} from "../_actions";
 
 const translation = lang.levelPage;
 
@@ -48,6 +48,7 @@ class SubmissionPanel extends React.Component {
     }
 
     onReturnMenuClick() {
+        this.props.dispatch(userActions.getCurrent());
         history.goBack();
     }
 

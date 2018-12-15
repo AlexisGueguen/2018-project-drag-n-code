@@ -26,8 +26,7 @@ class ManageLevelsPage extends React.Component {
     handleDelete() {
         const {dispatch} = this.props;
         const {levelToDelete} = this.state;
-        dispatch(levelActions.deleteById(levelToDelete._id));
-        dispatch(levelActions.getByAuthorId(this.props.user._id));
+        dispatch(levelActions.deleteById(levelToDelete._id, this.props.user._id));
 
         this.setState({ show: false });
     }

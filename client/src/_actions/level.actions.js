@@ -119,14 +119,15 @@ function create(level) {
     function failure(error) { return { type: levelConstants.CREATE_LEVEL_FAILURE, error } }
 }
 
-function deleteById(id) {
+function deleteById(levelId, authorId) {
     return dispatch => {
-        dispatch(request(id));
+        dispatch(request(levelId));
 
-        levelService.deleteLevel(id)
+        levelService.deleteLevel(levelId)
             .then(
                 () => {
-                    dispatch(success(id));
+                    dispatch(success(levelId));
+                    dispatch(getByAuthorId(authorId));
                     dispatch(alertActions.success('Your level was successfully deleted'));
                 },
                 error => {
@@ -136,7 +137,7 @@ function deleteById(id) {
             );
     };
 
-    function request(id) { return { type: levelConstants.DELETE_LEVEL_REQUEST, id } }
-    function success(id) { return { type: levelConstants.DELETE_LEVEL_SUCCESS, id } }
+    function request(levelId) { return { type: levelConstants.DELETE_LEVEL_REQUEST, levelId } }
+    function success(levelId) { return { type: levelConstants.DELETE_LEVEL_SUCCESS, levelId } }
     function failure(error) { return { type: levelConstants.DELETE_LEVEL_FAILURE, error } }
 }

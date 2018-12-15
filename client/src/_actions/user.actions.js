@@ -8,7 +8,8 @@ export const userActions = {
     logout,
     register,
     update,
-    getByScore
+    getByScore,
+    getCurrent,
 };
 
 function login(username, password) {
@@ -102,4 +103,25 @@ function getByScore(topNumber) {
     function request(topNumber) { return { type: userConstants.GET_TOP_REQUEST, topNumber } }
     function success(topUsers) { return { type: userConstants.GET_TOP_SUCCESS, topUsers } }
     function failure(error) { return { type: userConstants.GET_TOP_FAILURE, error } }
+}
+
+function getCurrent() {
+    return dispatch => {
+        dispatch(request());
+
+        userService.getCurrent()
+            .then(
+                user => {
+                    dispatch(success(user));
+                },
+                error => {
+                    dispatch(failure(error.toString()));
+                    dispatch(alertActions.error(error.toString()));
+                }
+            );
+    };
+
+    function request() { return { type: userConstants.GET_USER_REQUEST } }
+    function success(user) { return { type: userConstants.GET_USER_SUCCESS, user } }
+    function failure(error) { return { type: userConstants.GET_USER_FAILURE, error } }
 }

@@ -6,7 +6,7 @@ export const userService = {
     login,
     logout,
     register,
-    getById,
+    getCurrent,
     update,
     getByScore
 };
@@ -36,13 +36,13 @@ function logout() {
     localStorage.removeItem('user');
 }
 
-function getById(id) {
+function getCurrent() {
     const requestOptions = {
         method: 'GET',
         headers: authHeader()
     };
 
-    return fetch(`${config.apiUrl}/user/${id}`, requestOptions).then(handleResponse);
+    return fetch(`${config.apiUrl}/user/current`, requestOptions).then(handleResponse);
 }
 
 function getByScore(topNumber) {
