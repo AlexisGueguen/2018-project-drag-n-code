@@ -1,6 +1,5 @@
 import {compilationConstants} from "../_constants/compilation.constants";
 import {compilationService} from "../_services/compilation.service";
-import {userActions} from "./user.actions";
 
 export const compilationActions = {
     compile
