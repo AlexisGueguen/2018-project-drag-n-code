@@ -19,7 +19,7 @@ export default class HeaderComponent extends React.Component {
         return (
             <div className="header">
                 <nav className="navbar navbar-light header-component">
-                    <Link to="/" activeClassName="current">
+                    <Link to="/" className="current">
                         <img className="navbar-logo" src="/resources/logo.png" alt="logo" ref={this.logo}/>
                     </Link>
                         <div className="navbar-title" onClick={this.clickLogo}>{Translation.global.title}</div>

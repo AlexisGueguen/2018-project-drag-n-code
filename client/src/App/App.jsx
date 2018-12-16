@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { history } from '../_helpers';
-import { LoginPage } from '../LoginPage';
-import { RegisterPage } from '../RegisterPage';
+import {LoginPage} from '../LoginPage';
+import {RegisterPage} from '../RegisterPage';
 import {BasicPageComponent} from "../BasicPage";
-import {Router, Route, Switch} from "react-router-dom";
+import {Route, Router, Switch} from "react-router-dom";
 import {PrivateRoute} from "../_components";
 import Alert from "../_components/Alert";
+import {history} from "../_helpers";
 
 export class App extends React.Component {
     render() {

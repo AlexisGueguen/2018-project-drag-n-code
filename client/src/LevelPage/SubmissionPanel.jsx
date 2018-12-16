@@ -28,6 +28,19 @@ class SubmissionPanel extends React.Component {
         this.isLevelCommunity = this.isLevelCommunity.bind(this);
     }
 
+    componentDidMount() {
+        this.unblock = history.block((location, action) => {
+            this.setState({
+                show: true
+            });
+            return 'Are you sure you want to leave this page?'
+        });
+    }
+
+    componentWillUnmount() {
+        this.unblock();
+    }
+
     onValidationClick() {
         const {level} = this.props;
         const {code} = this.props;
@@ -48,6 +61,7 @@ class SubmissionPanel extends React.Component {
     }
 
     onReturnMenuClick() {
+        this.unblock();
         this.props.dispatch(userActions.getCurrent());
         history.goBack();
     }

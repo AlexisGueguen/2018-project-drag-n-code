@@ -67,7 +67,7 @@ class ManageLevelsPage extends React.Component {
                         <div className="list-group">
                             {this.hasLevels() ? (
                             levels.map((item) =>
-                                <div className="list-item-container container-fluid">
+                                <div key={item._id} className="list-item-container container-fluid">
                                     <div className="list-group-item list-group-item-action list-item-header" >
                                         <div className="level-header-title">
                                             <h4>{item.title}</h4>
