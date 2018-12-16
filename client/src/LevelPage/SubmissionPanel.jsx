@@ -101,8 +101,14 @@ class SubmissionPanel extends React.Component {
                                             wrapEnabled={true}
                                             editorProps={{$blockScrolling: Infinity}}
                                         />
-                                        <button className='btn btn-primary'
-                                                onClick={this.onReturnMenuClick}>{translation.returnMenu}</button>
+                                        <div className="submission-container">
+                                            {this.isLevelCommunity() &&
+                                                <span className={"glyphicon glyphicon-thumbs-up" + (this.isLiked() ? " liked-icon" : "")}
+                                                      onClick={this.onLikeClick}/>
+                                            }
+                                            <button className={"btn btn-primary" + (this.isLevelCommunity() ? " isCommunity" :"")}
+                                                    onClick={this.onReturnMenuClick}>{translation.returnMenu}</button>
+                                        </div>
                                     </div>
                                 ) : (
                                     <div className="error">
@@ -126,9 +132,9 @@ class SubmissionPanel extends React.Component {
                                 )}
                             </div>
                         ) : (
-                            <div>
+                            <div className="submission-container">
                                 {this.isLevelCommunity() &&
-                                    <span className={"glyphicon glyphicon-thumbs-up" + (this.isLiked() ? " liked-icon" : "")} onClick={this.onLikeClick}/>
+                                <span className={"glyphicon glyphicon-thumbs-up" + (this.isLiked() ? " liked-icon" : "")} onClick={this.onLikeClick}/>
                                 }
                                 <button className={"btn btn-primary" + (this.isLevelCommunity() ? " isCommunity" :"")} onClick={this.onValidationClick}>
                                     {translation.validate}

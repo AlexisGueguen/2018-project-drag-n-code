@@ -678,27 +678,6 @@ html, body {
               height: 100%;
               display: flex;
 
-              & .glyphicon {
-                margin: auto;
-                font-size: 30px;
-                color: #444;
-                cursor: pointer;
-              }
-
-              & .liked-icon {
-                color: @dark-secondary-color;
-              }
-
-              & button {
-                width: 65%;
-                height: 4em;
-                margin : auto;
-              }
-
-              & button.isCommunity {
-                margin: auto 17.5% auto 0px !important;
-              }
-
               & .expand {
                 position: relative;
                 margin-top: auto;
@@ -755,7 +734,7 @@ html, body {
                 }
 
                 & button {
-                  width: 90%;
+                  width: 65%;
                   padding: 16px;
                 }
               }
@@ -764,6 +743,30 @@ html, body {
                 width: 100%;
               }
             }
+          }
+        }
+
+        & .submission-container {
+          display: flex;
+          & .glyphicon-thumbs-up {
+            margin: auto;
+            font-size: 30px;
+            color: #444;
+            cursor: pointer;
+          }
+
+          & .liked-icon {
+            color: @primary-color;
+          }
+
+          & button.btn-primary {
+            width: 65%;
+            height: 4em;
+            margin : auto;
+          }
+
+          & button.isCommunity {
+            margin: auto 17.5% auto 0px !important;
           }
         }
       }
@@ -1060,9 +1063,9 @@ html, body {
 
 .glyphicon {
   font-size: 20px;
-  color: @dark-secondary-color;
+}
 
-}.instruction-variable {
+.instruction-variable {
    padding: 8px;
    margin: 8px;
    border-radius: 4px;
