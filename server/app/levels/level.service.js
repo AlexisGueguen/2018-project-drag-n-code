@@ -89,5 +89,5 @@ async function toggleLike(levelId, user) {
     else {
         level.upVotes ++;
     }
-    return await Level.findByIdAndUpdate(levelId, level, {new: true});
+    await Level.findByIdAndUpdate(levelId, level, {new: true});
 }

@@ -55,12 +55,11 @@ async function _delete(req, res, next) {
 
 async function like(req, res, next) {
     try {
-        console.log('req', req);
         const userId = req.user.sub;
         const user = await userService.getById(req.user.sub, userId);
         const levelUpdated = await levelService.toggleLike(req.params.id, user);
-        const userUpdated = await userService.toggleLike(req.params.id, user);
-        res.status(200).json({level: levelUpdated, user: userUpdated});
+        await userService.toggleLike(req.params.id, user);
+        res.status(200).json({level: levelUpdated});
     } catch(err) {
         next(err);
     }
