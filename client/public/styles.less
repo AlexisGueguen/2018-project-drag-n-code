@@ -169,7 +169,6 @@ html, body {
     }
   }
 
-
   & .login-page {
     width: 100%;
     height: auto;
@@ -233,6 +232,7 @@ html, body {
       padding-bottom: 20px;
 
       & .level-list {
+        margin-bottom: 250px;
 
         & .user-actions-container {
           padding: 15px;
@@ -282,9 +282,9 @@ html, body {
                   margin-bottom: auto;
 
                   & span.glyphicon-thumbs-up {
-                     color: @dark-grey-color;
-                     margin-left: auto;
-                   }
+                    color: @dark-grey-color;
+                    margin-left: auto;
+                  }
                   & .up-votes-count {
                     margin-left: auto;
                     padding-top: 3px;
@@ -702,7 +702,7 @@ html, body {
               & button {
                 width: 65%;
                 height: 4em;
-                margin : auto;
+                margin: auto;
               }
 
               & button.isCommunity {
@@ -750,7 +750,7 @@ html, body {
                 top: 24px;
                 position: absolute;
                 color: #000;
-                opacity: 1!important;
+                opacity: 1 !important;
                 &:hover {
                   color: @primary-color;
                   cursor: pointer;
@@ -770,7 +770,7 @@ html, body {
                 }
               }
 
-              & div.error{
+              & div.error {
                 width: 100%;
               }
             }
@@ -882,10 +882,10 @@ html, body {
         border-radius: 5px;
       }
 
-      .form-actions  {
+      .form-actions {
         max-width: unset;
         float: right;
-        padding-top : 20px;
+        padding-top: 20px;
         & button {
           padding: 15px;
           width: 130px;
@@ -907,7 +907,7 @@ html, body {
           border: 2px solid @primary-color;
         }
 
-        & tr th,td {
+        & tr th, td {
           vertical-align: unset;
         }
 
@@ -931,6 +931,7 @@ html, body {
 
     & .my-levels-page {
       & .level-list {
+        margin-bottom: 250px;
         & .list-group {
           & .list-item-container {
             padding-bottom: 6px;
@@ -938,7 +939,7 @@ html, body {
         }
       }
 
-            & .level-list .list-item-header {
+      & .level-list .list-item-header {
         background-color: #fff !important;
         cursor: unset !important;
 
@@ -990,7 +991,7 @@ html, body {
         }
       }
 
-      & .--locked .list-group-item{
+      & .--locked .list-group-item {
         background-color: #DDD;
       }
     }
@@ -1076,13 +1077,15 @@ html, body {
   font-size: 20px;
   color: @dark-secondary-color;
 
-}.instruction-variable {
-   padding: 8px;
-   margin: 8px;
-   border-radius: 4px;
+}
 
-   background-color: #F8B57A;
- }
+.instruction-variable {
+  padding: 8px;
+  margin: 8px;
+  border-radius: 4px;
+
+  background-color: #F8B57A;
+}
 
 .rating {
   unicode-bidi: bidi-override;
@@ -1097,6 +1100,7 @@ html, body {
     transform: translateY(-50%);
   }
 }
+
 .rating > span:hover:before,
 .rating > span:hover ~ span:before {
   content: "\2605";
@@ -1108,7 +1112,7 @@ html, body {
   display: flex;
   max-width: 200px;
 
-  & Link,button {
+  & Link, button {
     padding: 10px
   }
 
@@ -1137,4 +1141,8 @@ html, body {
 .no-item-placeholder {
   text-align: center;
   color: @medium-grey-color;
+}
+
+p {
+  white-space: pre-line;
 }

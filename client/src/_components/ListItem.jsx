@@ -54,7 +54,7 @@ class ListItem extends React.Component {
                     <div className="row-fluid">
                         <div className="list-item-details">
                             <Well className="list-item-statement col-md-10 col-sm-9">
-                                {level.statement}
+                                <p>{level.statement}</p>
                             </Well>
                             <button className="btn circle-button col-md-2 col-sm-3" onClick={this.handlePlayClick}>
                                 <span className="glyphicon glyphicon-play"/>
