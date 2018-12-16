@@ -573,7 +573,7 @@ html, body {
 
           & .remove-instruction-panel {
             height: 30px;
-            background-color: #BBBBBB;
+            background-color: #CCC;
             overflow: visible;
             transition: all 250ms;
 
@@ -592,15 +592,16 @@ html, body {
             }
 
             & .isOver {
-              background-color: #da190b;;
+              background-color: #aa1409;
             }
           }
 
           & .instruction {
-            background: white;
+            background: #F2F2F2;
             border: 1px solid #ccc;
             padding: 1em;
             margin-bottom: -1px;
+            border-radius: 5px;
           }
 
           & .instruction-default {
@@ -608,7 +609,7 @@ html, body {
             background: white;
             border: 1px solid #ccc;
             padding: 1em;
-            border-radius: 4px;
+            border-radius: 10px;
             text-align: center;
             width: 48%;
             margin: 2px 1%;
@@ -638,14 +639,14 @@ html, body {
               position: relative;
               margin-bottom: auto;
               margin-top: auto;
-              color: #000;
+              color: #444;
               margin-left: 16px;
               padding-top: 8px;
-            }
 
-            & .glyphicon:hover {
-              cursor: pointer;
-              color: @primary-color;
+              &:hover {
+                cursor: pointer;
+                color: @primary-color;
+              }
             }
           }
 

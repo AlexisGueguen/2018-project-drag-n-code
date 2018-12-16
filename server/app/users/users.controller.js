@@ -1,5 +1,6 @@
 ﻿const userService = require('./user.service');
 const throwForbiddenError = require("../_helpers/utils").throwForbiddenError;
+const achievementConstants = require("../achievements/achievement.constants");
 const {validateEmail} = require('../_helpers/utils');
 
 // Interface
@@ -8,13 +9,25 @@ module.exports = {
     register,
     getCurrent,
     getByScore,
-    update
+    update,
 };
 
-function login(req, res, next) {
-    userService.login(req.body)
-        .then(user => user ? res.json(user) : res.status(400).json({message: 'Username or password is incorrect'}))
-        .catch(err => next(err));
+async function login(req, res, next) {
+    try {
+        let user = await userService.login(req.body);
+        if (user) {
+            /* Achievements checks */
+            user = await userService.addAchievement(user, achievementConstants.Login);
+            user = await userService.loginObjectSplitter(user);
+            res.json(user)
+        }
+        else {
+            res.status(400).json({message: 'Username or password is incorrect'})
+        }
+    }
+    catch(err) {
+        next(err)
+    }
 }
 
 function register(req, res, next) {
@@ -39,8 +52,17 @@ function getByScore(req, res, next) {
         .catch(err => next(err));
 }
 
-function update(req, res, next) {
-    userService.update(req.body, req.user.sub)
-        .then(data => res.status(200).json(data))
-        .catch(err => next(err));
+async function update(req, res, next) {
+    try {
+        let updatedUser = await userService.update(req.body, req.user.sub);
+
+        /* Achievements checks */
+        if(await userService.hasUploadedPicture(updatedUser)) {
+            updatedUser = await userService.addAchievement(updatedUser, achievementConstants.UploadedPicture);
+        }
+        res.status(200).json(updatedUser)
+    }
+    catch(err) {
+        next(err)
+    }
 }

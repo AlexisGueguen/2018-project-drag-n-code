@@ -1,5 +1,6 @@
 import {compilationConstants} from "../_constants/compilation.constants";
 import {compilationService} from "../_services/compilation.service";
+import {userActions} from "./user.actions";
 
 export const compilationActions = {
     compile
@@ -12,6 +13,7 @@ function compile(code, level) {
             .then(
                 result => {
                     dispatch(success(result));
+                    dispatch(userActions.getCurrent());
                 },
                 error => {
                     dispatch(failure(error.toString()));

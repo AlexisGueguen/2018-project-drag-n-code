@@ -2,6 +2,7 @@ import {levelConstants} from "../_constants/level.constant";
 import {levelService} from "../_services/level.service";
 import {alertActions} from "./alert.actions";
 import {history} from "../_helpers";
+import {userActions} from "./user.actions";
 
 export const levelActions = {
     getAll,
@@ -83,6 +84,7 @@ function like(levelId) {
             .then(
                 levelId => {
                     dispatch(success(levelId));
+                    dispatch(userActions.getCurrent());
                 },
                 error => {
                     dispatch(failure(error.toString()));
@@ -104,6 +106,7 @@ function create(level) {
             .then(
                 level => {
                     dispatch(success(level));
+                    dispatch(userActions.getCurrent());
                     history.push('/community');
                     dispatch(alertActions.success('Your level was successfully created'));
                 },

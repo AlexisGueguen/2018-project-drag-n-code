@@ -1,6 +1,7 @@
 const db = require('app/_helpers/db');
 const throwForbiddenError = require("../_helpers/utils").throwForbiddenError;
 const Level = db.Level;
+const _ = require('lodash');
 
 module.exports = {
     getAll,
@@ -10,6 +11,12 @@ module.exports = {
     update,
     delete: _delete,
     toggleLike,
+    isLevelDifficultyMedium,
+    isLevelDifficultyHard,
+    hasUserPlayedAllHomeLevels,
+    has100Likes,
+    isFirstLevelCreated,
+    isFifthLevelCreated
 };
 
 async function getById(id) {
@@ -89,5 +96,32 @@ async function toggleLike(levelId, user) {
     else {
         level.upVotes ++;
     }
-    await Level.findByIdAndUpdate(levelId, level, {new: true});
+    return await Level.findByIdAndUpdate(levelId, level, {new: true});
+}
+
+async function isLevelDifficultyMedium(level) {
+    return level.difficulty === 2;
+}
+
+async function isLevelDifficultyHard(level) {
+    return level.difficulty === 3;
+}
+
+async function hasUserPlayedAllHomeLevels(user) {
+    let homeLevels = await this.getAll(false);
+    return _.difference(homeLevels, user.levelsCompleted).length === 0
+}
+
+async function has100Likes(level) {
+    return level.upVotes === 100;
+}
+
+async function isFirstLevelCreated(user) {
+    let createdLevels = await this.getByAuthorId(user._id);
+    return await createdLevels.length === 1;
+}
+
+async function isFifthLevelCreated(user) {
+    let createdLevels = await this.getByAuthorId(user._id);
+    return await createdLevels.length === 5;
 }
