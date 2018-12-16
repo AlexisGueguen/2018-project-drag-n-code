@@ -10,6 +10,7 @@ export class DifficultyStars extends React.Component {
                 value={this.props.value}
                 editing={false}
                 starColor="#FA9539"
+                emptyStarColor="#444"
             />
         );
     };

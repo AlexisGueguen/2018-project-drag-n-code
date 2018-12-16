@@ -1,4 +1,5 @@
 @import "loading-wheel.css";
+@import "search-bar.less";
 
 @primary-color: #FA9539;
 @secondary-color: #32BCDB;
@@ -6,7 +7,8 @@
 @dark-primary-color: #E37A1D;
 @light-primary-color: #F8B57A;
 @dark-secondary-color: #04588F;
-@dark-grey-color: #888;
+@dark-grey-color: #444;
+@medium-grey-color: #888;
 @light-grey-color: #EEE;
 
 @header-height: 85px;
@@ -240,8 +242,8 @@ html, body {
             max-width: 300px;
           }
 
-          & .dropdown {
-            margin-left: 50px;
+          & .css-10nd86i {
+            width: 250px;
           }
         }
 
@@ -279,14 +281,22 @@ html, body {
                   margin-top: auto;
                   margin-bottom: auto;
 
-                  & span {
-                    margin-left: auto;
-                  }
+                  & span.glyphicon-thumbs-up {
+                     color: @dark-grey-color;
+                     margin-left: auto;
+                   }
                   & .up-votes-count {
                     margin-left: auto;
                     padding-top: 3px;
-                    color: @dark-secondary-color;
+                    color: @dark-grey-color;
                     padding-right: 6px;
+                  }
+
+                  & span.liked {
+                    color: @primary-color;
+                  }
+                  & .liked {
+                    color: @primary-color;
                   }
                 }
 
@@ -680,7 +690,7 @@ html, body {
               & .glyphicon {
                 margin: auto;
                 font-size: 30px;
-                color: #444;
+                color: @dark-grey-color;
                 cursor: pointer;
               }
 
@@ -919,7 +929,15 @@ html, body {
     }
 
     & .my-levels-page {
-      & .level-list .list-item-header {
+      & .level-list {
+        & .list-group {
+          & .list-item-container {
+            padding-bottom: 6px;
+          }
+        }
+      }
+
+            & .level-list .list-item-header {
         background-color: #fff !important;
         cursor: unset !important;
 
@@ -944,10 +962,6 @@ html, body {
 
       & .community-votes {
         display: flex;
-
-        & .glyphicon-thumbs-up {
-          padding-left: 10px;
-        }
       }
     }
 
@@ -963,7 +977,7 @@ html, body {
 
           & .achievement-header-title {
             & p {
-              color: @dark-grey-color;
+              color: @medium-grey-color;
             }
           }
 
@@ -1019,13 +1033,13 @@ html, body {
 }
 
 .btn-cancel {
-  color: @dark-grey-color;
+  color: @medium-grey-color;
 
   &:focus {
-    color: @dark-grey-color;
+    color: @medium-grey-color;
   }
   &:hover, :active {
-    color: @dark-grey-color;
+    color: @medium-grey-color;
   }
 }
 
@@ -1115,11 +1129,11 @@ html, body {
 .vertical-dots {
   width: 100%;
   height: 50px;
-  background-image: radial-gradient(circle at center, @dark-grey-color 3px, transparent 1px);
+  background-image: radial-gradient(circle at center, @medium-grey-color 3px, transparent 1px);
   background-size: 100% 30%;
 }
 
 .no-item-placeholder {
   text-align: center;
-  color: @dark-grey-color;
+  color: @medium-grey-color;
 }

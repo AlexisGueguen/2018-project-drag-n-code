@@ -57,7 +57,7 @@ class ManageLevelsPage extends React.Component {
     }
 
     render() {
-        const { loading, levels } = this.props;
+        const { loading, levels, user } = this.props;
         return (
             <div className="my-levels-page">
                 <div className="level-list col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
@@ -66,16 +66,18 @@ class ManageLevelsPage extends React.Component {
                     ) : (
                         <div className="list-group">
                             {this.hasLevels() ? (
-                            levels.map((item) =>
-                                <div key={item._id} className="list-item-container container-fluid">
+                            levels.map((item) => {
+                                let liked = false;
+                                if (user.likes.includes(item._id)) liked = true;
+                                return <div key={item._id} className="list-item-container container-fluid">
                                     <div className="list-group-item list-group-item-action list-item-header" >
                                         <div className="level-header-title">
                                             <h4>{item.title}</h4>
                                             <p>{item.description}</p>
                                             <div className="level-meta-data">
                                                 <div className="community-votes">
-                                                    <div className="up-votes-count">{item.upVotes}</div>
-                                                    <span className="glyphicon glyphicon-thumbs-up"/>
+                                                    <div className={`up-votes-count ${liked && 'liked'}`}>{item.upVotes}</div>
+                                                    <span className={`glyphicon glyphicon-thumbs-up ${liked && 'liked'}`}/>
                                                 </div>
                                                 <DifficultyStars value={item.difficulty}/>
                                             </div>
@@ -84,7 +86,7 @@ class ManageLevelsPage extends React.Component {
                                             <span className="glyphicon glyphicon-trash" onClick={() => {this.handleShow(item)}}/>
                                         </div>
                                     </div>
-                                </div>)
+                                </div>})
                                 ) : (
                                 <div className="no-item-placeholder">
                                     {Translation.manageLevels.noLevels}
