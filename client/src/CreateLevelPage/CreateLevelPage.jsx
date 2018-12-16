@@ -91,7 +91,6 @@ class CreateLevelPage extends React.Component {
         const { level } = this.state;
         const {dispatch} = this.props;
         const {user} = this.props;
-        console.log(level);
         this.setState({
             submitted: true,
         });
@@ -134,7 +133,6 @@ class CreateLevelPage extends React.Component {
     render() {
         const { loading  } = this.props;
         const { level, submitted, inputs, outputs } = this.state;
-        console.log('inputs: ', inputs);
         return (
             <div className="create-level-page">
                 <h2>{translation.createLevel.title}</h2>
