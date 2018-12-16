@@ -32,9 +32,8 @@ class AchievementsPage extends React.Component {
                                         <p>{achievement.description}</p>
                                     </div>
                                     {this.isUnlocked(achievement) &&
-                                        <img className="badge-picture" src={achievement.badge} alt="Badge"/>
+                                        <img className="badge-picture" src={`/resources/achievements/${achievement._id}.png`} alt="Badge"/>
                                     }
-
                                 </div>
                             </div>
                         )}

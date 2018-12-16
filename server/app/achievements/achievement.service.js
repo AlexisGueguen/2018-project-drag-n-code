@@ -1,6 +1,4 @@
-﻿const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
-const db = require('app/_helpers/db');
+﻿const db = require('app/_helpers/db');
 const Achievement = db.Achievement;
 
 // Interface
