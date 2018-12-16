@@ -2,8 +2,13 @@ import React from "react";
 import AceEditor from 'react-ace';
 
 import 'brace/mode/c_cpp';
-import 'brace/theme/kuroir';
+import 'brace/theme/xcode';
 import connect from "react-redux/es/connect/connect";
+import Select from "react-select";
+
+const languages = {
+    cpp: 'c++'
+};
 
 class GeneratedCodePanel extends React.Component {
 
@@ -11,10 +16,20 @@ class GeneratedCodePanel extends React.Component {
         const {code} = this.props;
         return (
             <div className="generated-code">
-                <h3>Generated code</h3>
+                <div>
+                    <h3>Generated code</h3>
+                    <Select
+                        placeholder='Sort by'
+                        onChange={this.handleLanguageChange}
+                        value={{value: languages.cpp, label: languages.cpp}}
+                        options={[
+                            {value: languages.cpp, label: languages.cpp},
+                        ]}
+                    />
+                </div>
                 <AceEditor
                     mode="c_cpp"
-                    theme="chaos"
+                    theme="xcode"
                     name="code-generated"
                     fontSize={14}
                     showPrintMargin={false}

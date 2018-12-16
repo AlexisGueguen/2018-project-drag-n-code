@@ -8,7 +8,7 @@ export const conversion = {
 
 function toCPP(tree) {
     let indentation = 1;
-    const includes = '#include <iostream>\n#include <vector>\n#include <string>\nusing namespace std;\n\n';
+    const includes = '\n#include <iostream>\n#include <vector>\n#include <string>\nusing namespace std;\n\n';
     let inputsTreatment = createIndent(indentation) + 'vector<int> inputs;\n';
     inputsTreatment += createIndent(indentation) + 'for (string line; getline(cin, line);) {\n';
     inputsTreatment += createIndent(indentation + 1) + 'inputs.push_back(stoi(line));\n';
@@ -17,7 +17,7 @@ function toCPP(tree) {
     tree.forEach((item) => {
         code += instructionToCPP(item, indentation);
     });
-    code += createIndent(indentation) + 'return 0;\n}';
+    code += createIndent(indentation) + 'return 0;\n}\n';
     return code;
 }
 

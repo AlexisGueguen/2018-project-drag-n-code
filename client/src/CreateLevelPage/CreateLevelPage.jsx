@@ -7,8 +7,15 @@ import {Link} from "react-router-dom";
 import AceEditor from "react-ace";
 import 'brace/theme/chaos';
 import StarRatingComponent from 'react-star-rating-component';
+import Select from "react-select";
 
-const solutionExample = '#include <iostream>\nusing namespace std;\n\nint main()\n{\n    cout << "Hello, World!";\n    return 0;\n}';
+const solutionExample = {
+    cpp: '#include <iostream>\nusing namespace std;\n\nint main()\n{\n    cout << "Hello, World!";\n    return 0;\n}'
+};
+
+const languages = {
+    cpp: 'c++'
+};
 
 class CreateLevelPage extends React.Component {
     constructor(props) {
@@ -22,10 +29,11 @@ class CreateLevelPage extends React.Component {
                 inputs: '',
                 outputs: '',
                 difficulty: 0,
-                solution: solutionExample,
+                solution: solutionExample.cpp,
             },
             inputs: [''],
             outputs: [''],
+            language: languages.cpp,
             submitted: false,
         };
 
@@ -34,6 +42,13 @@ class CreateLevelPage extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.clickStar = this.clickStar.bind(this);
     }
+
+    handleLanguageChange = selectedValue => {
+        this.setState({
+            ...this.state,
+            language: selectedValue.value
+        });
+    };
 
     handleChange(event) {
         const { name, value } = event.target;
@@ -132,7 +147,7 @@ class CreateLevelPage extends React.Component {
 
     render() {
         const { loading  } = this.props;
-        const { level, submitted, inputs, outputs } = this.state;
+        const { level, submitted, inputs, outputs, language } = this.state;
         return (
             <div className="create-level-page">
                 <h2>{translation.createLevel.title}</h2>
@@ -223,7 +238,17 @@ class CreateLevelPage extends React.Component {
                     </div>
 
                     {/*  Solution  */}
-                    <label htmlFor="statement">{translation.createLevel.solutionField}</label>
+                    <div className="solution-title">
+                        <label htmlFor="statement">{translation.createLevel.solutionField}</label>
+                        <Select
+                            placeholder='Sort by'
+                            onChange={this.handleLanguageChange}
+                            value={{value: language, label: language}}
+                            options={[
+                                {value: languages.cpp, label: languages.cpp},
+                            ]}
+                        />
+                    </div>
                     <div className="solution-code">
                         <AceEditor
                             mode="c_cpp"
