@@ -39,11 +39,9 @@ async function create(req, res, next) {
         /* Achievements checks */
         let user = await userService.getById(userId);
         if(await levelService.isFirstLevelCreated(user)){
-            console.log("FIRST LEVEL CREATED");
             await userService.addAchievement(user, achievementConstants.LevelCreated);
         }
         if(await levelService.isFifthLevelCreated(user)) {
-            console.log("FIFTH LEVEL CREATED");
             await userService.addAchievement(user, achievementConstants.FiveLevelCreated);
         }
 

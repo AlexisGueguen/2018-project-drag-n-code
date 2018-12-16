@@ -139,10 +139,8 @@ async function removeLevelFromUsers(levelId) {
 }
 
 async function addAchievement(user, achievementId) {
-    console.log("adding achievement "+ achievementId);
     if (!user.achievements.includes(achievementId)) {
         user.achievements.push(achievementId);
-        console.log("  -----  NEW ACHIEVEMENT ----   " +achievementId);
     }
     return await User.findByIdAndUpdate(user._id, user, {new: true})
 }
