@@ -1,5 +1,6 @@
 const levelService = require('./level.service');
 const userService = require('../users/user.service');
+const achievementConstants = require("../achievements/achievement.constants");
 
 module.exports = {
     getAll,
@@ -29,12 +30,28 @@ function getByAuthorId(req, res, next) {
         .catch(err => next(err));
 }
 
-function create(req, res, next) {
-    const userId = req.user.sub;
-    const level = req.body;
-    levelService.create(level, userId)
-        .then(data => res.status(201).json(data))
-        .catch(err => next(err))
+async function create(req, res, next) {
+    try {
+        const userId = req.user.sub;
+        const level = req.body;
+        const createdLevel = await levelService.create(level, userId);
+
+        /* Achievements checks */
+        let user = await userService.getById(userId);
+        if(await levelService.isFirstLevelCreated(user)){
+            console.log("FIRST LEVEL CREATED");
+            await userService.addAchievement(user, achievementConstants.LevelCreated);
+        }
+        if(await levelService.isFifthLevelCreated(user)) {
+            console.log("FIFTH LEVEL CREATED");
+            await userService.addAchievement(user, achievementConstants.FiveLevelCreated);
+        }
+
+        res.status(201).json(createdLevel)
+    }
+    catch(err) {
+        next(err);
+    }
 }
 
 function update(req, res, next) {
@@ -55,11 +72,21 @@ async function _delete(req, res, next) {
 
 async function like(req, res, next) {
     try {
-        console.log('req', req);
         const userId = req.user.sub;
         const user = await userService.getById(req.user.sub, userId);
         const levelUpdated = await levelService.toggleLike(req.params.id, user);
-        const userUpdated = await userService.toggleLike(req.params.id, user);
+        let userUpdated = await userService.toggleLike(req.params.id, user);
+
+        /* Achievements checks */
+        if(await userService.hasOneLike(userUpdated)) {
+            userUpdated = await userService.addAchievement(userUpdated, achievementConstants.LevelLiked);
+        }
+
+        if(await levelService.has100Likes(levelUpdated)) {
+            let author = await userService.getById(levelUpdated.author);
+            await userService.addAchievement(author, achievementConstants.Level100Likes);
+        }
+
         res.status(200).json({level: levelUpdated, user: userUpdated});
     } catch(err) {
         next(err);

@@ -31,12 +31,7 @@ async function create(achievementParam) {
     if (await Achievement.findOne({ title: achievementParam.title })) {
         throw 'Title "' + achievementParam.title + '" is already taken';
     }
-
     const achvmt = new Achievement(achievementParam);
-
-    console.log(achvmt);
-
-    // save user
     await achvmt.save();
 }
 

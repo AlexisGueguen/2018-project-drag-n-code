@@ -44,7 +44,6 @@ async function runAndCompileCPP(code, inputs) {
             });
             return response.data;
         } catch (error) {
-            console.log(error);
             throw {
                 name: 'Compilation error',
                 message: error,

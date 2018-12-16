@@ -16,20 +16,30 @@ module.exports = {
     getByScore,
     setLevelCompleted,
     toggleLike,
-    removeLevelFromUsers
+    removeLevelFromUsers,
+    addAchievement,
+    isUserRank1,
+    isUserScoreOver100,
+    isUserScoreOver500,
+    hasOneLike,
+    hasUploadedPicture,
+    loginObjectSplitter
 };
 
 async function login({ username, password }) {
     const user = await User.findOne({ username });
     if (user && bcrypt.compareSync(password, user.hash)) {
-        // Split the user object
-        const { hash, ...userWithoutHash } = user.toObject();
-        const token = jwt.sign({ sub: user.id }, config.secret);
-        return {
-            ...userWithoutHash,
-            token
-        };
+        return user;
     }
+}
+// Split the user object
+async function loginObjectSplitter(user) {
+    const { hash, ...userWithoutHash } = user.toObject();
+    const token = jwt.sign({ sub: user.id }, config.secret);
+    return {
+        ...userWithoutHash,
+        token
+    };
 }
 
 async function getById(id) {
@@ -92,7 +102,7 @@ async function getByScore(topNumber) {
     };
 
     return await User
-        .find({}, 'username picture score')
+        .find({}, '_id username picture score')
         .sort({score : -1})
         .limit(limitNumber)
 }
@@ -126,5 +136,36 @@ async function removeLevelFromUsers(levelId) {
         _.pull(users[i].levelsCompleted, levelId);
         await User.findByIdAndUpdate(users[i]._id, users[i]);
     }
-    console.log('after: ', users);
+}
+
+async function addAchievement(user, achievementId) {
+    console.log("adding achievement "+ achievementId);
+    if (!user.achievements.includes(achievementId)) {
+        user.achievements.push(achievementId);
+        console.log("  -----  NEW ACHIEVEMENT ----   " +achievementId);
+    }
+    return await User.findByIdAndUpdate(user._id, user, {new: true})
+}
+
+async function isUserRank1(user) {
+    let firstUsers = await this.getByScore(1);
+    let firstUserId = await JSON.stringify(firstUsers[0]._id);
+    let currentUserId = await JSON.stringify(user._id);
+    return (firstUserId.localeCompare(currentUserId) === 0);
+}
+
+async function isUserScoreOver100(user) {
+    return user.score >= 100;
+}
+
+async function isUserScoreOver500(user) {
+    return user.score >= 500;
+}
+
+async function hasOneLike(user) {
+    return user.likes.length === 1;
+}
+
+async function hasUploadedPicture(user) {
+    return !_.isNil(user.picture);
 }

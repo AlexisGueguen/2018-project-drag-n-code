@@ -8,7 +8,6 @@ const target = {
 
         if (!monitor.isOver({shallow: true})) return;
 
-        console.log(`Drop item ${draggedId}`);
         props.remove(draggedId);
         props.finishDrop();
     }
