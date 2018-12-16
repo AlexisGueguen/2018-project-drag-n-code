@@ -49,11 +49,20 @@ html, body {
       & .navbar-title {
         font-size: 36px;
         font-weight: 700;
-        padding-left: 50px;
+        padding-left: 20px;
         width: fit-content;
         margin-top: auto;
         margin-bottom: auto;
         color: white;
+        cursor: pointer;
+      }
+
+      & .navbar-logo {
+        height: 75px;
+        width: 75px;
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left: 50px;
       }
 
       & .navbar-nav {
@@ -158,14 +167,18 @@ html, body {
     }
   }
 
-  & div.login-container {
+
+  & .login-page {
+    width: 100%;
     height: auto;
     margin-bottom: auto;
     margin-top: auto;
 
     & h2 {
+      font-weight: bold;
       text-align: center;
       color: @primary-color;
+      font-size: 50px;
     }
 
     & button {
@@ -177,6 +190,11 @@ html, body {
 
     & .btn-link {
       color: @dark-primary-color;
+    }
+
+    .login-logo {
+      width: 100%;
+      padding-bottom: 30px;
     }
   }
 
@@ -564,7 +582,7 @@ html, body {
             }
 
             & .isOver {
-              background-color: red;
+              background-color: #da190b;;
             }
           }
 

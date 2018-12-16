@@ -6,6 +6,7 @@ import LoadingPoints from "./LoadingPoints";
 import ListItem from "./ListItem";
 import _ from "lodash";
 import {DropdownButton, MenuItem} from "react-bootstrap";
+import Translation from "../_constants/en";
 
 class CommunityLevelList extends React.Component {
 
@@ -28,35 +29,12 @@ class CommunityLevelList extends React.Component {
 
         this.handleSearch = this.handleSearch.bind(this);
         this.orderLevels = this.orderLevels.bind(this);
+        this.hasLevels = this.hasLevels.bind(this);
     }
 
-    render() {
-        const { loading, levels, sortText } = this.state;
-        return (
-            <div className="level-list col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-                <div className="user-actions-container">
-                    <div className="search-box">
-                        <input className="form-control" type="text" placeholder="Search" aria-label="Search" onChange={this.handleSearch}/>
-                    </div>
-                    <DropdownButton onSelect={this.orderLevels} title={sortText.currentTarget.text}
-                                    id={`split-button-basic-$1`} key="1">
-                        <MenuItem eventKey="difficulty asc">Difficulty asc</MenuItem>
-                        <MenuItem eventKey="difficulty desc">Difficulty desc</MenuItem>
-                        <MenuItem eventKey="upVotes asc">Popularity asc</MenuItem>
-                        <MenuItem eventKey="upVotes desc">Popularity desc</MenuItem>
-                    </DropdownButton>
-                </div>
-                {loading ? (
-                    <LoadingPoints/>
-                ) : (
-                    <div className="list-group">
-                        {levels != null && levels !== undefined &&
-                        levels.map((item) => <ListItem key={item.title} value={item}/>)
-                        }
-                    </div>
-                )}
-            </div>
-        );
+    hasLevels() {
+        const {levels} = this.state;
+        return (!!levels) ? levels.length > 0 : false;
     }
 
     handleSearch(event) {
@@ -100,6 +78,39 @@ class CommunityLevelList extends React.Component {
             });
         }
         return null
+    }
+
+    render() {
+        const { loading, levels, sortText } = this.state;
+        return (
+            <div className="level-list col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+                <div className="user-actions-container">
+                    <div className="search-box">
+                        <input className="form-control" type="text" placeholder="Search" aria-label="Search" onChange={this.handleSearch}/>
+                    </div>
+                    <DropdownButton onSelect={this.orderLevels} title={sortText.currentTarget.text}
+                                    id={`split-button-basic-$1`} key="1">
+                        <MenuItem eventKey="difficulty asc">Difficulty asc</MenuItem>
+                        <MenuItem eventKey="difficulty desc">Difficulty desc</MenuItem>
+                        <MenuItem eventKey="upVotes asc">Popularity asc</MenuItem>
+                        <MenuItem eventKey="upVotes desc">Popularity desc</MenuItem>
+                    </DropdownButton>
+                </div>
+                {loading ? (
+                    <LoadingPoints/>
+                ) : (
+                    <div className="list-group">
+                        {this.hasLevels() ? (
+                        levels.map((item) => <ListItem key={item.title} value={item}/>)
+                        ) : (
+                            <div className="no-item-placeholder">
+                                {Translation.community.noLevel}
+                            </div>
+                        )}
+                    </div>
+                )}
+            </div>
+        );
     }
 }
 

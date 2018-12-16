@@ -40,7 +40,8 @@
     "title" : "Community",
     "description" : "Welcome back ! Select a level to start playing",
     "sortLevelsButton" : "Sort",
-    "selectSorting" : "Select what to sort"
+    "selectSorting" : "Select what to sort",
+    "noLevel" : "Your search didn't match any level"
   },
   "profile" : {
     "title" : "Profile",

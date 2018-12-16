@@ -14,7 +14,7 @@ class GeneratedCodePanel extends React.Component {
                 <h3>Generated code</h3>
                 <AceEditor
                     mode="c_cpp"
-                    theme="kuroir"
+                    theme="chaos"
                     name="code-generated"
                     fontSize={14}
                     showPrintMargin={false}

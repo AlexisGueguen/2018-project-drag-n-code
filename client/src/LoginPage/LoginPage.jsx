@@ -44,34 +44,37 @@ class LoginPage extends React.Component {
         const { loggingIn } = this.props;
         const { username, password, submitted } = this.state;
         return (
-            <div className="col-md-2 col-md-offset-5 col-sm-4 col-sm-offset-4 login-container">
-                <h2>{translation.login.title}</h2>
-                <form name="form" onSubmit={this.handleSubmit}>
-                    <div className={'form-group' + (submitted && !username ? ' has-error' : '')}>
-                        <label htmlFor="username">{translation.login.usernameField}</label>
-                        <input type="text" className="form-control" name="username" value={username} onChange={this.handleChange} />
-                        {submitted && !username &&
+            <div className="login-page">
+                <h2>{translation.global.title}</h2>
+                <div className="col-md-2 col-md-offset-5 col-sm-4 col-sm-offset-4">
+                    <img className="login-logo" src="/resources/logo-orange.png" alt="logo" ref={this.logo}/>
+                    <form name="form" onSubmit={this.handleSubmit}>
+                        <div className={'form-group' + (submitted && !username ? ' has-error' : '')}>
+                            <label htmlFor="username">{translation.login.usernameField}</label>
+                            <input type="text" className="form-control" name="username" value={username} onChange={this.handleChange} />
+                            {submitted && !username &&
                             <div className="help-block">{translation.login.usernameRequired}</div>
-                        }
-                    </div>
-                    <div className={'form-group' + (submitted && !password ? ' has-error' : '')}>
-                        <label htmlFor="password">{translation.login.passwordField}</label>
-                        <input type="password" className="form-control" name="password" value={password} onChange={this.handleChange} />
-                        {submitted && !password &&
+                            }
+                        </div>
+                        <div className={'form-group' + (submitted && !password ? ' has-error' : '')}>
+                            <label htmlFor="password">{translation.login.passwordField}</label>
+                            <input type="password" className="form-control" name="password" value={password} onChange={this.handleChange} />
+                            {submitted && !password &&
                             <div className="help-block">{translation.login.passwordRequired}</div>
-                        }
-                    </div>
-                    <div className="form-group">
-                        {loggingIn ? (
-                            <LoadingWheel/>
-                        ) :(
-                            <div>
-                                <button className="btn col-md-6 col-sm-6">{translation.login.title}</button>
-                                <Link to="/register" className="btn btn-link col-md-6 col-sm-6">{translation.login.registerLink}</Link>
-                            </div>
-                        )}
-                    </div>
-                </form>
+                            }
+                        </div>
+                        <div className="form-group">
+                            {loggingIn ? (
+                                <LoadingWheel/>
+                            ) :(
+                                <div>
+                                    <button className="btn col-md-6 col-sm-6">{translation.login.title}</button>
+                                    <Link to="/register" className="btn btn-link col-md-6 col-sm-6">{translation.login.registerLink}</Link>
+                                </div>
+                            )}
+                        </div>
+                    </form>
+                </div>
             </div>
         );
     }
