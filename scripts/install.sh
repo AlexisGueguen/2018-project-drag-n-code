@@ -34,4 +34,4 @@ sudo npm install -g serve
 echo ============================== Installing Cerbot
 sudo add-apt-repository ppa:certbot/certbot
 sudo apt-get update
-sudo apt-get install python-certbot-nginx
+sudo apt-get install python-certbot-nginx -y

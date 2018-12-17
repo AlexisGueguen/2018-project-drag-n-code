@@ -20,7 +20,10 @@ ls
 ```
 
 ### Run installation scripts
+During the installation, if it is asked to keep your local copy, say YES. 
+Then, follow the instructions to install the packages.  
 ```
+chmod -R 755 ~/2018-project-drag-n-code
 sudo ~/2018-project-drag-n-code/scripts/install.sh
 sudo ~/2018-project-drag-n-code/scripts/configuration.sh
 ```
