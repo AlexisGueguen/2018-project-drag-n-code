@@ -29,7 +29,7 @@ db.levels.insertMany([
         "description": "Given an array of number in input, you will print this array.",
         "statement": "Given an array of number in input, you will print this array.\ For example, if the input is [1, 2, 3], then the output must be [1, 2, 3]",
         "inputs": "1\n2\n3",
-        "outputs": "1\n2\n3",
+        "outputs": "1\n2\n3\n",
         "solution": "",
         "author": "",
         "isCreatedByCommunity": false,

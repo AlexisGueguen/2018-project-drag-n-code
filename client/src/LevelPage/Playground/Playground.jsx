@@ -11,12 +11,15 @@ import {codeTreeActions} from "../../_actions";
 import {createInstructionFromType} from "./Instructions/utils";
 import {instructions} from "./Instructions/instructions";
 import EmptyTreeTarget from "./EmptyTreeTarget";
+import _ from 'lodash';
 
 class Playground extends React.Component {
     constructor(props) {
         super(props);
         this.props.dispatch(codeTreeActions.init());
-        this.state = initialState;
+        this.state = {
+            tree: _.clone(initialState.tree)
+        };
     }
 
     removeItem = id => {
@@ -133,7 +136,7 @@ class Playground extends React.Component {
 
     render() {
         const {tree} = this.props;
-
+        console.log(this.props);
         return (
             <Col sm={7} md={7} className="playground">
                 <div className="playground-code">
