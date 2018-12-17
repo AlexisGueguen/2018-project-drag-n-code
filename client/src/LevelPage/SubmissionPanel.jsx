@@ -8,6 +8,7 @@ import AceEditor from "react-ace";
 import lang from "../_constants/en";
 import {history} from '../_helpers';
 import {levelActions, userActions} from "../_actions";
+import 'brace/theme/kuroir';
 
 const translation = lang.levelPage;
 

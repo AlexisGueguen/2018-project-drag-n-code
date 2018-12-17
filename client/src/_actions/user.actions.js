@@ -13,7 +13,6 @@ export const userActions = {
     update,
     getByScore,
     getCurrent,
-    isAchievementUnlocked
 };
 
 function login(username, password) {
@@ -24,7 +23,7 @@ function login(username, password) {
             .then(
                 user => { 
                     dispatch(success(user));
-                    //dispatch(alertAchievementActions.isAchievementUnlocked(user));
+                    //dispatch(isAchievementUnlocked(user));
                     history.push('/');
                 },
                 error => {
@@ -67,15 +66,15 @@ function register(user) {
     function failure(error) { return { type: userConstants.REGISTER_FAILURE, error } }
 }
 
-function update(user) {
+function update(oldUser) {
     return dispatch => {
-        dispatch(request({ user }));
+        dispatch(request({ oldUser }));
 
-        userService.update(user)
+        userService.update(oldUser)
             .then(
                 user => {
                     dispatch(success(user));
-                    //dispatch(alertAchievementActions.isAchievementUnlocked(user));
+                    dispatch(isAchievementUnlocked(user, oldUser));
                     history.push('/profile');
                 },
                 error => {
@@ -119,10 +118,7 @@ function getCurrent(oldUser) {
             .then(
                 user => {
                     dispatch(success(user));
-                    console.log(user, oldUser);
-                    //alertAchievementActions.isAchievementUnlocked(user, oldUser);
                     dispatch(isAchievementUnlocked(user, oldUser));
-                    //dispatch(alertAchievementActions.success("New Achievement Unlocked"));
                 },
                 error => {
                     dispatch(failure(error.toString()));
@@ -141,8 +137,6 @@ function isAchievementUnlocked(user, oldUser) {
     return dispatch => {
         if (user.achievements.length !== oldUser.achievements.length) {
             let newAchievements = _.difference(user.achievements, oldUser.achievements);
-            console.log("new achievement");
-            console.log(newAchievements);
             if(newAchievements.length === 1) {
                 achievementService.getById(newAchievements[0])
                     .then((achievement) => {

@@ -14,7 +14,6 @@ export class App extends React.Component {
         return (
             <div className="page-container">
                 <Alert class="fixed-alert"/>
-                <AlertAchievement class="fixed-alert"/>
                 <Router history={history}>
                     <Switch>
                         <Route path="/login" component={LoginPage}/>

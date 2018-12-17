@@ -2,6 +2,7 @@ import React from "react";
 import {history} from "../_helpers";
 import {alertAchievementActions, alertActions} from "../_actions";
 import connect from "react-redux/es/connect/connect";
+import Modal from "react-bootstrap/es/Modal";
 
 class AlertAchievement extends React.Component {
     constructor(props) {
@@ -31,11 +32,23 @@ class AlertAchievement extends React.Component {
         const { numberOfUnlocked, achievement } = this.props;
         return (
             <div className={"alert-achievement-container " + (numberOfUnlocked ? "" : "empty")}>
+
                 {this.isNewAchievement() &&
                 <div className="fixed-alert-achievement">
                     <div className="alert-message">{this.getMessage()}</div>
+                    {achievement &&
+                    <div className="img-container">
+                        <img className="badge-picture" src={`/resources/achievements/${achievement._id}.png`} alt="Badge"/>
+                    </div>
+                    }
                 </div>
                 }
+
+                { /**<Modal
+                    animationtype={"slide"}
+                    backdrop={false}
+                    show={this.isNewAchievement()}>
+                </Modal> */ }
             </div>
         )}
 }

@@ -23,11 +23,13 @@ class AvatarUploadComponent extends React.Component {
         reader.readAsDataURL(event.target.files[0]);
         const { dispatch } = this.props;
         let currentId = this.state.currentUser._id;
+        let currentAchievements = this.state.currentUser.achievements
 
         reader.addEventListener("load", function () {
             const uploadUser = {
                 _id: currentId,
-                picture: reader.result
+                picture: reader.result,
+                achievements: currentAchievements
             };
             dispatch(userActions.update(uploadUser));
         }, false);
