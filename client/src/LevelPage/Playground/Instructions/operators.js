@@ -7,7 +7,34 @@ export const comparisonOperators = {
     lessOrEqualThan: "<="
 };
 
-export const operators = {
+export const assignmentOperators = {
     equal: "=",
-    plusplus: "++"
+    plusEqual: "+=",
+    minusEqual: "-=",
+    multiplyEqual: "*=",
+    divideEqual: "/=",
+    minusMinus: "--",
+    plusPlus: "++"
 };
+
+export const logicalOperators = {
+    and: "&&",
+    or: "||",
+    not: "!"
+};
+
+export const arithmeticOperators = {
+    addition: "+",
+    multiplication: "*",
+    subtraction: "-",
+    division: "/",
+    modulo: "%",
+};
+
+export function isBinaryOperator(operator) {
+    return operator === assignmentOperators.equal;
+}
+
+export function isIncrementOrDecrement(operator) {
+    return operator === assignmentOperators.plusPlus || operator === assignmentOperators.minusMinus;
+}

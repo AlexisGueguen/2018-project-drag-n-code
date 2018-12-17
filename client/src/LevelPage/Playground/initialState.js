@@ -1,76 +1,43 @@
 import {instructions} from "./Instructions/instructions";
 import {generateGuid} from "../../_helpers/utils";
-import {comparisonOperators} from "./Instructions/operators";
-import {variableType} from "./Instructions/types";
+import {comparisonOperators, assignmentOperators} from "./Instructions/operators";
+import {printType} from "./Instructions/Print";
 
 export const initialState = {
     tree: [
         {
             id: generateGuid(),
-            type: instructions.VariableDeclaration,
-            droppable: false,
-            attributes: {
-                type: variableType.int,
-                name: "a",
-                value: "0"
-            },
-            children: []
-        },
-        {
-            id: generateGuid(),
-            type: instructions.IfBlock,
+            type: instructions.ForLoop,
             droppable: true,
             attributes: {
-                predicates: [
-                    {
-                        left: "odajj",
-                        right: "e",
-                        operator: comparisonOperators.equal,
-                        aggregator: null
-                    }
-                ]
+                initialization: {
+                    type: "int",
+                    name: "i",
+                    value: "0"
+                },
+                condition: {
+                    left: "i",
+                    right: "inputs.size()",
+                    operator: comparisonOperators.lessThan,
+                },
+                increment: {
+                    variable: "i",
+                    operator: assignmentOperators.plusPlus,
+                    value: "1"
+                }
             },
             children: [
                 {
                     id: generateGuid(),
-                    type: instructions.IfBlock,
-                    droppable: true,
-                    attributes: {
-                        predicates: [
-                            {
-                                left: "adf",
-                                right: "jkd",
-                                operator: comparisonOperators.moreOrEqualThan,
-                                aggregator: null
-                            }
-                        ]
-                    },
-                    children: [
-                        {
-                            id: generateGuid(),
-                            type: instructions.VariableDeclaration,
-                            droppable: false,
-                            attributes: {
-                                type: variableType.float,
-                                name: "b",
-                                value: "0.00"
-                            },
-                            children: []
-                        }
-                    ]
-                },
-                {
-                    id: generateGuid(),
-                    type: instructions.VariableDeclaration,
+                    type: instructions.Print,
                     droppable: false,
                     attributes: {
-                        type: variableType.double,
-                        name: "c",
-                        value: "0.08729"
+                        type: printType.variable,
+                        value: "inputs[i]"
                     },
                     children: []
                 }
             ]
-        }
+        },
     ]
 };

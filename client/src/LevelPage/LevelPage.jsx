@@ -4,7 +4,7 @@ import connect from "react-redux/es/connect/connect";
 import PropTypes from "prop-types";
 import LoadingPoints from "../_components/LoadingPoints";
 import StatementPanel from "./StatementPanel";
-import SubmissionPanel from "./SubmissionPanel";
+import {SubmissionPanel} from "./SubmissionPanel";
 import {Col, Grid, Row} from "react-bootstrap";
 import {GeneratedCodePanel} from './GeneratedCodePanel';
 import {Playground} from "./Playground/Playground";
@@ -27,10 +27,10 @@ class LevelPage extends React.Component {
                     <Row className="level-page-row">
                         <Playground/>
                         <Col sm={5} md={5} className="scrolling-panel">
-                            <StatementPanel value={level.statement}/>
+                            <StatementPanel value={level.statement} title={level.title}/>
                             <GeneratedCodePanel/>
-                            <SubmissionPanel/>
                         </Col>
+                        <SubmissionPanel/>
                     </Row>
                 )}
             </Grid>

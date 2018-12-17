@@ -42,12 +42,6 @@ class ProfileDropdownComponent extends React.Component {
                                 <div className="item-title">{Translation.header.achievementsTitle}</div>
                             </Link>
                         </li>
-                        <li>
-                            <Link to="/settings" className="item-link">
-                                <span className="glyphicon glyphicon-cog"/>
-                                <div className="item-title">{Translation.header.settingsTitle}</div>
-                            </Link>
-                        </li>
                         <li className="main-items">
                             <Link to="/login" className="item-link">
                                 <span className="glyphicon glyphicon-log-out"/>

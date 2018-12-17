@@ -81,13 +81,6 @@ module.exports = (router) => {
      * @apiVersion 1.0.0
      */
     router
-        .route('/user/:id')
-        .get(userController.getById);
-
-    /**
-     * get the current user
-     */
-    router
         .route('/user/current')
         .get(userController.getCurrent);
 

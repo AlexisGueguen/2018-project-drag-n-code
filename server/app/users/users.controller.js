@@ -1,24 +1,36 @@
 ﻿const userService = require('./user.service');
-const { validateEmail } = require('../_helpers/utils');
+const throwForbiddenError = require("../_helpers/utils").throwForbiddenError;
+const achievementConstants = require("../achievements/achievement.constants");
+const {validateEmail} = require('../_helpers/utils');
 
 // Interface
 module.exports = {
     login,
     register,
     getCurrent,
-    getById,
     getByScore,
-    update
+    update,
 };
 
-function login(req, res, next) {
-    userService.login(req.body)
-        .then(user => user ? res.json(user) : res.status(400).json({ message: 'Username or password is incorrect' }))
-        .catch(err => next(err));
+async function login(req, res, next) {
+    try {
+        let user = await userService.login(req.body);
+        if (user) {
+            /* Achievements checks */
+            user = await userService.addAchievement(user, achievementConstants.Login);
+            user = await userService.loginObjectSplitter(user);
+            res.json(user)
+        }
+        else {
+            res.status(400).json({message: 'Username or password is incorrect'})
+        }
+    }
+    catch(err) {
+        next(err)
+    }
 }
 
 function register(req, res, next) {
-    //Sanity check
     let user = req.body;
     if (!validateEmail(user.email)) throw 'Email ' + user.email + ' is invalid';
 
@@ -28,13 +40,8 @@ function register(req, res, next) {
 }
 
 function getCurrent(req, res, next) {
-    userService.getById(req.user.sub)
-        .then(user => user ? res.json(user) : res.sendStatus(404))
-        .catch(err => next(err));
-}
-
-function getById(req, res, next) {
-    userService.getById(req.params.id)
+    const id = req.user.sub;
+    userService.getById(id)
         .then(user => user ? res.json(user) : res.sendStatus(404))
         .catch(err => next(err));
 }
@@ -45,8 +52,17 @@ function getByScore(req, res, next) {
         .catch(err => next(err));
 }
 
-function update(req, res, next) {
-    userService.update(req.body)
-        .then(data => res.status(200).json(data))
-        .catch(err => next(err));
+async function update(req, res, next) {
+    try {
+        let updatedUser = await userService.update(req.body, req.user.sub);
+
+        /* Achievements checks */
+        if(await userService.hasUploadedPicture(updatedUser)) {
+            updatedUser = await userService.addAchievement(updatedUser, achievementConstants.UploadedPicture);
+        }
+        res.status(200).json(updatedUser)
+    }
+    catch(err) {
+        next(err)
+    }
 }

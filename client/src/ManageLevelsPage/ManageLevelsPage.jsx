@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import {DifficultyStars} from "../_components/DifficultyStars";
 import Translation from "../_constants/en.json"
 import {Button, Modal} from "react-bootstrap";
+import CreateLevelButtonComponent from "../_components/CreateLevelButtonComponent";
 
 class ManageLevelsPage extends React.Component {
     constructor(props, context) {
@@ -18,15 +19,14 @@ class ManageLevelsPage extends React.Component {
         this.handleShow = this.handleShow.bind(this);
         this.handleClose = this.handleClose.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
+        this.hasLevels = this.hasLevels.bind(this);
         this.props.dispatch(levelActions.getByAuthorId(this.props.user._id));
     }
-
 
     handleDelete() {
         const {dispatch} = this.props;
         const {levelToDelete} = this.state;
-        dispatch(levelActions.deleteById(levelToDelete._id));
-        dispatch(levelActions.getByAuthorId(this.props.user._id));
+        dispatch(levelActions.deleteById(levelToDelete._id, this.props.user._id));
 
         this.setState({ show: false });
     }
@@ -42,6 +42,11 @@ class ManageLevelsPage extends React.Component {
         });
     }
 
+    hasLevels() {
+        const {levels} = this.props;
+        return (!!levels) ? levels.length > 0 : false;
+    }
+
     componentWillReceiveProps(nextProps) {
         if (this.props.levels !== nextProps.levels) {
             this.setState({
@@ -52,7 +57,7 @@ class ManageLevelsPage extends React.Component {
     }
 
     render() {
-        const { loading, levels } = this.props;
+        const { loading, levels, user } = this.props;
         return (
             <div className="my-levels-page">
                 <div className="level-list col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
@@ -60,17 +65,19 @@ class ManageLevelsPage extends React.Component {
                         <LoadingPoints/>
                     ) : (
                         <div className="list-group">
-                            {levels &&
-                            levels.map((item) =>
-                                <div className="list-item-container container-fluid">
+                            {this.hasLevels() ? (
+                            levels.map((item) => {
+                                let liked = false;
+                                if (user.likes.includes(item._id)) liked = true;
+                                return <div key={item._id} className="list-item-container container-fluid">
                                     <div className="list-group-item list-group-item-action list-item-header" >
                                         <div className="level-header-title">
                                             <h4>{item.title}</h4>
                                             <p>{item.description}</p>
                                             <div className="level-meta-data">
                                                 <div className="community-votes">
-                                                    <div className="up-votes-count">{item.upVotes}</div>
-                                                    <span className="glyphicon glyphicon-thumbs-up"/>
+                                                    <div className={`up-votes-count ${liked && 'liked'}`}>{item.upVotes}</div>
+                                                    <span className={`glyphicon glyphicon-thumbs-up ${liked && 'liked'}`}/>
                                                 </div>
                                                 <DifficultyStars value={item.difficulty}/>
                                             </div>
@@ -79,8 +86,12 @@ class ManageLevelsPage extends React.Component {
                                             <span className="glyphicon glyphicon-trash" onClick={() => {this.handleShow(item)}}/>
                                         </div>
                                     </div>
-                                </div>)
-                            }
+                                </div>})
+                                ) : (
+                                <div className="no-item-placeholder">
+                                    {Translation.manageLevels.noLevels}
+                                </div>
+                            )}
                         </div>
                     )}
                 </div>
@@ -99,6 +110,8 @@ class ManageLevelsPage extends React.Component {
                         <Button bsStyle="primary" onClick={this.handleDelete}>{Translation.manageLevels.deleteButton}</Button>
                     </Modal.Footer>
                 </Modal>
+
+                <CreateLevelButtonComponent/>
             </div>
         );
     }

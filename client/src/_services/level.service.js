@@ -7,7 +7,8 @@ export const levelService = {
     getById,
     getByAuthorId,
     create,
-    deleteLevel
+    deleteLevel,
+    like
 };
 
 function getAll(createdByCommunity) {
@@ -44,6 +45,15 @@ function create(level) {
     };
 
     return fetch(`${config.apiUrl}/levels`, requestOptions).then(handleResponse);
+}
+
+function like(levelId) {
+    const requestOptions = {
+        method: 'POST',
+        headers: authHeader(),
+    };
+
+    return fetch(`${config.apiUrl}/levels/${levelId}/like`, requestOptions).then(handleResponse);
 }
 
 function deleteLevel(id) {

@@ -1,14 +1,18 @@
-import { userConstants } from '../_constants';
-import { userService } from '../_services';
+import {achievementConstants, userConstants} from '../_constants';
+import {achievementService, userService} from '../_services';
 import { alertActions } from './';
+import { alertAchievementActions } from './';
 import { history } from '../_helpers';
+import _ from 'lodash';
+
 
 export const userActions = {
     login,
     logout,
     register,
     update,
-    getByScore
+    getByScore,
+    getCurrent,
 };
 
 function login(username, password) {
@@ -19,6 +23,7 @@ function login(username, password) {
             .then(
                 user => { 
                     dispatch(success(user));
+                    //dispatch(isAchievementUnlocked(user));
                     history.push('/');
                 },
                 error => {
@@ -61,14 +66,15 @@ function register(user) {
     function failure(error) { return { type: userConstants.REGISTER_FAILURE, error } }
 }
 
-function update(user) {
+function update(oldUser) {
     return dispatch => {
-        dispatch(request({ user }));
+        dispatch(request({ oldUser }));
 
-        userService.update(user)
+        userService.update(oldUser)
             .then(
                 user => {
                     dispatch(success(user));
+                    dispatch(isAchievementUnlocked(user, oldUser));
                     history.push('/profile');
                 },
                 error => {
@@ -102,4 +108,47 @@ function getByScore(topNumber) {
     function request(topNumber) { return { type: userConstants.GET_TOP_REQUEST, topNumber } }
     function success(topUsers) { return { type: userConstants.GET_TOP_SUCCESS, topUsers } }
     function failure(error) { return { type: userConstants.GET_TOP_FAILURE, error } }
+}
+
+function getCurrent(oldUser) {
+    return dispatch => {
+        dispatch(request());
+
+        userService.getCurrent()
+            .then(
+                user => {
+                    dispatch(success(user));
+                    dispatch(isAchievementUnlocked(user, oldUser));
+                },
+                error => {
+                    dispatch(failure(error.toString()));
+                    dispatch(alertActions.error(error.toString()));
+                }
+            );
+    };
+
+    function request() { return { type: userConstants.GET_USER_REQUEST } }
+    function success(user) { return { type: userConstants.GET_USER_SUCCESS, user } }
+    function failure(error) { return { type: userConstants.GET_USER_FAILURE, error } }
+}
+
+
+function isAchievementUnlocked(user, oldUser) {
+    return dispatch => {
+        if (user.achievements.length !== oldUser.achievements.length) {
+            let newAchievements = _.difference(user.achievements, oldUser.achievements);
+            if(newAchievements.length === 1) {
+                achievementService.getById(newAchievements[0])
+                    .then((achievement) => {
+                        dispatch(alertAchievementActions.oneAchievement(achievement));
+                    })
+            }
+            else {
+                dispatch(alertAchievementActions.manyAchievements(newAchievements.length));
+            }
+        }
+        dispatch(result());
+    };
+
+    function result() { return { type: achievementConstants.ACHIEVEMENT_CHECK } }
 }

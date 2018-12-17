@@ -8,7 +8,7 @@ import InstructionDraggableOnly from "./InstructionDraggableOnly";
 import DroppableRemoveInstruction from "./DroppableRemoveInstruction";
 import {connect} from "react-redux";
 import {codeTreeActions} from "../../_actions";
-import {createIntsructionFromType} from "./Instructions/utils";
+import {createInstructionFromType} from "./Instructions/utils";
 import {instructions} from "./Instructions/instructions";
 import EmptyTreeTarget from "./EmptyTreeTarget";
 
@@ -51,7 +51,6 @@ class Playground extends React.Component {
     }
 
     updateItem(itemUpdated) {
-        console.log(itemUpdated);
         let {tree} = this.state;
         this.findAndUpdateNode(itemUpdated, tree);
         this.updateTreeState(tree);
@@ -63,7 +62,7 @@ class Playground extends React.Component {
         if (!dest) dest = tree;
         const {lastIdAdded} = this.state;
         if (id !== lastIdAdded) {
-            const item = createIntsructionFromType(id);
+            const item = createInstructionFromType(id);
             dest.push(item);
             this.setState({
                 ...this.state,
@@ -81,7 +80,7 @@ class Playground extends React.Component {
                 return node;
             }
             if (node.children && node.children.length) {
-                const result = this.findItem(id, node.children);
+                const result = this.findAndUpdateNode(newItem, node.children);
                 if (result) {
                     return result
                 }
@@ -167,6 +166,16 @@ class Playground extends React.Component {
                         id={instructions.ForLoop}
                         parent={null}
                         item={{id: instructions.ForLoop, attributes: {title: 'For'}, children: []}}
+                    />
+                    <InstructionDraggableOnly
+                        id={instructions.Print}
+                        parent={null}
+                        item={{id: instructions.Print, attributes: {title: 'Print'}, children:[]}}
+                    />
+                    <InstructionDraggableOnly
+                        id={instructions.VariableOperation}
+                        parent={null}
+                        item={{id: instructions.VariableOperation, attributes: {title: 'Operation'}, children:[]}}
                     />
                 </div>
             </Col>

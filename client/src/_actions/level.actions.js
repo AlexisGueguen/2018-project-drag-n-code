@@ -2,14 +2,15 @@ import {levelConstants} from "../_constants/level.constant";
 import {levelService} from "../_services/level.service";
 import {alertActions} from "./alert.actions";
 import {history} from "../_helpers";
-import {userConstants} from "../_constants";
+import {userActions} from "./user.actions";
 
 export const levelActions = {
     getAll,
     getById,
     getByAuthorId,
     create,
-    deleteById
+    deleteById,
+    like
 };
 
 function getAll(createdByCommunity) {
@@ -75,7 +76,29 @@ function getByAuthorId(id) {
     function failure(error) {return {type: levelConstants.GET_PLAYER_LEVELS_FAILURE, error}}
 }
 
-function create(level) {
+function like(levelId, oldUser) {
+    return dispatch => {
+        dispatch(request(levelId));
+
+        levelService.like(levelId)
+            .then(
+                levelId => {
+                    dispatch(success(levelId));
+                    dispatch(userActions.getCurrent(oldUser));
+                },
+                error => {
+                    dispatch(failure(error.toString()));
+                    dispatch(alertActions.error(error.toString()));
+                }
+            );
+    };
+
+    function request(levelId) { return { type: levelConstants.LIKE_LEVEL_REQUEST, levelId } }
+    function success(levelId) { return { type: levelConstants.LIKE_LEVEL_SUCCESS, levelId } }
+    function failure(error) { return { type: levelConstants.LIKE_LEVEL_FAILURE, error } }
+}
+
+function create(level, oldUser) {
     return dispatch => {
         dispatch(request(level));
 
@@ -83,6 +106,7 @@ function create(level) {
             .then(
                 level => {
                     dispatch(success(level));
+                    dispatch(userActions.getCurrent(oldUser));
                     history.push('/community');
                     dispatch(alertActions.success('Your level was successfully created'));
                 },
@@ -98,14 +122,15 @@ function create(level) {
     function failure(error) { return { type: levelConstants.CREATE_LEVEL_FAILURE, error } }
 }
 
-function deleteById(id) {
+function deleteById(levelId, authorId) {
     return dispatch => {
-        dispatch(request(id));
+        dispatch(request(levelId));
 
-        levelService.deleteLevel(id)
+        levelService.deleteLevel(levelId)
             .then(
                 () => {
-                    dispatch(success(id));
+                    dispatch(success(levelId));
+                    dispatch(getByAuthorId(authorId));
                     dispatch(alertActions.success('Your level was successfully deleted'));
                 },
                 error => {
@@ -115,7 +140,7 @@ function deleteById(id) {
             );
     };
 
-    function request(id) { return { type: levelConstants.DELETE_LEVEL_REQUEST, id } }
-    function success(id) { return { type: levelConstants.DELETE_LEVEL_SUCCESS, id } }
+    function request(levelId) { return { type: levelConstants.DELETE_LEVEL_REQUEST, levelId } }
+    function success(levelId) { return { type: levelConstants.DELETE_LEVEL_SUCCESS, levelId } }
     function failure(error) { return { type: levelConstants.DELETE_LEVEL_FAILURE, error } }
 }

@@ -2,20 +2,34 @@ import React from "react";
 import AceEditor from 'react-ace';
 
 import 'brace/mode/c_cpp';
-import 'brace/theme/kuroir';
+import 'brace/theme/xcode';
 import connect from "react-redux/es/connect/connect";
-import {conversion} from "./treeConversion";
+import Select from "react-select";
+
+const languages = {
+    cpp: 'c++'
+};
 
 class GeneratedCodePanel extends React.Component {
 
     render() {
-        const code = this.updateCode();
+        const {code} = this.props;
         return (
             <div className="generated-code">
-                <h3>Generated code</h3>
+                <div>
+                    <h3>Generated code</h3>
+                    <Select
+                        placeholder='Sort by'
+                        onChange={this.handleLanguageChange}
+                        value={{value: languages.cpp, label: languages.cpp}}
+                        options={[
+                            {value: languages.cpp, label: languages.cpp},
+                        ]}
+                    />
+                </div>
                 <AceEditor
                     mode="c_cpp"
-                    theme="kuroir"
+                    theme="xcode"
                     name="code-generated"
                     fontSize={14}
                     showPrintMargin={false}
@@ -25,21 +39,17 @@ class GeneratedCodePanel extends React.Component {
                     maxLines={Infinity}
                     readOnly={true}
                     value={code}
+                    editorProps={{$blockScrolling: Infinity}}
                     />
             </div>
         );
     }
-
-    updateCode() {
-        const {tree} = this.props;
-        return conversion.toCPP(tree);
-    }
 }
 
 function mapStateToProps(state) {
-    const {tree, treeId} = state.code;
+    const {code} = state.code;
     return {
-        tree, treeId
+        code
     };
 }
 

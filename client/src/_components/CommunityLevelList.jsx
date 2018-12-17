@@ -3,9 +3,38 @@ import PropTypes from 'prop-types';
 import {levelActions} from "../_actions/level.actions";
 import connect from "react-redux/es/connect/connect";
 import LoadingPoints from "./LoadingPoints";
-import {ListItem} from "./ListItem";
+import ListItem from "./ListItem";
 import _ from "lodash";
-import {DropdownButton, MenuItem} from "react-bootstrap";
+import Translation from "../_constants/en";
+import Select from "react-select";
+
+const sortTypeEnum = {
+    unsorted: {
+        type: 'unsorted',
+        order: 'asc',
+        name: 'Unsorted'
+    },
+    popularityAsc: {
+        type: 'upVotes',
+        order: 'asc',
+        name: 'Popularity ↗'
+    },
+    popularityDesc: {
+        type: 'upVotes',
+        order: 'desc',
+        name: 'Popularity ↘'
+    },
+    difficultyAsc: {
+        type: 'difficulty',
+        order: 'asc',
+        name: 'Difficulty ↗'
+    },
+    difficultyDesc: {
+        type: 'difficulty',
+        order: 'desc',
+        name: 'Difficulty ↘'
+    }
+};
 
 class CommunityLevelList extends React.Component {
 
@@ -15,79 +44,46 @@ class CommunityLevelList extends React.Component {
         this.state = ({
             levels: undefined,
             loading: undefined,
-            sortText: { currentTarget:
-                        {
-                            text: "Popularity desc"
-                        }
-                    },
-            sortKey: "upVotes desc"
+            searchText: '',
+            sortType: sortTypeEnum.unsorted
         });
 
         this.props.dispatch(levelActions.getAll(true));
 
-
-        this.handleSearch = this.handleSearch.bind(this);
         this.orderLevels = this.orderLevels.bind(this);
+        this.hasLevels = this.hasLevels.bind(this);
+        this.onSearchChange = this.onSearchChange.bind(this);
     }
 
-    render() {
-        const { loading, levels, sortText } = this.state;
-        return (
-            <div className="level-list col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-                <div className="user-actions-container">
-                    <div className="search-box">
-                        <input className="form-control" type="text" placeholder="Search" aria-label="Search" onChange={this.handleSearch}/>
-                    </div>
-                    <DropdownButton onSelect={this.orderLevels} title={sortText.currentTarget.text}
-                                    id={`split-button-basic-$1`} key="1">
-                        <MenuItem eventKey="difficulty asc">Difficulty asc</MenuItem>
-                        <MenuItem eventKey="difficulty desc">Difficulty desc</MenuItem>
-                        <MenuItem eventKey="upVotes asc">Popularity asc</MenuItem>
-                        <MenuItem eventKey="upVotes desc">Popularity desc</MenuItem>
-                    </DropdownButton>
-                </div>
-                {loading ? (
-                    <LoadingPoints/>
-                ) : (
-                    <div className="list-group">
-                        {levels != null && levels !== undefined &&
-                        levels.map((item) => <ListItem key={item.title} value={item}/>)
-                        }
-                    </div>
-                )}
-            </div>
-        );
+    hasLevels() {
+        const {levels} = this.state;
+        return (!!levels) ? levels.length > 0 : false;
     }
 
-    handleSearch(event) {
-        let filteredLevels = _.clone(this.props.levels);
-        filteredLevels = filteredLevels.filter(function(lvl){
-            let found = lvl.title.toLowerCase().search(event.target.value.toLowerCase());
-            return found!== -1;
-        });
+    onSortTypeChange = (selectedOption) => {
+        const {levels} = this.state;
+        const orderedLevels = this.orderLevels(levels, selectedOption.value);
         this.setState({
-            levels: filteredLevels
-        }, () => {
-            this.orderLevels(this.state.sortKey, this.state.sortText)
+            ...this.state,
+            levels: orderedLevels,
+            sortType: selectedOption.value
         });
-    }
+    };
 
-    orderLevels(eventKey, event) {
-        let orderedLevels = this.state.levels;
-        let orderParameters = eventKey.split(' ', 2);
-        orderedLevels = _.orderBy(orderedLevels, orderParameters[0], orderParameters[1]);
-
-        let myEvent = {
-            currentTarget : {
-                text : event.currentTarget.text
+    orderLevels(levels, sortType) {
+        if (sortType) {
+            if (sortType === sortTypeEnum.unsorted) {
+                const originalLevels = this.props.levels;
+                const {searchText} = this.state;
+                return this.filterLevels(originalLevels, searchText);
             }
-        };
+            return _.orderBy(levels, sortType.type, sortType.order);
+        }
+        return levels;
+    }
 
-        this.setState({
-            levels : orderedLevels,
-            sortText : myEvent,
-            sortKey : eventKey
-        });
+    filterLevels(levels, text) {
+        return levels.filter(lvl => lvl.title.toLowerCase().search(text) !== -1);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -100,6 +96,59 @@ class CommunityLevelList extends React.Component {
             });
         }
         return null
+    }
+
+    onSearchChange(e) {
+        const searchText = e.target.value.toLowerCase();
+        const {levels} = this.props;
+        const filteredLevels = this.filterLevels(levels, searchText);
+        const orderedLevels = this.orderLevels(filteredLevels);
+        this.setState({
+            ...this.state,
+            levels: orderedLevels,
+            searchText: e.target.value
+        });
+    }
+
+    render() {
+        const { loading, levels, searchText } = this.state;
+        return (
+            <div className="level-list col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+                <div className="user-actions-container">
+                    <div className="cntr">
+                        <div className="cntr-innr">
+                            <label className={searchText ? "non-empty search" : "search"} htmlFor="inpt_search">
+                                <input id="inpt_search" type="text" value={searchText} onChange={this.onSearchChange}/>
+                            </label>
+                        </div>
+                    </div>
+                    <Select
+                        placeholder='Sort by'
+                        onChange={this.onSortTypeChange}
+                        options={[
+                            {value: sortTypeEnum.unsorted, label: sortTypeEnum.unsorted.name},
+                            {value: sortTypeEnum.difficultyAsc, label: sortTypeEnum.difficultyAsc.name},
+                            {value: sortTypeEnum.difficultyDesc, label: sortTypeEnum.difficultyDesc.name},
+                            {value: sortTypeEnum.popularityAsc, label: sortTypeEnum.popularityAsc.name},
+                            {value: sortTypeEnum.popularityDesc, label: sortTypeEnum.popularityDesc.name}
+                        ]}
+                    />
+                </div>
+                {loading ? (
+                    <LoadingPoints/>
+                ) : (
+                    <div className="list-group">
+                        {this.hasLevels() ? (
+                        levels.map((item) => <ListItem key={item.title} value={item}/>)
+                        ) : (
+                            <div className="no-item-placeholder">
+                                {Translation.community.noLevel}
+                            </div>
+                        )}
+                    </div>
+                )}
+            </div>
+        );
     }
 }
 

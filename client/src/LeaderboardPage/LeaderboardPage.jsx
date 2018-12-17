@@ -3,18 +3,20 @@ import connect from "react-redux/es/connect/connect";
 import {userActions} from "../_actions";
 import LoadingPoints from "../_components/LoadingPoints";
 import {TableUserItem} from "../_components/TableUserItem";
+import Translation from "../_constants/en";
+import _ from 'lodash';
 
 class LeaderboardPage extends React.Component {
     constructor(props) {
         super(props);
 
-        // load fiest 20 users
+        // load first 20 users
         this.props.dispatch(userActions.getByScore(20));
 
         this.state = {
             loading: '',
             topUsers: '',
-            user: this.props.user
+            user: this.props.user,
         };
     }
 
@@ -22,30 +24,57 @@ class LeaderboardPage extends React.Component {
         const { topUsers, loading, user } = this.state;
         return (
             <div className="leaderboard-page">
-                <h2 className="page-title">Leaderboard</h2>;
                 {loading ? (
                     <LoadingPoints/>
                 ) : (
-                    <table className="table table-striped">
-                        <thead>
+                    <div>
+                        <table className="table table-striped">
+                            <thead className="thead-primary">
                             <tr>
-                                <th scope="col">Rank</th>
-                                <th scope="col"/>
-                                <th scope="col">Username</th>
-                                <th scope="col">Score</th>
+                                <th className="rank-field" scope="col">{Translation.leaderboard.rankHeader}</th>
+                                <th className="avatar-container" scope="col"/>
+                                <th className="name-field" scope="col">{Translation.leaderboard.nameHeader}</th>
+                                <th className="score-field" scope="col">{Translation.leaderboard.scoreHeader}</th>
                             </tr>
-                        </thead>
-                        <tbody>
+                            </thead>
+                            <tbody>
                             {topUsers &&
                                 topUsers.map((user) => <TableUserItem key={user.username} value={user}/>)
                             }
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                        {!this.isUserTop20() &&
+                            <div>
+                                <div className="vertical-dots"/>
+                                <table className="table table-striped">
+                                    <tbody>
+                                    <tr className="user-row">
+                                        <th className="rank-field" scope="row"/>
+                                        <td className="avatar-container">
+                                            {(user.picture) ? (
+                                                <img className="avatar avatar-picture-default" src={user.picture} alt="Avatar"/>
+                                            ) : (
+                                                <img className="avatar avatar-picture-default" src="/resources/defaultAvatar.jpg" alt="Avatar"/>
+                                            )}
+                                        </td>
+                                        <td className="name-field">{user.username}</td>
+                                        <td className="score-field">{user.score}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        }
+                    </div>
                 )}
             </div>
         )
     }
 
+
+    isUserTop20() {
+        const { topUsers, user} = this.state;
+        return _.find(topUsers, {_id: user._id});
+    }
 
     componentWillReceiveProps(nextProps) {
         if (this.props.topUsers !== nextProps.topUsers) {

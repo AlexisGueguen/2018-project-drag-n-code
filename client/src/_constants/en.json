@@ -17,8 +17,10 @@
     "emailField" : "Mail",
     "usernameRequired": "Username is required",
     "passwordRequired": "Password is required",
+    "strongPasswordRequired": "Must be minimum eight characters, with at least one letter and one number",
     "emailRequired": "Mail is required",
     "emailInvalid": "Mail is invalid",
+    "captchaInvalid": "Wrong Captcha. Try Again.",
     "cancelLink": "Cancel"
   },
   "header" : {
@@ -27,7 +29,6 @@
     "leaderboardTitle": "Leaderboard",
     "manageMyLevelsTitle": "My levels",
     "achievementsTitle": "Achievements",
-    "settingsTitle": "Settings",
     "logoutTitle": "Logout"
   },
   "homePage" : {
@@ -38,7 +39,8 @@
     "title" : "Community",
     "description" : "Welcome back ! Select a level to start playing",
     "sortLevelsButton" : "Sort",
-    "selectSorting" : "Select what to sort"
+    "selectSorting" : "Select what to sort",
+    "noLevel" : "Your search didn't match any level"
   },
   "profile" : {
     "title" : "Profile",
@@ -78,6 +80,20 @@
     "deleteMessageTitle" : "Do you really want to delete this level ?",
     "deleteMessageBody" : "If you delete your level, it will be lost forever",
     "cancelButton" : "Cancel",
-    "deleteButton" : "Delete"
+    "deleteButton" : "Delete",
+    "noLevels" : "It looks like you don't have any level ..."
+  },
+  "levelPage" : {
+    "compilationError" : "There was a problem",
+    "tryAgain" : "Solve the problem and try again",
+    "validate" : "Validate",
+    "returnMenu" : "Return to menu",
+    "yourCode" : "Here is your code : ",
+    "levelSuccessTitle" : "You pass the level !"
+  },
+  "leaderboard" : {
+    "rankHeader" : "Rank",
+    "nameHeader" : "Username",
+    "scoreHeader" : "Score"
   }
 }

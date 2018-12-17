@@ -4,10 +4,18 @@ import {levelActions} from "../_actions";
 import translation from "../_constants/en";
 import LoadingWheel from "../_components/LoadingPoints";
 import {Link} from "react-router-dom";
-import {DifficultyStars} from "../_components/DifficultyStars";
 import AceEditor from "react-ace";
+import 'brace/theme/chaos';
+import StarRatingComponent from 'react-star-rating-component';
+import Select from "react-select";
 
-const solutionExample = '#include <iostream>\nusing namespace std;\n\nint main()\n{\n    cout << "Hello, World!";\n    return 0;\n}';
+const solutionExample = {
+    cpp: '#include <iostream>\nusing namespace std;\n\nint main()\n{\n    cout << "Hello, World!";\n    return 0;\n}'
+};
+
+const languages = {
+    cpp: 'c++'
+};
 
 class CreateLevelPage extends React.Component {
     constructor(props) {
@@ -20,9 +28,12 @@ class CreateLevelPage extends React.Component {
                 statement: '',
                 inputs: '',
                 outputs: '',
-                difficulty: '',
-                solution: solutionExample,
+                difficulty: 0,
+                solution: solutionExample.cpp,
             },
+            inputs: [''],
+            outputs: [''],
+            language: languages.cpp,
             submitted: false,
         };
 
@@ -31,6 +42,13 @@ class CreateLevelPage extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.clickStar = this.clickStar.bind(this);
     }
+
+    handleLanguageChange = selectedValue => {
+        this.setState({
+            ...this.state,
+            language: selectedValue.value
+        });
+    };
 
     handleChange(event) {
         const { name, value } = event.target;
@@ -43,6 +61,36 @@ class CreateLevelPage extends React.Component {
         });
     }
 
+    handleInputChange(e, index) {
+        const {inputs} = this.state;
+        const {value} = e.target;
+        inputs[index] = value;
+        if (index === inputs.length - 1 && value !== '') inputs.push('');
+        if (value === '') inputs.splice(index, 1);
+        const {level} = this.state;
+        level.inputs = inputs.slice(0, -1).join('\n')+inputs.slice(-1);
+        this.setState({
+            ...this.state,
+            level: level,
+            inputs: inputs
+        });
+    }
+
+    handleOutputChange(e, index) {
+        const {outputs} = this.state;
+        const {value} = e.target;
+        outputs[index] = value;
+        if (index === outputs.length - 1 && value !== '') outputs.push('');
+        if (value === '') outputs.splice(index, 1);
+        const {level} = this.state;
+        level.outputs = outputs.join('\n');
+        this.setState({
+            ...this.state,
+            level: level,
+            outputs: outputs
+        });
+    }
+
     handleChangeSolution(value) {
         const { level } = this.state;
         this.setState({
@@ -50,14 +98,14 @@ class CreateLevelPage extends React.Component {
                 ...level,
                 solution: value
             }
-        });    }
+        });
+    }
 
     handleSubmit(event) {
         event.preventDefault();
         const { level } = this.state;
         const {dispatch} = this.props;
         const {user} = this.props;
-
         this.setState({
             submitted: true,
         });
@@ -72,7 +120,7 @@ class CreateLevelPage extends React.Component {
             level.isCreatedByCommunity = true;
             level.upVotes = 0;
             level.author = user._id;
-            dispatch(levelActions.create(level));
+            dispatch(levelActions.create(level, user));
         }
     }
 
@@ -87,16 +135,25 @@ class CreateLevelPage extends React.Component {
         });
     }
 
+    onStarClick(nextValue, prevValue, name) {
+        const {level} = this.state;
+        level.difficulty = nextValue;
+        this.setState({
+            ...this.state,
+            level: level
+        });
+    }
+
 
     render() {
         const { loading  } = this.props;
-        const { level, submitted } = this.state;
+        const { level, submitted, inputs, outputs, language } = this.state;
         return (
             <div className="create-level-page">
                 <h2>{translation.createLevel.title}</h2>
                 <form name="form" onSubmit={this.handleSubmit}>
 
-                    {/*  Title and Description  */}
+                    {/*  Title and Difficulty  */}
                     <div className="main-input-container">
                         <div className={'form-group form-title' + (submitted && !level.title ? ' has-error' : '')}>
                             <label htmlFor="title">{translation.createLevel.titleField}</label>
@@ -105,17 +162,32 @@ class CreateLevelPage extends React.Component {
                             <div className="help-block">{translation.createLevel.titleRequired}</div>
                             }
                         </div>
-                        <div className={'form-group form-description' + (submitted && !level.description ? ' has-error' : '')}>
-                            <label htmlFor="description">{translation.createLevel.descriptionField}</label>
-                            <input type="text" className="form-control" name="description" value={level.description} onChange={this.handleChange} />
-                            {submitted && !level.description &&
-                            <div className="help-block">{translation.createLevel.descriptionRequired}</div>
+                        <div className={'form-stars' + (submitted && !level.difficulty ? ' has-error' : '')}>
+                            <label htmlFor="text">{translation.createLevel.difficultyField}</label>
+                            <StarRatingComponent
+                                name="difficulty"
+                                starCount={3}
+                                value={level.difficulty}
+                                onStarClick={this.onStarClick.bind(this)}
+                                starColor="#FA9539"
+                            />
+                            {submitted && !level.difficulty &&
+                            <div className="help-block">{translation.createLevel.difficultyRequired}</div>
                             }
                         </div>
                     </div>
 
+                    {/*  Description  */}
+                    <div className={'form-group form-description' + (submitted && !level.description ? ' has-error' : '')}>
+                        <label htmlFor="description">{translation.createLevel.descriptionField}</label>
+                        <input type="text" className="form-control" name="description" value={level.description} onChange={this.handleChange} />
+                        {submitted && !level.description &&
+                        <div className="help-block">{translation.createLevel.descriptionRequired}</div>
+                        }
+                    </div>
+
                     {/*  Statement  */}
-                    <div className={'form-group' + (submitted && !level.statement ? ' has-error' : '')}>
+                    <div className={'form-group form-statement' + (submitted && !level.statement ? ' has-error' : '')}>
                         <label htmlFor="statement">{translation.createLevel.statementField}</label>
                         <textarea rows="4" type="text" className="form-control" name="statement" value={level.statement} onChange={this.handleChange} />
                         {submitted && !level.statement &&
@@ -124,9 +196,21 @@ class CreateLevelPage extends React.Component {
                     </div>
 
                     {/*  Inputs  */}
-                    <div className={'form-group' + (submitted && !level.inputs ? ' has-error' : '')}>
+                    <div className={'form-group ' + (submitted && !level.inputs ? ' has-error' : '')}>
                         <label htmlFor="inputs">{translation.createLevel.inputsField}</label>
-                        <input type="text" className="form-control" name="inputs" value={level.inputs} onChange={this.handleChange} />
+                        <div className="inputs-outputs-line">
+                            {inputs && inputs.map((inputValue, index) =>
+                                <input
+                                    key={index}
+                                    type="number"
+                                    className="form-control form-input"
+                                    name="inputs"
+                                    step="1"
+                                    autoComplete="off"
+                                    value={inputValue}
+                                    onChange={(e) => this.handleInputChange(e, index)}/>
+                            )}
+                        </div>
                         {submitted && !level.inputs &&
                         <div className="help-block">{translation.createLevel.inputsRequired}</div>
                         }
@@ -135,17 +219,40 @@ class CreateLevelPage extends React.Component {
                     {/*  Outputs  */}
                     <div className={'form-group' + (submitted && !level.outputs ? ' has-error' : '')}>
                         <label htmlFor="outputs">{translation.createLevel.outputsField}</label>
-                        <input type="text" className="form-control" name="outputs" value={level.outputs} onChange={this.handleChange} />
+                        <div className="inputs-outputs-line">
+                            {outputs && outputs.map((outputValue, index) =>
+                                <input
+                                    key={index}
+                                    type="number"
+                                    className="form-control form-input"
+                                    name="inputs"
+                                    step="1"
+                                    autoComplete="off"
+                                    value={outputValue}
+                                    onChange={(e) => this.handleOutputChange(e, index)}/>
+                            )}
+                        </div>
                         {submitted && !level.outputs &&
                         <div className="help-block">{translation.createLevel.outputsRequired}</div>
                         }
                     </div>
+
                     {/*  Solution  */}
-                    <label htmlFor="statement">{translation.createLevel.solutionField}</label>
+                    <div className="solution-title">
+                        <label htmlFor="statement">{translation.createLevel.solutionField}</label>
+                        <Select
+                            placeholder='Sort by'
+                            onChange={this.handleLanguageChange}
+                            value={{value: language, label: language}}
+                            options={[
+                                {value: languages.cpp, label: languages.cpp},
+                            ]}
+                        />
+                    </div>
                     <div className="solution-code">
                         <AceEditor
                             mode="c_cpp"
-                            theme="kuroir"
+                            theme="chaos"
                             name="solution"
                             fontSize={14}
                             showPrintMargin={false}
@@ -153,32 +260,9 @@ class CreateLevelPage extends React.Component {
                             highlightActiveLine={false}
                             width='100%'
                             height='300px'
-                            setOptions={{
-                                enableBasicAutocompletion: true,
-                                enableLiveAutocompletion: true,
-                                enableSnippets: false,
-                                showLineNumbers: false,
-                                tabSize: 1,
-                            }}
+                            editorProps={{$blockScrolling: Infinity}}
                             value={level.solution}
                             onChange={this.handleChangeSolution}/>
-                    </div>
-
-                    {/*  Rating  */}
-                    <div className={'form-group form-stars' + (submitted && !level.difficulty ? ' has-error' : '')}>
-                        <label htmlFor="text">{translation.createLevel.difficultyField}</label>
-                        {level.difficulty === '' ?
-                            <div className="rating">
-                                <span onClick={this.clickStar} data-id="3">☆</span>
-                                <span onClick={this.clickStar} data-id="2">☆</span>
-                                <span onClick={this.clickStar} data-id="1">☆</span>
-                            </div>
-                            : <DifficultyStars value={level.difficulty}/>
-                        }
-
-                        {submitted && !level.difficulty &&
-                        <div className="help-block">{translation.createLevel.difficultyRequired}</div>
-                        }
                     </div>
 
                     {/*  Submit  */}
@@ -187,7 +271,7 @@ class CreateLevelPage extends React.Component {
                             <LoadingWheel/>
                         ) :(
                             <div className="form-actions">
-                                <Link to="/community" className="btn btn-link col-md-6 col-sm-6">{translation.createLevel.cancelLink}</Link>
+                                <Link to="/community" className="btn-cancel btn btn-link col-md-6 col-sm-6">{translation.createLevel.cancelLink}</Link>
                                 <button className="btn btn-primary col-md-6 col-sm-6">{translation.createLevel.createLink}</button>
                             </div>
                         )}
