@@ -148,15 +148,23 @@ class SubmissionPanel extends React.Component {
                                 )}
                             </div>
                         ) : (
-                            <div className="submission-container">
-                                {this.isLevelCommunity() &&
-                                <span className={"glyphicon glyphicon-thumbs-up" + (this.isLiked() ? " liked-icon" : "")} onClick={this.onLikeClick}/>
-                                }
-                                <button className={"btn btn-primary" + (this.isLevelCommunity() ? " isCommunity" :"")} onClick={this.onValidationClick}>
+                            <div>
+                                <div className="like-button">
+                                    {this.isLevelCommunity() &&
+                                    <span
+                                        className={"glyphicon glyphicon-thumbs-up" + (this.isLiked() ? " liked-icon" : "")}
+                                        onClick={this.onLikeClick}/>
+                                    }
+                                </div>
+                                <button className="btn btn-primary" onClick={this.onValidationClick}>
                                     {translation.validate}
                                 </button>
-                                {showExpandButton &&
-                                <span className="glyphicon glyphicon-chevron-up expand" onClick={this.onExpandClick}/>}
+                                <div className="expand-button">
+                                    {showExpandButton &&
+                                    <span className="glyphicon glyphicon-chevron-up expand"
+                                          onClick={this.onExpandClick}/>
+                                    }
+                                </div>
                             </div>
                         )}
                     </div>
