@@ -7,7 +7,6 @@ import {Route, Router, Switch} from "react-router-dom";
 import {PrivateRoute} from "../_components";
 import Alert from "../_components/Alert";
 import {history} from "../_helpers";
-import AlertAchievement from "../_components/AlertAchievement";
 
 export class App extends React.Component {
     render() {

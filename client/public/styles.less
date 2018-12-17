@@ -707,7 +707,7 @@ html, body {
               & .like-button {
                 width: 20%;
                 & .liked-icon {
-                  color: @dark-secondary-color;
+                  color: @primary-color;
                 }
               }
 
@@ -1205,30 +1205,30 @@ p {
 }
 
 .alert-achievement-container {
-  max-height: 100px;
-
-  .empty {
-    max-height: 0px;
-  }
+  height: 0;
+  transition: all 1s;
 
   & .fixed-alert-achievement {
+    transition: all 1s;
     position: fixed;
-    width: 40%;
+    width: 50%;
     height: 100px;
     z-index: 10;
     background-color: white;
-    border: 1px solid @primary-color;
+    border-bottom: 1px solid @primary-color;
+    border-right: 1px solid @primary-color;
+    border-left: 1px solid @primary-color;
     color: @dark-grey-color;
-    margin-left: 500px;
-    margin-right: 500px;
+    left: 25%;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
     display: flex;
 
     & .alert-message {
-      margin-top: auto;
-      margin-bottom: auto;
-      padding-left: 100px;
       font-weight: bold;
-      font-size: 30px;
+      font-size: 1.5em;
+      font-family: Helvetica, serif;
+      margin: auto;
     }
 
     & .img-container {
