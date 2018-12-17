@@ -3,7 +3,8 @@ import configFile from '../config.json';
 const config = configFile[process.env.NODE_ENV];
 
 export const achievementService = {
-    getAll
+    getAll,
+    getById
 };
 
 function getAll() {
@@ -12,6 +13,15 @@ function getAll() {
         headers: authHeader()
     };
     return fetch(`${config.apiUrl}/achievement`, requestOptions).then(handleResponse);
+}
+
+function getById(id) {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+
+    return fetch(`${config.apiUrl}/achievement/${id}`, requestOptions).then(handleResponse);
 }
 
 

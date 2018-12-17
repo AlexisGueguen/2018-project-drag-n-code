@@ -105,7 +105,7 @@ class CreateLevelPage extends React.Component {
             level.isCreatedByCommunity = true;
             level.upVotes = 0;
             level.author = user._id;
-            dispatch(levelActions.create(level));
+            dispatch(levelActions.create(level, user));
         }
     }
 

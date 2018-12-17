@@ -1,4 +1,5 @@
 @import "loading-wheel.css";
+@import "search-bar.less";
 
 @primary-color: #FA9539;
 @secondary-color: #32BCDB;
@@ -6,7 +7,8 @@
 @dark-primary-color: #E37A1D;
 @light-primary-color: #F8B57A;
 @dark-secondary-color: #04588F;
-@dark-grey-color: #888;
+@dark-grey-color: #444;
+@medium-grey-color: #888;
 @light-grey-color: #EEE;
 
 @header-height: 85px;
@@ -62,7 +64,7 @@ html, body {
         width: 75px;
         margin-top: auto;
         margin-bottom: auto;
-        margin-left: 50px;
+        margin-left: 10px;
       }
 
       & .navbar-nav {
@@ -167,7 +169,6 @@ html, body {
     }
   }
 
-
   & .login-page {
     width: 100%;
     height: auto;
@@ -231,6 +232,7 @@ html, body {
       padding-bottom: 20px;
 
       & .level-list {
+        margin-bottom: 250px;
 
         & .user-actions-container {
           padding: 15px;
@@ -240,8 +242,8 @@ html, body {
             max-width: 300px;
           }
 
-          & .dropdown {
-            margin-left: 50px;
+          & .css-10nd86i {
+            width: 250px;
           }
         }
 
@@ -279,14 +281,22 @@ html, body {
                   margin-top: auto;
                   margin-bottom: auto;
 
-                  & span {
+                  & span.glyphicon-thumbs-up {
+                    color: @dark-grey-color;
                     margin-left: auto;
                   }
                   & .up-votes-count {
                     margin-left: auto;
                     padding-top: 3px;
-                    color: @dark-secondary-color;
+                    color: @dark-grey-color;
                     padding-right: 6px;
+                  }
+
+                  & span.liked {
+                    color: @primary-color;
+                  }
+                  & .liked {
+                    color: @primary-color;
                   }
                 }
 
@@ -719,7 +729,7 @@ html, body {
                 top: 24px;
                 position: absolute;
                 color: #000;
-                opacity: 1!important;
+                opacity: 1 !important;
                 &:hover {
                   color: @primary-color;
                   cursor: pointer;
@@ -739,7 +749,7 @@ html, body {
                 }
               }
 
-              & div.error{
+              & div.error {
                 width: 100%;
               }
             }
@@ -875,10 +885,10 @@ html, body {
         border-radius: 5px;
       }
 
-      .form-actions  {
+      .form-actions {
         max-width: unset;
         float: right;
-        padding-top : 20px;
+        padding-top: 20px;
         & button {
           padding: 15px;
           width: 130px;
@@ -900,7 +910,7 @@ html, body {
           border: 2px solid @primary-color;
         }
 
-        & tr th,td {
+        & tr th, td {
           vertical-align: unset;
         }
 
@@ -923,6 +933,15 @@ html, body {
     }
 
     & .my-levels-page {
+      & .level-list {
+        margin-bottom: 250px;
+        & .list-group {
+          & .list-item-container {
+            padding-bottom: 6px;
+          }
+        }
+      }
+
       & .level-list .list-item-header {
         background-color: #fff !important;
         cursor: unset !important;
@@ -948,10 +967,6 @@ html, body {
 
       & .community-votes {
         display: flex;
-
-        & .glyphicon-thumbs-up {
-          padding-left: 10px;
-        }
       }
     }
 
@@ -967,7 +982,7 @@ html, body {
 
           & .achievement-header-title {
             & p {
-              color: @dark-grey-color;
+              color: @medium-grey-color;
             }
           }
 
@@ -979,7 +994,7 @@ html, body {
         }
       }
 
-      & .--locked .list-group-item{
+      & .--locked .list-group-item {
         background-color: #DDD;
       }
     }
@@ -1023,13 +1038,13 @@ html, body {
 }
 
 .btn-cancel {
-  color: @dark-grey-color;
+  color: @medium-grey-color;
 
   &:focus {
-    color: @dark-grey-color;
+    color: @medium-grey-color;
   }
   &:hover, :active {
-    color: @dark-grey-color;
+    color: @medium-grey-color;
   }
 }
 
@@ -1070,8 +1085,8 @@ html, body {
    margin: 8px;
    border-radius: 4px;
 
-   background-color: #F8B57A;
- }
+  background-color: #F8B57A;
+}
 
 .rating {
   unicode-bidi: bidi-override;
@@ -1086,6 +1101,7 @@ html, body {
     transform: translateY(-50%);
   }
 }
+
 .rating > span:hover:before,
 .rating > span:hover ~ span:before {
   content: "\2605";
@@ -1097,7 +1113,7 @@ html, body {
   display: flex;
   max-width: 200px;
 
-  & Link,button {
+  & Link, button {
     padding: 10px
   }
 
@@ -1119,11 +1135,45 @@ html, body {
 .vertical-dots {
   width: 100%;
   height: 50px;
-  background-image: radial-gradient(circle at center, @dark-grey-color 3px, transparent 1px);
+  background-image: radial-gradient(circle at center, @medium-grey-color 3px, transparent 1px);
   background-size: 100% 30%;
 }
 
 .no-item-placeholder {
   text-align: center;
-  color: @dark-grey-color;
+  color: @medium-grey-color;
 }
+
+p {
+  white-space: pre-line;
+}
+
+.alert-achievement-container {
+  max-height: 100px;
+
+  .empty {
+    max-height: 0px;
+  }
+
+  & .fixed-alert-achievement {
+    position: fixed;
+    width: 60%;
+    height: 100px;
+    z-index: 10;
+    background-color: white;
+    border: 1px solid @primary-color;
+    color: @dark-grey-color;
+    margin-left: 400px;
+    margin-right: 400px;
+    display: flex;
+
+    & .alert-message {
+      margin-top: auto;
+      margin-bottom: auto;
+      padding-left: 100px;
+      font-weight: bold;
+    }
+  }
+}
+
+

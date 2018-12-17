@@ -28,10 +28,24 @@ class SubmissionPanel extends React.Component {
         this.isLevelCommunity = this.isLevelCommunity.bind(this);
     }
 
+    componentDidMount() {
+        this.unblock = history.block((location, action) => {
+            this.setState({
+                show: true
+            });
+            return 'Are you sure you want to leave this page?'
+        });
+    }
+
+    componentWillUnmount() {
+        this.unblock();
+    }
+
     onValidationClick() {
         const {level} = this.props;
         const {code} = this.props;
-        this.props.dispatch(compilationActions.compile(code, level));
+        const {user} = this.props;
+        this.props.dispatch(compilationActions.compile(code, level, user));
     }
 
     onReduceClick() {
@@ -48,13 +62,15 @@ class SubmissionPanel extends React.Component {
     }
 
     onReturnMenuClick() {
-        this.props.dispatch(userActions.getCurrent());
+        this.unblock();
+        //this.props.dispatch(userActions.getCurrent());
         history.goBack();
     }
 
     onLikeClick() {
         const {level} = this.props;
-        this.props.dispatch(levelActions.like(level._id))
+        const {user} = this.props;
+        this.props.dispatch(levelActions.like(level._id, user))
     }
 
     isLiked() {

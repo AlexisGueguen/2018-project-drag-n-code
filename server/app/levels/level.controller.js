@@ -77,7 +77,7 @@ async function like(req, res, next) {
 
         /* Achievements checks */
         if(await userService.hasOneLike(userUpdated)) {
-            userUpdated = await userService.addAchievement(userUpdated, achievementConstants.LevelLiked);
+            await userService.addAchievement(userUpdated, achievementConstants.LevelLiked);
         }
 
         if(await levelService.has100Likes(levelUpdated)) {
@@ -85,7 +85,7 @@ async function like(req, res, next) {
             await userService.addAchievement(author, achievementConstants.Level100Likes);
         }
 
-        res.status(200).json({level: levelUpdated, user: userUpdated});
+        res.status(200).json({level: levelUpdated});
     } catch(err) {
         next(err);
     }

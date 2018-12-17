@@ -30,6 +30,8 @@ class ListItem extends React.Component {
         const {user, value: level} = this.props;
         let alreadyCompleted = false;
         if (user.levelsCompleted.includes(level._id)) alreadyCompleted = true;
+        let liked = false;
+        if (user.likes.includes(level._id)) liked = true;
         return (
             <div className="list-item-container container-fluid">
                 <div className="list-group-item list-group-item-action list-item-header" onClick={this.handleClick}>
@@ -41,8 +43,8 @@ class ListItem extends React.Component {
                     <div className="level-meta-data">
                         {level.isCreatedByCommunity &&
                             <div className="community-votes">
-                                <div className="up-votes-count">{level.upVotes}</div>
-                                <span className="glyphicon glyphicon-thumbs-up"/>
+                                <div className={`up-votes-count ${liked && 'liked'}`}>{level.upVotes}</div>
+                                <span className={`glyphicon glyphicon-thumbs-up ${liked && 'liked'}`}/>
                             </div>
                         }
                         <DifficultyStars value={level.difficulty}/>
@@ -52,7 +54,7 @@ class ListItem extends React.Component {
                     <div className="row-fluid">
                         <div className="list-item-details">
                             <Well className="list-item-statement col-md-10 col-sm-9">
-                                {level.statement}
+                                <p>{level.statement}</p>
                             </Well>
                             <button className="btn circle-button col-md-2 col-sm-3" onClick={this.handlePlayClick}>
                                 <span className="glyphicon glyphicon-play"/>

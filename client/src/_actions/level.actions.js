@@ -76,7 +76,7 @@ function getByAuthorId(id) {
     function failure(error) {return {type: levelConstants.GET_PLAYER_LEVELS_FAILURE, error}}
 }
 
-function like(levelId) {
+function like(levelId, oldUser) {
     return dispatch => {
         dispatch(request(levelId));
 
@@ -84,7 +84,7 @@ function like(levelId) {
             .then(
                 levelId => {
                     dispatch(success(levelId));
-                    dispatch(userActions.getCurrent());
+                    dispatch(userActions.getCurrent(oldUser));
                 },
                 error => {
                     dispatch(failure(error.toString()));
@@ -98,7 +98,7 @@ function like(levelId) {
     function failure(error) { return { type: levelConstants.LIKE_LEVEL_FAILURE, error } }
 }
 
-function create(level) {
+function create(level, oldUser) {
     return dispatch => {
         dispatch(request(level));
 
@@ -106,7 +106,7 @@ function create(level) {
             .then(
                 level => {
                     dispatch(success(level));
-                    dispatch(userActions.getCurrent());
+                    dispatch(userActions.getCurrent(oldUser));
                     history.push('/community');
                     dispatch(alertActions.success('Your level was successfully created'));
                 },

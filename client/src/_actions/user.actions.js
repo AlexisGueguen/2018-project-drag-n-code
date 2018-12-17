@@ -1,7 +1,10 @@
 import { userConstants } from '../_constants';
-import { userService } from '../_services';
+import {achievementService, userService} from '../_services';
 import { alertActions } from './';
+import { alertAchievementActions } from './';
 import { history } from '../_helpers';
+import _ from 'lodash';
+
 
 export const userActions = {
     login,
@@ -10,6 +13,7 @@ export const userActions = {
     update,
     getByScore,
     getCurrent,
+    isAchievementUnlocked
 };
 
 function login(username, password) {
@@ -20,6 +24,7 @@ function login(username, password) {
             .then(
                 user => { 
                     dispatch(success(user));
+                    //dispatch(alertAchievementActions.isAchievementUnlocked(user));
                     history.push('/');
                 },
                 error => {
@@ -70,6 +75,7 @@ function update(user) {
             .then(
                 user => {
                     dispatch(success(user));
+                    //dispatch(alertAchievementActions.isAchievementUnlocked(user));
                     history.push('/profile');
                 },
                 error => {
@@ -105,7 +111,7 @@ function getByScore(topNumber) {
     function failure(error) { return { type: userConstants.GET_TOP_FAILURE, error } }
 }
 
-function getCurrent() {
+function getCurrent(oldUser) {
     return dispatch => {
         dispatch(request());
 
@@ -113,6 +119,10 @@ function getCurrent() {
             .then(
                 user => {
                     dispatch(success(user));
+                    console.log(user, oldUser);
+                    //alertAchievementActions.isAchievementUnlocked(user, oldUser);
+                    dispatch(isAchievementUnlocked(user, oldUser));
+                    //dispatch(alertAchievementActions.success("New Achievement Unlocked"));
                 },
                 error => {
                     dispatch(failure(error.toString()));
@@ -124,4 +134,25 @@ function getCurrent() {
     function request() { return { type: userConstants.GET_USER_REQUEST } }
     function success(user) { return { type: userConstants.GET_USER_SUCCESS, user } }
     function failure(error) { return { type: userConstants.GET_USER_FAILURE, error } }
+}
+
+
+function isAchievementUnlocked(user, oldUser) {
+    return dispatch => {
+        if (user.achievements.length !== oldUser.achievements.length) {
+            let newAchievements = _.difference(user.achievements, oldUser.achievements);
+            console.log("new achievement");
+            console.log(newAchievements);
+            if(newAchievements.length === 1) {
+                achievementService.getById(newAchievements[0])
+                    .then((achievement) => {
+                        dispatch(alertAchievementActions.oneAchievement(achievement));
+                    })
+            }
+            else {
+                console.log(newAchievements.length);
+                dispatch(alertAchievementActions.manyAchievements(newAchievements.length));
+            }
+        }
+    }
 }

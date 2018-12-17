@@ -11,7 +11,7 @@ import {createLevel} from "./level.reducer";
 import {code} from "./codeTree.reducer";
 import {getAllAchievements} from "./getAllAchievements.reducer";
 import {compilation} from "./compilation.reducer";
-import {alert} from './alert.reducer';
+import {alert, alertAchievements} from './alert.reducer';
 
 const rootReducer = combineReducers({
     authentication,
@@ -25,7 +25,8 @@ const rootReducer = combineReducers({
     code,
     getAllAchievements,
     compilation,
-    alert
+    alert,
+    alertAchievements
 });
 
 export default rootReducer;

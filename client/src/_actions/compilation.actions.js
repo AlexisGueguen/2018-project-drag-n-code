@@ -6,14 +6,14 @@ export const compilationActions = {
     compile
 };
 
-function compile(code, level) {
+function compile(code, level, oldUser) {
     return dispatch => {
         dispatch(request());
         compilationService.compile(code, level)
             .then(
                 result => {
                     dispatch(success(result));
-                    dispatch(userActions.getCurrent());
+                    dispatch(userActions.getCurrent(oldUser));
                 },
                 error => {
                     dispatch(failure(error.toString()));
