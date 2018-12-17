@@ -16,11 +16,18 @@ detailed, and the user can access the Playground.
 [https://dragncode.tk](https://dragncode.tk)
 ------------------------
 
-
 Deploy the project
 ----------------------
 There is 2 ways of deploying the application: 
 - Easy way: follow instructions on [easy-deployment](deployment-easy.md) (use automated scripts)
 - Hard way: follow instructions on [hard-deployment](deployment.md) (you will type all the instructions yourself)
 
-The hard way allow you to have a fine understanding of the deployment process, while the easy way let you deploy the application in ~25 minutes.
+The hard way allow you to have a fine understanding of the deployment process, while the easy way let you deploy the application in ~25 minutes.  
+
+Client information
+----------------------
+[Client README](client/README.md)
+
+Server information
+----------------------
+[Server README](server/README.md)
