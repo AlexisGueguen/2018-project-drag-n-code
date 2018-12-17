@@ -89,7 +89,7 @@ async function update(userParam, userId) {
     }
 
     let user = new User(userParam);
-    const { hash, achievements, score, likes, levelsCompleted, createdDate, ...userSanitized } = user.toObject();
+    const { hash, score, levelsCompleted, createdDate, ...userSanitized } = user.toObject();
     return await User.findByIdAndUpdate(userParam._id, userSanitized, {new: true}).select('-hash -__v -createdDate');
 }
 

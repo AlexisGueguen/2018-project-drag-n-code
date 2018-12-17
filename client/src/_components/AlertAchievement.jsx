@@ -1,8 +1,7 @@
 import React from "react";
 import {history} from "../_helpers";
-import {alertAchievementActions, alertActions} from "../_actions";
+import {alertAchievementActions} from "../_actions";
 import connect from "react-redux/es/connect/connect";
-import Modal from "react-bootstrap/es/Modal";
 
 class AlertAchievement extends React.Component {
     constructor(props) {
