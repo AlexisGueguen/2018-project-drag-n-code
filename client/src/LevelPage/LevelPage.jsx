@@ -26,7 +26,7 @@ class LevelPage extends React.Component {
                     level &&
                     <Row className="level-page-row">
                         <Playground/>
-                        <Col sm={5} md={5} className="scrolling-panel">
+                        <Col sm={5} md={5} className="scrolling-panel dark-area">
                             <StatementPanel value={level.statement} title={level.title}/>
                             <GeneratedCodePanel/>
                         </Col>

@@ -252,7 +252,7 @@ class CreateLevelPage extends React.Component {
                     <div className="solution-code">
                         <AceEditor
                             mode="c_cpp"
-                            theme="chaos"
+                            theme="ambiance"
                             name="solution"
                             fontSize={14}
                             showPrintMargin={false}

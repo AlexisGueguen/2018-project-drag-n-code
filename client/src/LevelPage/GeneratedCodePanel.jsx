@@ -15,9 +15,9 @@ class GeneratedCodePanel extends React.Component {
     render() {
         const {code} = this.props;
         return (
-            <div className="generated-code">
+            <div className="generated-code dark-area">
                 <div>
-                    <h3>Generated code</h3>
+                    <h3 className="generated-code-title">Generated code</h3>
                     <Select
                         placeholder='Sort by'
                         onChange={this.handleLanguageChange}
@@ -29,7 +29,7 @@ class GeneratedCodePanel extends React.Component {
                 </div>
                 <AceEditor
                     mode="c_cpp"
-                    theme="xcode"
+                    theme="ambiance"
                     name="code-generated"
                     fontSize={14}
                     showPrintMargin={false}

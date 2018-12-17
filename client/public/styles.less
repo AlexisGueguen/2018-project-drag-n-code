@@ -629,6 +629,8 @@ html, body {
 
             & h3 {
               text-align: center;
+              margin-top: 0px;
+              padding-top: 20px;
             }
 
             & p {
@@ -679,7 +681,8 @@ html, body {
         & .submission-collapsed {
           width: 41.667%;
           text-align: center;
-          background-color: lightgray;
+          background-color: @background-color;
+          border-left: 1px solid lightgray;
           position: absolute;
           bottom: 0;
           right: 0;
@@ -697,15 +700,16 @@ html, body {
               height: 100%;
               display: flex;
 
-              & .glyphicon {
-                margin: auto;
-                font-size: 30px;
-                color: @dark-grey-color;
-                cursor: pointer;
-              }
-
               & .like-button {
                 width: 20%;
+
+                & .glyphicon {
+                  margin: auto;
+                  font-size: 30px;
+                  color: @background-color;
+                  cursor: pointer;
+                }
+
                 & .liked-icon {
                   color: @primary-color;
                 }
@@ -723,7 +727,7 @@ html, body {
                 & .expand {
                   margin: auto;
                   right: 16px;
-                  color: #000;
+                  color: @background-color;
                   &:hover {
                     color: @primary-color;
                     cursor: pointer;
@@ -737,7 +741,7 @@ html, body {
         & .submission-expanded {
           width: 41.667%;
           text-align: center;
-          background-color: lightgray;
+          background-color: @background-color;
           position: absolute;
           bottom: 0;
           right: 0;
@@ -759,7 +763,7 @@ html, body {
                 right: 16px;
                 top: 24px;
                 position: absolute;
-                color: #000;
+                color: @background-color;
                 opacity: 1 !important;
                 &:hover {
                   color: @primary-color;
@@ -792,7 +796,7 @@ html, body {
           & .glyphicon-thumbs-up {
             margin: auto;
             font-size: 30px;
-            color: #444;
+            color: @background-color;
             cursor: pointer;
           }
 
@@ -1237,6 +1241,28 @@ p {
       & img.badge-picture {
         height: 80px;
       }
+    }
+  }
+}
+
+.basic-page {
+  & .generated-code-title {
+    color: white;
+  }
+
+  & .dark-area {
+    background-color: #202020 !important;
+
+    & h3,p {
+      color: @background-color;
+    }
+  }
+
+  & .light-area {
+    background-color: @background-color;
+
+    & h3,p {
+      color: #333 !important;
     }
   }
 }
