@@ -38,8 +38,9 @@ class LeaderboardPage extends React.Component {
                             </tr>
                             </thead>
                             <tbody>
-                            {topUsers &&
+                            {topUsers ?
                                 topUsers.map((user) => <TableUserItem key={user.username} value={user}/>)
+                                : null
                             }
                             </tbody>
                         </table>

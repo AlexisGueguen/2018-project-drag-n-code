@@ -1,4 +1,5 @@
 import React from 'react';
+import Favicon from "react-favicon";
 
 import {LoginPage} from '../LoginPage';
 import {RegisterPage} from '../RegisterPage';
@@ -20,6 +21,7 @@ export class App extends React.Component {
                         <PrivateRoute path="/" component={BasicPageComponent}/>
                     </Switch>
                 </Router>
+                <Favicon url="/resources/favicon.ico"/>
             </div>
         );
     }

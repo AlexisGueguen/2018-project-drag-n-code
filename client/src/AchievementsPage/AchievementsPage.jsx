@@ -25,7 +25,7 @@ class AchievementsPage extends React.Component {
                     <div className="list-group">
                         {achievements &&
                         achievements.map((achievement) =>
-                            <div className={"achievement-item" + (this.isUnlocked(achievement) ? " --unlocked":" --locked")}>
+                            <div key={achievement._id} className={"achievement-item" + (this.isUnlocked(achievement) ? " --unlocked":" --locked")}>
                                 <div className="list-group-item list-group-item-action list-item-header">
                                     <div className="achievement-header-title">
                                         <h4>{achievement.title}</h4>

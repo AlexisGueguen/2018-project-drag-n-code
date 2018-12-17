@@ -12,7 +12,7 @@ module.exports = {
 
 async function getById(id) {
     let achvmt = await Achievement.findById(id);
-    if (achvmt == null) throw {
+    if (!achvmt) throw {
         name: 'Error',
         message: `Achievement ${id} not found`,
         statusCode: 404

@@ -1,4 +1,4 @@
-import { userConstants } from '../_constants';
+import {achievementConstants, userConstants} from '../_constants';
 import {achievementService, userService} from '../_services';
 import { alertActions } from './';
 import { alertAchievementActions } from './';
@@ -144,9 +144,11 @@ function isAchievementUnlocked(user, oldUser) {
                     })
             }
             else {
-                console.log(newAchievements.length);
                 dispatch(alertAchievementActions.manyAchievements(newAchievements.length));
             }
         }
-    }
+        dispatch(result());
+    };
+
+    function result() { return { type: achievementConstants.ACHIEVEMENT_CHECK } }
 }

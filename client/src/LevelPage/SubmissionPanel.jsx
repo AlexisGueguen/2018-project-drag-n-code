@@ -9,6 +9,8 @@ import lang from "../_constants/en";
 import {history} from '../_helpers';
 import {levelActions} from "../_actions";
 import 'brace/theme/kuroir';
+import 'brace/theme/ambiance';
+import 'brace/theme/xcode';
 
 const translation = lang.levelPage;
 
@@ -64,7 +66,6 @@ class SubmissionPanel extends React.Component {
 
     onReturnMenuClick() {
         this.unblock();
-        //this.props.dispatch(userActions.getCurrent());
         history.goBack();
     }
 
@@ -90,7 +91,7 @@ class SubmissionPanel extends React.Component {
         const {expanded, showExpandButton} = this.state;
         const {loading, result, code} = this.props;
         return (
-            <div className={expanded ? 'submission-expanded' : 'submission-collapsed'}>
+            <div className={"dark-area " + (expanded ? 'submission-expanded' : 'submission-collapsed')}>
                 {loading ? (
                     <LoadingWheel/>
                 ) : (
@@ -105,7 +106,7 @@ class SubmissionPanel extends React.Component {
                                         <p>{translation.yourCode}</p>
                                         <AceEditor
                                             mode="c_cpp"
-                                            theme="kuroir"
+                                            theme="ambiance"
                                             name="code-generated"
                                             fontSize={14}
                                             showPrintMargin={false}
@@ -132,7 +133,7 @@ class SubmissionPanel extends React.Component {
                                         <h3>{translation.compilationError}</h3>
                                         <AceEditor
                                             mode="c_cpp"
-                                            theme="kuroir"
+                                            theme="ambiance"
                                             name="code-generated"
                                             fontSize={14}
                                             showPrintMargin={false}

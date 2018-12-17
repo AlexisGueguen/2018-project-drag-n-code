@@ -28,7 +28,7 @@ export default class StatementPanel extends React.Component {
         const {value, title} = this.props;
         const {expanded} = this.state;
         return (
-            <div className="statement">
+            <div className="statement light-area">
                 <h3>
                     {title}
                     <span className={expanded ? 'glyphicon glyphicon-chevron-up' : 'glyphicon glyphicon-chevron-down'} onClick={this.onExpandClick}/>
