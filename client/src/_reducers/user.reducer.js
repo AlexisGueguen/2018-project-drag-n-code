@@ -20,7 +20,6 @@ export function authentication(state = initialState, action) {
         case userConstants.LOGOUT:
             return {};
         case userConstants.UPDATE_SUCCESS:
-            console.log('update user');
             return {
                 user: action.user
             };

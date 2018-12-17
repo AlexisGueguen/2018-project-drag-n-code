@@ -9,9 +9,9 @@ const loggerMiddleware = createLogger({
 
 const middlewares = [];
 
+middlewares.push(thunkMiddleware);
 if (process.env.NODE_ENV === `development`) {
     middlewares.push(loggerMiddleware);
 }
-middlewares.push(thunkMiddleware);
 
 export const store = compose(applyMiddleware(...middlewares))(createStore)(rootReducer);

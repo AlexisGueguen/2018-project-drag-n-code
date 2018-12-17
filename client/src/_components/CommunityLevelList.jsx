@@ -68,11 +68,9 @@ class CommunityLevelList extends React.Component {
             levels: orderedLevels,
             sortType: selectedOption.value
         });
-        console.log('levels', orderedLevels);
     };
 
     orderLevels(levels, sortType) {
-        console.log('order levels: ', sortType);
         if (sortType) {
             if (sortType === sortTypeEnum.unsorted) {
                 const originalLevels = this.props.levels;
