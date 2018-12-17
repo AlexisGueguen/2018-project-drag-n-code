@@ -80,6 +80,12 @@ Test the renewal of the certificate:
 sudo certbot renew --dry-run
 ```  
 
+### Populate the Database
+```
+cd ~/2018-project-drag-n-code/scripts
+./fill_db.sh
+```
+
 ### Launch the client-server
 Launch the client-server: 
 ```
